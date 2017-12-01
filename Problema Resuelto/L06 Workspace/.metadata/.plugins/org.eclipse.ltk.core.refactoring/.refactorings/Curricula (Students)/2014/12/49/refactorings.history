@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;Curriculum.java&apos; to &apos;Curricula/src/main/java/domain&apos;&#x0D;&#x0A;- Original project: &apos;Curricula (Students)&apos;&#x0D;&#x0A;- Destination element: &apos;Curricula/src/main/java/domain&apos;&#x0D;&#x0A;- Original element: &apos;domain.Curriculum.java&apos;" description="Copy compilation unit" destination="=Curricula/src\/main\/java&lt;domain" element1="/src\/main\/java&lt;domain{Curriculum.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1417628786226" units="1" version="1.0"/>
+</session>
