@@ -9,9 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import controllers.AbstractController;
+
 import services.ManagerService;
 import services.TripService;
-import controllers.AbstractController;
 import domain.Manager;
 import domain.Trip;
 
