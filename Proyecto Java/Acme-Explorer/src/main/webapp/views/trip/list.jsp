@@ -21,7 +21,7 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
 <!-- Listing trips -->
-
+<%-- 
 <form:form action="trip/list.do" modelAttribute="trip">
 
 	<form:label path="search">
@@ -63,11 +63,11 @@
 		value="<spring:message code="trip.search"/>"
 		onClick=" window.location.href='${editlink}' ">/>&nbsp;
 		
-</form:form>
+</form:form> --%>
 
-<display:table pagesize="5" class="displaytag" keepStatus="true"
-	name="trips" requestURI="${requestURI}" id="row">
+<display:table name="trips" id="row" requestURI="${requestURI}" pagesize="5" class="displaytag" keepStatus="true">
 
+<!-- Display -->
 	<display:column>
 		<spring:url value="trip/display.do" var="displaydURL">
 			<spring:param name="tripId" value="${row.id}" />
@@ -75,6 +75,7 @@
 		<a href="${displayURL}"><spring:message code="trip.display" /></a>
 	</display:column>
 
+<!-- Edit -->
 	<security:authorize access="hasRole('MANAGER')">
 		<jstl:if test="${publicated==false}">
 			<display:column>
@@ -82,11 +83,12 @@
 					<spring:param name="tripId" value="${row.id}" />
 				</spring:url>
 				<a href="${editURL}"><spring:message code="trip.edit" /></a>
-			</display:column>
+			</display:column>	
 		</jstl:if>
 	</security:authorize>
-
-	<security:authorize access="hasRole('EXPLORER)">
+	
+<!-- Apply -->
+	<security:authorize access="hasRole('EXPLORER')">
 		<jstl:if test="${demand==false }">
 			<display:column>
 				<spring:url value="trip/explorer/apply.do" var="applyURL">
@@ -96,7 +98,6 @@
 			</display:column>
 		</jstl:if>
 	</security:authorize>
-
 
 
 	<!-- Attributes -->
@@ -109,21 +110,19 @@
 
 	<spring:message code="trip.format.date" var="pattern"></spring:message>
 	<spring:message code="trip.startDate" var="startDateHeader" />
-	<display:column property="startDate" title="${startDateHeader}"
-		sortable="true" format="${pattern}" />
+	<display:column property="startDate" title="${startDateHeader}" sortable="true" format="${pattern}" />
 
 	<spring:message code="trip.format.date" var="pattern"></spring:message>
 	<spring:message code="trip.finishDate" var="finishDateHeader" />
-	<display:column property="finishDate" title="${finishDateHeader}"
-		sortable="true" format="${pattern}" />
+	<display:column property="finishDate" title="${finishDateHeader}" sortable="true" format="${pattern}" />
 
 
 </display:table>
 
 <security:authorize access="hasRole('MANAGER')">
 	<div>
-		<a href="trip/manager/create.do"> <spring:message
-				code="trip.create" />
+		<a href="trip/manager/create.do"> 
+			<spring:message	code="trip.create" />
 		</a>
 	</div>
 </security:authorize>
