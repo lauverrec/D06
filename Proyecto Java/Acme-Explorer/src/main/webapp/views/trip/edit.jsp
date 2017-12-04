@@ -68,7 +68,12 @@
 	<form:errors cssClass="error" path="finishDate" />
 	<br />
 	
-	<form:label path="ranger">
+	
+	
+
+	
+	
+<%-- 	<form:label path="ranger">
 		<spring:message code="trip.ranger" />:
 	</form:label>
 	<form:select id="rangers" path="ranger" >
@@ -77,7 +82,10 @@
 			itemLabel="name" />
 	</form:select>
 	<form:errors cssClass="error" path="ranger" />
-	<br />
+	<br /> --%>
+	
+	
+	
 	
 	<form:label path="legalText">
 		<spring:message code="trip.legalText" />:

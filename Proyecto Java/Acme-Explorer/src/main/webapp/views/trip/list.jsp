@@ -69,35 +69,43 @@
 
 <!-- Display -->
 	<display:column>
-		<spring:url value="trip/display.do" var="displaydURL">
+		<spring:url value="trip/manager/display.do" var="displaydURL">
 			<spring:param name="tripId" value="${row.id}" />
 		</spring:url>
 		<a href="${displayURL}"><spring:message code="trip.display" /></a>
 	</display:column>
 
-<!-- Edit -->
+<!-- Edit Para un Manager-->
 	<security:authorize access="hasRole('MANAGER')">
-		<jstl:if test="${publicated==false}">
-			<display:column>
+	<spring:message code="trip.publicationDate" var="publicationDate" />	
+		<display:column>
+			<jstl:if test="${row.publicationDate==null}">
 				<spring:url value="trip/manager/edit.do" var="editURL">
 					<spring:param name="tripId" value="${row.id}" />
 				</spring:url>
 				<a href="${editURL}"><spring:message code="trip.edit" /></a>
-			</display:column>	
-		</jstl:if>
+			</jstl:if>
+		</display:column>		
 	</security:authorize>
 	
-<!-- Apply -->
+<!-- Apply Para un Explorer-->
 	<security:authorize access="hasRole('EXPLORER')">
-		<jstl:if test="${demand==false }">
 			<display:column>
+
+			
+			
 				<spring:url value="trip/explorer/apply.do" var="applyURL">
 					<spring:param name="tripId" value="${row.id }" />
 				</spring:url>
 				<a href="${applyURL}"><spring:message code="trip.apply" /></a>
+
+
 			</display:column>
-		</jstl:if>
+		
 	</security:authorize>
+	
+<!-- Cancel  Para un Explorer-->
+
 
 
 	<!-- Attributes -->
