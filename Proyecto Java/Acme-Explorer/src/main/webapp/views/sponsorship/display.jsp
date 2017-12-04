@@ -24,18 +24,28 @@
 <display:table name="sponsorship" class="displaytag"
   requestURI="sponsorship/sponsor/display.do" id="row">
   
-  <spring:message code="sponsorship.link" />
+  <display:column>
+  <spring:message code="sponsorship.link" />:
 	<jstl:out value="${row.link}"></jstl:out>
 	<p>
-	<spring:message code="sponsorship.bannerURL" />
-		<jstl:out value="${row.bannerURL.filename}"></jstl:out>
+	<spring:message code="sponsorship.bannerURL" />:
+		<jstl:out value="${row.bannerURL}"></jstl:out>
 	</p>
-
-	<display:column>
-		<spring:url value="trip/display.do" var="displayURL">
-		<spring:param name="tripId" value="${row.id}"/>
+	<spring:message code="sponsorship.creditCard" />:
+		<jstl:out value="${row.creditCard.holderName}"></jstl:out>
+	<p>
+	<%-- <spring:message code="sponsorship.trip" />:
+		<jstl:out value="${row.trip.ticker}"></jstl:out>
+	<p> --%>
+	
+	 <security:authorize access="hasRole('SPONSOR')">
+		<spring:url value="sponsorship/sponsor/displayTrip.do" var="displayURL">
+		<spring:param name="sponsorshipId" value="${row.id}"/>
 		</spring:url>
 		<a href="${displayURL}"><spring:message code="sponsorship.trip.display"/></a>
-		</display:column>
+		
+	</security:authorize> 
+</display:column>
+	
 
 </display:table>

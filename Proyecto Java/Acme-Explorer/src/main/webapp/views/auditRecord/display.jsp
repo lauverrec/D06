@@ -22,28 +22,37 @@
 // TODO: TO BE COMPLETED
 
 <display:table name="auditRecord" class="displaytag"
-  requestURI="auditRecord/display.do" id="row">
+  requestURI="auditRecord/auditor/display.do" id="row">
   	
 	<!-- Attributes -->
 
-
-	<spring:message code="auditRecord.title" />
+	<display:column>
+	<spring:message code="auditRecord.title" />:
 	<jstl:out value="${row.title }"></jstl:out>
 
 	<p>
-		<spring:message code="auditRecord.description" />
+		<spring:message code="auditRecord.description" />:
 		<jstl:out value="${row.description}"></jstl:out>
 	</p>
 
 	<p>
-		<spring:message code="auditRecord.realisedMoment" />
+		<spring:message code="auditRecord.format.date" var="pattern"></spring:message>
+	 	<spring:message code="auditRecord.realisedMoment" />:
 		<jstl:out value="${row.realisedMoment}"></jstl:out>
-	</p>
+	
+	
+ 
+ </p>
 
 	<p>
-		<spring:message code="auditRecord.attachments" />
+		<spring:message code="auditRecord.attachments" />:
 		<jstl:out value="${row.attachments}"></jstl:out>
 	</p>
+	<p>
+		<spring:message code="auditRecord.draftMode" />:
+		<jstl:out value="${row.draftMode}"></jstl:out>
+	</p>
+	
 
-
+</display:column>
  </display:table>

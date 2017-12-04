@@ -24,14 +24,7 @@
 	name="notes" requestURI="${requestURI}" id="row">
 	
 	
-	<security:authorize access="hasRole('AUDITOR')">
-		<display:column>
-			<spring:url value="note/auditor/edit.do" var="editURL">
-				<spring:param name="noteId" value="${row.id}" />
-			</spring:url>
-			<a href="${editURL}"><spring:message code="note.edit" /></a>
-		</display:column>
-	</security:authorize>
+	
 	<security:authorize access="hasRole('AUDITOR')">
 	<display:column>
 		<spring:url value="note/auditor/display.do" var="editURL">
@@ -43,12 +36,12 @@
 	
 	<!-- Attributes -->
 	
-	<spring:message code="note.title" var="titleHeader" />
-	<display:column property="title" title="${titleHeader}" sortable="true" />
+	<spring:message code="note.body" var="bodyHeader" />
+	<display:column property="body" title="${bodyHeader}" sortable="true" />
 	
 	<spring:message code="note.format.date" var="pattern"></spring:message>
-	<spring:message code="note.createMoment" var="createMomentHeader" />
-	<display:column property="createMoment" title="${momentHeader}" sortable="true" format="${pattern}"/>
+	<spring:message code="note.createdMoment" var="createdMomentHeader" />
+	<display:column property="createdMoment" title="${createdMomentHeader}" sortable="true" format="${pattern}"/>
 	
 	<spring:message code="note.remark" var="remarkHeader" />
 	<display:column property="remark" title="${remarkHeader}" sortable="true" />

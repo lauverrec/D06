@@ -11,6 +11,7 @@ import org.springframework.util.Assert;
 import repositories.SponsorshipRepository;
 import domain.Sponsor;
 import domain.Sponsorship;
+import domain.Trip;
 
 @Service
 @Transactional
@@ -76,4 +77,32 @@ public class SponsorshipService {
 
 	//Other business methods------------------------------------------------
 
+	public Collection<Sponsorship> findByPrincipal() {
+		Collection<Sponsorship> result;
+		Sponsor sponsor;
+
+		sponsor = this.sponsorService.findByPrincipal();
+		result = this.sponsorshipRepository.findBySponsorId(sponsor.getId());
+
+		return result;
+	}
+
+	public Trip findByPrincipalSponsorhipTrip(Sponsorship sponsorship) {
+		Trip result;
+		Sponsor sponsor;
+
+		sponsor = this.sponsorService.findByPrincipal();
+		Assert.isTrue(sponsor.getSponsorships().equals(sponsorship));
+		result = this.sponsorshipRepository.findTripBySponsorship(sponsorship.getId());
+		return result;
+	}
+
+	//	public Trip findTripBySponsorship(Sponsorship sponsorship) {
+	//		Trip trip;
+	//
+	//		trip = this.sponsorshipRepository.findTripBySponsorship(sponsorship.getId());
+	//
+	//		return trip;
+	//
+	//	}
 }

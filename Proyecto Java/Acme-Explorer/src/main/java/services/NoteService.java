@@ -91,4 +91,14 @@ public class NoteService {
 		Assert.notNull(note);
 		return note;
 	}
+
+	public Collection<Note> findByPrincipal() {
+		Collection<Note> notes;
+		Auditor auditor;
+
+		auditor = this.auditorService.findByPrincipal();
+		notes = this.noteRepository.findNotesByAuditor(auditor.getId());
+
+		return notes;
+	}
 }

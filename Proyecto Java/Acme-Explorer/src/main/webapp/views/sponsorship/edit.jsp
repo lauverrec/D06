@@ -34,18 +34,21 @@
 	<form:errors cssClass="error" path="bannerURL" />
 	<br />
 	
+	<br/> 
+	
 	<form:label path="link">
 		<spring:message code="sponsorship.link" />:
 	</form:label>
 	<form:input path="link" />
 	<form:errors cssClass="error" path="link" />
 	<br />
-	
+	<br/> 
 	<form:label path="creditCard">
 		<spring:message code="sponsorship.creditCard" />:
 	</form:label>
 	<br />
 	
+	<br/> 
 	<fieldset>
 	
 	<form:label path="creditCard.holderName">
@@ -86,14 +89,14 @@
 	
 	</fieldset>
 	
-	<form:label path="trip">
+<%-- 	<form:label path="trip">
 		<spring:message code="sponsorship.trip" />:
 	</form:label>
-	<form:select id="trips" path="trip">
-	<form:option value="0" label="----" />
-	<form:options items="${trips}" itemValue="id" itemLabel="title"/>
-	</form:select>
-	<br />
+	<form:input path="trip.title" />
+	<form:errors cssClass="error" path="trip" />
+	<br />--%>
+	
+	<br/> 
 	
 	<!-- botones --> 
 	

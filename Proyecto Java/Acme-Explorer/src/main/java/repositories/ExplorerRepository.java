@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import domain.ContactEmergency;
 import domain.Explorer;
 
 @Repository
@@ -22,5 +23,8 @@ public interface ExplorerRepository extends JpaRepository<Explorer, Integer> {
 
 	@Query("select e from Explorer e join e.contactsEmergency c where c.id=?1")
 	Collection<Explorer> findExplorersByContactEmergencyId(int contactEmergencyId);
+
+	@Query("select e.contactsEmergency from Explorer e where e.id=?1")
+	Collection<ContactEmergency> findContactsByExplorer(int explorerId);
 
 }

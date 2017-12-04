@@ -34,7 +34,7 @@
 	<form:errors cssClass="error" path="title" />
 	<br />
 	
-	<form:label path="realisedMoment">
+	<form:label path="realisedMoment" placeholder=" yyyy/dd/MM HH:hh">
 		<spring:message code="auditRecord.realisedMoment" />:
 	</form:label>
 	<form:input path="realisedMoment" readonly="true"/>
@@ -48,22 +48,22 @@
 	<form:errors cssClass="error" path="description" />
 	<br />
 	
-	<form:label path="attachments">
+	<%-- <form:label path="attachments">
 		<spring:message code="auditRecord.attachments" />:
 	</form:label>
 	<form:input path="attachments" />
 	<form:errors cssClass="error" path="attachments" />
-	<br />
+	<br /> --%>
 	
-	<form:label path="draftMode">
+	<%-- <form:label path="draftMode">
 		<spring:message code="auditRecord.draftMode" />:
 	</form:label>
-	<form:select id="draftModes" path="draftMode">
-		<form:option value="0" label="----" />		
+	<form:select id="draftModes" path="draftMode">	
 		<form:option value="1" label="YES"/>
 		<form:option value="2" label="NO"/>
-	</form:select>
-	<br />
+	</form:select>  --%>
+	<br /> 
+	
 	
 	<!-- botones --> 
 	

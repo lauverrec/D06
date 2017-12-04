@@ -18,11 +18,11 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
  
  
-<form:form action="note/manager/edit.do" modelAttribute="note">
+<form:form action="note/auditor/edit.do" modelAttribute="note">
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />
-	<form:hidden path="manager"/> 
+	
 	
 	<form:label path="createdMoment" placeholder=" yyyy/dd/MM HH:hh" >
 		<spring:message code="note.createdMoment" />:
@@ -61,15 +61,11 @@
 	<input type="submit" name="save"
 		value="<spring:message code="note.save"/>" />&nbsp;
 	
-	<jstl:if test="${event.id !=0 }">
-		<input type="submit" name="delete"
-			value="<spring:message code="note.delete"/>"
-			onclick="javascript: return confirm('<spring:message code="note.confirm.delete"/>')" />&nbsp;
-	</jstl:if>
+	
 	
 	<input type="button" name="cancel"
 		value="<spring:message code="note.cancel"/>"
-		onclick="javascript: window.location.replace('note/manager/list.do')" />
+		onclick="javascript: window.location.replace('note/auditor/list.do')" />
 	<br />
 </form:form>
  

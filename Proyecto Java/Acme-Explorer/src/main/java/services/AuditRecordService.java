@@ -103,4 +103,14 @@ public class AuditRecordService {
 		return trip;
 	}
 
+	public Collection<AuditRecord> findByPrincipal() {
+		Collection<AuditRecord> result;
+		Auditor auditor;
+
+		auditor = this.auditorService.findByPrincipal();
+		result = this.auditRecordRepository.findByAuditorId(auditor.getId());
+
+		return result;
+	}
+
 }

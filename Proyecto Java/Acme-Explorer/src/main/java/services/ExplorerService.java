@@ -173,4 +173,14 @@ public class ExplorerService {
 
 		return res;
 	}
+
+	public Collection<ContactEmergency> findByPrincipalContacts() {
+
+		Collection<ContactEmergency> contacts;
+		Explorer explorer;
+		explorer = this.findByPrincipal();
+
+		contacts = this.explorerRepository.findContactsByExplorer(explorer.getId());
+		return contacts;
+	}
 }
