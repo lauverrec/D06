@@ -19,7 +19,7 @@
 <%@taglib prefix="security"	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
-<form:form action="explorer/explorer/edit.do" modelAttribute="explorer">
+<form:form action="explorer/edit.do" modelAttribute="explorer">
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />
@@ -29,22 +29,6 @@
 	<form:hidden path="stories"/>
 	<form:hidden path="applicationsFor"/>
 	<form:hidden path="contactsEmergency"/>
-	
-	<jstl:if test="${explorer.id == 0}">		
-		<form:label path="userAccount.username">
-			<spring:message code="explorer.username" />:
-		</form:label>
-		<form:input path="userAccount.username" />
-		<form:errors cssClass="error" path="userAccount.username" />
-		<br /><br />
-	
-		<form:label path="userAccount.password">
-			<spring:message code="explorer.password" />:
-		</form:label>
-		<form:password path="userAccount.password" />
-		<form:errors cssClass="error" path="userAccount.password" />
-		<br /><br />
-	</jstl:if>
 	
 	<security:authorize access="hasRole('EXPLORER')">
 	
@@ -86,12 +70,8 @@
 	
 	
 	<input type="submit" name="save"
-		value="<spring:message code="explorer.save" />" onclick="valida();"/>&nbsp; 
-	<jstl:if test="${explorer.id != 0}">
-		<input type="submit" name="delete"
-			value="<spring:message code="explorer.delete" />"
-			onclick="javascript: return confirm('<spring:message code="explorer.confirm.delete" />')" />&nbsp;
-	</jstl:if>
+		value="<spring:message code="explorer.save" />" />&nbsp; 
+	
 	<input type="button" name="cancel"
 		value="<spring:message code="explorer.cancel" />"
 		onclick="javascript: window.location.replace('welcome/index.do');" />

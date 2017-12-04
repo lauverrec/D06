@@ -49,7 +49,7 @@
 		<security:intercept-url pattern="/auditRecord/display.do" access="permitAll"/>
 		<security:intercept-url pattern="/category/administrator/**" access="hasRole('ADMINISTRATOR')"/>
 		<security:intercept-url pattern="/category/list.do" access="permitAll"/>
-		<security:intercept-url pattern="/explorer/explorer/**" access="hasRole('EXPLORER')"/>
+		<security:intercept-url pattern="/explorer/**" access="hasRole('EXPLORER')"/>
 		<security:intercept-url pattern="/manager/manager/**" access="hasRole('MANAGER')"/>
 		<security:intercept-url pattern="/note/manager/**" access="hasRole('MANAGER')"/>
 		<security:intercept-url pattern="/note/auditor/**" access="hasRole('AUDITOR')"/>
@@ -62,8 +62,7 @@
 		<security:intercept-url pattern="/trip/manager/**" access="hasRole('MANAGER')"/>
 		<security:intercept-url pattern="/trip/explorer/**" access="hasRole('EXPLORER')"/>
 		<security:intercept-url pattern="/trip/list.do" access="permitAll"/>
-		
-		<security:intercept-url pattern="/survivalClass/explorer/**" access="hasRole('EXPLORER')"/>
+	
 		<security:intercept-url pattern="/contactsEmergency/explorer/**" access="hasRole('EXPLORER')"/>
 		
 		
