@@ -24,15 +24,20 @@
 		<security:authorize access="hasRole('SPONSOR')">
 			<li><a class="fNiv"><spring:message	code="master.page.sponsor" /></a>
 				<ul>
-					<li class="arrow"></li>				
+					<li class="arrow"></li>		
+					<li><a href="sponsor/edit.do"><spring:message code="master.page.sponsor.edit" /></a></li>
+          		<li><a href="sponsorship/sponsor/list.do"><spring:message code="master.page.sponsorship.sponsor.list" /></a></li>		
 				</ul>
 			</li>
 		</security:authorize>
 		
 		<security:authorize access="hasRole('AUDITOR')">
 			<li><a class="fNiv"><spring:message	code="master.page.auditor" /></a>
+			
 				<ul>
 					<li class="arrow"></li>
+					<li><a href="auditRecord/auditor/list.do"><spring:message code="master.page.auditRecord.auditor.list" /></a></li>
+					 <li><a href="note/auditor/list.do"><spring:message code="master.page.note.auditor.list" /></a></li>
 									
 				</ul>
 			</li>

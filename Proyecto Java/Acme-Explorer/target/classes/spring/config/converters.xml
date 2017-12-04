@@ -90,6 +90,9 @@
 		<bean class="converters.ConfigurationSystemToStringConverter" /> 
 		<bean class="converters.StringToConfigurationSystemConverter" /> 
 		
+		<bean class ="converters.StringToCreditCardConverter"/>
+		<bean class="converters.CreditCardToStringConverter" />
+		
 		
 		
 		
