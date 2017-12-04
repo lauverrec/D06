@@ -30,6 +30,21 @@ public class EditExplorerController extends AbstractController {
 	public EditExplorerController() {
 		super();
 	}
+	//List---------------------------------------------------------------
+
+	@RequestMapping(value = "/listStory", method = RequestMethod.GET)
+	public ModelAndView list() {
+
+		ModelAndView result;
+		Explorer explorer;
+		explorer = this.explorerService.findByPrincipal();
+
+		result = new ModelAndView("explorer/list");
+		result.addObject("stories", explorer.getStories());
+
+		return result;
+
+	}
 
 	//Edition------------------------------------------------------------
 
