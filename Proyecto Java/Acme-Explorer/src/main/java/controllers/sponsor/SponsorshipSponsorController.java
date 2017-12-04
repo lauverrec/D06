@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.SponsorshipService;
+import services.TripService;
 import controllers.AbstractController;
 import domain.Sponsorship;
+import domain.Trip;
 
 @Controller
 @RequestMapping("/sponsorship/sponsor")
@@ -27,6 +29,9 @@ public class SponsorshipSponsorController extends AbstractController {
 
 	@Autowired
 	private SponsorshipService	sponsorshipService;
+
+	@Autowired
+	private TripService			tripService;
 
 
 	//Constructor--------------------------------------------------------
@@ -119,10 +124,14 @@ public class SponsorshipSponsorController extends AbstractController {
 
 		assert sponsorship != null;
 		ModelAndView result;
+		Collection<Trip> trips;
+
+		trips = this.tripService.findAll();
 
 		result = new ModelAndView("sponsorship/edit");
 		result.addObject("sponsorship", sponsorship);
 		result.addObject("message", message);
+		result.addObject("trips", trips);
 
 		return result;
 

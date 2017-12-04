@@ -26,6 +26,10 @@
 	<form:hidden path="id" />
 	<form:hidden path="version" />
 	<form:hidden path="sponsor"/> 
+	<form:hidden path="trip"/>
+	
+	
+	
 	
 	<form:label path="bannerURL">
 		<spring:message code="sponsorship.bannerURL" />:
@@ -89,13 +93,16 @@
 	
 	</fieldset>
 	
-<%-- 	<form:label path="trip">
+
+	<form:label path="trip">
 		<spring:message code="sponsorship.trip" />:
 	</form:label>
-	<form:input path="trip.title" />
+	<form:select id="trips" path="trip">
+		<form:option value="0" label="----" />		
+		<form:options items="${trips}" itemValue="id" itemLabel="title" />
+	</form:select>
 	<form:errors cssClass="error" path="trip" />
-	<br />--%>
-	
+	<br />
 	<br/> 
 	
 	<!-- botones --> 

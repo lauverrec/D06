@@ -42,7 +42,8 @@
 		</display:column>		
 	</security:authorize>
 	
-	<display:column property="bannerURL" titleKey="sponsorship.bannerURL" sortable="true" />	
+	<display:column property="bannerURL" titleKey="sponsorship.bannerURL" sortable="true" />
+	<display:column property="trip.title" titleKey="sponsorship.trip" sortable="true" />	
 </display:table>
 
 <security:authorize access="hasRole('SPONSOR')">
