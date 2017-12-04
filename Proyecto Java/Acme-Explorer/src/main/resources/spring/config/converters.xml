@@ -99,6 +99,9 @@
 		<bean class ="converters.SponsorToStringConverter"/>
 		<bean class ="converters.StringToSponsorConverter"/>
 		
+		<bean class ="converters.UserAccountToStringConverter"/>
+		<bean class ="converters.StringToUserAccountConverter"/>
+		
 		
 		
 		

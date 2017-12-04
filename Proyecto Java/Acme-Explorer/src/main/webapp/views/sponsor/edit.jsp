@@ -24,10 +24,10 @@
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />
-	<%-- <form:hidden path="socialIdentities"/>
+	<form:hidden path="socialIdentities"/>
 	<form:hidden path="messagesFolders"/>
 	<form:hidden path="userAccount"/>
-	<form:hidden path="sponsorships"/> --%>
+	<form:hidden path="sponsorships"/> 
 	
 	
 	 <form:label path="name">
