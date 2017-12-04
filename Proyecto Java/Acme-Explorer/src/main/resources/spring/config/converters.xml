@@ -93,6 +93,13 @@
 		<bean class ="converters.StringToCreditCardConverter"/>
 		<bean class="converters.CreditCardToStringConverter" />
 		
+		<bean class="converters.StringToMessageFolderConverter"/>
+		<bean class="converters.MessageFolderToStringConverter"/>
+		
+		<bean class ="converters.SponsorToStringConverter"/>
+		<bean class ="converters.StringToSponsorConverter"/>
+		
+		
 		
 		
 		
