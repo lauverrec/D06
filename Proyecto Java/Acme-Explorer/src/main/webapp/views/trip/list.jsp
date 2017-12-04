@@ -91,15 +91,10 @@
 <!-- Apply Para un Explorer-->
 	<security:authorize access="hasRole('EXPLORER')">
 			<display:column>
-
-			
-			
 				<spring:url value="trip/explorer/apply.do" var="applyURL">
 					<spring:param name="tripId" value="${row.id }" />
 				</spring:url>
 				<a href="${applyURL}"><spring:message code="trip.apply" /></a>
-
-
 			</display:column>
 		
 	</security:authorize>

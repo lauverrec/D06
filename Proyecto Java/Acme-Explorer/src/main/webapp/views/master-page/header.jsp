@@ -42,6 +42,8 @@
 			<li><a class="fNiv"><spring:message	code="master.page.explorer" /></a>
 				<ul>
 					<li class="arrow"></li>
+					<li><a href="trip/explorer/list-apply.do"><spring:message code="master.page.explorer.list.apply.trips" /></a></li>					
+					<li><a href="trip/explorer/list-not-apply.do"><spring:message code="master.page.explorer.list.not.apply.trips" /></a></li>
 									
 				</ul>
 			</li>

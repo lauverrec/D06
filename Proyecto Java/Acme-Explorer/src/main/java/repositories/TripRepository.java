@@ -34,6 +34,9 @@ public interface TripRepository extends JpaRepository<Trip, Integer> {
 	@Query("select t from Trip t join t.applicationsFor a where a.explorer.id=?1")
 	Collection<Trip> findAllTripsApplyByExplorerId(int explorerId);
 
+	@Query("select t from Trip t join t.applicationsFor a where a.explorer.id!=?1")
+	Collection<Trip> findAllTripsNotApplyByExplorerId(int explorerId);
+
 	//Requisito de Información B/10.
 	@Query("select t from Trip t join t.auditRecords a where a.auditor.id=?1")
 	Collection<Trip> findByAuditorId(int auditorId);

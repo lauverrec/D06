@@ -217,6 +217,13 @@ public class TripService {
 		return trips;
 	}
 
+	public Collection<Trip> findAllTripsNotApplyByExplorerId(int explorerId) {
+		Collection<Trip> trips;
+		trips = new ArrayList<>(this.tripRepository.findAllTripsNotApplyByExplorerId(explorerId));
+		Assert.notNull(trips);
+		return trips;
+	}
+
 	//Trips auditados por el auditorId
 	//***** TEST HECHO *******
 	public Collection<Trip> findByAuditorId(final int auditorId) {

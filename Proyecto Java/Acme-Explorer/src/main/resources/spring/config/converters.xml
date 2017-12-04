@@ -81,6 +81,9 @@
 		<bean class="converters.StageToStringConverter" /> 
 		<bean class="converters.StringToStageConverter" /> 
 		
+		<bean class="converters.TripToStringConverter" /> 
+		<bean class="converters.StringToTripConverter" /> 
+		
 		<bean class="converters.SponsorshipToStringConverter" /> 
 		<bean class="converters.StringToSponsorshipConverter" /> 
 		

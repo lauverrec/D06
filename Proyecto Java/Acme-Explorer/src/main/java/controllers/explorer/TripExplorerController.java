@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import services.ExplorerService;
 import services.TripService;
 import controllers.AbstractController;
+import domain.Explorer;
 import domain.Trip;
 
 @Controller
@@ -21,11 +23,11 @@ public class TripExplorerController extends AbstractController {
 
 	// Services ---------------------------------------------------------------
 	@Autowired
-	private TripService	tripService;
+	private TripService		tripService;
 
+	@Autowired
+	private ExplorerService	explorerService;
 
-	//@Autowired
-	//private ExplorerService	explorerService;
 
 	// Constructors -----------------------------------------------------------
 	public TripExplorerController() {
@@ -33,16 +35,34 @@ public class TripExplorerController extends AbstractController {
 	}
 
 	// Listing ----------------------------------------------------------------
-	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public ModelAndView list() {
+	@RequestMapping(value = "/list-apply", method = RequestMethod.GET)
+	public ModelAndView listApplied() {
 		ModelAndView result;
 		Collection<Trip> trips;
+		Explorer explorer;
 
-		trips = this.tripService.findAll();
+		explorer = this.explorerService.findByPrincipal();
+		trips = this.tripService.findAllTripsApplyByExplorerId(explorer.getId());
 
 		result = new ModelAndView("trip/list");
 		result.addObject("trips", trips);
-		result.addObject("requestURI", "trip/explorer/list.do");
+		result.addObject("requestURI", "trip/explorer/list-apply.do");
+
+		return result;
+	}
+
+	@RequestMapping(value = "/list-not-apply", method = RequestMethod.GET)
+	public ModelAndView listNotApplied() {
+		ModelAndView result;
+		Collection<Trip> trips;
+		Explorer explorer;
+
+		explorer = this.explorerService.findByPrincipal();
+		trips = this.tripService.findAllTripsNotApplyByExplorerId(explorer.getId());
+
+		result = new ModelAndView("trip/list");
+		result.addObject("trips", trips);
+		result.addObject("requestURI", "trip/explorer/list-not-apply.do");
 
 		return result;
 	}
