@@ -22,8 +22,15 @@
 <form:form action="trip/manager_/edit.do" modelAttribute="trip">
 
 	<form:hidden path="id" />
+	<form:hidden path="ticker"/>
 	<form:hidden path="version" />
 	<form:hidden path="manager"/>
+	<form:hidden path="applicationsFor"/>
+	<form:hidden path="auditRecords"/>
+	<form:hidden path="notes"/>
+	<form:hidden path="stages"/>
+	<form:hidden path="tags"/>
+	
 	<input id="cancelled" name="cancelled" type="hidden" value="0"/>
 
 	<form:label path="title">
@@ -87,7 +94,7 @@
 	
 	
 	
-	<form:label path="legalText">
+	<%-- <form:label path="legalText">
 		<spring:message code="trip.legalText" />:
 	</form:label>
 	<form:select id="legalTexts" path="legalText" >
@@ -107,7 +114,7 @@
 			itemLabel="name" />
 	</form:select>
 	<form:errors cssClass="error" path="tag" />
-	<br />
+	<br /> --%>
 
 	<input type="submit" name="save"
 		value="<spring:message code="trip.save" />" />&nbsp; 
