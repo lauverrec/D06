@@ -36,17 +36,18 @@
 	<!-- Attributes -->
 	
 	<spring:message code="category.father.name" var="fatherHeader" />
-	<display:column property="father.name" title="${fatherHeader}" sortable="false" />
+	<display:column property="fatherCategory.name" title="${fatherHeader}" sortable="false" />
+
 	
 	<spring:message code="category.name" var="nameHeader" />
 	<display:column property="name" title="${nameHeader}" sortable="false" />
 	
 	<display:column>
-		<spring:url value="trip/list.do" var="tripListURL">
+		<spring:url value="trip/administrator/list.do" var="tripListURL">
 		<spring:param name="categoryId" value="${row.id}"/>
 		</spring:url>
 		<a href="${tripListURL}"><spring:message code="category.trips"/></a>
-	</display:column>
+	</display:column> 
 
 </display:table>
 	
