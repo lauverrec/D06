@@ -69,7 +69,6 @@ public class ContactEmergencyService {
 		explorer = this.explorerService.findByPrincipal();
 		result = this.contactEmergencyRepository.save(contactEmergency);
 		this.contactnotexisting(explorer, result);
-		//explorer.getContactsEmergency().add(result);
 
 		return result;
 	}
