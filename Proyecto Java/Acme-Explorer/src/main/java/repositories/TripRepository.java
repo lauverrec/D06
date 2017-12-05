@@ -54,4 +54,7 @@ public interface TripRepository extends JpaRepository<Trip, Integer> {
 	@Query("select t from Trip t where t.ticker like %?1% or t.title like %?1% or t.description like %?1%")
 	Collection<Trip> searchingForTrips(String search);
 
+	@Query("select c.trips from Category c where c.id = ?1")
+	Collection<Trip> findByCategory(int categoryId);
+
 }

@@ -309,4 +309,12 @@ public class TripServiceTest extends AbstractTest {
 		Assert.notNull(ticker);
 	}
 
+	@Test
+	public void testCategory() {
+		Collection<Trip> trips;
+
+		trips = this.tripService.findByCategory(5364);
+		Assert.notNull(trips);
+
+	}
 }

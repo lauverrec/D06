@@ -50,7 +50,7 @@
 					<li><a href="trip/explorer/list-apply.do"><spring:message code="master.page.explorer.list.apply.trips" /></a></li>					
 					<li><a href="trip/explorer/list-not-apply.do"><spring:message code="master.page.explorer.list.not.apply.trips" /></a></li>
 					<li><a href="explorer/edit.do"><spring:message code="master.page.explorer.edit" /></a></li>
-					<li><a href="explorer/listStory.do"><spring:message code="master.page.explorer.storiesList" /></a></li>
+					<li><a href="story/explorer/list.do"><spring:message code="master.page.explorer.stories" /></a></li>
 					<li><a href="contactsEmergency/explorer/list.do"><spring:message code="master.page.explorer.contactEmergency" /></a></li>
 									
 				</ul>
@@ -61,6 +61,7 @@
 			<li><a class="fNiv"><spring:message	code="master.page.administrator" /></a>
 				<ul>
 					<li class="arrow"></li>
+					<li><a href="category/administrator/list.do"><spring:message code="master.page.administrator.categories" /></a></li>
 									
 				</ul>
 			</li>
@@ -90,6 +91,7 @@
 		
 		<security:authorize access="isAnonymous()">
 			<li><a class="fNiv" href="security/login.do"><spring:message code="master.page.login" /></a></li>
+			<li><a href="category/list.do"><spring:message code="master.page.administrator.categories" /></a></li>
 		</security:authorize>
 		
 		<security:authorize access="isAuthenticated()">

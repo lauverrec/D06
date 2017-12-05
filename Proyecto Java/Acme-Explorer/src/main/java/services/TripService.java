@@ -319,4 +319,13 @@ public class TripService {
 		return ticker;
 	}
 
+	public Collection<Trip> findByCategory(int categoryId) {
+
+		Collection<Trip> trips;
+
+		trips = this.tripRepository.findByCategory(categoryId);
+
+		return trips;
+	}
+
 }

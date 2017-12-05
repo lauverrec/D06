@@ -17,7 +17,7 @@ import domain.Explorer;
 
 @Controller
 @RequestMapping("/explorer")
-public class EditExplorerController extends AbstractController {
+public class ExplorerController extends AbstractController {
 
 	// Services---------------------------------------------------------
 
@@ -27,24 +27,10 @@ public class EditExplorerController extends AbstractController {
 
 	//Constructor--------------------------------------------------------
 
-	public EditExplorerController() {
+	public ExplorerController() {
 		super();
 	}
 	//List---------------------------------------------------------------
-
-	@RequestMapping(value = "/listStory", method = RequestMethod.GET)
-	public ModelAndView list() {
-
-		ModelAndView result;
-		Explorer explorer;
-		explorer = this.explorerService.findByPrincipal();
-
-		result = new ModelAndView("explorer/list");
-		result.addObject("stories", explorer.getStories());
-
-		return result;
-
-	}
 
 	//Edition------------------------------------------------------------
 

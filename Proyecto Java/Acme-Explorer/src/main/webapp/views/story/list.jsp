@@ -19,5 +19,6 @@
 <%@taglib prefix="security"	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
-<display:table name="stories" id="row" requestURI="explorer/listStory.do" pagesize="5" keepStatus="true">
+<display:table name="stories" id="row" requestURI="story/explorer/list.do" pagesize="5" keepStatus="true">
+
 	</display:table>
