@@ -66,6 +66,8 @@ public class TripService {
 		trip.setStages(stages);
 		trip.setTags(tags);
 		trip.setTicker(this.generatedTicker());
+		//if (trip.getId() == 0)
+		trip.setTicker(this.generatedTicker());
 
 		return trip;
 	}
@@ -73,8 +75,7 @@ public class TripService {
 	//***** TEST HECHO *******
 	public Trip save(final Trip trip) {
 		Assert.notNull(trip);
-		if (trip.getId() == 0)
-			trip.setTicker(this.generatedTicker());
+
 		Trip result;
 		result = this.tripRepository.save(trip);
 		return result;

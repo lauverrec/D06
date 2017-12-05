@@ -105,9 +105,8 @@
 		<bean class="converters.StringToExplorerConverter"/>
 		<bean class="converters.ExplorerToStringConverter"/>
 		
-		
-		
-		
+		<bean class="converters.CategoryToStringConverter"/>
+		<bean class="converters.StringToCategoryConverter"/>
 		
 		
 	</util:list>

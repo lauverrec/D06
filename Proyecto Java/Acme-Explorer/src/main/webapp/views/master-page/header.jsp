@@ -63,6 +63,7 @@
 				<ul>
 					<li class="arrow"></li>
 					<li><a href="category/administrator/list.do"><spring:message code="master.page.administrator.categories" /></a></li>
+					<li><a href="category/administrator/create.do"><spring:message code="master.page.administrator.category.create" /></a></li>
 									
 				</ul>
 			</li>
@@ -82,7 +83,7 @@
 			<li><a class="fNiv"><spring:message	code="master.page.manager" /></a>
 				<ul>
 					<li class="arrow"></li>
-									
+					<li><a href="trip/manager_/list.do"><spring:message code="master.page.manager.list.trips" /></a></li>			
 				</ul>
 			</li>
 		</security:authorize>

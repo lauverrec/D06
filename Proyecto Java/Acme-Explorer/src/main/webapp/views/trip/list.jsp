@@ -69,7 +69,7 @@
 
 <!-- Display -->
 	<display:column>
-		<spring:url value="trip/manager/display.do" var="displaydURL">
+		<spring:url value="trip/manager_/display.do" var="displaydURL">
 			<spring:param name="tripId" value="${row.id}" />
 		</spring:url>
 		<a href="${displayURL}"><spring:message code="trip.display" /></a>
@@ -80,7 +80,7 @@
 	<spring:message code="trip.publicationDate" var="publicationDate" />	
 		<display:column>
 			<jstl:if test="${row.publicationDate==null}">
-				<spring:url value="trip/manager/edit.do" var="editURL">
+				<spring:url value="trip/manage_r/edit.do" var="editURL">
 					<spring:param name="tripId" value="${row.id}" />
 				</spring:url>
 				<a href="${editURL}"><spring:message code="trip.edit" /></a>
@@ -124,7 +124,7 @@
 
 <security:authorize access="hasRole('MANAGER')">
 	<div>
-		<a href="trip/manager/create.do"> 
+		<a href="trip/manager_/create.do"> 
 			<spring:message	code="trip.create" />
 		</a>
 	</div>
