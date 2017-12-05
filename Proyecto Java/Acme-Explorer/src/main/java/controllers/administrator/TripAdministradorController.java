@@ -34,7 +34,7 @@ public class TripAdministradorController extends AbstractController {
 
 		result = new ModelAndView("trip/list");
 		result.addObject("trips", trips);
-		result.addObject("requestURI", "trip/administrator/list.do");
+		result.addObject("requestURI", "trip/list.do");
 
 		return result;
 
