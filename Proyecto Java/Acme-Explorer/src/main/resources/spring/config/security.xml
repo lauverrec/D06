@@ -60,7 +60,7 @@
 		<security:intercept-url pattern="/survivalClass/explorer/**" access="hasRole('EXPLORER')"/>
 		<security:intercept-url pattern="/story/explorer/**" access="hasRole('EXPLORER')"/>
 		<security:intercept-url pattern="/survivalClass/manager/**" access="hasRole('MANAGER')"/>
-		<security:intercept-url pattern="/trip/manager/**" access="hasRole('MANAGER')"/>
+		<security:intercept-url pattern="/trip/manager_/**" access="hasRole('MANAGER')"/>
 		<security:intercept-url pattern="/trip/explorer/**" access="hasRole('EXPLORER')"/>
 		 <security:intercept-url pattern="/trip/administrator/**" access="hasRole('ADMINISTRATOR')" /> 
 		

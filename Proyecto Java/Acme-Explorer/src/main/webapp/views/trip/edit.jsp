@@ -19,7 +19,7 @@
 <%@taglib prefix="security"	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
-<form:form action="trip/manager/edit.do" modelAttribute="trip">
+<form:form action="trip/manager_/edit.do" modelAttribute="trip">
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />
@@ -118,6 +118,6 @@
 	</jstl:if>
 	<input type="button" name="cancel"
 		value="<spring:message code="trip.cancel" />"
-		onclick="javascript:  window.location.replace('trip/manager/list.do');" />
+		onclick="javascript:  window.location.replace('trip/manager_/list.do');" />
 	<br />
 </form:form>
