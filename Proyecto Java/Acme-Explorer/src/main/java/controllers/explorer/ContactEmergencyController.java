@@ -8,7 +8,7 @@
  * http://www.tdg-seville.info/License.html
  */
 
-package controllers.contactEmergency;
+package controllers.explorer;
 
 import java.util.Collection;
 

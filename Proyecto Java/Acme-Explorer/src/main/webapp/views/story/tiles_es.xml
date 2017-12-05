@@ -15,10 +15,10 @@
        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
       
 <tiles-definitions>
-
-	<definition name="explorer/edit" extends="master.page">	
-		<put-attribute name="title" value="Editar explorador" />
-		<put-attribute name="body" value="/views/explorer/edit.jsp" />
+	<definition name="story/list" extends="master.page">	
+		<put-attribute name="title" value="Mis historias" />
+		<put-attribute name="body" value="/views/story/list.jsp" />
 	</definition>
+	
 
 </tiles-definitions>
