@@ -29,6 +29,7 @@
 	<display:column>
 	<spring:message code="auditRecord.title" />:
 	<jstl:out value="${row.title }"></jstl:out>
+	
 
 	<p>
 		<spring:message code="auditRecord.description" />:
@@ -46,7 +47,7 @@
 
 	<p>
 		<spring:message code="auditRecord.attachments" />:
-		<jstl:out value="${row.attachments}"></jstl:out>
+		<jstl:out value="${attachments}"></jstl:out>
 	</p>
 	<p>
 		<spring:message code="auditRecord.draftMode" />:
