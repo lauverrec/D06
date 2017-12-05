@@ -12,11 +12,16 @@ package controllers.explorer;
 
 import java.util.Collection;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.ContactEmergencyService;
@@ -59,15 +64,55 @@ public class ContactEmergencyController extends AbstractController {
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
 	public ModelAndView create() {
 		ModelAndView result;
-		ContactEmergency contactEmergency;
+		ContactEmergency contactsEmergency;
 
-		contactEmergency = this.contactEmergencyService.create();
-		result = this.createEditModelAndView(contactEmergency);
+		contactsEmergency = this.contactEmergencyService.create();
+		result = this.createEditModelAndView(contactsEmergency);
 
 		return result;
 	}
 	//Edition--------------------------------------------------------------------------------
+	@RequestMapping(value = "/edit", method = RequestMethod.GET)
+	public ModelAndView edit(@RequestParam final int contactEmergencyId) {
+		ModelAndView result;
+		ContactEmergency contactEmergency;
 
+		contactEmergency = this.contactEmergencyService.findOne(contactEmergencyId);
+		Assert.notNull(contactEmergency);
+		result = this.createEditModelAndView(contactEmergency);
+		return result;
+	}
+
+	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
+	public ModelAndView save(@Valid final ContactEmergency contactEmergency, final BindingResult bindingResult) {
+		ModelAndView result;
+
+		if (bindingResult.hasErrors())
+			result = this.createEditModelAndView(contactEmergency);
+		else
+			try {
+				this.contactEmergencyService.save(contactEmergency);
+				result = new ModelAndView("redirect:list.do");
+			} catch (final Throwable oops) {
+				result = this.createEditModelAndView(contactEmergency, "sponsorship.commit.error");
+			}
+
+		return result;
+	}
+
+	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "delete")
+	public ModelAndView delete(@ModelAttribute final ContactEmergency contactEmergency, final BindingResult bindingResult) {
+		ModelAndView result;
+
+		try {
+			this.contactEmergencyService.delete(contactEmergency);
+			result = new ModelAndView("redirect:list.do");
+		} catch (final Throwable oops) {
+			result = this.createEditModelAndView(contactEmergency, "contactEmergency.commit.error");
+		}
+
+		return result;
+	}
 	//ancially methods---------------------------------------------------------------------------
 
 	protected ModelAndView createEditModelAndView(final ContactEmergency contactsEmergency) {
@@ -82,8 +127,8 @@ public class ContactEmergencyController extends AbstractController {
 		Assert.notNull(contactsEmergency);
 		ModelAndView result;
 
-		result = new ModelAndView("conctactEmergency/edit");
-		result.addObject("contactsEmergency", contactsEmergency);
+		result = new ModelAndView("conctactsEmergency/edit");
+		result.addObject("contactEmergency", contactsEmergency);
 		result.addObject("message", message);
 		return result;
 
