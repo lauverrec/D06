@@ -22,6 +22,7 @@
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />
+	<form:hidden path ="auditor"/>
 	
 	
 	<form:label path="createdMoment" placeholder=" yyyy/dd/MM HH:hh" >
