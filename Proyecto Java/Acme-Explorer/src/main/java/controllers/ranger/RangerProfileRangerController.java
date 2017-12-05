@@ -16,8 +16,8 @@ import controllers.AbstractController;
 import domain.Ranger;
 
 @Controller
-@RequestMapping("/ranger/ranger")
-public class EditRangerController extends AbstractController {
+@RequestMapping("/rangerProfile/ranger")
+public class RangerProfileRangerController extends AbstractController {
 
 	// Services---------------------------------------------------------
 
@@ -27,7 +27,7 @@ public class EditRangerController extends AbstractController {
 
 	//Constructor--------------------------------------------------------
 
-	public EditRangerController() {
+	public RangerProfileRangerController() {
 		super();
 	}
 
@@ -77,6 +77,7 @@ public class EditRangerController extends AbstractController {
 		result = new ModelAndView("ranger/edit");
 		result.addObject("ranger", ranger);
 		result.addObject("message", message);
+		result.addObject("RequestURI", "rangerProfile/ranger/edit.do");
 
 		return result;
 
