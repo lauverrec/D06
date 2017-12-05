@@ -82,4 +82,15 @@ public class MessageFolderServiceTest extends AbstractTest {
 		administrator = this.administratorService.save(administrator);
 
 	}
+
+	@Test
+	public void testFindAllByActorAuthenticate() {
+		this.authenticate("administrator1");
+		Collection<MessageFolder> messageFolders;
+
+		messageFolders = this.messageFolderService.findAllByActorAutenticate();
+		Assert.notNull(messageFolders);
+		Assert.notEmpty(messageFolders);
+
+	}
 }

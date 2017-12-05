@@ -26,7 +26,7 @@
 
 	<!-- Display -->
 	<display:column>
-		<spring:url value="messageFolder/actor/display.do" var="displaydURL">
+		<spring:url value="messageFolder/sponsor/display.do" var="displayURL">
 			<spring:param name="messageFolderId" value="${row.id}" />
 		</spring:url>
 		<a href="${displayURL}"><spring:message
@@ -36,7 +36,7 @@
 	
 	<!-- Edit -->
 	<display:column>
-		<spring:url value="messageFolder/actor/edit.do" var="editURL">
+		<spring:url value="messageFolder/sponsor/edit.do" var="editURL">
 			<spring:param name="messageFolderId" value="${row.id }"></spring:param>
 		</spring:url>
 		<a href="${editURL }"><spring:message code="messageFolder.edit" /></a>
@@ -50,7 +50,7 @@
 
 </display:table>
 <div>
-	<a href="messageFolder/actor/create.do"> <spring:message
+	<a href="messageFolder/sponsor/create.do"> <spring:message
 			code="messageFolder.create" />
 	</a>
 </div>

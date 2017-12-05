@@ -12,7 +12,7 @@ import domain.MessageFolder;
 @Repository
 public interface MessageFolderRepository extends JpaRepository<MessageFolder, Integer> {
 
-	@Query("select m from Actor a join  a.messagesFolders m where a.id=$1")
-	Collection<MessageFolder> ActorFolders(int id);
+	@Query("select m from Actor a join  a.messagesFolders m where a.id=?1")
+	Collection<MessageFolder> ActorFolders(int ActorId);
 
 }

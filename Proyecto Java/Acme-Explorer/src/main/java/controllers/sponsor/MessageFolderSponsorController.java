@@ -14,14 +14,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import controllers.AbstractController;
-
 import services.MessageFolderService;
+import controllers.AbstractController;
 import domain.Message;
 import domain.MessageFolder;
 
 @Controller
-@RequestMapping(value = "/messageFolder/sponsor")
+@RequestMapping("/messageFolder/sponsor")
 public class MessageFolderSponsorController extends AbstractController {
 
 	//	Services --------------------------------------------------------
@@ -42,14 +41,14 @@ public class MessageFolderSponsorController extends AbstractController {
 		ModelAndView result;
 		Collection<MessageFolder> messageFolders;
 
-		messageFolders = this.messageFolderService.findAllByActorAutenticate();
+		messageFolders = this.messageFolderService.findAll();
 
 		result = new ModelAndView("messageFolder/list");
 		result.addObject("messageFolders", messageFolders);
+		result.addObject("requestURI", "messageFolder/sponsor/list.do");
 
 		return result;
 	}
-
 	// Creation-------------------------------------------------------
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
 	public ModelAndView create() {
@@ -116,17 +115,16 @@ public class MessageFolderSponsorController extends AbstractController {
 
 	protected ModelAndView createEditModelAndView(final MessageFolder messageFolder, final String messageCode) {
 		ModelAndView result;
-		Collection<Message> messages;
+		Collection<Message> mess;
 
-		messages = messageFolder.getMessages();
+		mess = messageFolder.getMessages();
 
 		result = new ModelAndView("messageFolder/edit");
 		result.addObject("messageFolder", messageFolder);
-		result.addObject("messages", messages);
+		result.addObject("mess", mess);
 		result.addObject("messageCode", messageCode);
 
 		return result;
 
 	}
-
 }
