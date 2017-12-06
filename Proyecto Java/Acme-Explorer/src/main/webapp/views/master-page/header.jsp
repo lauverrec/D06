@@ -73,7 +73,7 @@
 			<li><a class="fNiv"><spring:message	code="master.page.ranger" /></a>
 				<ul>
 					<li class="arrow"></li>
-					<li><a href="ranger/ranger/edit.do"><spring:message code="master.page.ranger.edit" /></a></li>
+					<li><a href="rangerProfile/ranger/edit.do"><spring:message code="master.page.rangerProfile.ranger.edit" /></a></li>
 									
 				</ul>
 			</li>
@@ -94,6 +94,11 @@
 		<security:authorize access="isAnonymous()">
 			<li><a class="fNiv" href="security/login.do"><spring:message code="master.page.login" /></a></li>
 			<li><a href="category/list.do"><spring:message code="master.page.administrator.categories" /></a></li>
+			<li><a class="fNiv"><spring:message	code="master.page.register" /></a>
+				<ul>
+					<li><a href="rangerProfile/create.do"><spring:message code="master.page.rangerProfile.create" /></a></li>
+				</ul>
+			</li>
 		</security:authorize>
 		
 		<security:authorize access="isAuthenticated()">
