@@ -11,19 +11,17 @@
 <tiles-definitions>
 
 	<definition name="messageFolder/list" extends="master.page">
-		<put-attribute name="title"
-			value="Lista de carpetas" />
-		<put-attribute name=" body "
-			value="/views/messageFolder/list.jsp" />
+		<put-attribute name="title" value="Lista de carpetas" />
+		<put-attribute name=" body " value="/views/messageFolder/list.jsp" />
 	</definition>
-	
-	<definition name="messageFolder/edit" extends="master.page">	
+
+	<definition name="messageFolder/edit" extends="master.page">
 		<put-attribute name="title" value="Editar una carpeta de mensajes" />
 		<put-attribute name="body" value="/views/messageFolder/edit.jsp" />
 	</definition>
-	
-	
-	<definition name="messageFolder/display" extends="master.page">	
+
+
+	<definition name="messageFolder/display" extends="master.page">
 		<put-attribute name="title" value="Mostrar una carpeta de mensajes" />
 		<put-attribute name="body" value="/views/messageFolder/display.jsp" />
 	</definition>

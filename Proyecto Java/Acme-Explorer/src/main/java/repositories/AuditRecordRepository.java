@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import domain.Attachment;
 import domain.AuditRecord;
 import domain.Trip;
 
@@ -18,5 +19,8 @@ public interface AuditRecordRepository extends JpaRepository<AuditRecord, Intege
 
 	@Query("select a from AuditRecord a where a.auditor.id=?1")
 	Collection<AuditRecord> findByAuditorId(int auditorId);
+
+	@Query("select r.url from AuditRecord a join a.attachments r where a.id=?1")
+	Collection<Attachment> urlOfAttachments(int auditRecordId);
 
 }

@@ -36,10 +36,12 @@
 	
 	<!-- Edit -->
 	<display:column>
+	<jstl:if test="${row.modifiable==true }">
 		<spring:url value="messageFolder/sponsor/edit.do" var="editURL">
 			<spring:param name="messageFolderId" value="${row.id }"></spring:param>
 		</spring:url>
 		<a href="${editURL }"><spring:message code="messageFolder.edit" /></a>
+		</jstl:if>
 	</display:column>
 
 

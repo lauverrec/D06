@@ -19,7 +19,7 @@
 <%@taglib prefix="security"	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
-<form:form action="messageFolder/edit.do" modelAttribute="trip">
+<form:form action="messageFolder/sponsor/edit.do" modelAttribute="messageFolder">
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />
@@ -35,7 +35,7 @@
 	<form:label path="modifiable">
 		<spring:message code="messageFolder.modifiable" />:
 	</form:label>
-	<form:input path="modifiable" readonly="true"/>
+	<form:input path="modifiable"/>
 	<form:errors cssClass="error" path="modifiable" />
 	<br />
 
@@ -49,6 +49,6 @@
 	</jstl:if>
 	<input type="button" name="cancel"
 		value="<spring:message code="messageFolder.cancel" />"
-		onclick="javascript:  window.location.replace('messageFolder/actor/list.do');" />
+		onclick="javascript:  window.location.replace('messageFolder/sponsor/list.do');" />
 	<br />
 </form:form>

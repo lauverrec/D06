@@ -53,7 +53,8 @@
 		<security:intercept-url pattern="/manager/manager/**" access="hasRole('MANAGER')"/>
 		<security:intercept-url pattern="/note/manager/**" access="hasRole('MANAGER')"/>
 		<security:intercept-url pattern="/note/auditor/**" access="hasRole('AUDITOR')"/>
-		<security:intercept-url pattern="/ranger/ranger/**" access="hasRole('RANGER')"/>
+		<security:intercept-url pattern="/rangerProfile/ranger/**" access="hasRole('RANGER')"/>
+		<security:intercept-url pattern="/rangerProfile/create.do" access="permitAll"/>
 		<security:intercept-url pattern="/sponsor/**" access="hasRole('SPONSOR')"/>
 		<security:intercept-url pattern="/sponsorship/sponsor/**" access="hasRole('SPONSOR')"/>
 		<security:intercept-url pattern="/trip/display.do" access="permitAll"/>

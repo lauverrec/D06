@@ -65,8 +65,10 @@ public class ContactEmergencyService {
 		Assert.notNull(contactEmergency);
 
 		ContactEmergency result;
-
+		Explorer explorer;
+		explorer = this.explorerService.findByPrincipal();
 		result = this.contactEmergencyRepository.save(contactEmergency);
+		this.contactnotexisting(explorer, result);
 
 		return result;
 	}
@@ -86,5 +88,10 @@ public class ContactEmergencyService {
 		this.contactEmergencyRepository.delete(contactEmergency);
 	}
 	// Other business methods -------------------------------------------------
+
+	public void contactnotexisting(Explorer explorer, ContactEmergency contactemergency) {
+		if (!explorer.getContactsEmergency().contains(contactemergency))
+			explorer.getContactsEmergency().add(contactemergency);
+	}
 
 }
