@@ -29,5 +29,18 @@
 
 	<spring:message code="stories.atachment" var="attachments" />
 	<display:column property="attachments" title="${attachments}" sortable="true" />
+	
+	<spring:message code="stories.trip" var="trip" />
+	<display:column property="trip.ticker" title="${trip}" sortable="true" />
+	
+	
+			<display:column>
+				<spring:url value="story/explorer/edit.do" var="editURL">
+					<spring:param name="storyId" value="${row.id }" />
+				</spring:url>
+				<a href="${editURL}"><spring:message code="story.edit" /></a>
+			</display:column>
+		
+	
 
 </display:table>

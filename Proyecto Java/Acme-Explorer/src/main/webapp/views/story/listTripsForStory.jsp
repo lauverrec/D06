@@ -35,7 +35,7 @@
 	
 	<security:authorize access="hasRole('EXPLORER')">
 			<display:column>
-				<spring:url value="story/explorer/edit.do" var="editURL">
+				<spring:url value="story/explorer/create.do" var="editURL">
 					<spring:param name="tripId" value="${row.id }" />
 				</spring:url>
 				<a href="${editURL}"><spring:message code="story.create" /></a>

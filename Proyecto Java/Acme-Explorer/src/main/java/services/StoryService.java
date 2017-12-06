@@ -13,6 +13,7 @@ import repositories.StoryRepository;
 import domain.Attachment;
 import domain.Explorer;
 import domain.Story;
+import domain.Trip;
 
 @Service
 @Transactional
@@ -36,7 +37,7 @@ public class StoryService {
 
 	// Simple CRUD methods ----------------------------------------------------
 
-	public Story create() {
+	public Story create(Trip trip) {
 		Story result;
 		Explorer explorerPrincipal;
 		Collection<Attachment> attachments;
@@ -48,6 +49,7 @@ public class StoryService {
 		result = new Story();
 		result.setExplorer(explorerPrincipal);
 		result.setAttachments(attachments);
+		result.setTrip(trip);
 
 		return result;
 	}
@@ -90,10 +92,10 @@ public class StoryService {
 	}
 
 	// Other business methods -------------------------------------------------
-	public Collection<Attachment> urlAttachments(Explorer explorer) {
+	public Collection<Attachment> urlAttachments(Story story) {
 		Collection<Attachment> result;
 
-		result = this.storyRepository.urlOfAttachments(explorer.getId());
+		result = this.storyRepository.urlOfAttachments(story.getId());
 
 		return result;
 

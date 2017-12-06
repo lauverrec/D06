@@ -25,5 +25,10 @@
 		<put-attribute name="body" value="/views/story/listTripsForStory.jsp" />
 	</definition>
 	
+	<definition name="story/edit" extends="master.page">	
+		<put-attribute name="title" value="Create story" />
+		<put-attribute name="body" value="/views/story/edit.jsp" />
+	</definition>
+	
 	
 </tiles-definitions>
