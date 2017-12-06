@@ -25,17 +25,17 @@
 		<value>/views/profile/tiles.xml</value>
 		
 		<value>/views/trip/tiles.xml</value>
-		<value>/views/applicationFor/tiles.xml/</value>
-		<value>/views/auditor/tiles.xml/</value>
-		<value>/views/auditRecord/tiles.xml/</value>
-		<value>/views/category/tiles.xml/</value>
-		<value>/views/explorer/tiles.xml/</value>
-		<value>/views/manager/tiles.xml/</value>
-		<value>/views/ranger/tiles.xml/</value>
-		<value>/views/note/tiles.xml/</value>
-		<value>/views/sponsor/tiles.xml/</value>
-		<value>/views/sponsorship/tiles.xml/</value>
-		<value>/views/survivalClass/tiles.xml/</value>
+		<value>/views/applicationFor/tiles.xml</value>
+		<value>/views/auditor/tiles.xml</value>
+		<value>/views/auditRecord/tiles.xml</value>
+		<value>/views/category/tiles.xml</value>
+		<value>/views/explorer/tiles.xml</value>
+		<value>/views/manager/tiles.xml</value>
+		<value>/views/ranger/tiles.xml</value>
+		<value>/views/note/tiles.xml</value>
+		<value>/views/sponsor/tiles.xml</value>
+		<value>/views/sponsorship/tiles.xml</value>
+		<value>/views/survivalClass/tiles.xml</value>
 		<value>/views/contactsEmergency/tiles.xml</value>
 		<value>/views/story/tiles.xml</value>
 		<value>/views/message/tiles.xml</value>

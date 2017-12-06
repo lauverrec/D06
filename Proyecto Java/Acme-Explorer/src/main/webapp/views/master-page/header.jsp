@@ -53,6 +53,7 @@
 					<li><a href="explorer/edit.do"><spring:message code="master.page.explorer.edit" /></a></li>
 					<li><a href="story/explorer/list.do"><spring:message code="master.page.explorer.stories" /></a></li>
 					<li><a href="contactsEmergency/explorer/list.do"><spring:message code="master.page.explorer.contactEmergency" /></a></li>
+					<li><a href="trip/explorer/listTrip.do"><spring:message code="master.page.explorer.trips.stories" /></a></li>
 									
 				</ul>
 			</li>

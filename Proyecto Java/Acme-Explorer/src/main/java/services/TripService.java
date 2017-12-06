@@ -339,4 +339,17 @@ public class TripService {
 
 	}
 
+	// explorer
+
+	public Collection<Trip> findTripsForStory() {
+		Collection<Trip> trips;
+		Explorer explorer;
+
+		explorer = this.explorerService.findByPrincipal();
+
+		trips = this.tripRepository.findTripsForStory(explorer.getId());
+
+		return trips;
+	}
+
 }
