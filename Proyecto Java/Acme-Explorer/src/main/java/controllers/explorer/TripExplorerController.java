@@ -67,6 +67,20 @@ public class TripExplorerController extends AbstractController {
 		return result;
 	}
 
+	@RequestMapping(value = "/listTrip", method = RequestMethod.GET)
+	public ModelAndView listTripForWritingStory() {
+		ModelAndView result;
+		Collection<Trip> trips;
+
+		trips = this.tripService.findTripsForStory();
+
+		result = new ModelAndView("trip/liststory");
+		result.addObject("trips", trips);
+		//result.addObject("requestURI", "trip/explorer/listTrip.do");
+
+		return result;
+	}
+
 	// Creation ---------------------------------------------------------------
 
 	// Edition ----------------------------------------------------------------

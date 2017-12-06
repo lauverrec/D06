@@ -1067,10 +1067,10 @@
 		<property name="publicationDate">
 			<null />
 		</property>
-		<property name="startDate" value="2018/02/03"></property>
-		<property name="finishDate" value="2018/02/04"></property>
-		<property name="reasonWhy" value="reasonWhy 1"></property>
-		<property name="cancelled" value="true"></property>
+		<property name="startDate" value="2015/02/03"></property>
+		<property name="finishDate" value="2016/02/04"></property>
+		<property name="reasonWhy" value=""></property>
+		<property name="cancelled" value="false"></property>
 		<property name="manager" ref="manager1"></property>
 		<property name="stages">
 			<list>
@@ -2777,8 +2777,8 @@
 	<!-- ApplicationFor -->
 
 	<bean id="applicationFor1" class="domain.ApplicationFor">
-		<property name="moment" value="2017/10/21 10:10" />
-		<property name="status" value="PENDING" />
+		<property name="moment" value="2015/10/21 10:10" />
+		<property name="status" value="ACCEPTED" />
 		<property name="reasonWhy" value="" />
 		<property name="comments">
 			<list>
