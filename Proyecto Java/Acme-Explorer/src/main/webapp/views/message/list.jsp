@@ -20,39 +20,32 @@
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
-<!-- Listing messageFodler -->
-<display:table name="messageFolders" id="row" requestURI="${requestURI}"
-	pagesize="5" class="displaytag" keepStatus="true">
+<display:table pagesize="5" class="displaytag" keepStatus="true"
+	name="messages" requestURI="${requestURI}" id="row">
 
-	<!-- Display -->
+
 	<display:column>
-		<spring:url value="messageFolder/sponsor/display.do" var="displayURL">
-			<spring:param name="messageFolderId" value="${row.id}" />
+		<spring:url value="messages/actor/display.do" var="displayURL">
+			<spring:param name="messageId" value="${row.id}" />
 		</spring:url>
 		<a href="${displayURL}"><spring:message
-				code="messageFolder.display" /></a>
-	</display:column>
-	
-	
-	<!-- Edit -->
-	<display:column>
-	<jstl:if test="${row.modifiable==true }">
-		<spring:url value="messageFolder/sponsor/edit.do" var="editURL">
-			<spring:param name="messageFolderId" value="${row.id }"></spring:param>
-		</spring:url>
-		<a href="${editURL }"><spring:message code="messageFolder.edit" /></a>
-		</jstl:if>
+				code="message.display" /></a>
 	</display:column>
 
 
 	<!-- Attributes -->
-	<spring:message code="messageFolder.name" var="nameHeader" />
-	<display:column property="name" title="${nameHeader}" sortable="true" />
 
+	<spring:message code="message.moment" var="momentHeader" />
+	<display:column property="moment" title="${momentHeader}" />
+
+	<spring:message code="message.subject" var="subjectHeader" />
+	<display:column property="subject" title="${subjectHeader}" />
+	
+	<spring:message code="message.body" var="bodyHeader" />
+	<display:column property="body" title="${bodyHeader}" />
+
+	<spring:message code="message.priority" var="priorityHeader" />
+	<display:column property="priority" title="${priorityHeader}" />
 
 </display:table>
-<div>
-	<a href="messageFolder/sponsor/create.do"> <spring:message
-			code="messageFolder.create" />
-	</a>
-</div>
+

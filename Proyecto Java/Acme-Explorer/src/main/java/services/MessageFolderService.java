@@ -115,14 +115,16 @@ public class MessageFolderService {
 	}
 
 	public Collection<MessageFolder> createDefaultFolders() {
-		Collection<MessageFolder> res;
-		final Collection<Message> messages;
+		Actor actor;
+		actor = this.actorService.findPrincipal();
 		MessageFolder inbox;
-		MessageFolder notificationbox;
 		MessageFolder outbox;
 		MessageFolder trashbox;
 		MessageFolder spambox;
+		MessageFolder notificationbox;
 
+		Collection<MessageFolder> res;
+		final Collection<Message> messages;
 		res = new ArrayList<MessageFolder>();
 		messages = new ArrayList<>();
 		inbox = new MessageFolder();
@@ -130,6 +132,12 @@ public class MessageFolderService {
 		outbox = new MessageFolder();
 		trashbox = new MessageFolder();
 		spambox = new MessageFolder();
+
+		inbox.setName("In box");
+		outbox.setName("Out box");
+		trashbox.setName("Trash box");
+		spambox.setName("Spam box");
+		notificationbox.setName("Notification box");
 
 		inbox.setModifiable(false);
 		outbox.setModifiable(false);
@@ -143,28 +151,25 @@ public class MessageFolderService {
 		trashbox.setMessages(messages);
 		spambox.setMessages(messages);
 
-		inbox.setName("in box");
-		outbox.setName("out box");
-		notificationbox.setName("Notification box");
-		trashbox.setName("trash box");
-		spambox.setName("spam box");
+		if (!(actor.getMessagesFolders().contains(inbox) && actor.getMessagesFolders().contains(outbox))) {
+			inbox = this.messageFolderRepository.save(inbox);
+			outbox = this.messageFolderRepository.save(outbox);
+			notificationbox = this.messageFolderRepository.save(notificationbox);
+			trashbox = this.messageFolderRepository.save(trashbox);
+			spambox = this.messageFolderRepository.save(spambox);
 
-		inbox = this.messageFolderRepository.save(inbox);
-		outbox = this.messageFolderRepository.save(outbox);
-		notificationbox = this.messageFolderRepository.save(notificationbox);
-		trashbox = this.messageFolderRepository.save(trashbox);
-		spambox = this.messageFolderRepository.save(spambox);
+			res.add(inbox);
+			res.add(outbox);
+			res.add(notificationbox);
+			res.add(trashbox);
+			res.add(spambox);
 
-		res.add(inbox);
-		res.add(outbox);
-		res.add(notificationbox);
-		res.add(trashbox);
-		res.add(spambox);
+			actor.setMessagesFolders(res);
+		}
 
 		return res;
 
 	}
-
 	public MessageFolder returnDefaultFolder(final Actor actor, final String name) {
 		MessageFolder res;
 
