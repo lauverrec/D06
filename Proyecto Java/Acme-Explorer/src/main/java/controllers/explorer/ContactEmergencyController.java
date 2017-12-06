@@ -94,7 +94,7 @@ public class ContactEmergencyController extends AbstractController {
 				this.contactEmergencyService.save(contactEmergency);
 				result = new ModelAndView("redirect:list.do");
 			} catch (final Throwable oops) {
-				result = this.createEditModelAndView(contactEmergency, "sponsorship.commit.error");
+				result = this.createEditModelAndView(contactEmergency, "contactEmergency.commit.error");
 			}
 
 		return result;
