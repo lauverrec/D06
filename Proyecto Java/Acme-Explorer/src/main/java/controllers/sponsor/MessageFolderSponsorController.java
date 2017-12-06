@@ -81,7 +81,7 @@ public class MessageFolderSponsorController extends AbstractController {
 		ModelAndView result;
 
 		if (bindingResult.hasErrors())
-			result = this.createEditModelAndView(messageFolder);
+			result = this.createEditModelAndView(messageFolder, "error");
 		else
 			try {
 				this.messageFolderService.save(messageFolder);
@@ -135,7 +135,7 @@ public class MessageFolderSponsorController extends AbstractController {
 
 		result = new ModelAndView("messageFolder/edit");
 		result.addObject("messageFolder", messageFolder);
-		result.addObject("mess", mess);
+		result.addObject("mes", mess);
 		result.addObject("messageCode", messageCode);
 
 		return result;

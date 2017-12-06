@@ -37,18 +37,18 @@ public class MessageFolderService {
 	}
 	// Simple CRUD methods ----------------------------------------------------
 	public MessageFolder create() {
+
 		//final Actor actorcreator = this.actorService.findPrincipal();
 		final MessageFolder messagefolder;
 		final List<Message> messages;
 
 		messagefolder = new MessageFolder();
-		messages = new ArrayList<>();
+		messages = new ArrayList<Message>();
 		messagefolder.setMessages(messages);
 		//actorcreator.getMessagesFolders().add(messagefolder);, lo pongo en el save
 
 		return messagefolder;
 	}
-
 	public MessageFolder findOne(final int mFid) {
 		Assert.isTrue(mFid != 0);
 

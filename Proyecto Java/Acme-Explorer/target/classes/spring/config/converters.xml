@@ -111,6 +111,9 @@
 		<bean class="converters.StringToAttachmentConverter"/>
 		<bean class="converters.AttachmentToStringConverter"/>
 		
+		<bean class="converters.StringToMessageConverter"/>
+		<bean class="converters.MessageToStringConverter"/>
+		
 	</util:list>
 	
 </beans>
