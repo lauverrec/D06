@@ -1,8 +1,11 @@
 <<<<<<< HEAD:Proyecto Java/Acme-Explorer/src/main/java/controllers/sponsor/EditSponsorController.java
+<<<<<<< HEAD:Proyecto Java/Acme-Explorer/src/main/java/controllers/sponsor/EditSponsorController.java
 <<<<<<< HEAD:Proyecto Java/Acme-Explorer/src/main/java/controllers/sponsor/SponsorController.java
 <<<<<<< HEAD:Proyecto Java/Acme-Explorer/src/main/java/controllers/sponsor/SponsorController.java
 =======
 >>>>>>> parent of c7c0e16... Revert "Revert "Merge branch 'master' of https://github.com/lauverrec/D06"":Proyecto Java/Acme-Explorer/src/main/java/controllers/sponsor/SponsorController.java
+=======
+>>>>>>> parent of 3dd210c... Merge branch 'master' of https://github.com/lauverrec/D06:Proyecto Java/Acme-Explorer/src/main/java/controllers/sponsor/SponsorController.java
 
 package controllers.sponsor;
 
@@ -87,6 +90,7 @@ public class SponsorController extends AbstractController {
 
 	}
 }
+<<<<<<< HEAD:Proyecto Java/Acme-Explorer/src/main/java/controllers/sponsor/EditSponsorController.java
 <<<<<<< HEAD:Proyecto Java/Acme-Explorer/src/main/java/controllers/sponsor/EditSponsorController.java
 =======
 
@@ -262,3 +266,5 @@ public class EditSponsorController extends AbstractController {
 >>>>>>> parent of d240815... MessageFolder casi al 100:Proyecto Java/Acme-Explorer/src/main/java/controllers/sponsor/EditSponsorController.java
 =======
 >>>>>>> parent of c7c0e16... Revert "Revert "Merge branch 'master' of https://github.com/lauverrec/D06"":Proyecto Java/Acme-Explorer/src/main/java/controllers/sponsor/SponsorController.java
+=======
+>>>>>>> parent of 3dd210c... Merge branch 'master' of https://github.com/lauverrec/D06:Proyecto Java/Acme-Explorer/src/main/java/controllers/sponsor/SponsorController.java
