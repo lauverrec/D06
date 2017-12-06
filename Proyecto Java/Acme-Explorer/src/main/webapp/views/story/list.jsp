@@ -21,13 +21,4 @@
 
 <display:table name="stories" id="row" requestURI="story/explorer/list.do" pagesize="5" keepStatus="true">
 
-	<spring:message code="stories.title" var="title" />
-	<display:column property="title" title="${title}" sortable="true" />
-	
-	<spring:message code="stories.text" var="text" />
-	<display:column property="text" title="${text}" sortable="true" />
-
-	<spring:message code="stories.atachment" var="attachments" />
-	<display:column property="attachments" title="${attachments}" sortable="true" />
-
-</display:table>
+	</display:table>

@@ -102,7 +102,7 @@
 		<form:options items="${trips}" itemValue="id" itemLabel="title" />
 	</form:select>
 	<form:errors cssClass="error" path="trip" />
-	<br /> 
+	<br />
 	<br/> 
 	
 	<!-- botones --> 

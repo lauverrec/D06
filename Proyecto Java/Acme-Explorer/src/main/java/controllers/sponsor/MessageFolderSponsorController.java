@@ -41,7 +41,7 @@ public class MessageFolderSponsorController extends AbstractController {
 		ModelAndView result;
 		Collection<MessageFolder> messageFolders;
 
-		messageFolders = this.messageFolderService.findAllByActorAutenticate();
+		messageFolders = this.messageFolderService.findAll();
 
 		result = new ModelAndView("messageFolder/list");
 		result.addObject("messageFolders", messageFolders);
@@ -85,7 +85,7 @@ public class MessageFolderSponsorController extends AbstractController {
 		else
 			try {
 				this.messageFolderService.save(messageFolder);
-				result = new ModelAndView("redirect:/messageFolder/sponsor/list.do");
+				result = new ModelAndView("redirect:/messageFolder/list.do");
 			} catch (final Throwable oops) {
 				result = this.createEditModelAndView(messageFolder, "messageFolder.commit.error");
 			}
@@ -103,20 +103,6 @@ public class MessageFolderSponsorController extends AbstractController {
 		} catch (final Throwable oops) {
 			result = this.createEditModelAndView(messageFolder, "messageFolder.commit.error");
 		}
-
-		return result;
-	}
-
-	// Display ----------------------------------------------------------------
-
-	@RequestMapping(value = "/display", method = RequestMethod.GET)
-	public ModelAndView display(@RequestParam final int messageFolderId) {
-		ModelAndView result;
-		MessageFolder messageFolder;
-
-		messageFolder = this.messageFolderService.findOne(messageFolderId);
-		result = new ModelAndView("messageFolder/display");
-		result.addObject("messageFolder", messageFolder);
 
 		return result;
 	}

@@ -90,12 +90,4 @@ public class StoryService {
 	}
 
 	// Other business methods -------------------------------------------------
-	public Collection<Attachment> urlAttachments(Explorer explorer) {
-		Collection<Attachment> result;
-
-		result = this.storyRepository.urlOfAttachments(explorer.getId());
-
-		return result;
-
-	}
 }

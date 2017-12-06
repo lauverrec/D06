@@ -19,7 +19,7 @@
 <%@taglib prefix="security"	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
-<form:form action="${RequestURI }" modelAttribute="ranger">
+<form:form action="ranger/ranger/edit.do" modelAttribute="ranger">
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />
@@ -43,6 +43,8 @@
 		<form:errors cssClass="error" path="userAccount.password" />
 		<br /><br />
 	</jstl:if>
+	
+	<security:authorize access="hasRole('RANGER')">
 	
 	<form:label path="name">
 		<spring:message code="ranger.name" />:
@@ -96,15 +98,16 @@
 	
 	<input type="submit" name="save"
 		value="<spring:message code="ranger.save" />" onclick="valida();" />&nbsp; 
-		<!-- El siguiente codigo esta comentado porque en ningun lado del documento te dice que se puede eliminar el Ranger -->
-	<%-- <jstl:if test="${ranger.id != 0}">
+	<jstl:if test="${ranger.id != 0}">
 		<input type="submit" name="delete"
 			value="<spring:message code="ranger.delete" />"
 			onclick="javascript: return confirm('<spring:message code="ranger.confirm.delete" />')" />&nbsp;
-	</jstl:if> --%>
+	</jstl:if>
 	<input type="button" name="cancel"
 		value="<spring:message code="ranger.cancel" />"
 		onclick="javascript: window.location.replace('welcome/index.do');" />
 	<br />
+	
+	</security:authorize>
 	
 </form:form>

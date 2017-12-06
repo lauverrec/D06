@@ -20,15 +20,13 @@
 	<spring:message code="contactsEmergency.name" var="name" />
 	<display:column property="name" title="${name}" sortable="true" />
 	
-	<display:column>
-		<spring:url value="contactsEmergency/explorer/edit.do" var="editURL">
-		<spring:param name="contactEmergencyId" value="${row.id}"/>
-		</spring:url>
-		<a href="${editURL}"><spring:message code="contactsEmergency.edit"/></a>
-	</display:column>	
+	
 	
 	
 </display:table>
 
-	<input type="button" name="create" value="<spring:message code="contactsEmergency.create"/>"
-	onclick="javascript: relativeRedir('contactsEmergency/explorer/create.do');" />
+	<div>
+		<a href="contactsEmergency/explorer/create.do"> <spring:message
+				code="contactsEmergency.create" />
+		</a>
+	</div>

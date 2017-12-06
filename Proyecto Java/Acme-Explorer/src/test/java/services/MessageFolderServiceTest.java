@@ -44,13 +44,11 @@ public class MessageFolderServiceTest extends AbstractTest {
 	@Test
 	public void testSave() {
 		this.authenticate("administrator1");
-		MessageFolder folder;
-		MessageFolder newFolder;
-		folder = this.messageFolderService.create();
-		folder.setName("prueba");
+		final MessageFolder messageFolder = this.messageFolderService.create();
+		messageFolder.setModifiable(true);
+		messageFolder.setName("Coordinador");
+		this.messageFolderService.save(messageFolder);
 
-		newFolder = this.messageFolderService.save(folder);
-		Assert.notNull(newFolder);
 		this.unauthenticate();
 	}
 
@@ -69,12 +67,19 @@ public class MessageFolderServiceTest extends AbstractTest {
 
 	@Test
 	public void testCreateDefaultChapter() {
-		this.authenticate("sponsor1");
-		Collection<MessageFolder> folders;
-
+		Administrator administrator;
+		final Collection<MessageFolder> folders;
+		administrator = this.administratorService.create();
 		folders = this.messageFolderService.createDefaultFolders();
-		Assert.notNull(folders);
-		Assert.notEmpty(folders);
+
+		administrator.setName("name");
+		administrator.setSurname("surname");
+		administrator.setEmail("email@gmail.com");
+		administrator.setPhone("31333");
+		administrator.setAddress("address");
+		administrator.getMessagesFolders().addAll(folders);
+
+		administrator = this.administratorService.save(administrator);
 
 	}
 

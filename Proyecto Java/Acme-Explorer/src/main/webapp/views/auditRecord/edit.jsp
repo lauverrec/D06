@@ -48,20 +48,20 @@
 	<form:errors cssClass="error" path="description" />
 	<br />
 	
-	<form:label path="attachments">
+	<%-- <form:label path="attachments">
 		<spring:message code="auditRecord.attachments" />:
 	</form:label>
 	<form:input path="attachments" />
 	<form:errors cssClass="error" path="attachments" />
-	<br /> 
+	<br /> --%>
 	
-	<form:label path="draftMode">
+	<%-- <form:label path="draftMode">
 		<spring:message code="auditRecord.draftMode" />:
 	</form:label>
 	<form:select id="draftModes" path="draftMode">	
 		<form:option value="1" label="YES"/>
-		<form:option value="0" label="NO"/> 
-	</form:select>  
+		<form:option value="2" label="NO"/>
+	</form:select>  --%>
 	<br /> 
 	
 	
