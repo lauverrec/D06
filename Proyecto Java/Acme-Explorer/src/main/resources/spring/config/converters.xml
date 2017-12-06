@@ -108,6 +108,8 @@
 		<bean class="converters.CategoryToStringConverter"/>
 		<bean class="converters.StringToCategoryConverter"/>
 		
+		<bean class="converters.StringToAttachmentConverter"/>
+		<bean class="converters.AttachmentToStringConverter"/>
 		
 	</util:list>
 	

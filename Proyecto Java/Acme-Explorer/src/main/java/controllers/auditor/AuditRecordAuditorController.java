@@ -56,18 +56,19 @@ public class AuditRecordAuditorController extends AbstractController {
 	public ModelAndView display(@RequestParam final int auditRecordId) {
 		ModelAndView result;
 		AuditRecord auditRecord = new AuditRecord();
-		Collection<Attachment> attachments;
 
-		attachments = auditRecord.getAttachments();
+		Collection<Attachment> attachs;
 
 		auditRecord = this.auditRecordService.findOne(auditRecordId);
+
+		attachs = this.auditRecordService.urlAttachments(auditRecord);
+
 		result = new ModelAndView("auditRecord/display");
 		result.addObject("auditRecord", auditRecord);
-		result.addObject("attachments", attachments);
+		result.addObject("attachments", attachs);
 
 		return result;
 	}
-
 	//Creation-----------------------------------------------------------
 
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
@@ -104,6 +105,7 @@ public class AuditRecordAuditorController extends AbstractController {
 			try {
 				this.auditRecordService.save(auditRecord);
 				result = new ModelAndView("redirect:list.do");
+
 			} catch (final Throwable oops) {
 				result = this.createEditModelAndView(auditRecord, "auditRecord.commit.error");
 			}

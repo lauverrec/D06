@@ -151,4 +151,17 @@ public class SponsorshipSponsorController extends AbstractController {
 		return result;
 	}
 
+	// Display ----------------------------------------------------------------
+	@RequestMapping(value = "/displayTrip", method = RequestMethod.GET)
+	public ModelAndView display(@RequestParam Sponsorship sponsorship) {
+		ModelAndView result;
+		Trip trip;
+
+		trip = this.sponsorshipService.findByPrincipalSponsorhipTrip(sponsorship);
+		result = new ModelAndView("sponsorship/displayTrip");
+		result.addObject("trip", trip);
+
+		return result;
+	}
+
 }

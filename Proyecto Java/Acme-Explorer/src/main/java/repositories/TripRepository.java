@@ -57,4 +57,7 @@ public interface TripRepository extends JpaRepository<Trip, Integer> {
 	@Query("select c.trips from Category c where c.id = ?1")
 	Collection<Trip> findByCategory(int categoryId);
 
+	@Query("select t from Trip t join t.auditRecords r where r.id=?1")
+	Trip findAuditRecordByTrip(int auditRecordId);
+
 }

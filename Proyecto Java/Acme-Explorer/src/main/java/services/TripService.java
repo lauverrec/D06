@@ -329,4 +329,14 @@ public class TripService {
 		return trips;
 	}
 
+	//auditRecord
+
+	public Trip findAuditRecord(AuditRecord auditRecord) {
+
+		Trip trip;
+		trip = this.tripRepository.findAuditRecordByTrip(auditRecord.getId());
+		return trip;
+
+	}
+
 }

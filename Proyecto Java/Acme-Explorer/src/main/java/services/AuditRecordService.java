@@ -29,6 +29,9 @@ public class AuditRecordService {
 	@Autowired
 	private AuditorService			auditorService;
 
+	@Autowired
+	private TripService				tripService;
+
 
 	// Constructors-------------------------------------------------------
 
@@ -78,23 +81,36 @@ public class AuditRecordService {
 		result = new AuditRecord();
 		result.setRealisedMoment(realisedMoment);
 		Assert.notNull(result);
+
 		result = this.auditRecordRepository.save(auditrecord);
 		Assert.notNull(result);
 		return result;
 	}
+
 	public void delete(final AuditRecord auditrecord) {
 		//se puede borrar o modificar si está en modo borrador
+
 		Assert.notNull(auditrecord);
 		Assert.isTrue(auditrecord.isDraftMode() == true);
+		Trip trip;
+
+		if (this.tripService.findAuditRecord(auditrecord) != null) {
+
+			trip = this.tripService.findAuditRecord(auditrecord);
+			trip.getAuditRecords().remove(auditrecord);
+
+		}
 		this.auditRecordRepository.delete(auditrecord);
+
 	}
 
 	// Other business methods------------------------------------------------------
 
-	public void checkToModified(AuditRecord auditRecord) {
+	public AuditRecord OneToModified(AuditRecord auditRecord) {
 		this.auditorService.checkPrincipal();
 		Assert.notNull(auditRecord);
 		Assert.isTrue(auditRecord.isDraftMode() == true);
+		return auditRecord;
 	}
 
 	public Trip findTripsGivingAnAuditRecord(int auditRecodId) {
@@ -111,6 +127,15 @@ public class AuditRecordService {
 		result = this.auditRecordRepository.findByAuditorId(auditor.getId());
 
 		return result;
+	}
+
+	public Collection<Attachment> urlAttachments(AuditRecord auditrecord) {
+		Collection<Attachment> result;
+
+		result = this.auditRecordRepository.urlOfAttachments(auditrecord.getId());
+
+		return result;
+
 	}
 
 }
