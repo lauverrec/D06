@@ -43,7 +43,7 @@ public class TripService {
 	// Simple CRUD methods-----------------------------------------------------
 	//***** TEST HECHO *******
 	public Trip create(final Manager manager) {
-		this.managerService.checkPrincipal();
+		//this.managerService.checkPrincipal();
 
 		Collection<ApplicationFor> applicationsFor;
 		Collection<AuditRecord> auditRecords;
@@ -303,8 +303,14 @@ public class TripService {
 
 		calendar = Calendar.getInstance();
 		String ticker;
+		String dias;
 
-		ticker = String.valueOf(calendar.get(Calendar.YEAR)).substring(2) + String.valueOf(calendar.get(Calendar.MONTH) + 1) + String.valueOf(calendar.get(Calendar.DAY_OF_MONTH));
+		//ticker = String.valueOf(calendar.get(Calendar.YEAR)).substring(2) + String.valueOf(calendar.get(Calendar.MONTH) + 1);
+		dias = String.valueOf(calendar.get(Calendar.DAY_OF_MONTH));
+		if (dias.length() <= 1)
+			ticker = String.valueOf(calendar.get(Calendar.YEAR)).substring(2) + String.valueOf(calendar.get(Calendar.MONTH) + 1) + "0" + String.valueOf(calendar.get(Calendar.DAY_OF_MONTH));
+		else
+			ticker = String.valueOf(calendar.get(Calendar.YEAR)).substring(2) + String.valueOf(calendar.get(Calendar.MONTH) + 1) + String.valueOf(calendar.get(Calendar.DAY_OF_MONTH));
 		final char[] arr = new char[] {
 			'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
 		};

@@ -22,16 +22,20 @@
 <form:form action="trip/manager_/edit.do" modelAttribute="trip">
 
 	<form:hidden path="id" />
-	<form:hidden path="ticker"/>
 	<form:hidden path="version" />
+	<form:hidden path="ticker"/>
+	<form:hidden path="price"/>
+	<form:hidden path="reasonWhy"/>
+	<form:hidden path="cancelled"/>
 	<form:hidden path="manager"/>
-	<form:hidden path="applicationsFor"/>
-	<form:hidden path="auditRecords"/>
-	<form:hidden path="notes"/>
 	<form:hidden path="stages"/>
-	<form:hidden path="tags"/>
+	<!--<form:hidden path="tags"/>-->
+	<form:hidden path="applicationsFor"/>
+	<form:hidden path="notes"/>
+	<form:hidden path="auditRecords"/>
 	
-	<input id="cancelled" name="cancelled" type="hidden" value="0"/>
+	
+	<!--  <input id="cancelled" name="cancelled" type="hidden" value="0"/>-->
 
 	<form:label path="title">
 		<spring:message code="trip.title" />:
@@ -93,8 +97,8 @@
 	
 	
 	
-	
-	<%-- <form:label path="legalText">
+<%--	
+	 <form:label path="legalText">
 		<spring:message code="trip.legalText" />:
 	</form:label>
 	<form:select id="legalTexts" path="legalText" >
@@ -105,19 +109,21 @@
 	<form:errors cssClass="error" path="legalText" />
 	<br />
 	
-	<form:label path="tag">
+	--%>
+	<form:label path="tags">
 		<spring:message code="trip.tag" />:
 	</form:label>
-	<form:select id="tags" path="tag" >
-		<form:option value="0" label="----" />		
-		<form:options items="${tags}" itemValue="id"
-			itemLabel="name" />
+	<form:select id="tags" path="tags" >
+			
+		<form:options items="${tags}" itemValue="id" itemLabel="name" />		
 	</form:select>
-	<form:errors cssClass="error" path="tag" />
-	<br /> --%>
+	<form:errors cssClass="error" path="tags" />
+	<br /> 
 
-	<input type="submit" name="save"
-		value="<spring:message code="trip.save" />" />&nbsp; 
+	
+
+
+	<input type="submit" name="save" value="<spring:message code="trip.save" />" />&nbsp; 
 	<jstl:if test="${trip.id != 0}">
 		<input type="submit" name="delete"
 			value="<spring:message code="trip.delete" />"
