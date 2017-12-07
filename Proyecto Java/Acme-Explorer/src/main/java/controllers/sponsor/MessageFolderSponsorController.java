@@ -138,6 +138,7 @@ public class MessageFolderSponsorController extends AbstractController {
 		result.addObject("messageFolder", messageFolder);
 		result.addObject("mes", mess);
 		result.addObject("messageCode", messageCode);
+		result.addObject("requestURI", "messageFolder/sponsor/edit.do");
 
 		return result;
 

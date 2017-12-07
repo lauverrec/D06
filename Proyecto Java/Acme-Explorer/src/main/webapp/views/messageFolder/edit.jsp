@@ -21,7 +21,7 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
 
-<form:form action="messageFolder/sponsor/edit.do" modelAttribute="messageFolder">
+<form:form action="${requestURI }" modelAttribute="messageFolder">
 
 
 	<form:hidden path="id" />
@@ -42,7 +42,7 @@
 	<form:errors cssClass="error" path="modifiable" />
 	<br />
 
-
+	<!-- Boton save y deletes -->
 	<input type="submit" name="save"
 		value="<spring:message code="messageFolder.save" />" />&nbsp; 
 	<jstl:if test="${messageFolder.id != 0}">
@@ -50,8 +50,52 @@
 			value="<spring:message code="messageFolder.delete" />"
 			onclick="javascript: return confirm('<spring:message code="messageFolder.confirm.delete" />')" />&nbsp;
 	</jstl:if>
+	
+	<!--  Cancel para administrator -->
+	<security:authorize access="hasRole('ADMINISTRATOR')">
+	<input type="button" name="cancel"
+		value="<spring:message code="messageFolder.cancel" />"
+		onclick="javascript:  window.location.replace('messageFolder/administrator/list.do');" />
+	<br />
+	</security:authorize>
+	
+	<!-- Cancel para ranger -->
+	<security:authorize access="hasRole('RANGER')">
+	<input type="button" name="cancel"
+		value="<spring:message code="messageFolder.cancel" />"
+		onclick="javascript:  window.location.replace('messageFolder/administrator/list.do');" />
+	<br />
+	</security:authorize>
+	
+	<!-- Cancel para sponsor -->
+	<security:authorize access="hasRole('SPONSOR')">
 	<input type="button" name="cancel"
 		value="<spring:message code="messageFolder.cancel" />"
 		onclick="javascript:  window.location.replace('messageFolder/sponsor/list.do');" />
 	<br />
+	</security:authorize>
+	
+	<!--  Cancel para  explorer-->
+	<security:authorize access="hasRole('EXPLORER')">
+	<input type="button" name="cancel"
+		value="<spring:message code="messageFolder.cancel" />"
+		onclick="javascript:  window.location.replace('messageFolder/explorer/list.do');" />
+	<br />
+	</security:authorize>
+	
+	<!-- Cancel para auditor -->
+	<security:authorize access="hasRole('AUDITOR')">
+	<input type="button" name="cancel"
+		value="<spring:message code="messageFolder.cancel" />"
+		onclick="javascript:  window.location.replace('messageFolder/auditor/list.do');" />
+	<br />
+	</security:authorize>
+	
+	<security:authorize access="hasRole('MANAGER')">
+	<input type="button" name="cancel"
+		value="<spring:message code="messageFolder.cancel" />"
+		onclick="javascript:  window.location.replace('messageFolder/manager/list.do');" />
+	<br />
+	</security:authorize>
+	
 </form:form>

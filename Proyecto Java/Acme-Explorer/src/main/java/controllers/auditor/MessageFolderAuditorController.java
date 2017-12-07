@@ -138,6 +138,7 @@ public class MessageFolderAuditorController extends AbstractController {
 		result.addObject("messageFolder", messageFolder);
 		result.addObject("mes", mess);
 		result.addObject("messageCode", messageCode);
+		result.addObject("requestURI", "messageFolder/auditor/edit.do");
 
 		return result;
 

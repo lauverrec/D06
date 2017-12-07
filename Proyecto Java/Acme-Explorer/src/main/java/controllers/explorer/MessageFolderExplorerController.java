@@ -138,6 +138,7 @@ public class MessageFolderExplorerController extends AbstractController {
 		result.addObject("messageFolder", messageFolder);
 		result.addObject("mes", mess);
 		result.addObject("messageCode", messageCode);
+		result.addObject("requestURI", "messageFolder/explorer/edit.do");
 
 		return result;
 
