@@ -41,7 +41,6 @@ public class MessageFolderRangerController extends AbstractController {
 		ModelAndView result;
 		Collection<MessageFolder> messageFolders;
 
-		this.messageFolderService.createDefaultFolders();
 		messageFolders = this.messageFolderService.findAllByActorAutenticate();
 
 		result = new ModelAndView("messageFolder/list");

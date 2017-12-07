@@ -123,11 +123,9 @@ public class MessageFolderService {
 		MessageFolder trashbox;
 		MessageFolder spambox;
 		MessageFolder notificationbox;
-		Collection<String> nameFolders;
 		Collection<MessageFolder> res;
 		Collection<Message> messages;
 
-		nameFolders = new ArrayList<String>();
 		res = new ArrayList<MessageFolder>();
 		messages = new ArrayList<>();
 		inbox = new MessageFolder();
@@ -154,23 +152,19 @@ public class MessageFolderService {
 		trashbox.setMessages(messages);
 		spambox.setMessages(messages);
 
-		nameFolders = this.messageFolderRepository.nameOfFolders();
+		inbox = this.messageFolderRepository.save(inbox);
+		outbox = this.messageFolderRepository.save(outbox);
+		notificationbox = this.messageFolderRepository.save(notificationbox);
+		trashbox = this.messageFolderRepository.save(trashbox);
+		spambox = this.messageFolderRepository.save(spambox);
 
-		if (!nameFolders.contains("In box")) {
-			inbox = this.messageFolderRepository.save(inbox);
-			outbox = this.messageFolderRepository.save(outbox);
-			notificationbox = this.messageFolderRepository.save(notificationbox);
-			trashbox = this.messageFolderRepository.save(trashbox);
-			spambox = this.messageFolderRepository.save(spambox);
+		res.add(inbox);
+		res.add(outbox);
+		res.add(notificationbox);
+		res.add(trashbox);
+		res.add(spambox);
 
-			res.add(inbox);
-			res.add(outbox);
-			res.add(notificationbox);
-			res.add(trashbox);
-			res.add(spambox);
-
-			actor.setMessagesFolders(res);
-		}
+		actor.setMessagesFolders(res);
 
 		return res;
 
