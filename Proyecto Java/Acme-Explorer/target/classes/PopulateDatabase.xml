@@ -78,7 +78,7 @@
 
 	<bean id="userAccountAdmin3" class="security.UserAccount">
 		<property name="username" value="administrator3" />
-		<property name="password" value="0185e578be37caa9c276e0c8903e261a"/>
+		<property name="password" value="0185e578be37caa9c276e0c8903e261a" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
@@ -428,41 +428,9 @@
 		</property>
 	</bean>
 
-	<bean id="userAccountExplorerA+" class="security.UserAccount">
-		<property name="username" value="explorerA+" />
-		<property name="password" value="87440f6917f0afb0264280e451e75252" />
-		<property name="authorities">
-			<list>
-				<bean class="security.Authority">
-					<property name="authority" value="EXPLORER" />
-				</bean>
-			</list>
-		</property>
-	</bean>
 
-	<bean id="userAccountRangerA+" class="security.UserAccount">
-		<property name="username" value="rangerA+" />
-		<property name="password" value="5be0cfd459ed07492297945cbce44725" />
-		<property name="authorities">
-			<list>
-				<bean class="security.Authority">
-					<property name="authority" value="RANGER" />
-				</bean>
-			</list>
-		</property>
-	</bean>
 
-	<bean id="userAccountManagerA+" class="security.UserAccount">
-		<property name="username" value="managerA+" />
-		<property name="password" value="8cc42b61f29e6e314e227c9a5c0dc274" />
-		<property name="authorities">
-			<list>
-				<bean class="security.Authority">
-					<property name="authority" value="RANGER" />
-				</bean>
-			</list>
-		</property>
-	</bean>
+
 	<!-- Messages -->
 
 	<bean id="message1" class="domain.Message">
@@ -487,6 +455,1415 @@
 
 
 	<!-- MessageFolder -->
+	<!-- Default folder of administrator -->
+
+	<bean id="InBoxAdministrator1" class="domain.MessageFolder">
+		<property name="name" value="In box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="OutBoxAdministrator1" class="domain.MessageFolder">
+		<property name="name" value="Out box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="NotificationBoxAdministrator1" class="domain.MessageFolder">
+		<property name="name" value="Notification box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="TrashBoxAdministrator1" class="domain.MessageFolder">
+		<property name="name" value="Trash box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="SpamBoxAdministrator1" class="domain.MessageFolder">
+		<property name="name" value="Spam box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="InBoxAdministrator2" class="domain.MessageFolder">
+		<property name="name" value="In box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="OutBoxAdministrator2" class="domain.MessageFolder">
+		<property name="name" value="Out box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="NotificationBoxAdministrator2" class="domain.MessageFolder">
+		<property name="name" value="Notification box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="TrashBoxAdministrator2" class="domain.MessageFolder">
+		<property name="name" value="Trash box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="SpamBoxAdministrator2" class="domain.MessageFolder">
+		<property name="name" value="Spam box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="InBoxAdministrator3" class="domain.MessageFolder">
+		<property name="name" value="In box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="OutBoxAdministrator3" class="domain.MessageFolder">
+		<property name="name" value="Out box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="NotificationBoxAdministrator3" class="domain.MessageFolder">
+		<property name="name" value="Notification box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="TrashBoxAdministrator3" class="domain.MessageFolder">
+		<property name="name" value="Trash box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="SpamBoxAdministrator3" class="domain.MessageFolder">
+		<property name="name" value="Spam box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="InBoxAdministrator4" class="domain.MessageFolder">
+		<property name="name" value="In box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="OutBoxAdministrator4" class="domain.MessageFolder">
+		<property name="name" value="Out box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="NotificationBoxAdministrator4" class="domain.MessageFolder">
+		<property name="name" value="Notification box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="TrashBoxAdministrator4" class="domain.MessageFolder">
+		<property name="name" value="Trash box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="SpamBoxAdministrator4" class="domain.MessageFolder">
+		<property name="name" value="Spam box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="InBoxAdministrator5" class="domain.MessageFolder">
+		<property name="name" value="In box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="OutBoxAdministrator5" class="domain.MessageFolder">
+		<property name="name" value="Out box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="NotificationBoxAdministrator5" class="domain.MessageFolder">
+		<property name="name" value="Notification box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="TrashBoxAdministrator5" class="domain.MessageFolder">
+		<property name="name" value="Trash box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="SpamBoxAdministrator5" class="domain.MessageFolder">
+		<property name="name" value="Spam box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+
+	<!-- Default folder of ranger -->
+
+	<bean id="InBoxRanger1" class="domain.MessageFolder">
+		<property name="name" value="In box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="OutBoxRanger1" class="domain.MessageFolder">
+		<property name="name" value="Out box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="NotificationBoxRanger1" class="domain.MessageFolder">
+		<property name="name" value="Notification box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="TrashBoxRanger1" class="domain.MessageFolder">
+		<property name="name" value="Trash box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="SpamBoxRanger1" class="domain.MessageFolder">
+		<property name="name" value="Spam box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="InBoxRanger2" class="domain.MessageFolder">
+		<property name="name" value="In box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="OutBoxRanger2" class="domain.MessageFolder">
+		<property name="name" value="Out box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="NotificationBoxRanger2" class="domain.MessageFolder">
+		<property name="name" value="Notification box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="TrashBoxRanger2" class="domain.MessageFolder">
+		<property name="name" value="Trash box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="SpamBoxRanger2" class="domain.MessageFolder">
+		<property name="name" value="Spam box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="InBoxRanger3" class="domain.MessageFolder">
+		<property name="name" value="In box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="OutBoxRanger3" class="domain.MessageFolder">
+		<property name="name" value="Out box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="NotificationBoxRanger3" class="domain.MessageFolder">
+		<property name="name" value="Notification box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="TrashBoxRanger3" class="domain.MessageFolder">
+		<property name="name" value="Trash box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="SpamBoxRanger3" class="domain.MessageFolder">
+		<property name="name" value="Spam box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="InBoxRanger4" class="domain.MessageFolder">
+		<property name="name" value="In box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="OutBoxRanger4" class="domain.MessageFolder">
+		<property name="name" value="Out box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="NotificationBoxRanger4" class="domain.MessageFolder">
+		<property name="name" value="Notification box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="TrashBoxRanger4" class="domain.MessageFolder">
+		<property name="name" value="Trash box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="SpamBoxRanger4" class="domain.MessageFolder">
+		<property name="name" value="Spam box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="InBoxRanger5" class="domain.MessageFolder">
+		<property name="name" value="In box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="OutBoxRanger5" class="domain.MessageFolder">
+		<property name="name" value="Out box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="NotificationBoxRanger5" class="domain.MessageFolder">
+		<property name="name" value="Notification box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="TrashBoxRanger5" class="domain.MessageFolder">
+		<property name="name" value="Trash box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="SpamBoxRanger5" class="domain.MessageFolder">
+		<property name="name" value="Spam box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- Default folder of manager -->
+	<bean id="InBoxManager1" class="domain.MessageFolder">
+		<property name="name" value="In box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="OutBoxManager1" class="domain.MessageFolder">
+		<property name="name" value="Out box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="NotificationBoxManager1" class="domain.MessageFolder">
+		<property name="name" value="Notification box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="TrashBoxManager1" class="domain.MessageFolder">
+		<property name="name" value="Trash box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="SpamBoxManager1" class="domain.MessageFolder">
+		<property name="name" value="Spam box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="InBoxManager2" class="domain.MessageFolder">
+		<property name="name" value="In box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="OutBoxManager2" class="domain.MessageFolder">
+		<property name="name" value="Out box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="NotificationBoxManager2" class="domain.MessageFolder">
+		<property name="name" value="Notification box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="TrashBoxManager2" class="domain.MessageFolder">
+		<property name="name" value="Trash box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="SpamBoxManager2" class="domain.MessageFolder">
+		<property name="name" value="Spam box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="InBoxManager3" class="domain.MessageFolder">
+		<property name="name" value="In box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="OutBoxManager3" class="domain.MessageFolder">
+		<property name="name" value="Out box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="NotificationBoxManager3" class="domain.MessageFolder">
+		<property name="name" value="Notification box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="TrashBoxManager3" class="domain.MessageFolder">
+		<property name="name" value="Trash box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="SpamBoxManager3" class="domain.MessageFolder">
+		<property name="name" value="Spam box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="InBoxManager4" class="domain.MessageFolder">
+		<property name="name" value="In box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="OutBoxManager4" class="domain.MessageFolder">
+		<property name="name" value="Out box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="NotificationBoxManager4" class="domain.MessageFolder">
+		<property name="name" value="Notification box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="TrashBoxManager4" class="domain.MessageFolder">
+		<property name="name" value="Trash box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="SpamBoxManager4" class="domain.MessageFolder">
+		<property name="name" value="Spam box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="InBoxManager5" class="domain.MessageFolder">
+		<property name="name" value="In box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="OutBoxManager5" class="domain.MessageFolder">
+		<property name="name" value="Out box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="NotificationBoxManager5" class="domain.MessageFolder">
+		<property name="name" value="Notification box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="TrashBoxManager5" class="domain.MessageFolder">
+		<property name="name" value="Trash box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="SpamBoxManager5" class="domain.MessageFolder">
+		<property name="name" value="Spam box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- Folder of explorer -->
+	
+	<bean id="InBoxExplorer1" class="domain.MessageFolder">
+		<property name="name" value="In box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="OutBoxExplorer1" class="domain.MessageFolder">
+		<property name="name" value="Out box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="NotificationBoxExplorer1" class="domain.MessageFolder">
+		<property name="name" value="Notification box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="TrashBoxExplorer1" class="domain.MessageFolder">
+		<property name="name" value="Trash box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="SpamBoxExplorer1" class="domain.MessageFolder">
+		<property name="name" value="Spam box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="InBoxExplorer2" class="domain.MessageFolder">
+		<property name="name" value="In box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="OutBoxExplorer2" class="domain.MessageFolder">
+		<property name="name" value="Out box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="NotificationBoxExplorer2" class="domain.MessageFolder">
+		<property name="name" value="Notification box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="TrashBoxExplorer2" class="domain.MessageFolder">
+		<property name="name" value="Trash box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="SpamBoxExplorer2" class="domain.MessageFolder">
+		<property name="name" value="Spam box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="InBoxExplorer3" class="domain.MessageFolder">
+		<property name="name" value="In box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="OutBoxExplorer3" class="domain.MessageFolder">
+		<property name="name" value="Out box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="NotificationBoxExplorer3" class="domain.MessageFolder">
+		<property name="name" value="Notification box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="TrashBoxExplorer3" class="domain.MessageFolder">
+		<property name="name" value="Trash box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="SpamBoxExplorer3" class="domain.MessageFolder">
+		<property name="name" value="Spam box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="InBoxExplorer4" class="domain.MessageFolder">
+		<property name="name" value="In box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="OutBoxExplorer4" class="domain.MessageFolder">
+		<property name="name" value="Out box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="NotificationBoxExplorer4" class="domain.MessageFolder">
+		<property name="name" value="Notification box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="TrashBoxExplorer4" class="domain.MessageFolder">
+		<property name="name" value="Trash box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="SpamBoxExplorer4" class="domain.MessageFolder">
+		<property name="name" value="Spam box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="InBoxExplorer5" class="domain.MessageFolder">
+		<property name="name" value="In box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="OutBoxExplorer5" class="domain.MessageFolder">
+		<property name="name" value="Out box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="NotificationBoxExplorer5" class="domain.MessageFolder">
+		<property name="name" value="Notification box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="TrashBoxExplorer5" class="domain.MessageFolder">
+		<property name="name" value="Trash box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="SpamBoxExplorer5" class="domain.MessageFolder">
+		<property name="name" value="Spam box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="InBoxExplorer6" class="domain.MessageFolder">
+		<property name="name" value="In box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="OutBoxExplorer6" class="domain.MessageFolder">
+		<property name="name" value="Out box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="NotificationBoxExplorer6" class="domain.MessageFolder">
+		<property name="name" value="Notification box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="TrashBoxExplorer6" class="domain.MessageFolder">
+		<property name="name" value="Trash box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="SpamBoxExplorer6" class="domain.MessageFolder">
+		<property name="name" value="Spam box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- Folder of auditor -->
+	
+	<bean id="InBoxAuditor1" class="domain.MessageFolder">
+		<property name="name" value="In box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="OutBoxAuditor1" class="domain.MessageFolder">
+		<property name="name" value="Out box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="NotificationBoxAuditor1" class="domain.MessageFolder">
+		<property name="name" value="Notification box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="TrashBoxAuditor1" class="domain.MessageFolder">
+		<property name="name" value="Trash box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="SpamBoxAuditor1" class="domain.MessageFolder">
+		<property name="name" value="Spam box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="InBoxAuditor2" class="domain.MessageFolder">
+		<property name="name" value="In box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="OutBoxAuditor2" class="domain.MessageFolder">
+		<property name="name" value="Out box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="NotificationBoxAuditor2" class="domain.MessageFolder">
+		<property name="name" value="Notification box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="TrashBoxAuditor2" class="domain.MessageFolder">
+		<property name="name" value="Trash box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="SpamBoxAuditor2" class="domain.MessageFolder">
+		<property name="name" value="Spam box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="InBoxAuditor3" class="domain.MessageFolder">
+		<property name="name" value="In box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="OutBoxAuditor3" class="domain.MessageFolder">
+		<property name="name" value="Out box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="NotificationBoxAuditor3" class="domain.MessageFolder">
+		<property name="name" value="Notification box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="TrashBoxAuditor3" class="domain.MessageFolder">
+		<property name="name" value="Trash box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="SpamBoxAuditor3" class="domain.MessageFolder">
+		<property name="name" value="Spam box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="InBoxAuditor4" class="domain.MessageFolder">
+		<property name="name" value="In box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="OutBoxAuditor4" class="domain.MessageFolder">
+		<property name="name" value="Out box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="NotificationBoxAuditor4" class="domain.MessageFolder">
+		<property name="name" value="Notification box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="TrashBoxAuditor4" class="domain.MessageFolder">
+		<property name="name" value="Trash box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="SpamBoxAuditor4" class="domain.MessageFolder">
+		<property name="name" value="Spam box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="InBoxAuditor5" class="domain.MessageFolder">
+		<property name="name" value="In box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="OutBoxAuditor5" class="domain.MessageFolder">
+		<property name="name" value="Out box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="NotificationBoxAuditor5" class="domain.MessageFolder">
+		<property name="name" value="Notification box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="TrashBoxAuditor5" class="domain.MessageFolder">
+		<property name="name" value="Trash box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="SpamBoxAuditor5" class="domain.MessageFolder">
+		<property name="name" value="Spam box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- Folder of sponsor -->
+	
+	<bean id="InBoxSponsor1" class="domain.MessageFolder">
+		<property name="name" value="In box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="OutBoxSponsor1" class="domain.MessageFolder">
+		<property name="name" value="Out box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="NotificationBoxSponsor1" class="domain.MessageFolder">
+		<property name="name" value="Notification box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="TrashBoxSponsor1" class="domain.MessageFolder">
+		<property name="name" value="Trash box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="SpamBoxSponsor1" class="domain.MessageFolder">
+		<property name="name" value="Spam box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="InBoxSponsor2" class="domain.MessageFolder">
+		<property name="name" value="In box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="OutBoxSponsor2" class="domain.MessageFolder">
+		<property name="name" value="Out box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="NotificationBoxSponsor2" class="domain.MessageFolder">
+		<property name="name" value="Notification box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="TrashBoxSponsor2" class="domain.MessageFolder">
+		<property name="name" value="Trash box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="SpamBoxSponsor2" class="domain.MessageFolder">
+		<property name="name" value="Spam box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="InBoxSponsor3" class="domain.MessageFolder">
+		<property name="name" value="In box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="OutBoxSponsor3" class="domain.MessageFolder">
+		<property name="name" value="Out box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="NotificationBoxSponsor3" class="domain.MessageFolder">
+		<property name="name" value="Notification box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="TrashBoxSponsor3" class="domain.MessageFolder">
+		<property name="name" value="Trash box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="SpamBoxSponsor3" class="domain.MessageFolder">
+		<property name="name" value="Spam box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="InBoxSponsor4" class="domain.MessageFolder">
+		<property name="name" value="In box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="OutBoxSponsor4" class="domain.MessageFolder">
+		<property name="name" value="Out box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="NotificationBoxSponsor4" class="domain.MessageFolder">
+		<property name="name" value="Notification box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="TrashBoxSponsor4" class="domain.MessageFolder">
+		<property name="name" value="Trash box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="SpamBoxSponsor4" class="domain.MessageFolder">
+		<property name="name" value="Spam box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="InBoxSponsor5" class="domain.MessageFolder">
+		<property name="name" value="In box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="OutBoxSponsor5" class="domain.MessageFolder">
+		<property name="name" value="Out box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="NotificationBoxSponsor5" class="domain.MessageFolder">
+		<property name="name" value="Notification box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="TrashBoxSponsor5" class="domain.MessageFolder">
+		<property name="name" value="Trash box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="SpamBoxSponsor5" class="domain.MessageFolder">
+		<property name="name" value="Spam box" />
+		<property name="modifiable" value="false" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	
+
 
 	<bean id="messageFolder1" class="domain.MessageFolder">
 		<property name="name" value="folder 1" />
@@ -497,6 +1874,7 @@
 			</list>
 		</property>
 	</bean>
+
 
 	<bean id="messageFolder2" class="domain.MessageFolder">
 		<property name="name" value="folder 2" />
@@ -762,7 +2140,16 @@
 		<property name="userAccount" ref="userAccountAdmin1" />
 		<property name="messagesFolders">
 			<list>
-				<ref bean="messageFolder1" />
+				<ref bean="InBoxAdministrator1" />
+				<ref bean="OutBoxAdministrator1" />
+				<ref bean="NotificationBoxAdministrator1" />
+				<ref bean="TrashBoxAdministrator1" />
+				<ref bean="SpamBoxAdministrator1" />
+				<ref bean="messageFolder1"/>
+				<ref bean="messageFolder2"/>
+				<ref bean="messageFolder3"/>
+				<ref bean="messageFolder4"/>
+				<ref bean="messageFolder5"/>
 			</list>
 		</property>
 		<property name="socialIdentities">
@@ -782,7 +2169,11 @@
 		<property name="userAccount" ref="userAccountAdmin2" />
 		<property name="messagesFolders">
 			<list>
-				<ref bean="messageFolder2" />
+				<ref bean="InBoxAdministrator2" />
+				<ref bean="OutBoxAdministrator2" />
+				<ref bean="NotificationBoxAdministrator2" />
+				<ref bean="TrashBoxAdministrator2" />
+				<ref bean="SpamBoxAdministrator2" />
 			</list>
 		</property>
 		<property name="socialIdentities">
@@ -802,6 +2193,11 @@
 		<property name="userAccount" ref="userAccountAdmin3" />
 		<property name="messagesFolders">
 			<list>
+				<ref bean="InBoxAdministrator3" />
+				<ref bean="OutBoxAdministrator3" />
+				<ref bean="NotificationBoxAdministrator3" />
+				<ref bean="TrashBoxAdministrator3" />
+				<ref bean="SpamBoxAdministrator3" />
 			</list>
 		</property>
 		<property name="socialIdentities">
@@ -821,6 +2217,11 @@
 		<property name="userAccount" ref="userAccountAdmin4" />
 		<property name="messagesFolders">
 			<list>
+				<ref bean="InBoxAdministrator4" />
+				<ref bean="OutBoxAdministrator4" />
+				<ref bean="NotificationBoxAdministrator4" />
+				<ref bean="TrashBoxAdministrator4" />
+				<ref bean="SpamBoxAdministrator4" />
 			</list>
 		</property>
 		<property name="socialIdentities">
@@ -841,7 +2242,11 @@
 		<property name="userAccount" ref="userAccountAdmin5" />
 		<property name="messagesFolders">
 			<list>
-
+				<ref bean="InBoxAdministrator5" />
+				<ref bean="OutBoxAdministrator5" />
+				<ref bean="NotificationBoxAdministrator5" />
+				<ref bean="TrashBoxAdministrator5" />
+				<ref bean="SpamBoxAdministrator5" />
 			</list>
 		</property>
 		<property name="socialIdentities">
@@ -864,7 +2269,11 @@
 		<property name="userAccount" ref="userAccountSponsor1" />
 		<property name="messagesFolders">
 			<list>
-
+			<ref bean="InBoxSponsor1"/>
+			<ref bean="OutBoxSponsor1"/>
+			<ref bean="NotificationBoxSponsor1"/>
+			<ref bean="TrashBoxSponsor1"/>
+			<ref bean="SpamBoxSponsor1"/>
 			</list>
 		</property>
 		<property name="socialIdentities">
@@ -888,7 +2297,11 @@
 		<property name="userAccount" ref="userAccountSponsor2" />
 		<property name="messagesFolders">
 			<list>
-
+			<ref bean="InBoxSponsor2"/>
+			<ref bean="OutBoxSponsor2"/>
+			<ref bean="NotificationBoxSponsor2"/>
+			<ref bean="TrashBoxSponsor2"/>
+			<ref bean="SpamBoxSponsor2"/>
 			</list>
 		</property>
 		<property name="socialIdentities">
@@ -912,7 +2325,11 @@
 		<property name="userAccount" ref="userAccountSponsor3" />
 		<property name="messagesFolders">
 			<list>
-
+			<ref bean="InBoxSponsor3"/>
+			<ref bean="OutBoxSponsor3"/>
+			<ref bean="NotificationBoxSponsor3"/>
+			<ref bean="TrashBoxSponsor3"/>
+			<ref bean="SpamBoxSponsor3"/>
 			</list>
 		</property>
 		<property name="socialIdentities">
@@ -936,7 +2353,11 @@
 		<property name="userAccount" ref="userAccountSponsor4" />
 		<property name="messagesFolders">
 			<list>
-
+			<ref bean="InBoxSponsor4"/>
+			<ref bean="OutBoxSponsor4"/>
+			<ref bean="NotificationBoxSponsor4"/>
+			<ref bean="TrashBoxSponsor4"/>
+			<ref bean="SpamBoxSponsor4"/>
 			</list>
 		</property>
 		<property name="socialIdentities">
@@ -960,7 +2381,11 @@
 		<property name="userAccount" ref="userAccountSponsor5" />
 		<property name="messagesFolders">
 			<list>
-
+			<ref bean="InBoxSponsor5"/>
+			<ref bean="OutBoxSponsor5"/>
+			<ref bean="NotificationBoxSponsor5"/>
+			<ref bean="TrashBoxSponsor5"/>
+			<ref bean="SpamBoxSponsor5"/>
 			</list>
 		</property>
 		<property name="socialIdentities">
@@ -998,13 +2423,7 @@
 	<!-- STAGEs -->
 
 
-	<bean id="stageA+" class="domain.Stage">
-		<property name="title" value="titleA+" />
-		<property name="description" value="descriptiona+" />
-		<property name="price" value="7.0"></property>
-		<property name="number" value="1"></property>
-		<property name="trip" ref="tripA+"></property>
-	</bean>
+
 	<bean id="stage1" class="domain.Stage">
 		<property name="title" value="title 1" />
 		<property name="description" value="description 1" />
@@ -1112,7 +2531,9 @@
 				<value>requirementsExplorers 4</value>
 			</list>
 		</property>
-		<property name="publicationDate" ><null/></property>
+		<property name="publicationDate">
+			<null />
+		</property>
 		<property name="startDate" value="2018/11/22"></property>
 		<property name="finishDate" value="2019/08/04"></property>
 		<property name="reasonWhy">
@@ -1291,52 +2712,7 @@
 
 	</bean>
 
-	<bean id="tripA+" class="domain.Trip">
-		<property name="ticker" value="160212-DDDD"></property>
-		<property name="title" value="titleA+"></property>
-		<property name="description" value="descriptionA+"></property>
 
-		<property name="requirementsExplorers">
-			<list>
-				<value>requirementsExplorers 8</value>
-				<value>requirementsExplorers 9</value>
-			</list>
-		</property>
-		<property name="publicationDate">
-			<null />
-		</property>
-		<property name="startDate" value="2014/02/21"></property>
-		<property name="finishDate" value="2015/08/04"></property>
-		<property name="reasonWhy">
-			<null />
-		</property>
-		<property name="cancelled" value="false"></property>
-		<property name="manager" ref="managerA+"></property>
-		<property name="stages">
-			<list>
-				<ref bean="stageA+"></ref>
-			</list>
-		</property>
-		<property name="tags">
-			<list>
-				<ref bean="tag5"></ref>
-				<ref bean="tag1"></ref>
-			</list>
-		</property>
-		<property name="applicationsFor">
-			<list>
-			</list>
-		</property>
-		<property name="notes">
-			<list>
-			</list>
-		</property>
-		<property name="auditRecords">
-			<list>
-
-			</list>
-		</property>
-	</bean>
 
 	<!-- GPS -->
 	<bean id="gps1" class="domain.GPS">
@@ -1446,50 +2822,9 @@
 		<property name="cvv" value="724" />
 	</bean>
 
-	<bean id="creditCard1A+" class="domain.CreditCard">
-		<property name="holderName" value="creditCard1A+" />
-		<property name="brandName" value="La caixa" />
-		<property name="number" value="4388576018410707" />
-		<property name="expirationMonth" value="05" />
-		<property name="expirationYear" value="18" />
-		<property name="cvv" value="724" />
-	</bean>
 
-	<bean id="creditCard2A+" class="domain.CreditCard">
-		<property name="holderName" value="creditCard2A+" />
-		<property name="brandName" value="La caixa" />
-		<property name="number" value="4388576018410707" />
-		<property name="expirationMonth" value="05" />
-		<property name="expirationYear" value="18" />
-		<property name="cvv" value="724" />
-	</bean>
 
-	<bean id="creditCard3A+" class="domain.CreditCard">
-		<property name="holderName" value="creditCard3A+" />
-		<property name="brandName" value="La caixa" />
-		<property name="number" value="4388576018410707" />
-		<property name="expirationMonth" value="05" />
-		<property name="expirationYear" value="18" />
-		<property name="cvv" value="724" />
-	</bean>
 
-	<bean id="creditCard4A+" class="domain.CreditCard">
-		<property name="holderName" value="creditCard4A+" />
-		<property name="brandName" value="La caixa" />
-		<property name="number" value="4388576018410707" />
-		<property name="expirationMonth" value="05" />
-		<property name="expirationYear" value="18" />
-		<property name="cvv" value="724" />
-	</bean>
-
-	<bean id="creditCard5A+" class="domain.CreditCard">
-		<property name="holderName" value="creditCard5A+" />
-		<property name="brandName" value="La caixa" />
-		<property name="number" value="4388576018410707" />
-		<property name="expirationMonth" value="05" />
-		<property name="expirationYear" value="18" />
-		<property name="cvv" value="724" />
-	</bean>
 
 	<!-- Ranger -->
 	<bean id="ranger1" class="domain.Ranger">
@@ -1506,6 +2841,11 @@
 		<property name="suspicious" value="True"></property>
 		<property name="messagesFolders">
 			<list>
+			<ref bean="InBoxRanger1"/>
+			<ref bean="OutBoxRanger1"/>
+			<ref bean="NotificationBoxRanger1"/>
+			<ref bean="TrashBoxRanger1"/>
+			<ref bean="SpamBoxRanger1"/>
 			</list>
 		</property>
 		<property name="trips">
@@ -1529,6 +2869,11 @@
 		</property>
 		<property name="messagesFolders">
 			<list>
+			<ref bean="InBoxRanger2"/>
+			<ref bean="OutBoxRanger2"/>
+			<ref bean="NotificationBoxRanger2"/>
+			<ref bean="TrashBoxRanger2"/>
+			<ref bean="SpamBoxRanger2"/>
 			</list>
 		</property>
 		<property name="trips">
@@ -1551,6 +2896,11 @@
 		</property>
 		<property name="messagesFolders">
 			<list>
+			<ref bean="InBoxRanger3"/>
+			<ref bean="OutBoxRanger3"/>
+			<ref bean="NotificationBoxRanger3"/>
+			<ref bean="TrashBoxRanger3"/>
+			<ref bean="SpamBoxRanger3"/>
 			</list>
 		</property>
 		<property name="trips">
@@ -1573,6 +2923,11 @@
 		</property>
 		<property name="messagesFolders">
 			<list>
+			<ref bean="InBoxRanger4"/>
+			<ref bean="OutBoxRanger4"/>
+			<ref bean="NotificationBoxRanger4"/>
+			<ref bean="TrashBoxRanger4"/>
+			<ref bean="SpamBoxRanger4"/>
 			</list>
 		</property>
 		<property name="trips">
@@ -1595,33 +2950,15 @@
 		</property>
 		<property name="messagesFolders">
 			<list>
+			<ref bean="InBoxRanger5"/>
+			<ref bean="OutBoxRanger5"/>
+			<ref bean="NotificationBoxRanger5"/>
+			<ref bean="TrashBoxRanger5"/>
+			<ref bean="SpamBoxRanger5"/>
 			</list>
 		</property>
 		<property name="trips">
 			<list>
-			</list>
-		</property>
-	</bean>
-
-	<bean id="rangerA+" class="domain.Ranger">
-		<property name="suspicious" value="false"></property>
-		<property name="userAccount" ref="userAccountRangerA+" />
-		<property name="name" value="rangerA+" />
-		<property name="surname" value="ranger5 rangerA+" />
-		<property name="email" value="rangerA+@acmeexplorer.com" />
-		<property name="phone" value="+34617557203" />
-		<property name="address" value="C/ avenida del ranger" />
-		<property name="socialIdentities">
-			<list>
-			</list>
-		</property>
-		<property name="messagesFolders">
-			<list>
-			</list>
-		</property>
-		<property name="trips">
-			<list>
-				<ref bean="tripA+" />
 			</list>
 		</property>
 	</bean>
@@ -1643,6 +2980,11 @@
 		</property>
 		<property name="messagesFolders">
 			<list>
+			<ref bean="InBoxAuditor1"/>
+			<ref bean="OutBoxAuditor1"/>
+			<ref bean="NotificationBoxAuditor1"/>
+			<ref bean="TrashBoxAuditor1"/>
+			<ref bean="SpamBoxAuditor1"/>
 			</list>
 		</property>
 		<property name="auditRecords">
@@ -1671,6 +3013,11 @@
 		</property>
 		<property name="messagesFolders">
 			<list>
+			<ref bean="InBoxAuditor2"/>
+			<ref bean="OutBoxAuditor2"/>
+			<ref bean="NotificationBoxAuditor2"/>
+			<ref bean="TrashBoxAuditor2"/>
+			<ref bean="SpamBoxAuditor2"/>
 			</list>
 		</property>
 		<property name="auditRecords">
@@ -1697,6 +3044,11 @@
 		</property>
 		<property name="messagesFolders">
 			<list>
+			<ref bean="InBoxAuditor3"/>
+			<ref bean="OutBoxAuditor3"/>
+			<ref bean="NotificationBoxAuditor3"/>
+			<ref bean="TrashBoxAuditor3"/>
+			<ref bean="SpamBoxAuditor3"/>
 			</list>
 		</property>
 		<property name="auditRecords">
@@ -1722,6 +3074,11 @@
 		</property>
 		<property name="messagesFolders">
 			<list>
+			<ref bean="InBoxAuditor4"/>
+			<ref bean="OutBoxAuditor4"/>
+			<ref bean="NotificationBoxAuditor4"/>
+			<ref bean="TrashBoxAuditor4"/>
+			<ref bean="SpamBoxAuditor4"/>
 			</list>
 		</property>
 		<property name="auditRecords">
@@ -1746,6 +3103,11 @@
 		</property>
 		<property name="messagesFolders">
 			<list>
+			<ref bean="InBoxAuditor5"/>
+			<ref bean="OutBoxAuditor5"/>
+			<ref bean="NotificationBoxAuditor5"/>
+			<ref bean="TrashBoxAuditor5"/>
+			<ref bean="SpamBoxAuditor5"/>
 			</list>
 		</property>
 		<property name="auditRecords">
@@ -1906,7 +3268,7 @@
 		<property name="trips">
 			<list>
 				<ref bean="trip1"></ref>
-				
+
 			</list>
 		</property>
 	</bean>
@@ -1958,11 +3320,6 @@
 		<property name="draftMode" value="true"></property> <property name="trips"> 
 		<list> <ref bean="trip5"></ref> </list> </property> </bean> -->
 
-	<!-- <bean id="legalTextA+" class="domain.LegalText"> <property name="title" 
-		value="titlA+" /> <property name="body" value="bodyA+" /> <property name="lawsNumber" 
-		value="1"></property> <property name="moment" value="2017/12/23 23:59"></property> 
-		<property name="draftMode" value="false"></property> <property name="trips"> 
-		<list> <ref bean="tripA+"></ref> </list> </property> </bean> -->
 
 	<!-- SponsorShip -->
 
@@ -2257,6 +3614,11 @@
 		</property>
 		<property name="messagesFolders">
 			<list>
+			<ref bean="InBoxManager1"/>
+			<ref bean="OutBoxManager1"/>
+			<ref bean="NotificationBoxManager1"/>
+			<ref bean="TrashBoxManager1"/>
+			<ref bean="SpamBoxManager1"/>
 			</list>
 		</property>
 		<property name="trips">
@@ -2286,6 +3648,11 @@
 		</property>
 		<property name="messagesFolders">
 			<list>
+			<ref bean="InBoxManager2"/>
+			<ref bean="OutBoxManager2"/>
+			<ref bean="NotificationBoxManager2"/>
+			<ref bean="TrashBoxManager2"/>
+			<ref bean="SpamBoxManager2"/>
 			</list>
 		</property>
 		<property name="trips">
@@ -2313,6 +3680,11 @@
 		</property>
 		<property name="messagesFolders">
 			<list>
+			<ref bean="InBoxManager3"/>
+			<ref bean="OutBoxManager3"/>
+			<ref bean="NotificationBoxManager3"/>
+			<ref bean="TrashBoxManager3"/>
+			<ref bean="SpamBoxManager3"/>
 			</list>
 		</property>
 		<property name="trips">
@@ -2339,6 +3711,11 @@
 		</property>
 		<property name="messagesFolders">
 			<list>
+			<ref bean="InBoxManager4"/>
+			<ref bean="OutBoxManager4"/>
+			<ref bean="NotificationBoxManager4"/>
+			<ref bean="TrashBoxManager4"/>
+			<ref bean="SpamBoxManager4"/>
 			</list>
 		</property>
 		<property name="trips">
@@ -2366,6 +3743,11 @@
 		</property>
 		<property name="messagesFolders">
 			<list>
+			<ref bean="InBoxManager5"/>
+			<ref bean="OutBoxManager5"/>
+			<ref bean="NotificationBoxManager5"/>
+			<ref bean="TrashBoxManager5"/>
+			<ref bean="SpamBoxManager5"/>
 			</list>
 		</property>
 		<property name="trips">
@@ -2380,37 +3762,7 @@
 		</property>
 	</bean>
 
-	<bean id="managerA+" class="domain.Manager">
-		<property name="suspicious" value="True"></property>
-		<property name="name" value="ManagerA+" />
-		<property name="surname" value="surname Manager A+" />
-		<property name="email" value="managerA+@mail.com" />
-		<property name="phone" value="+313(987)1115" />
-		<property name="address" value="Address Manager A+" />
-		<property name="userAccount" ref="userAccountManagerA+" />
-		<property name="socialIdentities">
-			<list>
-			</list>
-		</property>
-		<property name="messagesFolders">
-			<list>
-			</list>
-		</property>
-		<property name="trips">
-			<list>
-				<ref bean="tripA+"></ref>
-			</list>
-		</property>
-		<property name="applicationsFor">
-			<list>
-				<ref bean="applicationFor1A+"></ref>
-				<ref bean="applicationFor2A+"></ref>
-				<ref bean="applicationFor3A+"></ref>
-				<ref bean="applicationFor4A+"></ref>
-				<ref bean="applicationFor5A+"></ref>
-			</list>
-		</property>
-	</bean>
+
 	<!-- Explorer -->
 
 	<bean id="explorer1" class="domain.Explorer">
@@ -2426,6 +3778,11 @@
 		</property>
 		<property name="messagesFolders">
 			<list>
+			<ref bean="InBoxExplorer1"/>
+			<ref bean="OutBoxExplorer1"/>
+			<ref bean="NotificationBoxExplorer1"/>
+			<ref bean="TrashBoxExplorer1"/>
+			<ref bean="SpamBoxExplorer1"/>
 			</list>
 		</property>
 		<property name="stories">
@@ -2457,6 +3814,11 @@
 		</property>
 		<property name="messagesFolders">
 			<list>
+			<ref bean="InBoxExplorer2"/>
+			<ref bean="OutBoxExplorer2"/>
+			<ref bean="NotificationBoxExplorer2"/>
+			<ref bean="TrashBoxExplorer2"/>
+			<ref bean="SpamBoxExplorer2"/>
 			</list>
 		</property>
 		<property name="stories">
@@ -2489,6 +3851,11 @@
 		</property>
 		<property name="messagesFolders">
 			<list>
+			<ref bean="InBoxExplorer3"/>
+			<ref bean="OutBoxExplorer3"/>
+			<ref bean="NotificationBoxExplorer3"/>
+			<ref bean="TrashBoxExplorer3"/>
+			<ref bean="SpamBoxExplorer3"/>
 			</list>
 		</property>
 		<property name="stories">
@@ -2499,7 +3866,6 @@
 		<property name="applicationsFor">
 			<list>
 				<ref bean="applicationFor3"></ref>
-				<ref bean="applicationFor5A+"></ref>
 				<ref bean="applicationFor4"></ref>
 			</list>
 		</property>
@@ -2524,6 +3890,11 @@
 		</property>
 		<property name="messagesFolders">
 			<list>
+			<ref bean="InBoxExplorer4"/>
+			<ref bean="OutBoxExplorer4"/>
+			<ref bean="NotificationBoxExplorer4"/>
+			<ref bean="TrashBoxExplorer4"/>
+			<ref bean="SpamBoxExplorer4"/>
 			</list>
 		</property>
 		<property name="stories">
@@ -2533,7 +3904,6 @@
 		</property>
 		<property name="applicationsFor">
 			<list>
-				<ref bean="applicationFor4A+"></ref>
 			</list>
 		</property>
 		<property name="contactsEmergency">
@@ -2558,6 +3928,11 @@
 		</property>
 		<property name="messagesFolders">
 			<list>
+			<ref bean="InBoxExplorer5"/>
+			<ref bean="OutBoxExplorer5"/>
+			<ref bean="NotificationBoxExplorer5"/>
+			<ref bean="TrashBoxExplorer5"/>
+			<ref bean="SpamBoxExplorer5"/>
 			</list>
 		</property>
 		<property name="stories">
@@ -2569,7 +3944,6 @@
 			<list>
 				<ref bean="applicationFor5"></ref>
 				<ref bean="applicationFor7"></ref>
-				<ref bean="applicationFor3A+"></ref>
 			</list>
 		</property>
 		<property name="contactsEmergency">
@@ -2592,6 +3966,11 @@
 		</property>
 		<property name="messagesFolders">
 			<list>
+			<ref bean="InBoxExplorer6"/>
+			<ref bean="OutBoxExplorer6"/>
+			<ref bean="NotificationBoxExplorer6"/>
+			<ref bean="TrashBoxExplorer6"/>
+			<ref bean="SpamBoxExplorer6"/>
 			</list>
 		</property>
 		<property name="stories">
@@ -2601,7 +3980,6 @@
 		<property name="applicationsFor">
 			<list>
 				<ref bean="applicationFor6"></ref>
-				<ref bean="applicationFor2A+"></ref>
 			</list>
 		</property>
 		<property name="contactsEmergency">
@@ -2610,35 +3988,7 @@
 		</property>
 	</bean>
 
-	<bean id="explorerA+" class="domain.Explorer">
-		<property name="name" value="Explorer A+" />
-		<property name="surname" value="surname Explorer A+" />
-		<property name="email" value="explorerA+@mail.com" />
-		<property name="phone" value="+313(987)1131" />
-		<property name="address" value="Address explorer A+" />
-		<property name="userAccount" ref="userAccountExplorerA+" />
-		<property name="socialIdentities">
-			<list>
-			</list>
-		</property>
-		<property name="messagesFolders">
-			<list>
-			</list>
-		</property>
-		<property name="stories">
-			<list>
-			</list>
-		</property>
-		<property name="applicationsFor">
-			<list>
-				<ref bean="applicationFor1A+"></ref>
-			</list>
-		</property>
-		<property name="contactsEmergency">
-			<list>
-			</list>
-		</property>
-	</bean>
+
 	<!-- SurvivalClass -->
 	<bean id="survivalClass1" class="domain.SurvivalClass">
 		<property name="title" value="survivalClass 1" />
@@ -2886,70 +4236,6 @@
 		<property name="manager" ref="manager1" />
 	</bean>
 
-	<bean id="applicationFor1A+" class="domain.ApplicationFor">
-		<property name="moment" value="2017/10/27 03:10" />
-		<property name="status" value="ACCEPTED" />
-		<property name="reasonWhy" value="" />
-		<property name="comments">
-			<list>
-			</list>
-		</property>
-		<property name="creditCard" ref="creditCard1A+" />
-		<property name="explorer" ref="explorerA+" />
-		<property name="manager" ref="managerA+" />
-	</bean>
-
-	<bean id="applicationFor2A+" class="domain.ApplicationFor">
-		<property name="moment" value="2017/10/27 03:10" />
-		<property name="status" value="ACCEPTED" />
-		<property name="reasonWhy" value="" />
-		<property name="comments">
-			<list>
-			</list>
-		</property>
-		<property name="creditCard" ref="creditCard2A+" />
-		<property name="explorer" ref="explorer6" />
-		<property name="manager" ref="managerA+" />
-	</bean>
-
-	<bean id="applicationFor3A+" class="domain.ApplicationFor">
-		<property name="moment" value="2017/10/27 03:10" />
-		<property name="status" value="ACCEPTED" />
-		<property name="reasonWhy" value="" />
-		<property name="comments">
-			<list>
-			</list>
-		</property>
-		<property name="creditCard" ref="creditCard3A+" />
-		<property name="explorer" ref="explorer5" />
-		<property name="manager" ref="managerA+" />
-	</bean>
-
-	<bean id="applicationFor4A+" class="domain.ApplicationFor">
-		<property name="moment" value="2017/10/27 03:10" />
-		<property name="status" value="ACCEPTED" />
-		<property name="reasonWhy" value="" />
-		<property name="comments">
-			<list>
-			</list>
-		</property>
-		<property name="creditCard" ref="creditCard4A+" />
-		<property name="explorer" ref="explorer4" />
-		<property name="manager" ref="managerA+" />
-	</bean>
-
-	<bean id="applicationFor5A+" class="domain.ApplicationFor">
-		<property name="moment" value="2017/10/27 03:10" />
-		<property name="status" value="ACCEPTED" />
-		<property name="reasonWhy" value="" />
-		<property name="comments">
-			<list>
-			</list>
-		</property>
-		<property name="creditCard" ref="creditCard5A+" />
-		<property name="explorer" ref="explorer3" />
-		<property name="manager" ref="managerA+" />
-	</bean>
 
 	<!-- CURRICULA -->
 
