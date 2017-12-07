@@ -19,7 +19,7 @@
 <%@taglib prefix="security"	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
-<form:form action="auditor/auditor/edit.do" modelAttribute="auditor">
+<form:form action="auditor/edit.do" modelAttribute="auditor">
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />
@@ -79,15 +79,11 @@
 				
 		}
 
-	</script>
+	</script> 
 	
 	<input type="submit" name="save"
-		value="<spring:message code="auditor.save" />" onclick="valida();"/>&nbsp; 
-	<jstl:if test="${auditor.id != 0}">
-		<input type="submit" name="delete"
-			value="<spring:message code="auditor.delete" />"
-			onclick="javascript: return confirm('<spring:message code="auditor.confirm.delete" />')" />&nbsp;
-	</jstl:if>
+		value="<spring:message code="auditor.save" /> " onclick="valida();"/>&nbsp; 
+	
 	<input type="button" name="cancel"
 		value="<spring:message code="auditor.cancel" />"
 		onclick="javascript: window.location.replace('welcome/index.do');" />

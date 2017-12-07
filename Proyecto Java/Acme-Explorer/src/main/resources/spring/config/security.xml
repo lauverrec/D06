@@ -44,7 +44,7 @@
 		<security:intercept-url pattern="/administrator/administrator/**" access="hasRole('ADMINISTRATOR')"/>
 		<security:intercept-url pattern="/applicationFor/explorer/**" access="hasRole('EXPLORER')"/>
 		<security:intercept-url pattern="/applicationFor/administrator/**" access="hasRole('ADMINISTRATOR')"/>
-		<security:intercept-url pattern="/auditor/auditor/**" access="hasRole('AUDITOR')"/>
+		<security:intercept-url pattern="/auditor/**" access="hasRole('AUDITOR')"/>
 		<security:intercept-url pattern="/auditRecord/auditor/**" access="hasRole('AUDITOR')"/>
 		<security:intercept-url pattern="/auditRecord/display.do" access="permitAll"/>
 		<security:intercept-url pattern="/category/administrator/**" access="hasRole('ADMINISTRATOR')"/>
