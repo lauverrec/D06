@@ -29,6 +29,33 @@
 	<jstl:out value="${row.ticker}"></jstl:out>
 	<p> 
 	
+	<spring:message code="trip.title" />:
+	<jstl:out value="${row.title}"></jstl:out>
+	<p> 
+	
+	<spring:message code="trip.starDate" />:
+	<jstl:out value="${row.startDate}"></jstl:out>
+	<p> 
+	
+	<spring:message code="trip.finishDate" />:
+	<jstl:out value="${row.finishDate}"></jstl:out>
+	<p> 
+	
+	<spring:message code="trip.description" />:
+	<jstl:out value="${row.description}"></jstl:out>
+	<p>
+	
+	<spring:message code="trip.requirementsExplorers" />:
+	<jstl:out value="${row.requirementsExplorers}"></jstl:out>
+	<p>
+	
+	<spring:message code="trip.price" />:
+	<jstl:out value="${row.price}"></jstl:out>
+	<p>
+	
+	<spring:message code="trip.cancelled" />:
+	<jstl:out value="${row.cancelled}"></jstl:out>
+	<p>
 </display:column>
 	
 

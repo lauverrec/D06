@@ -89,10 +89,7 @@ public class SponsorshipService {
 
 	public Trip findByPrincipalSponsorhipTrip(Sponsorship sponsorship) {
 		Trip result;
-		Sponsor sponsor;
 
-		sponsor = this.sponsorService.findByPrincipal();
-		Assert.isTrue(sponsor.getSponsorships().equals(sponsorship));
 		result = this.sponsorshipRepository.findTripBySponsorship(sponsorship.getId());
 		return result;
 	}
