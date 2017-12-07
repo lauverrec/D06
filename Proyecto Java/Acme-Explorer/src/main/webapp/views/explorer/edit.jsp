@@ -67,10 +67,22 @@
 	<form:errors cssClass="error" path="phone" />
 	<br />
 	
+	<script type="text/javascript">
+		function valida(phone) {
+			var m = document.getElementById("phone").value;
+			var expreg = /^(\+\d{1,3})?\s?(\(\d{3}\))?\s?\d{4,100}$/;
+			
+			if(!expreg.test(m)){
+				alert("Are you sure you want to save this phone?");
+			}
+				
+		}
+
+	</script> 
 	
 	
 	<input type="submit" name="save"
-		value="<spring:message code="explorer.save" />" />&nbsp; 
+		value="<spring:message code="explorer.save" />" onclick="valida();"/>&nbsp;
 	
 	<input type="button" name="cancel"
 		value="<spring:message code="explorer.cancel" />"
