@@ -29,7 +29,7 @@
 	<form:hidden path="cancelled"/>
 	<form:hidden path="manager"/>
 	<form:hidden path="stages"/>
-	<form:hidden path="tags"/>
+	<!--<form:hidden path="tags"/>-->
 	<form:hidden path="applicationsFor"/>
 	<form:hidden path="notes"/>
 	<form:hidden path="auditRecords"/>
@@ -109,18 +109,20 @@
 	<form:errors cssClass="error" path="legalText" />
 	<br />
 	
+	--%>
 	<form:label path="tags">
 		<spring:message code="trip.tag" />:
 	</form:label>
 	<form:select id="tags" path="tags" >
-		<form:option value="0" label="----" />		
-		<form:options items="${tags}" itemValue="id"
-			itemLabel="name" />
-			<jstl:forEach items="${tags}" var="tags"> Selected item: ${tags}<br></jstl:forEach>
+			
+		<form:options items="${tags}" itemValue="id" itemLabel="name" />		
 	</form:select>
 	<form:errors cssClass="error" path="tags" />
 	<br /> 
---%>
+
+	
+
+
 	<input type="submit" name="save" value="<spring:message code="trip.save" />" />&nbsp; 
 	<jstl:if test="${trip.id != 0}">
 		<input type="submit" name="delete"

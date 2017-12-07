@@ -1,6 +1,7 @@
 
 package controllers.manager;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.validation.Valid;
@@ -137,20 +138,17 @@ public class TripManagerController extends AbstractController {
 	private ModelAndView createEditModelAndView(Trip trip, String message) {
 		ModelAndView result;
 		//Collection<Ranger> rangers;
-		Collection<Tag> tags;
 		//Collection<LegalText> legalTexts;
-
-		//rangers = this.rangerService.findAll();
-		tags = this.tagService.findAll();
 		//legalTexts = this.legalTextService.findAll();
-
+		//rangers = this.rangerService.findAll();
+		Collection<Tag> tags;
+		tags = new ArrayList<Tag>(this.tagService.findAll());
 		result = new ModelAndView("trip/edit");
 		result.addObject("trip", trip);
-		//result.addObject("rangers", rangers);
 		result.addObject("tags", tags);
-		//result.addObject("legalTexts", legalTexts);
 		result.addObject("message", message);
-
+		//result.addObject("rangers", rangers);
+		//result.addObject("legalTexts", legalTexts);
 		return result;
 	}
 }

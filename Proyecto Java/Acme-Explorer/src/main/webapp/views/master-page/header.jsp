@@ -97,6 +97,7 @@
 		
 		<security:authorize access="isAnonymous()">
 			<li><a class="fNiv" href="security/login.do"><spring:message code="master.page.login" /></a></li>
+			<li><a href="trip/list.do"><spring:message code="master.page.trips" /></a></li>
 			<li><a href="category/list.do"><spring:message code="master.page.administrator.categories" /></a></li>
 			<li><a class="fNiv"><spring:message	code="master.page.register" /></a>
 				<ul>
