@@ -49,12 +49,16 @@
 	<form:errors cssClass="error" path="organisedMoment" />
 	<br />
 	
-	 <form:label path="location">
-		<spring:message code="survivalClass.location" />:
+	
+	
+	<form:label path="location.name">
+		<spring:message code="survivalClass.location.name" />:
 	</form:label>
-	<form:input path="location" />
-	<form:errors cssClass="error" path="location" />
+	<form:input path="location.name" />
+	<form:errors cssClass="error" path="location.name" />
 	<br />
+	
+	
 	
 	
 	
