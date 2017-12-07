@@ -23,7 +23,7 @@
 
 
 <display:table name="messageFolder" class="displaytag"
-	requestURI="messageFolder/sponsor/display.do" id="row">
+	requestURI="${requestURI }" id="row">
 
 	<!-- Attributes -->
 

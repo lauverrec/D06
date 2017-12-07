@@ -20,7 +20,9 @@
 <%@taglib prefix="security"	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
+
 <form:form action="messageFolder/sponsor/edit.do" modelAttribute="messageFolder">
+
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />

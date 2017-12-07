@@ -64,7 +64,6 @@
 		<security:intercept-url pattern="/trip/manager_/**" access="hasRole('MANAGER')"/>
 		<security:intercept-url pattern="/trip/explorer/**" access="hasRole('EXPLORER')"/>
 		 <security:intercept-url pattern="/trip/administrator/**" access="hasRole('ADMINISTRATOR')" /> 
-		<security:intercept-url pattern="/messageFolder/sponsor/**" access="hasRole('SPONSOR')"/>
 		<security:intercept-url pattern="/trip/list.do" access="permitAll"/>
 		<security:intercept-url pattern="/curricula/ranger/**" access="hasRole('RANGER')"/>
 		<security:intercept-url pattern="/curricula/display.do" access="permitAll"/>
@@ -73,6 +72,12 @@
 		<security:intercept-url pattern="/professionalRecord/ranger/**" access="hasRole('RANGER')"/>
 		<security:intercept-url pattern="/educationRecord/ranger/**" access="hasRole('RANGER')"/>
 		<security:intercept-url pattern="/personalRecord/ranger/**" access="hasRole('RANGER')"/>
+		<security:intercept-url pattern="/messageFolder/sponsor/**" access="hasRole('SPONSOR')"/>
+		<security:intercept-url pattern="/messageFolder/administrator/**" access="hasRole('ADMINISTRATOR')"/>
+		<security:intercept-url pattern="/messageFolder/ranger/**" access="hasRole('RANGER')"/>
+		<security:intercept-url pattern="/messageFolder/explorer/**" access="hasRole('EXPLORER')"/>
+		<security:intercept-url pattern="/messageFolder/auditor/**" access="hasRole('AUDITOR')"/>
+		<security:intercept-url pattern="/messageFolder/manager/**" access="hasRole('MANAGER')"/>
 		
 	
 		<security:intercept-url pattern="/contactsEmergency/explorer/**" access="hasRole('EXPLORER')"/>

@@ -24,25 +24,145 @@
 <display:table name="messageFolders" id="row" requestURI="${requestURI}"
 	pagesize="5" class="displaytag" keepStatus="true">
 
-	<!-- Display -->
-	<display:column>
-		<spring:url value="messageFolder/sponsor/display.do" var="displayURL">
-			<spring:param name="messageFolderId" value="${row.id}" />
-		</spring:url>
-		<a href="${displayURL}"><spring:message
-				code="messageFolder.display" /></a>
-	</display:column>
-	
-	
-	<!-- Edit -->
-	<display:column>
-	<jstl:if test="${row.modifiable==true }">
-		<spring:url value="messageFolder/sponsor/edit.do" var="editURL">
-			<spring:param name="messageFolderId" value="${row.id }"></spring:param>
-		</spring:url>
-		<a href="${editURL }"><spring:message code="messageFolder.edit" /></a>
-		</jstl:if>
-	</display:column>
+	<!-- Botones para sponsor -->
+	<security:authorize access="hasRole('SPONSOR')">
+		<display:column>
+			<spring:url value="messageFolder/sponsor/display.do" var="displaySponsorURL">
+				<spring:param name="messageFolderId" value="${row.id}" />
+			</spring:url>
+
+			<a href="${displaySponsorURL}"><spring:message
+					code="messageFolder.display" /></a>
+		</display:column>
+
+		<display:column>
+			<jstl:if test="${row.modifiable==true }">
+				<spring:url value="messageFolder/sponsor/edit.do" var="editSponsorURL">
+					<spring:param name="messageFolderId" value="${row.id }"></spring:param>
+				</spring:url>
+				<a href="${editSponsorURL }"><spring:message code="messageFolder.edit" /></a>
+			</jstl:if>
+		</display:column>
+
+	</security:authorize>
+
+	<!-- Botones para administrator -->
+	<security:authorize access="hasRole('ADMINISTRATOR')">
+		<display:column>
+			<spring:url value="messageFolder/administrator/display.do"
+				var="displayAdministratorURL">
+				<spring:param name="messageFolderId" value="${row.id}" />
+			</spring:url>
+
+			<a href="${displayAdministratorURL}"><spring:message
+					code="messageFolder.display" /></a>
+		</display:column>
+
+		<display:column>
+			<jstl:if test="${row.modifiable==true }">
+				<spring:url value="messageFolder/administrator/edit.do"
+					var="editAdministratorURL">
+					<spring:param name="messageFolderId" value="${row.id }"></spring:param>
+				</spring:url>
+				<a href="${editAdministratorURL }"><spring:message code="messageFolder.edit" /></a>
+			</jstl:if>
+		</display:column>
+
+	</security:authorize>
+
+
+	<!-- Botones para ranger -->
+	<security:authorize access="hasRole('RANGER')">
+		<display:column>
+			<spring:url value="messageFolder/ranger/display.do" var="displayRangerURL">
+				<spring:param name="messageFolderId" value="${row.id}" />
+			</spring:url>
+
+			<a href="${displayRangerURL}"><spring:message
+					code="messageFolder.display" /></a>
+		</display:column>
+
+		<display:column>
+			<jstl:if test="${row.modifiable==true }">
+				<spring:url value="messageFolder/ranger/edit.do" var="editRangerURL">
+					<spring:param name="messageFolderId" value="${row.id }"></spring:param>
+				</spring:url>
+				<a href="${editRangerURL }"><spring:message code="messageFolder.edit" /></a>
+			</jstl:if>
+		</display:column>
+
+	</security:authorize>
+
+
+	<!-- Botones para explorer -->
+	<security:authorize access="hasRole('EXPLORER')">
+		<display:column>
+			<spring:url value="messageFolder/explorer/display.do"
+				var="displayExplorerURL">
+				<spring:param name="messageFolderId" value="${row.id}" />
+			</spring:url>
+
+			<a href="${displayExplorerURL}"><spring:message
+					code="messageFolder.display" /></a>
+		</display:column>
+
+		<display:column>
+			<jstl:if test="${row.modifiable==true }">
+				<spring:url value="messageFolder/explorer/edit.do" var="editExplorerURL">
+					<spring:param name="messageFolderId" value="${row.id }"></spring:param>
+				</spring:url>
+				<a href="${editExplorerURL }"><spring:message code="messageFolder.edit" /></a>
+			</jstl:if>
+		</display:column>
+
+	</security:authorize>
+
+	<!-- Botones para manager -->
+	<security:authorize access="hasRole('MANAGER')">
+		<display:column>
+			<spring:url value="messageFolder/manager/display.do" var="displayManagerURL">
+				<spring:param name="messageFolderId" value="${row.id}" />
+			</spring:url>
+
+			<a href="${displayManagerURL}"><spring:message
+					code="messageFolder.display" /></a>
+		</display:column>
+
+		<display:column>
+			<jstl:if test="${row.modifiable==true }">
+				<spring:url value="messageFolder/manager/edit.do" var="editManagerURL">
+					<spring:param name="messageFolderId" value="${row.id }"></spring:param>
+				</spring:url>
+				<a href="${editManagerURL }"><spring:message code="messageFolder.edit" /></a>
+			</jstl:if>
+		</display:column>
+
+	</security:authorize>
+
+	<!-- Botones para auditor -->
+	<security:authorize access="hasRole('AUDITOR')">
+		<display:column>
+			<spring:url value="messageFolder/auditor/display.do"
+				var="displayAuditorURL">
+				<spring:param name="messageFolderId" value="${row.id}" />
+			</spring:url>
+
+			<a href="${displayAuditorURL}"><spring:message
+					code="messageFolder.display" /></a>
+		</display:column>
+
+		<display:column>
+			<jstl:if test="${row.modifiable==true }">
+				<spring:url value="messageFolder/auditor/edit.do"
+					var="editAuditorURL">
+					<spring:param name="messageFolderId" value="${row.id }"></spring:param>
+				</spring:url>
+				<a href="${editAuditorURL }"><spring:message
+						code="messageFolder.edit" /></a>
+			</jstl:if>
+		</display:column>
+
+	</security:authorize>
 
 
 	<!-- Attributes -->
@@ -51,8 +171,51 @@
 
 
 </display:table>
+<security:authorize access="hasRole('SPONSOR')">
 <div>
 	<a href="messageFolder/sponsor/create.do"> <spring:message
 			code="messageFolder.create" />
 	</a>
 </div>
+</security:authorize>
+
+<security:authorize access="hasRole('ADMINISTRATOR')">
+<div>
+	<a href="messageFolder/administrator/create.do"> <spring:message
+			code="messageFolder.create" />
+	</a>
+</div>
+</security:authorize>
+
+<security:authorize access="hasRole('RANGER')">
+<div>
+	<a href="messageFolder/ranger/create.do"> <spring:message
+			code="messageFolder.create" />
+	</a>
+</div>
+</security:authorize>
+
+<security:authorize access="hasRole('EXPLORER')">
+<div>
+	<a href="messageFolder/explorer/create.do"> <spring:message
+			code="messageFolder.create" />
+	</a>
+</div>
+</security:authorize>
+
+<security:authorize access="hasRole('MANAGER')">
+<div>
+	<a href="messageFolder/manager/create.do"> <spring:message
+			code="messageFolder.create" />
+	</a>
+</div>
+</security:authorize>
+
+<security:authorize access="hasRole('AUDITOR')">
+<div>
+	<a href="messageFolder/auditor/create.do"> <spring:message
+			code="messageFolder.create" />
+	</a>
+</div>
+</security:authorize>
+
