@@ -88,7 +88,8 @@
 					<li class="arrow"></li>
 					<li><a href="trip/manager_/list.do"><spring:message code="master.page.manager.list.trips" /></a></li>
 					<li><a href="messageFolder/manager/list.do"><spring:message code="master.page.messageFolder.list" /></a></li>	
-					<li><a href="survivalClass/manager/list.do"><spring:message code="master.page.survivalClass.manager" /></a></li>		
+					<li><a href="survivalClass/manager/list.do"><spring:message code="master.page.survivalClass.manager" /></a></li>	
+					<li><a href="note/manager/list.do"><spring:message code="master.page.note.auditor.list" /></a></li>	
 				</ul>
 			</li>
 		</security:authorize>

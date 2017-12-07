@@ -82,13 +82,17 @@ public class NoteService {
 	//Yo le paso una nota instrumentada y le hago un set reply y un setreplymoment
 	// y ya se me modifica automáticamente y devuelvo la nota con los valores 
 	//anteriores y los nuevos 
-	public Note replyANote(Note note, String reply) {
+	public Note replyANote(int noteId) {
 		this.managerService.checkPrincipal();
+		Note note;
 		Date replyMoment;
+
+		note = this.findOne(noteId);
+
 		replyMoment = new Date(System.currentTimeMillis() - 1000);
-		note.setReply(reply);
 		note.setReplyMoment(replyMoment);
 		Assert.notNull(note);
+
 		return note;
 	}
 

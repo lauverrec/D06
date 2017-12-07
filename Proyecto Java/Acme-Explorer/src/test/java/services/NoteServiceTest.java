@@ -8,6 +8,7 @@ import javax.transaction.Transactional;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.util.Assert;
@@ -79,26 +80,39 @@ public class NoteServiceTest extends AbstractTest {
 		Assert.notNull(note);
 	}
 
+	//	@Test
+	//	public void testReplyANote() {
+	//		this.authenticate("auditor4");
+	//		Note note;
+	//		String reply;
+	//		Auditor auditor;
+	//
+	//		note = this.noteService.create();
+	//		auditor = this.auditorService.findOne(super.getEntityId("auditor1"));
+	//
+	//		note.setRemark(6);
+	//		note.setAuditor(auditor);
+	//		note.setBody("this is the body");
+	//
+	//		note = this.noteService.save(note);
+	//		this.unauthenticate();
+	//		this.authenticate("manager1");
+	//
+	//		reply = "I am the manager and I am writing this reply";
+	//		this.noteService.replyANote(note, reply);
+	//
+	//	}
+
 	@Test
-	public void testReplyANote() {
-		this.authenticate("auditor4");
-		Note note;
-		String reply;
-		Auditor auditor;
+	@Rollback(false)
+	public void testReplyNote() {
 
-		note = this.noteService.create();
-		auditor = this.auditorService.findOne(super.getEntityId("auditor1"));
-
-		note.setRemark(6);
-		note.setAuditor(auditor);
-		note.setBody("this is the body");
-
-		note = this.noteService.save(note);
-		this.unauthenticate();
 		this.authenticate("manager1");
+		Note note;
 
-		reply = "I am the manager and I am writing this reply";
-		this.noteService.replyANote(note, reply);
+		note = this.noteService.replyANote(super.getEntityId("note1"));
+
+		note.setReply("hola");
 
 	}
 
