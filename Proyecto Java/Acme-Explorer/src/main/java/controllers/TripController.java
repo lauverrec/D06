@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.TripService;
+import domain.AuditRecord;
+import domain.Stage;
 import domain.Tag;
 import domain.Trip;
 
@@ -68,12 +70,22 @@ public class TripController extends AbstractController {
 		ModelAndView result;
 		Trip trip;
 		Collection<Tag> tags;
+		Collection<String> requirements;
+		Collection<Stage> stages;
+		Collection<AuditRecord> auditRecords;
 
 		trip = this.tripService.findOne(tripId);
+		tags = new ArrayList<Tag>(trip.getTags());
+		requirements = new ArrayList<String>(trip.getRequirementsExplorers());
+		stages = new ArrayList<Stage>(trip.getStages());
+		auditRecords = new ArrayList<AuditRecord>(trip.getAuditRecords());
+
 		result = new ModelAndView("trip/display");
 		result.addObject("trip", trip);
-		tags = new ArrayList<Tag>(trip.getTags());
 		result.addObject("tags", tags);
+		result.addObject("requirements", requirements);
+		result.addObject("stages", stages);
+		result.addObject("auditRecords", auditRecords);
 
 		return result;
 	}
