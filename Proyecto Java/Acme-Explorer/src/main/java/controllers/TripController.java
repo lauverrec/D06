@@ -1,6 +1,7 @@
 
 package controllers;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.TripService;
+import domain.Tag;
 import domain.Trip;
 
 @Controller
@@ -56,6 +58,22 @@ public class TripController extends AbstractController {
 		result = new ModelAndView("trip/list");
 		result.addObject("trips", trips);
 		result.addObject("requestURI", "trip/category/list.do");
+
+		return result;
+	}
+
+	// Display ---------------------------------------------------------
+	@RequestMapping(value = "/display", method = RequestMethod.GET)
+	public ModelAndView display(@RequestParam final int tripId) {
+		ModelAndView result;
+		Trip trip;
+		Collection<Tag> tags;
+
+		trip = this.tripService.findOne(tripId);
+		result = new ModelAndView("trip/display");
+		result.addObject("trip", trip);
+		tags = new ArrayList<Tag>(trip.getTags());
+		result.addObject("tags", tags);
 
 		return result;
 	}

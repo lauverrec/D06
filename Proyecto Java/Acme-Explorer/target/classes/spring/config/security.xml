@@ -65,6 +65,7 @@
 		<security:intercept-url pattern="/trip/explorer/**" access="hasRole('EXPLORER')"/>
 		 <security:intercept-url pattern="/trip/administrator/**" access="hasRole('ADMINISTRATOR')" /> 
 		<security:intercept-url pattern="/trip/list.do" access="permitAll"/>
+		<security:intercept-url pattern="/trip/display.do" access="permitAll"/>
 		<security:intercept-url pattern="/curricula/ranger/**" access="hasRole('RANGER')"/>
 		<security:intercept-url pattern="/curricula/display.do" access="permitAll"/>
 		<security:intercept-url pattern="/miscellaneousRecord/ranger/**" access="hasRole('RANGER')"/>

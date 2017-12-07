@@ -69,7 +69,7 @@
 
 <!-- Display -->
 	<display:column>
-		<spring:url value="trip/manager_/display.do" var="displaydURL">
+		<spring:url value="trip/display.do" var="displayURL">
 			<spring:param name="tripId" value="${row.id}" />
 		</spring:url>
 		<a href="${displayURL}"><spring:message code="trip.display" /></a>
