@@ -15,4 +15,7 @@ public interface MessageFolderRepository extends JpaRepository<MessageFolder, In
 	@Query("select m from Actor a join  a.messagesFolders m where a.id=?1")
 	Collection<MessageFolder> ActorFolders(int ActorId);
 
+	@Query("select c.name from MessageFolder c")
+	Collection<String> nameOfFolders();
+
 }

@@ -66,20 +66,21 @@ public class MessageFolderService {
 		messagefolder = this.messageFolderRepository.findAll();
 		return messagefolder;
 	}
-	public MessageFolder save(final MessageFolder messageFolder) {
-		final Actor actorPrincipal;
+	public MessageFolder save(MessageFolder messageFolder) {
+		Actor actor;
 		MessageFolder res;
 
-		actorPrincipal = this.actorService.findPrincipal();
-		Assert.notNull(actorPrincipal);
+		actor = this.actorService.findPrincipal();
+
 		Assert.notNull(messageFolder);
+		Assert.notNull(actor);
 
 		res = this.messageFolderRepository.save(messageFolder);
-		//Se le añade al actor el messageFolder INSTRUMENTADO
-		actorPrincipal.getMessagesFolders().add(res);
+		if (messageFolder.getId() == 0)
+			actor.getMessagesFolders().add(res);
 		Assert.notNull(res);
-
 		return res;
+
 	}
 	public void delete(final MessageFolder messageFolder) {
 		final Actor actorPrincipal;
@@ -122,9 +123,11 @@ public class MessageFolderService {
 		MessageFolder trashbox;
 		MessageFolder spambox;
 		MessageFolder notificationbox;
-
+		Collection<String> nameFolders;
 		Collection<MessageFolder> res;
-		final Collection<Message> messages;
+		Collection<Message> messages;
+
+		nameFolders = new ArrayList<String>();
 		res = new ArrayList<MessageFolder>();
 		messages = new ArrayList<>();
 		inbox = new MessageFolder();
@@ -151,7 +154,9 @@ public class MessageFolderService {
 		trashbox.setMessages(messages);
 		spambox.setMessages(messages);
 
-		if (!(actor.getMessagesFolders().contains(inbox) && actor.getMessagesFolders().contains(outbox))) {
+		nameFolders = this.messageFolderRepository.nameOfFolders();
+
+		if (!nameFolders.contains("In box")) {
 			inbox = this.messageFolderRepository.save(inbox);
 			outbox = this.messageFolderRepository.save(outbox);
 			notificationbox = this.messageFolderRepository.save(notificationbox);

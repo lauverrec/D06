@@ -15,6 +15,7 @@ import org.springframework.util.Assert;
 import utilities.AbstractTest;
 import domain.Administrator;
 import domain.MessageFolder;
+import domain.Sponsor;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {
@@ -28,6 +29,9 @@ public class MessageFolderServiceTest extends AbstractTest {
 	private MessageFolderService	messageFolderService;
 	@Autowired
 	private AdministratorService	administratorService;
+
+	@Autowired
+	private SponsorService			sponsorService;
 
 
 	// Supporting services ----------------------------------------------------
@@ -67,30 +71,32 @@ public class MessageFolderServiceTest extends AbstractTest {
 
 	@Test
 	public void testCreateDefaultChapter() {
-		Administrator administrator;
-		final Collection<MessageFolder> folders;
-		administrator = this.administratorService.create();
-		folders = this.messageFolderService.createDefaultFolders();
-
-		administrator.setName("name");
-		administrator.setSurname("surname");
-		administrator.setEmail("email@gmail.com");
-		administrator.setPhone("31333");
-		administrator.setAddress("address");
-		administrator.getMessagesFolders().addAll(folders);
-
-		administrator = this.administratorService.save(administrator);
+		this.authenticate("sponsor1");
+		Sponsor sponsor;
+		sponsor = this.sponsorService.findByPrincipal();
+		this.messageFolderService.createDefaultFolders();
+		Assert.isTrue(sponsor.getMessagesFolders().size() >= 2);
 
 	}
-
 	@Test
 	public void testFindAllByActorAuthenticate() {
-		this.authenticate("administrator1");
+		this.authenticate("sponsor1");
 		Collection<MessageFolder> messageFolders;
 
 		messageFolders = this.messageFolderService.findAllByActorAutenticate();
 		Assert.notNull(messageFolders);
 		Assert.notEmpty(messageFolders);
+		for (MessageFolder me : messageFolders)
+			System.out.println(me.getName());
+
+	}
+
+	@Test
+	public void testUpdate() {
+		this.authenticate("sponsor1");
+		MessageFolder folderModify;
+		folderModify = this.messageFolderService.findOne(131072);
+		folderModify.setName("asf");
 
 	}
 }

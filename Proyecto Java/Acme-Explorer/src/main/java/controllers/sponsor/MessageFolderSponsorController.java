@@ -81,7 +81,7 @@ public class MessageFolderSponsorController extends AbstractController {
 		ModelAndView result;
 
 		if (bindingResult.hasErrors())
-			result = this.createEditModelAndView(messageFolder, "error");
+			result = this.createEditModelAndView(messageFolder);
 		else
 			try {
 				this.messageFolderService.save(messageFolder);
@@ -121,13 +121,13 @@ public class MessageFolderSponsorController extends AbstractController {
 		return result;
 	}
 	// Ancillary methods ------------------------------------------------------
-	protected ModelAndView createEditModelAndView(final MessageFolder messageFolder) {
+	protected ModelAndView createEditModelAndView(MessageFolder messageFolder) {
 		ModelAndView result;
 		result = this.createEditModelAndView(messageFolder, null);
 		return result;
 	}
 
-	protected ModelAndView createEditModelAndView(final MessageFolder messageFolder, final String messageCode) {
+	protected ModelAndView createEditModelAndView(MessageFolder messageFolder, String messageCode) {
 		ModelAndView result;
 		Collection<Message> mess;
 
