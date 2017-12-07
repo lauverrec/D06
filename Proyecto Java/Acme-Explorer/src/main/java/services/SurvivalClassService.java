@@ -32,6 +32,9 @@ public class SurvivalClassService {
 	@Autowired
 	private ManagerService			managerService;
 
+	@Autowired
+	private TripService				tripService;
+
 
 	// Constructors-------------------------------------------------------
 
@@ -125,5 +128,17 @@ public class SurvivalClassService {
 
 		this.survivalClassRecordRepository.delete(survivalClass);
 
+	}
+
+	//Other bussines methods--------------------------------------------------------
+
+	public Collection<SurvivalClass> findSurvivalClassByManager() {
+		Collection<SurvivalClass> classes;
+		Trip trip;
+
+		trip = this.tripService.findAll().iterator().next();
+		classes = this.survivalClassRecordRepository.findSurvivalClassByManager(trip.getId());
+
+		return classes;
 	}
 }
