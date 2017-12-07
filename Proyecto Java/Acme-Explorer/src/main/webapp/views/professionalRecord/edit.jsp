@@ -19,41 +19,56 @@
 <%@taglib prefix="security"	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
-<form:form action="${RequestURI }" modelAttribute="miscellaneousRecord">
+<form:form action="${RequestURI }" modelAttribute="professionalRecord">
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />
 	
-	<form:label path="title">
-		<spring:message code="miscellaneousRecord.title" />:
+	<form:label path="companyName">
+		<spring:message code="professionalRecord.companyName" />:
 	</form:label>
-	<form:input path="title"/>
-	<form:errors cssClass="error" path="title" />
+	<form:input path="companyName"/>
+	<form:errors cssClass="error" path="companyName" />
+	<br />
+	
+	<form:label path="workPeriod">
+		<spring:message code="professionalRecord.workPeriod" />:
+	</form:label>
+	<form:input path="workPeriod"/>
+	<form:errors cssClass="error" path="workPeriod" />
+	<br />
+	
+	<form:label path="role">
+		<spring:message code="professionalRecord.role" />:
+	</form:label>
+	<form:input path="role"/>
+	<form:errors cssClass="error" path="role" />
 	<br />
 	
 	<form:label path="link">
-		<spring:message code="miscellaneousRecord.link" />:
+		<spring:message code="professionalRecord.link" />:
 	</form:label>
 	<form:input path="link"/>
 	<form:errors cssClass="error" path="link" />
 	<br />
 	
 	<form:label path="comments">
-		<spring:message code="miscellaneousRecord.comments" />:
+		<spring:message code="professionalRecord.comments" />:
 	</form:label>
 	<form:input path="comments"/>
 	<form:errors cssClass="error" path="comments" />
 	<br />
+	
 
 	<input type="submit" name="save"
-		value="<spring:message code="miscellaneousRecord.save" />" />&nbsp; 
-	<jstl:if test="${miscellaneousRecord.id != 0}">
+		value="<spring:message code="professionalRecord.save" />" />&nbsp; 
+	<jstl:if test="${professionalRecord.id != 0}">
 		<input type="submit" name="delete"
-			value="<spring:message code="miscellaneousRecord.delete" />"
-			onclick="javascript: return confirm('<spring:message code="miscellaneousRecord.confirm.delete" />')" />&nbsp;
+			value="<spring:message code="professionalRecord.delete" />"
+			onclick="javascript: return confirm('<spring:message code="professionalRecord.confirm.delete" />')" />&nbsp;
 	</jstl:if>
 	<input type="button" name="cancel"
-		value="<spring:message code="miscellaneousRecord.cancel" />"
+		value="<spring:message code="professionalRecord.cancel" />"
 		onclick="javascript:  window.location.replace('curricula/ranger/display.do');" />
 	<br />
 </form:form>

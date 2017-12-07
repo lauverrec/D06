@@ -76,9 +76,9 @@ public class MiscellaneousRecordRangerController extends AbstractController {
 			result = this.createEditModelAndView(miscellaneousRecord);
 		else
 			try {
-				//TODO ESPI: Cambiar el list.do
+				//TODO ESPI: Falla al hacer edit por hacer miscellaneousRecordService.save en un miscellaneous sacado de la bd
 				this.miscellaneousRecordService.save(miscellaneousRecord);
-				result = new ModelAndView("redirect:list.do");
+				result = new ModelAndView("redirect:/curricula/ranger/display.do");
 			} catch (final Throwable oops) {
 				result = this.createEditModelAndView(miscellaneousRecord, "miscellaneousRecord.commit.error");
 			}
@@ -96,7 +96,7 @@ public class MiscellaneousRecordRangerController extends AbstractController {
 
 		try {
 			this.miscellaneousRecordService.delete(miscellaneousRecord);
-			result = new ModelAndView("redirect:list.do");
+			result = new ModelAndView("redirect:/curricula/ranger/display.do");
 		} catch (final Throwable oops) {
 			result = this.createEditModelAndView(miscellaneousRecord, "miscellaneousRecord.commit.error");
 		}
@@ -121,6 +121,7 @@ public class MiscellaneousRecordRangerController extends AbstractController {
 		result = new ModelAndView("miscellaneousRecord/edit");
 		result.addObject("miscellaneousRecord", miscellaneousRecord);
 		result.addObject("message", messageCode);
+		result.addObject("RequestURI", "miscellaneousRecord/ranger/edit.do");
 
 		return result;
 

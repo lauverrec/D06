@@ -19,41 +19,55 @@
 <%@taglib prefix="security"	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
-<form:form action="${RequestURI }" modelAttribute="miscellaneousRecord">
+<form:form action="${RequestURI }" modelAttribute="endorserRecord">
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />
 	
-	<form:label path="title">
-		<spring:message code="miscellaneousRecord.title" />:
+	<form:label path="fullName">
+		<spring:message code="endorserRecord.fullName" />:
 	</form:label>
-	<form:input path="title"/>
-	<form:errors cssClass="error" path="title" />
+	<form:input path="fullName"/>
+	<form:errors cssClass="error" path="fullName" />
 	<br />
 	
-	<form:label path="link">
-		<spring:message code="miscellaneousRecord.link" />:
+	<form:label path="email">
+		<spring:message code="endorserRecord.email" />:
 	</form:label>
-	<form:input path="link"/>
-	<form:errors cssClass="error" path="link" />
+	<form:input path="email"/>
+	<form:errors cssClass="error" path="email" />
+	<br />
+	
+	<form:label path="linkedProfile">
+		<spring:message code="endorserRecord.linkedProfile" />:
+	</form:label>
+	<form:input path="linkedProfile"/>
+	<form:errors cssClass="error" path="linkedProfile" />
 	<br />
 	
 	<form:label path="comments">
-		<spring:message code="miscellaneousRecord.comments" />:
+		<spring:message code="endorserRecord.comments" />:
 	</form:label>
 	<form:input path="comments"/>
 	<form:errors cssClass="error" path="comments" />
 	<br />
+	
+	<form:label path="phone">
+		<spring:message code="endorserRecord.phone" />:
+	</form:label>
+	<form:input path="phone"/>
+	<form:errors cssClass="error" path="phone" />
+	<br />
 
 	<input type="submit" name="save"
-		value="<spring:message code="miscellaneousRecord.save" />" />&nbsp; 
-	<jstl:if test="${miscellaneousRecord.id != 0}">
+		value="<spring:message code="endorserRecord.save" />" />&nbsp; 
+	<jstl:if test="${endorserRecord.id != 0}">
 		<input type="submit" name="delete"
-			value="<spring:message code="miscellaneousRecord.delete" />"
-			onclick="javascript: return confirm('<spring:message code="miscellaneousRecord.confirm.delete" />')" />&nbsp;
+			value="<spring:message code="endorserRecord.delete" />"
+			onclick="javascript: return confirm('<spring:message code="endorserRecord.confirm.delete" />')" />&nbsp;
 	</jstl:if>
 	<input type="button" name="cancel"
-		value="<spring:message code="miscellaneousRecord.cancel" />"
+		value="<spring:message code="endorserRecord.cancel" />"
 		onclick="javascript:  window.location.replace('curricula/ranger/display.do');" />
 	<br />
 </form:form>

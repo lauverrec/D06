@@ -11,7 +11,9 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import repositories.MiscellaneousRecordRepository;
+import domain.Curricula;
 import domain.MiscellaneousRecord;
+import domain.Ranger;
 
 @Service
 @Transactional
@@ -22,8 +24,14 @@ public class MiscellaneousRecordService {
 	@Autowired
 	private MiscellaneousRecordRepository	miscellaneousRecordRepository;
 
-
 	// Supporting services ----------------------------------------------------
+
+	@Autowired
+	private RangerService					rangerService;
+
+	@Autowired
+	private CurriculaService				curriculaService;
+
 
 	// Constructors-------------------------------------------------------
 
@@ -59,7 +67,7 @@ public class MiscellaneousRecordService {
 		return result;
 	}
 
-	public MiscellaneousRecord findOne(int miscellaneousRecordId) {
+	public MiscellaneousRecord findOne(final int miscellaneousRecordId) {
 
 		Assert.notNull(miscellaneousRecordId);
 		Assert.isTrue(miscellaneousRecordId != 0);
@@ -70,33 +78,43 @@ public class MiscellaneousRecordService {
 
 		return result;
 	}
-	public MiscellaneousRecord save(MiscellaneousRecord miscellaneousRecord) {
+	public MiscellaneousRecord save(final MiscellaneousRecord miscellaneousRecord) {
 
 		Assert.notNull(miscellaneousRecord);
 
 		MiscellaneousRecord result;
+		Ranger rangerPrincipal;
+		final Curricula curriculaPrincipal;
 
 		result = this.miscellaneousRecordRepository.save(miscellaneousRecord);
+		rangerPrincipal = this.rangerService.findByPrincipal();
+		curriculaPrincipal = this.curriculaService.findCurriculaFromRanger(rangerPrincipal.getId());
+		curriculaPrincipal.getMiscellaneousRecords().add(result);
 
 		Assert.notNull(result);
 
 		return result;
 	}
-
-	public void delete(MiscellaneousRecord miscellaneousRecord) {
+	public void delete(final MiscellaneousRecord miscellaneousRecord) {
 
 		Assert.notNull(miscellaneousRecord);
 		Assert.isTrue(miscellaneousRecord.getId() != 0);
 
+		Ranger rangerPrincipal;
+		final Curricula curriculaPrincipal;
+
+		rangerPrincipal = this.rangerService.findByPrincipal();
+		curriculaPrincipal = this.curriculaService.findCurriculaFromRanger(rangerPrincipal.getId());
+		curriculaPrincipal.getMiscellaneousRecords().remove(miscellaneousRecord);
 		this.miscellaneousRecordRepository.delete(miscellaneousRecord);
 
 		Assert.isNull(this.miscellaneousRecordRepository.findOne(miscellaneousRecord.getId()));
 
 	}
 
-	public Collection<MiscellaneousRecord> saveAll(Collection<MiscellaneousRecord> miscellaneousRecords) {
+	public Collection<MiscellaneousRecord> saveAll(final Collection<MiscellaneousRecord> miscellaneousRecords) {
 		Assert.notNull(miscellaneousRecords);
-		List<MiscellaneousRecord> newMiscellaneousRecords = new ArrayList<MiscellaneousRecord>();
+		final List<MiscellaneousRecord> newMiscellaneousRecords = new ArrayList<MiscellaneousRecord>();
 		newMiscellaneousRecords.addAll(this.miscellaneousRecordRepository.save(miscellaneousRecords));
 
 		return newMiscellaneousRecords;

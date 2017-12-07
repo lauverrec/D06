@@ -44,7 +44,8 @@
 		<value>/views/messageFolder/messages</value>
 		<value>/views/curricula/messages</value>
 		<value>/views/miscellaneousRecord/messages</value>
-		
+		<value>/views/endorserRecord/messages</value>
+		<value>/views/professionalRecord/messages</value>
 	</util:list>
 
 </beans>
