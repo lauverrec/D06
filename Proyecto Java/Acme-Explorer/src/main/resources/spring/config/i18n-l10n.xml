@@ -41,6 +41,9 @@
 		<value>/views/story/messages</value>
 		<value>/views/message/messages</value>
 		<value>/views/messageFolder/messages</value>
+		<value>/views/messageFolder/messages</value>
+		<value>/views/curricula/messages</value>
+		<value>/views/miscellaneousRecord/messages</value>
 		
 	</util:list>
 

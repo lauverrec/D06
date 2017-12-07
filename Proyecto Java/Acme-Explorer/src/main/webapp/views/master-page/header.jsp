@@ -75,6 +75,7 @@
 				<ul>
 					<li class="arrow"></li>
 					<li><a href="rangerProfile/ranger/edit.do"><spring:message code="master.page.rangerProfile.ranger.edit" /></a></li>
+					<li><a href="curricula/ranger/display.do"><spring:message code="master.page.curricula.ranger.display" /></a></li>
 									
 				</ul>
 			</li>

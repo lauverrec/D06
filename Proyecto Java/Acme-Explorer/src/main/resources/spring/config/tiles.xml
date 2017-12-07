@@ -40,6 +40,8 @@
 		<value>/views/story/tiles.xml</value>
 		<value>/views/message/tiles.xml</value>
 		<value>/views/messageFolder/tiles.xml</value>
+		<value>/views/curricula/tiles.xml/</value>
+		<value>/views/miscellaneousRecord/tiles.xml/</value>
 		
 		
 		

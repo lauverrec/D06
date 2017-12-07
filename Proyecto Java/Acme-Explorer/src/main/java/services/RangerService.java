@@ -76,7 +76,7 @@ public class RangerService {
 		return result;
 	}
 
-	public Ranger findOne(int rangerId) {
+	public Ranger findOne(final int rangerId) {
 
 		Assert.isTrue(rangerId != 0);
 		Ranger result;
@@ -85,7 +85,7 @@ public class RangerService {
 		return result;
 	}
 
-	public Ranger save(Ranger ranger) {
+	public Ranger save(final Ranger ranger) {
 
 		Assert.notNull(ranger);
 		Ranger result;
@@ -96,7 +96,7 @@ public class RangerService {
 		return result;
 	}
 
-	public void delete(Ranger ranger) {
+	public void delete(final Ranger ranger) {
 
 		Assert.notNull(ranger);
 		Assert.isTrue(ranger.getId() != 0);
@@ -120,13 +120,13 @@ public class RangerService {
 	}
 	public void checkPrincipal() {
 
-		UserAccount userAccount = LoginService.getPrincipal();
+		final UserAccount userAccount = LoginService.getPrincipal();
 		Assert.notNull(userAccount);
 
-		Collection<Authority> authorities = userAccount.getAuthorities();
+		final Collection<Authority> authorities = userAccount.getAuthorities();
 		Assert.notNull(authorities);
 
-		Authority auth = new Authority();
+		final Authority auth = new Authority();
 		auth.setAuthority("RANGER");
 
 		Assert.isTrue(authorities.contains(auth));
