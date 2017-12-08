@@ -102,7 +102,7 @@
 		
 		<jstl:if test="${!apply}">
 			<display:column>
-				<spring:url value="trip/explorer/apply.do" var="applyURL">
+				<spring:url value="applicationFor/explorer/edit.do" var="applyURL">
 					<spring:param name="tripId" value="${row.id }" />
 				</spring:url>
 				<a href="${applyURL}"><spring:message code="trip.apply" /></a>

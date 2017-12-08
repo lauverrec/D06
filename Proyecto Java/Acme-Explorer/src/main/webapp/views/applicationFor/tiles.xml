@@ -16,15 +16,18 @@
       
 <tiles-definitions>
 
-	<definition name="applicationfor/list" extends="master.page">	
+	<definition name="applicationFor/list" extends="master.page">	
 		<put-attribute name="title" value="List Applications" />
 		<put-attribute name="body" value="/views/applicationFor/list.jsp" />
 	</definition>
 	
-	<definition name="applicationfor/edit" extends="master.page">	
+	<definition name="applicationFor/edit" extends="master.page">	
 		<put-attribute name="title" value="Edit Application" />
 		<put-attribute name="body" value="/views/applicationFor/edit.jsp" />
 	</definition>
+	
+
+	
 	
 
 </tiles-definitions>
