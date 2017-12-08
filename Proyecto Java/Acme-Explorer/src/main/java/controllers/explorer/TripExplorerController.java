@@ -46,6 +46,7 @@ public class TripExplorerController extends AbstractController {
 
 		result = new ModelAndView("trip/list");
 		result.addObject("trips", trips);
+		result.addObject("apply", true);
 		result.addObject("requestURI", "trip/explorer/list-apply.do");
 
 		return result;
@@ -62,6 +63,7 @@ public class TripExplorerController extends AbstractController {
 
 		result = new ModelAndView("trip/list");
 		result.addObject("trips", trips);
+		result.addObject("apply", false);
 		result.addObject("requestURI", "trip/explorer/list-not-apply.do");
 
 		return result;
