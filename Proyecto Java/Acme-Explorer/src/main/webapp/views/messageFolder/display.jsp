@@ -41,8 +41,13 @@
 		<p>
 			<spring:message code="messageFolder.messages"></spring:message>
 			<jstl:out value=":" />
-			<jstl:out value="${row.messages}"></jstl:out>
-			
+
+			<jstl:forEach var="messag" items="${row.messages }">
+				<jstl:out value="${messag.subject }"/>
+
+			</jstl:forEach>
+
+
 		</p>
 
 

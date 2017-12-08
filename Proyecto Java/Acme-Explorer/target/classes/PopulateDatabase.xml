@@ -438,7 +438,7 @@
 		<property name="subject" value="subject 1" />
 		<property name="body" value="body 1" />
 		<property name="priority" value="HIGH" />
-		<property name="messageFolder" ref="messageFolder1" />
+		<property name="messageFolder" ref="InBoxAdministrator1" />
 		<property name="sender" ref="administrator1" />
 		<property name="recipient" ref="administrator2" />
 	</bean>
@@ -448,7 +448,7 @@
 		<property name="subject" value="subject 2" />
 		<property name="body" value="body 2" />
 		<property name="priority" value="HIGH" />
-		<property name="messageFolder" ref="messageFolder2" />
+		<property name="messageFolder" ref="InBoxAdministrator1" />
 		<property name="sender" ref="auditor1" />
 		<property name="recipient" ref="auditor2" />
 	</bean>
@@ -462,6 +462,8 @@
 		<property name="modifiable" value="false" />
 		<property name="messages">
 			<list>
+				<ref bean="message1" />
+				<ref bean="message2" />
 			</list>
 		</property>
 	</bean>
@@ -909,7 +911,7 @@
 			</list>
 		</property>
 	</bean>
-	
+
 	<!-- Default folder of manager -->
 	<bean id="InBoxManager1" class="domain.MessageFolder">
 		<property name="name" value="In box" />
@@ -1135,9 +1137,9 @@
 			</list>
 		</property>
 	</bean>
-	
+
 	<!-- Folder of explorer -->
-	
+
 	<bean id="InBoxExplorer1" class="domain.MessageFolder">
 		<property name="name" value="In box" />
 		<property name="modifiable" value="false" />
@@ -1362,7 +1364,7 @@
 			</list>
 		</property>
 	</bean>
-	
+
 	<bean id="InBoxExplorer6" class="domain.MessageFolder">
 		<property name="name" value="In box" />
 		<property name="modifiable" value="false" />
@@ -1407,9 +1409,9 @@
 			</list>
 		</property>
 	</bean>
-	
+
 	<!-- Folder of auditor -->
-	
+
 	<bean id="InBoxAuditor1" class="domain.MessageFolder">
 		<property name="name" value="In box" />
 		<property name="modifiable" value="false" />
@@ -1634,9 +1636,9 @@
 			</list>
 		</property>
 	</bean>
-	
+
 	<!-- Folder of sponsor -->
-	
+
 	<bean id="InBoxSponsor1" class="domain.MessageFolder">
 		<property name="name" value="In box" />
 		<property name="modifiable" value="false" />
@@ -1861,8 +1863,8 @@
 			</list>
 		</property>
 	</bean>
-	
-	
+
+
 
 
 	<bean id="messageFolder1" class="domain.MessageFolder">
@@ -1870,7 +1872,6 @@
 		<property name="modifiable" value="true" />
 		<property name="messages">
 			<list>
-				<ref bean="message1" />
 			</list>
 		</property>
 	</bean>
@@ -1881,7 +1882,6 @@
 		<property name="modifiable" value="true" />
 		<property name="messages">
 			<list>
-				<ref bean="message2" />
 			</list>
 		</property>
 	</bean>
@@ -2145,11 +2145,11 @@
 				<ref bean="NotificationBoxAdministrator1" />
 				<ref bean="TrashBoxAdministrator1" />
 				<ref bean="SpamBoxAdministrator1" />
-				<ref bean="messageFolder1"/>
-				<ref bean="messageFolder2"/>
-				<ref bean="messageFolder3"/>
-				<ref bean="messageFolder4"/>
-				<ref bean="messageFolder5"/>
+				<ref bean="messageFolder1" />
+				<ref bean="messageFolder2" />
+				<ref bean="messageFolder3" />
+				<ref bean="messageFolder4" />
+				<ref bean="messageFolder5" />
 			</list>
 		</property>
 		<property name="socialIdentities">
@@ -2269,11 +2269,11 @@
 		<property name="userAccount" ref="userAccountSponsor1" />
 		<property name="messagesFolders">
 			<list>
-			<ref bean="InBoxSponsor1"/>
-			<ref bean="OutBoxSponsor1"/>
-			<ref bean="NotificationBoxSponsor1"/>
-			<ref bean="TrashBoxSponsor1"/>
-			<ref bean="SpamBoxSponsor1"/>
+				<ref bean="InBoxSponsor1" />
+				<ref bean="OutBoxSponsor1" />
+				<ref bean="NotificationBoxSponsor1" />
+				<ref bean="TrashBoxSponsor1" />
+				<ref bean="SpamBoxSponsor1" />
 			</list>
 		</property>
 		<property name="socialIdentities">
@@ -2297,11 +2297,11 @@
 		<property name="userAccount" ref="userAccountSponsor2" />
 		<property name="messagesFolders">
 			<list>
-			<ref bean="InBoxSponsor2"/>
-			<ref bean="OutBoxSponsor2"/>
-			<ref bean="NotificationBoxSponsor2"/>
-			<ref bean="TrashBoxSponsor2"/>
-			<ref bean="SpamBoxSponsor2"/>
+				<ref bean="InBoxSponsor2" />
+				<ref bean="OutBoxSponsor2" />
+				<ref bean="NotificationBoxSponsor2" />
+				<ref bean="TrashBoxSponsor2" />
+				<ref bean="SpamBoxSponsor2" />
 			</list>
 		</property>
 		<property name="socialIdentities">
@@ -2325,11 +2325,11 @@
 		<property name="userAccount" ref="userAccountSponsor3" />
 		<property name="messagesFolders">
 			<list>
-			<ref bean="InBoxSponsor3"/>
-			<ref bean="OutBoxSponsor3"/>
-			<ref bean="NotificationBoxSponsor3"/>
-			<ref bean="TrashBoxSponsor3"/>
-			<ref bean="SpamBoxSponsor3"/>
+				<ref bean="InBoxSponsor3" />
+				<ref bean="OutBoxSponsor3" />
+				<ref bean="NotificationBoxSponsor3" />
+				<ref bean="TrashBoxSponsor3" />
+				<ref bean="SpamBoxSponsor3" />
 			</list>
 		</property>
 		<property name="socialIdentities">
@@ -2353,11 +2353,11 @@
 		<property name="userAccount" ref="userAccountSponsor4" />
 		<property name="messagesFolders">
 			<list>
-			<ref bean="InBoxSponsor4"/>
-			<ref bean="OutBoxSponsor4"/>
-			<ref bean="NotificationBoxSponsor4"/>
-			<ref bean="TrashBoxSponsor4"/>
-			<ref bean="SpamBoxSponsor4"/>
+				<ref bean="InBoxSponsor4" />
+				<ref bean="OutBoxSponsor4" />
+				<ref bean="NotificationBoxSponsor4" />
+				<ref bean="TrashBoxSponsor4" />
+				<ref bean="SpamBoxSponsor4" />
 			</list>
 		</property>
 		<property name="socialIdentities">
@@ -2381,11 +2381,11 @@
 		<property name="userAccount" ref="userAccountSponsor5" />
 		<property name="messagesFolders">
 			<list>
-			<ref bean="InBoxSponsor5"/>
-			<ref bean="OutBoxSponsor5"/>
-			<ref bean="NotificationBoxSponsor5"/>
-			<ref bean="TrashBoxSponsor5"/>
-			<ref bean="SpamBoxSponsor5"/>
+				<ref bean="InBoxSponsor5" />
+				<ref bean="OutBoxSponsor5" />
+				<ref bean="NotificationBoxSponsor5" />
+				<ref bean="TrashBoxSponsor5" />
+				<ref bean="SpamBoxSponsor5" />
 			</list>
 		</property>
 		<property name="socialIdentities">
@@ -2841,11 +2841,11 @@
 		<property name="suspicious" value="True"></property>
 		<property name="messagesFolders">
 			<list>
-			<ref bean="InBoxRanger1"/>
-			<ref bean="OutBoxRanger1"/>
-			<ref bean="NotificationBoxRanger1"/>
-			<ref bean="TrashBoxRanger1"/>
-			<ref bean="SpamBoxRanger1"/>
+				<ref bean="InBoxRanger1" />
+				<ref bean="OutBoxRanger1" />
+				<ref bean="NotificationBoxRanger1" />
+				<ref bean="TrashBoxRanger1" />
+				<ref bean="SpamBoxRanger1" />
 			</list>
 		</property>
 		<property name="trips">
@@ -2869,11 +2869,11 @@
 		</property>
 		<property name="messagesFolders">
 			<list>
-			<ref bean="InBoxRanger2"/>
-			<ref bean="OutBoxRanger2"/>
-			<ref bean="NotificationBoxRanger2"/>
-			<ref bean="TrashBoxRanger2"/>
-			<ref bean="SpamBoxRanger2"/>
+				<ref bean="InBoxRanger2" />
+				<ref bean="OutBoxRanger2" />
+				<ref bean="NotificationBoxRanger2" />
+				<ref bean="TrashBoxRanger2" />
+				<ref bean="SpamBoxRanger2" />
 			</list>
 		</property>
 		<property name="trips">
@@ -2896,11 +2896,11 @@
 		</property>
 		<property name="messagesFolders">
 			<list>
-			<ref bean="InBoxRanger3"/>
-			<ref bean="OutBoxRanger3"/>
-			<ref bean="NotificationBoxRanger3"/>
-			<ref bean="TrashBoxRanger3"/>
-			<ref bean="SpamBoxRanger3"/>
+				<ref bean="InBoxRanger3" />
+				<ref bean="OutBoxRanger3" />
+				<ref bean="NotificationBoxRanger3" />
+				<ref bean="TrashBoxRanger3" />
+				<ref bean="SpamBoxRanger3" />
 			</list>
 		</property>
 		<property name="trips">
@@ -2923,11 +2923,11 @@
 		</property>
 		<property name="messagesFolders">
 			<list>
-			<ref bean="InBoxRanger4"/>
-			<ref bean="OutBoxRanger4"/>
-			<ref bean="NotificationBoxRanger4"/>
-			<ref bean="TrashBoxRanger4"/>
-			<ref bean="SpamBoxRanger4"/>
+				<ref bean="InBoxRanger4" />
+				<ref bean="OutBoxRanger4" />
+				<ref bean="NotificationBoxRanger4" />
+				<ref bean="TrashBoxRanger4" />
+				<ref bean="SpamBoxRanger4" />
 			</list>
 		</property>
 		<property name="trips">
@@ -2950,11 +2950,11 @@
 		</property>
 		<property name="messagesFolders">
 			<list>
-			<ref bean="InBoxRanger5"/>
-			<ref bean="OutBoxRanger5"/>
-			<ref bean="NotificationBoxRanger5"/>
-			<ref bean="TrashBoxRanger5"/>
-			<ref bean="SpamBoxRanger5"/>
+				<ref bean="InBoxRanger5" />
+				<ref bean="OutBoxRanger5" />
+				<ref bean="NotificationBoxRanger5" />
+				<ref bean="TrashBoxRanger5" />
+				<ref bean="SpamBoxRanger5" />
 			</list>
 		</property>
 		<property name="trips">
@@ -2980,11 +2980,11 @@
 		</property>
 		<property name="messagesFolders">
 			<list>
-			<ref bean="InBoxAuditor1"/>
-			<ref bean="OutBoxAuditor1"/>
-			<ref bean="NotificationBoxAuditor1"/>
-			<ref bean="TrashBoxAuditor1"/>
-			<ref bean="SpamBoxAuditor1"/>
+				<ref bean="InBoxAuditor1" />
+				<ref bean="OutBoxAuditor1" />
+				<ref bean="NotificationBoxAuditor1" />
+				<ref bean="TrashBoxAuditor1" />
+				<ref bean="SpamBoxAuditor1" />
 			</list>
 		</property>
 		<property name="auditRecords">
@@ -3013,11 +3013,11 @@
 		</property>
 		<property name="messagesFolders">
 			<list>
-			<ref bean="InBoxAuditor2"/>
-			<ref bean="OutBoxAuditor2"/>
-			<ref bean="NotificationBoxAuditor2"/>
-			<ref bean="TrashBoxAuditor2"/>
-			<ref bean="SpamBoxAuditor2"/>
+				<ref bean="InBoxAuditor2" />
+				<ref bean="OutBoxAuditor2" />
+				<ref bean="NotificationBoxAuditor2" />
+				<ref bean="TrashBoxAuditor2" />
+				<ref bean="SpamBoxAuditor2" />
 			</list>
 		</property>
 		<property name="auditRecords">
@@ -3044,11 +3044,11 @@
 		</property>
 		<property name="messagesFolders">
 			<list>
-			<ref bean="InBoxAuditor3"/>
-			<ref bean="OutBoxAuditor3"/>
-			<ref bean="NotificationBoxAuditor3"/>
-			<ref bean="TrashBoxAuditor3"/>
-			<ref bean="SpamBoxAuditor3"/>
+				<ref bean="InBoxAuditor3" />
+				<ref bean="OutBoxAuditor3" />
+				<ref bean="NotificationBoxAuditor3" />
+				<ref bean="TrashBoxAuditor3" />
+				<ref bean="SpamBoxAuditor3" />
 			</list>
 		</property>
 		<property name="auditRecords">
@@ -3074,11 +3074,11 @@
 		</property>
 		<property name="messagesFolders">
 			<list>
-			<ref bean="InBoxAuditor4"/>
-			<ref bean="OutBoxAuditor4"/>
-			<ref bean="NotificationBoxAuditor4"/>
-			<ref bean="TrashBoxAuditor4"/>
-			<ref bean="SpamBoxAuditor4"/>
+				<ref bean="InBoxAuditor4" />
+				<ref bean="OutBoxAuditor4" />
+				<ref bean="NotificationBoxAuditor4" />
+				<ref bean="TrashBoxAuditor4" />
+				<ref bean="SpamBoxAuditor4" />
 			</list>
 		</property>
 		<property name="auditRecords">
@@ -3103,11 +3103,11 @@
 		</property>
 		<property name="messagesFolders">
 			<list>
-			<ref bean="InBoxAuditor5"/>
-			<ref bean="OutBoxAuditor5"/>
-			<ref bean="NotificationBoxAuditor5"/>
-			<ref bean="TrashBoxAuditor5"/>
-			<ref bean="SpamBoxAuditor5"/>
+				<ref bean="InBoxAuditor5" />
+				<ref bean="OutBoxAuditor5" />
+				<ref bean="NotificationBoxAuditor5" />
+				<ref bean="TrashBoxAuditor5" />
+				<ref bean="SpamBoxAuditor5" />
 			</list>
 		</property>
 		<property name="auditRecords">
@@ -3614,11 +3614,11 @@
 		</property>
 		<property name="messagesFolders">
 			<list>
-			<ref bean="InBoxManager1"/>
-			<ref bean="OutBoxManager1"/>
-			<ref bean="NotificationBoxManager1"/>
-			<ref bean="TrashBoxManager1"/>
-			<ref bean="SpamBoxManager1"/>
+				<ref bean="InBoxManager1" />
+				<ref bean="OutBoxManager1" />
+				<ref bean="NotificationBoxManager1" />
+				<ref bean="TrashBoxManager1" />
+				<ref bean="SpamBoxManager1" />
 			</list>
 		</property>
 		<property name="trips">
@@ -3648,11 +3648,11 @@
 		</property>
 		<property name="messagesFolders">
 			<list>
-			<ref bean="InBoxManager2"/>
-			<ref bean="OutBoxManager2"/>
-			<ref bean="NotificationBoxManager2"/>
-			<ref bean="TrashBoxManager2"/>
-			<ref bean="SpamBoxManager2"/>
+				<ref bean="InBoxManager2" />
+				<ref bean="OutBoxManager2" />
+				<ref bean="NotificationBoxManager2" />
+				<ref bean="TrashBoxManager2" />
+				<ref bean="SpamBoxManager2" />
 			</list>
 		</property>
 		<property name="trips">
@@ -3680,11 +3680,11 @@
 		</property>
 		<property name="messagesFolders">
 			<list>
-			<ref bean="InBoxManager3"/>
-			<ref bean="OutBoxManager3"/>
-			<ref bean="NotificationBoxManager3"/>
-			<ref bean="TrashBoxManager3"/>
-			<ref bean="SpamBoxManager3"/>
+				<ref bean="InBoxManager3" />
+				<ref bean="OutBoxManager3" />
+				<ref bean="NotificationBoxManager3" />
+				<ref bean="TrashBoxManager3" />
+				<ref bean="SpamBoxManager3" />
 			</list>
 		</property>
 		<property name="trips">
@@ -3711,11 +3711,11 @@
 		</property>
 		<property name="messagesFolders">
 			<list>
-			<ref bean="InBoxManager4"/>
-			<ref bean="OutBoxManager4"/>
-			<ref bean="NotificationBoxManager4"/>
-			<ref bean="TrashBoxManager4"/>
-			<ref bean="SpamBoxManager4"/>
+				<ref bean="InBoxManager4" />
+				<ref bean="OutBoxManager4" />
+				<ref bean="NotificationBoxManager4" />
+				<ref bean="TrashBoxManager4" />
+				<ref bean="SpamBoxManager4" />
 			</list>
 		</property>
 		<property name="trips">
@@ -3743,11 +3743,11 @@
 		</property>
 		<property name="messagesFolders">
 			<list>
-			<ref bean="InBoxManager5"/>
-			<ref bean="OutBoxManager5"/>
-			<ref bean="NotificationBoxManager5"/>
-			<ref bean="TrashBoxManager5"/>
-			<ref bean="SpamBoxManager5"/>
+				<ref bean="InBoxManager5" />
+				<ref bean="OutBoxManager5" />
+				<ref bean="NotificationBoxManager5" />
+				<ref bean="TrashBoxManager5" />
+				<ref bean="SpamBoxManager5" />
 			</list>
 		</property>
 		<property name="trips">
@@ -3778,11 +3778,11 @@
 		</property>
 		<property name="messagesFolders">
 			<list>
-			<ref bean="InBoxExplorer1"/>
-			<ref bean="OutBoxExplorer1"/>
-			<ref bean="NotificationBoxExplorer1"/>
-			<ref bean="TrashBoxExplorer1"/>
-			<ref bean="SpamBoxExplorer1"/>
+				<ref bean="InBoxExplorer1" />
+				<ref bean="OutBoxExplorer1" />
+				<ref bean="NotificationBoxExplorer1" />
+				<ref bean="TrashBoxExplorer1" />
+				<ref bean="SpamBoxExplorer1" />
 			</list>
 		</property>
 		<property name="stories">
@@ -3814,11 +3814,11 @@
 		</property>
 		<property name="messagesFolders">
 			<list>
-			<ref bean="InBoxExplorer2"/>
-			<ref bean="OutBoxExplorer2"/>
-			<ref bean="NotificationBoxExplorer2"/>
-			<ref bean="TrashBoxExplorer2"/>
-			<ref bean="SpamBoxExplorer2"/>
+				<ref bean="InBoxExplorer2" />
+				<ref bean="OutBoxExplorer2" />
+				<ref bean="NotificationBoxExplorer2" />
+				<ref bean="TrashBoxExplorer2" />
+				<ref bean="SpamBoxExplorer2" />
 			</list>
 		</property>
 		<property name="stories">
@@ -3851,11 +3851,11 @@
 		</property>
 		<property name="messagesFolders">
 			<list>
-			<ref bean="InBoxExplorer3"/>
-			<ref bean="OutBoxExplorer3"/>
-			<ref bean="NotificationBoxExplorer3"/>
-			<ref bean="TrashBoxExplorer3"/>
-			<ref bean="SpamBoxExplorer3"/>
+				<ref bean="InBoxExplorer3" />
+				<ref bean="OutBoxExplorer3" />
+				<ref bean="NotificationBoxExplorer3" />
+				<ref bean="TrashBoxExplorer3" />
+				<ref bean="SpamBoxExplorer3" />
 			</list>
 		</property>
 		<property name="stories">
@@ -3890,11 +3890,11 @@
 		</property>
 		<property name="messagesFolders">
 			<list>
-			<ref bean="InBoxExplorer4"/>
-			<ref bean="OutBoxExplorer4"/>
-			<ref bean="NotificationBoxExplorer4"/>
-			<ref bean="TrashBoxExplorer4"/>
-			<ref bean="SpamBoxExplorer4"/>
+				<ref bean="InBoxExplorer4" />
+				<ref bean="OutBoxExplorer4" />
+				<ref bean="NotificationBoxExplorer4" />
+				<ref bean="TrashBoxExplorer4" />
+				<ref bean="SpamBoxExplorer4" />
 			</list>
 		</property>
 		<property name="stories">
@@ -3928,11 +3928,11 @@
 		</property>
 		<property name="messagesFolders">
 			<list>
-			<ref bean="InBoxExplorer5"/>
-			<ref bean="OutBoxExplorer5"/>
-			<ref bean="NotificationBoxExplorer5"/>
-			<ref bean="TrashBoxExplorer5"/>
-			<ref bean="SpamBoxExplorer5"/>
+				<ref bean="InBoxExplorer5" />
+				<ref bean="OutBoxExplorer5" />
+				<ref bean="NotificationBoxExplorer5" />
+				<ref bean="TrashBoxExplorer5" />
+				<ref bean="SpamBoxExplorer5" />
 			</list>
 		</property>
 		<property name="stories">
@@ -3966,11 +3966,11 @@
 		</property>
 		<property name="messagesFolders">
 			<list>
-			<ref bean="InBoxExplorer6"/>
-			<ref bean="OutBoxExplorer6"/>
-			<ref bean="NotificationBoxExplorer6"/>
-			<ref bean="TrashBoxExplorer6"/>
-			<ref bean="SpamBoxExplorer6"/>
+				<ref bean="InBoxExplorer6" />
+				<ref bean="OutBoxExplorer6" />
+				<ref bean="NotificationBoxExplorer6" />
+				<ref bean="TrashBoxExplorer6" />
+				<ref bean="SpamBoxExplorer6" />
 			</list>
 		</property>
 		<property name="stories">
