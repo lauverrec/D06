@@ -12,6 +12,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.util.Assert;
 
+import security.UserAccount;
 import utilities.AbstractTest;
 import domain.Administrator;
 import domain.MessageFolder;
@@ -92,11 +93,26 @@ public class MessageFolderServiceTest extends AbstractTest {
 	}
 
 	@Test
-	public void testUpdate() {
-		this.authenticate("sponsor1");
-		MessageFolder folderModify;
-		folderModify = this.messageFolderService.findOne(131072);
-		folderModify.setName("asf");
+	public void testCreateDefaultFolderForActor() {
+		Administrator administrator;
+		Administrator adminSave;
+		administrator = this.administratorService.create();
 
+		administrator.setName("Prueba registro");
+		administrator.setSurname("surname registro");
+		administrator.setEmail("emailpruebaa@gmail.com");
+		administrator.setPhone("31333");
+		administrator.setAddress("address");
+		this.messageFolderService.createDefaultFoldersForRegister(administrator);
+
+		Assert.notEmpty(administrator.getMessagesFolders());
+
+		UserAccount user;
+		user = administrator.getUserAccount();
+		user.setPassword("prueba");
+		user.setUsername("Prueba");
+
+		adminSave = this.administratorService.save(administrator);
+		Assert.notNull(adminSave);
 	}
 }
