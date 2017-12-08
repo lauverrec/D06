@@ -40,10 +40,11 @@
 		<p>
 			<spring:message code="messageFolder.messages"></spring:message>
 			<jstl:out value="${row.messages}"></jstl:out>
-
-
-
 		</p>
+		
+		
+		
+
 
 	</display:column>
 </display:table>

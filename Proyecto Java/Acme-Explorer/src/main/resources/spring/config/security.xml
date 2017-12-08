@@ -81,7 +81,14 @@
 		<security:intercept-url pattern="/messageFolder/explorer/**" access="hasRole('EXPLORER')"/>
 		<security:intercept-url pattern="/messageFolder/auditor/**" access="hasRole('AUDITOR')"/>
 		<security:intercept-url pattern="/messageFolder/manager/**" access="hasRole('MANAGER')"/>
+		<security:intercept-url pattern="/message/sponsor/**" access="hasRole('SPONSOR')"/>
+		<security:intercept-url pattern="/message/administrator/**" access="hasRole('ADMINISTRATOR')"/>
+		<security:intercept-url pattern="/message/ranger/**" access="hasRole('RANGER')"/>
+		<security:intercept-url pattern="/message/explorer/**" access="hasRole('EXPLORER')"/>
+		<security:intercept-url pattern="/message/auditor/**" access="hasRole('AUDITOR')"/>
+		<security:intercept-url pattern="/message/manager/**" access="hasRole('MANAGER')"/>
 		
+	
 	
 		<security:intercept-url pattern="/contactsEmergency/explorer/**" access="hasRole('EXPLORER')"/>
 		
