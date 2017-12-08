@@ -25,7 +25,7 @@
 	
 	
 	
-	<security:authorize access="hasRole('AUDITOR')">
+	<security:authorize access = "hasRole('AUDITOR')">
 	<display:column>
 		<spring:url value="note/auditor/display.do" var="editURL">
 			<spring:param name="noteId" value="${row.id}" />
@@ -33,6 +33,26 @@
 		<a href="${editURL}"><spring:message code="note.display" /></a>
 	</display:column>
 	</security:authorize>
+	´
+	<security:authorize access = "hasRole('MANAGER')">
+	<display:column>
+		<spring:url value="note/manager/display.do" var="editURL">
+			<spring:param name="noteId" value="${row.id}" />
+		</spring:url>
+		<a href="${editURL}"><spring:message code="note.display" /></a>
+	</display:column>
+	</security:authorize>
+	
+	<security:authorize access = "hasRole('MANAGER')">
+	<display:column>
+		<spring:url value="note/manager/edit.do" var="editURL">
+			<spring:param name="noteId" value="${row.id}" />
+		</spring:url>
+		<a href="${editURL}"><spring:message code="note.edit" /></a>
+	</display:column>
+	</security:authorize>
+	
+	
 	
 	<!-- Attributes -->
 	

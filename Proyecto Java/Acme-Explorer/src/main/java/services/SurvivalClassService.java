@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import repositories.SurvivalClassRepository;
-import domain.Administrator;
 import domain.Explorer;
 import domain.GPS;
 import domain.Manager;
@@ -32,6 +31,9 @@ public class SurvivalClassService {
 	@Autowired
 	private ManagerService			managerService;
 
+	@Autowired
+	private TripService				tripService;
+
 
 	// Constructors-------------------------------------------------------
 
@@ -42,7 +44,7 @@ public class SurvivalClassService {
 
 	// Simple CRUD methods------------------------------------------------
 
-	public SurvivalClass create(Administrator administrator) {
+	public SurvivalClass create() {
 
 		this.managerService.checkPrincipal();
 
@@ -125,5 +127,17 @@ public class SurvivalClassService {
 
 		this.survivalClassRecordRepository.delete(survivalClass);
 
+	}
+
+	//Other bussines methods--------------------------------------------------------
+
+	public Collection<SurvivalClass> findSurvivalClassByManager() {
+		Collection<SurvivalClass> classes;
+		Trip trip;
+
+		trip = this.tripService.findAll().iterator().next();
+		classes = this.survivalClassRecordRepository.findSurvivalClassByManager(trip.getId());
+
+		return classes;
 	}
 }

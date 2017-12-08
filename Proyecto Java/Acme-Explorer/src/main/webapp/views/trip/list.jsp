@@ -90,12 +90,24 @@
 	
 <!-- Apply Para un Explorer-->
 	<security:authorize access="hasRole('EXPLORER')">
+	
+		<jstl:if test="${apply}">
+			<display:column>
+				<spring:url value="trip/explorer/cancel.do" var="applyURL">
+					<spring:param name="tripId" value="${row.id }" />
+				</spring:url>
+				<a href="${cancelURL}"><spring:message code="trip.cancel" /></a>
+			</display:column>
+		</jstl:if> 
+		
+		<jstl:if test="${!apply}">
 			<display:column>
 				<spring:url value="trip/explorer/apply.do" var="applyURL">
 					<spring:param name="tripId" value="${row.id }" />
 				</spring:url>
 				<a href="${applyURL}"><spring:message code="trip.apply" /></a>
 			</display:column>
+		</jstl:if> 
 		
 	</security:authorize>
 	

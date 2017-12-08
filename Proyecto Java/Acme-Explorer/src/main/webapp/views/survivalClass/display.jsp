@@ -46,49 +46,7 @@
 		<jstl:out value="${row.location }"></jstl:out>
 	</p>
 
-	<display:column>
-		<spring:message code="survivalClass.managerName" />
-		<spring:url value="manager/display.do" var="displayManagerURL">
-			<spring:param name="managerId" value="${row.manager.id}" />
-		</spring:url>
-		<a href="${displayManagerURL}"><jstl:out
-				value="${row.manager.name }"></jstl:out></a>
-	</display:column>
-
-
-	<display:column>
-		<spring:message code="survivalClass.explorersName" />
-		<spring:url value="explorer/display.do" var="displayExplorersURL">
-			<spring:param name="explorerId" value="${row.explorer.id}" />
-		</spring:url>
-		<a href="${displayExplorersURL}"><jstl:out
-				value="${row.explorers.name }"></jstl:out></a>
-	</display:column>
-
-
-
-	<display:column>
-		<spring:message code="survivalClass.tripTitle" />
-		<spring:url value="trip/display.do" var="displayTripURL">
-			<spring:param name="tripId" value="${row.trip.id}" />
-		</spring:url>
-		<a href="${displayTripURL}"><jstl:out value="${row.trip.name }"></jstl:out></a>
-	</display:column>
-
-
-
-	<security:authorize access="hasRole('EXPLORER')">
-		<jstl:if test="${registered==false}">
-			<display:column>
-				<spring:url value="survivalClass/explorer/registration.do"
-					var="registeredURL">
-					<spring:param name="survivalClassId" value="${row.id}" />
-				</spring:url>
-				<a href="${registeredURL}"><spring:message
-						code="survivalClass.register" /></a>
-			</display:column>
-		</jstl:if>
-	</security:authorize>
+	
 
 
 </display:table>

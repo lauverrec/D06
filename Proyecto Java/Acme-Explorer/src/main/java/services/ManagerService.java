@@ -71,6 +71,7 @@ public class ManagerService {
 		result.setTrips(trips);
 		result.setApplicationsFor(applicationsFor);
 		result.setSuspicious(false);
+		result.setPhone("+34");
 
 		return result;
 
@@ -83,7 +84,7 @@ public class ManagerService {
 		return result;
 	}
 
-	public Manager findOne(int managerId) {
+	public Manager findOne(final int managerId) {
 
 		Assert.isTrue(managerId != 0);
 		Manager result;
@@ -92,7 +93,7 @@ public class ManagerService {
 		return result;
 	}
 
-	public Manager save(Manager manager) {
+	public Manager save(final Manager manager) {
 
 		Assert.notNull(manager);
 		Manager result;
@@ -103,7 +104,7 @@ public class ManagerService {
 		return result;
 	}
 
-	public void delete(Manager manager) {
+	public void delete(final Manager manager) {
 
 		Assert.notNull(manager);
 		Assert.isTrue(manager.getId() != 0);
@@ -128,13 +129,13 @@ public class ManagerService {
 
 	public void checkPrincipal() {
 
-		UserAccount userAccount = LoginService.getPrincipal();
+		final UserAccount userAccount = LoginService.getPrincipal();
 		Assert.notNull(userAccount);
 
-		Collection<Authority> authorities = userAccount.getAuthorities();
+		final Collection<Authority> authorities = userAccount.getAuthorities();
 		Assert.notNull(authorities);
 
-		Authority auth = new Authority();
+		final Authority auth = new Authority();
 		auth.setAuthority(Authority.MANAGER);
 
 		Assert.isTrue(authorities.contains(auth));

@@ -89,7 +89,8 @@ public class MiscellaneousRecordService {
 		result = this.miscellaneousRecordRepository.save(miscellaneousRecord);
 		rangerPrincipal = this.rangerService.findByPrincipal();
 		curriculaPrincipal = this.curriculaService.findCurriculaFromRanger(rangerPrincipal.getId());
-		curriculaPrincipal.getMiscellaneousRecords().add(result);
+		if (!curriculaPrincipal.getMiscellaneousRecords().contains(result))
+			curriculaPrincipal.getMiscellaneousRecords().add(result);
 
 		Assert.notNull(result);
 

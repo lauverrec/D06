@@ -11,6 +11,7 @@ import org.springframework.util.Assert;
 import repositories.PersonalRecordRepository;
 import domain.Curricula;
 import domain.PersonalRecord;
+import domain.Ranger;
 
 @Service
 @Transactional
@@ -22,6 +23,9 @@ public class PersonalRecordService {
 	private PersonalRecordRepository	personalRecordRepository;
 
 	// Supporting services ----------------------------------------------------
+
+	@Autowired
+	private RangerService				rangerService;
 
 	@Autowired
 	private CurriculaService			curriculaService;
@@ -52,7 +56,7 @@ public class PersonalRecordService {
 		return personalRecords;
 	}
 
-	public PersonalRecord findOne(int personalRecordId) {
+	public PersonalRecord findOne(final int personalRecordId) {
 		Assert.isTrue(personalRecordId != 0);
 
 		PersonalRecord personalRecord;
@@ -62,29 +66,22 @@ public class PersonalRecordService {
 		return personalRecord;
 	}
 
-	public PersonalRecord save(PersonalRecord personalRecord) {
+	public PersonalRecord save(final PersonalRecord personalRecord) {
 		Assert.notNull(personalRecord);
 
 		PersonalRecord result;
+		Ranger rangerPrincipal;
+		final Curricula curriculaPrincipal;
 
-		result = this.personalRecordRepository.saveAndFlush(personalRecord);
+		result = this.personalRecordRepository.save(personalRecord);
+		rangerPrincipal = this.rangerService.findByPrincipal();
+		curriculaPrincipal = this.curriculaService.findCurriculaFromRanger(rangerPrincipal.getId());
+		if (!curriculaPrincipal.getPersonalRecord().equals(personalRecord))
+			curriculaPrincipal.setPersonalRecord(personalRecord);
+
 		Assert.notNull(result);
 
 		return result;
-
 	}
 
-	public void delete(PersonalRecord personalRecord) {
-
-		Assert.notNull(personalRecord);
-		Assert.isTrue(personalRecord.getId() != 0);
-
-		Curricula curriculaWithThisPersonalRecord;
-		curriculaWithThisPersonalRecord = this.curriculaService.CurriculaWithThisPersonalRecord(personalRecord.getId());
-		if (curriculaWithThisPersonalRecord != null && curriculaWithThisPersonalRecord.getId() != 0)
-			this.curriculaService.delete(curriculaWithThisPersonalRecord);
-
-		this.personalRecordRepository.delete(personalRecord);
-
-	}
 }

@@ -13,7 +13,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.util.Assert;
 
 import utilities.AbstractTest;
-import domain.Administrator;
 import domain.Explorer;
 import domain.GPS;
 import domain.Manager;
@@ -38,9 +37,6 @@ public class SurvivalClassServiceTest extends AbstractTest {
 	@Autowired
 	private TripService				tripService;
 
-	@Autowired
-	private AdministratorService	adminsitratorService;
-
 
 	// Tests ----------------------------------------------
 
@@ -48,11 +44,8 @@ public class SurvivalClassServiceTest extends AbstractTest {
 	public void testCreate() {
 		this.authenticate("manager1");
 		SurvivalClass result;
-		Administrator administrator;
 
-		administrator = this.adminsitratorService.findByPrincipal();
-
-		result = this.survivalClassService.create(administrator);
+		result = this.survivalClassService.create();
 
 		Assert.notNull(result);
 	}
@@ -96,11 +89,8 @@ public class SurvivalClassServiceTest extends AbstractTest {
 		Trip trip;
 		GPS location;
 		SurvivalClass resultSaved;
-		Administrator administrator;
 
-		administrator = this.adminsitratorService.findByPrincipal();
-
-		result = this.survivalClassService.create(administrator);
+		result = this.survivalClassService.create();
 
 		manager = this.managerService.findByPrincipal();
 		trip = this.tripService.findOne(super.getEntityId("trip1"));

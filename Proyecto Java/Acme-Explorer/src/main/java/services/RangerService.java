@@ -65,6 +65,7 @@ public class RangerService {
 		result.setMessagesFolders(messagesFolders);
 		result.setSocialIdentities(socialIdentities);
 		result.setTrips(trips);
+		result.setPhone("+34");
 
 		return result;
 	}

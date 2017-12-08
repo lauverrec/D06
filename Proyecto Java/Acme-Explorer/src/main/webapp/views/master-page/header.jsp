@@ -27,7 +27,9 @@
 					<li class="arrow"></li>		
 					<li><a href="sponsor/edit.do"><spring:message code="master.page.sponsor.edit" /></a></li>
           		<li><a href="sponsorship/sponsor/list.do"><spring:message code="master.page.sponsorship.sponsor.list" /></a></li>
-          		<li><a href="messageFolder/sponsor/list.do"><spring:message code="master.page.messageFolder.list" /></a></li>		
+          		<li><a href="messageFolder/sponsor/list.do"><spring:message code="master.page.messageFolder.list" /></a></li>
+          		<li><a href="trip/sponsor/list.do"><spring:message code="master.page.manager.list.trips" /></a></li>	
+          			
 				</ul>
 			</li>
 		</security:authorize>
@@ -67,6 +69,7 @@
 					<li><a href="category/administrator/list.do"><spring:message code="master.page.administrator.categories" /></a></li>
 					<li><a href="category/administrator/create.do"><spring:message code="master.page.administrator.category.create" /></a></li>
 					<li><a href="messageFolder/administrator/list.do"><spring:message code="master.page.messageFolder.list" /></a></li>	
+					<li><a href="rangerProfile/administrator/create.do"><spring:message code="master.page.rangerProfile.administrator.create" /></a></li>
 				</ul>
 			</li>
 		</security:authorize>
@@ -87,7 +90,9 @@
 				<ul>
 					<li class="arrow"></li>
 					<li><a href="trip/manager_/list.do"><spring:message code="master.page.manager.list.trips" /></a></li>
-					<li><a href="messageFolder/manager/list.do"><spring:message code="master.page.messageFolder.list" /></a></li>			
+					<li><a href="messageFolder/manager/list.do"><spring:message code="master.page.messageFolder.list" /></a></li>	
+					<li><a href="survivalClass/manager/list.do"><spring:message code="master.page.survivalClass.manager" /></a></li>	
+					<li><a href="note/manager/list.do"><spring:message code="master.page.note.auditor.list" /></a></li>	
 				</ul>
 			</li>
 		</security:authorize>

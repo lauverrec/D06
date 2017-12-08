@@ -22,7 +22,7 @@
 // TODO: TO BE COMPLETED
 
 <display:table name="note" class="displaytag"
-  requestURI="note/auditor/display.do" id="row">
+  requestURI="${requestURI}" id="row">
   	
 	<!-- Attributes -->
 
@@ -38,6 +38,16 @@
 <p>
 		<spring:message code="note.remark" />:
 		<jstl:out value="${row.remark}"></jstl:out>
+	</p>
+	
+	<p>
+		<spring:message code="note.reply" />:
+		<jstl:out value="${row.reply}"></jstl:out>
+	</p>
+	
+	<p>
+		<spring:message code="note.replyMoment" />:
+		<jstl:out value="${row.replyMoment}"></jstl:out>
 	</p>
 
 </display:column>

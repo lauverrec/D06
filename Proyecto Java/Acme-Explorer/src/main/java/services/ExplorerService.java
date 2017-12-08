@@ -73,6 +73,7 @@ public class ExplorerService {
 		result.setStories(stories);
 		result.setApplicationsFor(applicationsFor);
 		result.setContactsEmergency(contactsEmergency);
+		result.setPhone("+34");
 
 		return result;
 	}
