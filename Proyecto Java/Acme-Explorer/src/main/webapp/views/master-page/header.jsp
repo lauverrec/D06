@@ -27,7 +27,9 @@
 					<li class="arrow"></li>		
 					<li><a href="sponsor/edit.do"><spring:message code="master.page.sponsor.edit" /></a></li>
           		<li><a href="sponsorship/sponsor/list.do"><spring:message code="master.page.sponsorship.sponsor.list" /></a></li>
-          		<li><a href="messageFolder/sponsor/list.do"><spring:message code="master.page.messageFolder.list" /></a></li>		
+          		<li><a href="messageFolder/sponsor/list.do"><spring:message code="master.page.messageFolder.list" /></a></li>
+          		<li><a href="trip/sponsor/list.do"><spring:message code="master.page.manager.list.trips" /></a></li>	
+          			
 				</ul>
 			</li>
 		</security:authorize>
