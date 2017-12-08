@@ -1,5 +1,5 @@
 
-package controllers.administrator;
+package controllers.explorer;
 
 import java.util.Collection;
 
@@ -15,8 +15,8 @@ import controllers.AbstractController;
 import domain.Message;
 
 @Controller
-@RequestMapping("/message/administrator")
-public class MessageAdministratorController extends AbstractController {
+@RequestMapping("/message/explorer")
+public class MessageExplorerController extends AbstractController {
 
 	// Services---------------------------------------------------------
 
@@ -26,7 +26,7 @@ public class MessageAdministratorController extends AbstractController {
 
 	//Constructor--------------------------------------------------------
 
-	public MessageAdministratorController() {
+	public MessageExplorerController() {
 		super();
 	}
 

@@ -43,7 +43,59 @@
 			<jstl:out value=":" />
 
 			<jstl:forEach var="messag" items="${row.messages }">
-				<jstl:out value="${messag.subject }"/>
+
+				<!-- Enlace para administrador -->
+				<security:authorize access="hasRole('ADMINISTRATOR')">
+					<spring:url value="message/administrator/display.do"
+						var="displayMessageURL">
+
+						<spring:param name="messageId" value="${messag.id}" />
+					</spring:url>
+				</security:authorize>
+
+				<!-- Enlace para sponsor -->
+				<security:authorize access="hasRole('SPONSOR')">
+					<spring:url value="message/sponsor/display.do"
+						var="displayMessageURL">
+
+						<spring:param name="messageId" value="${messag.id}" />
+					</spring:url>
+				</security:authorize>
+				<!-- Enlace para ranger -->
+				<security:authorize access="hasRole('RANGER')">
+					<spring:url value="message/ranger/display.do"
+						var="displayMessageURL">
+
+						<spring:param name="messageId" value="${messag.id}" />
+					</spring:url>
+				</security:authorize>
+				<!-- Enlace para manager -->
+				<security:authorize access="hasRole('MANAGER')">
+					<spring:url value="message/manager/display.do"
+						var="displayMessageURL">
+
+						<spring:param name="messageId" value="${messag.id}" />
+					</spring:url>
+				</security:authorize>
+				<!-- Enlace para auditor -->
+				<security:authorize access="hasRole('AUDITOR')">
+					<spring:url value="message/administrator/display.do"
+						var="displayMessageURL">
+
+						<spring:param name="messageId" value="${messag.id}" />
+					</spring:url>
+				</security:authorize>
+				<!-- Enlace para explorer -->
+				<security:authorize access="hasRole('EXPLORER')">
+					<spring:url value="message/administrator/display.do"
+						var="displayMessageURL">
+
+						<spring:param name="messageId" value="${messag.id}" />
+					</spring:url>
+				</security:authorize>
+				<a href="${displayMessageURL}"><jstl:out
+						value="${messag.subject }" /></a>
+
 
 			</jstl:forEach>
 
