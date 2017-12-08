@@ -69,6 +69,7 @@
 					<li><a href="category/administrator/list.do"><spring:message code="master.page.administrator.categories" /></a></li>
 					<li><a href="category/administrator/create.do"><spring:message code="master.page.administrator.category.create" /></a></li>
 					<li><a href="messageFolder/administrator/list.do"><spring:message code="master.page.messageFolder.list" /></a></li>	
+					<li><a href="rangerProfile/administrator/create.do"><spring:message code="master.page.rangerProfile.administrator.create" /></a></li>
 				</ul>
 			</li>
 		</security:authorize>

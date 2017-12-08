@@ -237,9 +237,3 @@
 	</security:authorize>
 	
 </display:table>
-
-<security:authorize access="hasRole('RANGER')">
-	<spring:url value="personalRecord/ranger/create.do" var="linkcreate" />
-	<a href="${linkcreate}"><spring:message
-			code="curricula.personalRecord.create" /></a>
-</security:authorize>

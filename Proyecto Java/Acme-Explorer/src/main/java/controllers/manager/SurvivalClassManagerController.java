@@ -52,19 +52,19 @@ public class SurvivalClassManagerController extends AbstractController {
 	}
 
 	// Display ----------------------------------------------------------------
-	//
-	//	@RequestMapping(value = "/display", method = RequestMethod.GET)
-	//	public ModelAndView display(@RequestParam final int survivalClasssId) {
-	//		ModelAndView result;
-	//		SurvivalClass survivalClass;
-	//
-	//		survivalClass = this.survivalClassService.findOne(survivalClasssId);
-	//		result = new ModelAndView("survivalClass/display");
-	//		result.addObject("requestURI", "survivalClass/manager/display.do");
-	//		result.addObject("survivalClass", survivalClass);
-	//
-	//		return result;
-	//	}
+
+	@RequestMapping(value = "/display", method = RequestMethod.GET)
+	public ModelAndView display(@RequestParam final int survivalClassId) {
+		ModelAndView result;
+		SurvivalClass survivalClass;
+
+		survivalClass = this.survivalClassService.findOne(survivalClassId);
+		result = new ModelAndView("survivalClass/display");
+		result.addObject("requestURI", "survivalClass/manager/display.do");
+		result.addObject("survivalClass", survivalClass);
+
+		return result;
+	}
 
 	//Creation-----------------------------------------------------------
 

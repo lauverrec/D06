@@ -11,7 +11,9 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import repositories.EducationRecordRepository;
+import domain.Curricula;
 import domain.EducationRecord;
+import domain.Ranger;
 
 @Service
 @Transactional
@@ -21,8 +23,14 @@ public class EducationRecordService {
 	@Autowired
 	private EducationRecordRepository	educationRecordRepository;
 
-
 	// Supporting services ----------------------------------------------------
+
+	@Autowired
+	private RangerService				rangerService;
+
+	@Autowired
+	private CurriculaService			curriculaService;
+
 
 	// Constructors-------------------------------------------------------
 
@@ -53,7 +61,7 @@ public class EducationRecordService {
 		return educationRecords;
 	}
 
-	public EducationRecord findOne(int educationRecordId) {
+	public EducationRecord findOne(final int educationRecordId) {
 		Assert.isTrue(educationRecordId != 0);
 		Assert.notNull(educationRecordId);
 
@@ -64,23 +72,34 @@ public class EducationRecordService {
 		return educationRecord;
 	}
 
-	public EducationRecord save(EducationRecord educationRecord) {
+	public EducationRecord save(final EducationRecord educationRecord) {
 		Assert.notNull(educationRecord);
 
-		EducationRecord newEducationRecord;
+		EducationRecord result;
+		Ranger rangerPrincipal;
+		final Curricula curriculaPrincipal;
 
-		newEducationRecord = this.educationRecordRepository.save(educationRecord);
+		result = this.educationRecordRepository.save(educationRecord);
+		rangerPrincipal = this.rangerService.findByPrincipal();
+		curriculaPrincipal = this.curriculaService.findCurriculaFromRanger(rangerPrincipal.getId());
+		if (!curriculaPrincipal.getEducationRecords().contains(result))
+			curriculaPrincipal.getEducationRecords().add(result);
 
-		Assert.isTrue(newEducationRecord.getId() != 0);
+		Assert.notNull(result);
 
-		return newEducationRecord;
-
+		return result;
 	}
 
-	public void delete(EducationRecord educationRecord) {
+	public void delete(final EducationRecord educationRecord) {
 		Assert.notNull(educationRecord);
-		Assert.notNull(this.educationRecordRepository.findOne(educationRecord.getId()));
+		Assert.isTrue(educationRecord.getId() != 0);
 
+		Ranger rangerPrincipal;
+		final Curricula curriculaPrincipal;
+
+		rangerPrincipal = this.rangerService.findByPrincipal();
+		curriculaPrincipal = this.curriculaService.findCurriculaFromRanger(rangerPrincipal.getId());
+		curriculaPrincipal.getEducationRecords().remove(educationRecord);
 		this.educationRecordRepository.delete(educationRecord);
 
 		Assert.isNull(this.educationRecordRepository.findOne(educationRecord.getId()));

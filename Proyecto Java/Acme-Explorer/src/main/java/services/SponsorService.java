@@ -61,10 +61,11 @@ public class SponsorService {
 		result.setMessagesFolders(messagesFolders);
 		result.setSocialIdentities(socialIdentities);
 		result.setSponsorships(sponsorships);
+		result.setPhone("+34");
 
 		return result;
 	}
-	public Sponsor findOne(int idSponsor) {
+	public Sponsor findOne(final int idSponsor) {
 		Assert.isTrue(idSponsor != 0);
 		Sponsor result;
 		result = this.sponsorRepository.findOne(idSponsor);
@@ -78,7 +79,7 @@ public class SponsorService {
 		return result;
 
 	}
-	public Sponsor save(Sponsor sponsor) {
+	public Sponsor save(final Sponsor sponsor) {
 		Assert.notNull(sponsor);
 		Sponsor result;
 		result = this.sponsorRepository.save(sponsor);
@@ -88,7 +89,7 @@ public class SponsorService {
 		return result;
 
 	}
-	public void delete(Sponsor sponsor) {
+	public void delete(final Sponsor sponsor) {
 		Assert.notNull(sponsor);
 		Assert.isTrue(sponsor.getId() != 0);
 		this.sponsorRepository.delete(sponsor);
@@ -111,13 +112,13 @@ public class SponsorService {
 
 	public void checkPrincipal() {
 
-		UserAccount userAccount = LoginService.getPrincipal();
+		final UserAccount userAccount = LoginService.getPrincipal();
 		Assert.notNull(userAccount);
 
-		Collection<Authority> authorities = userAccount.getAuthorities();
+		final Collection<Authority> authorities = userAccount.getAuthorities();
 		Assert.notNull(authorities);
 
-		Authority auth = new Authority();
+		final Authority auth = new Authority();
 		auth.setAuthority(Authority.SPONSOR);
 
 		Assert.isTrue(authorities.contains(auth));

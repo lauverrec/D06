@@ -68,6 +68,7 @@ public class AuditorService {
 		result.setSocialIdentities(socialIdentities);
 		result.setNotes(notes);
 		result.setAuditRecords(auditrecords);
+		result.setPhone("+34");
 
 		return result;
 	}
@@ -79,14 +80,14 @@ public class AuditorService {
 		return result;
 	}
 
-	public Auditor findOne(int auditorId) {
+	public Auditor findOne(final int auditorId) {
 		Assert.isTrue(auditorId != 0);
 		Auditor result;
 		result = this.auditorRepository.findOne(auditorId);
 		return result;
 	}
 
-	public Auditor save(Auditor auditor) {
+	public Auditor save(final Auditor auditor) {
 		Assert.notNull(auditor);
 		Auditor result;
 		result = this.auditorRepository.save(auditor);
@@ -94,7 +95,7 @@ public class AuditorService {
 		return result;
 	}
 
-	public void delete(Auditor auditor) {
+	public void delete(final Auditor auditor) {
 		Assert.notNull(auditor);
 		Assert.isTrue(auditor.getId() != 0);
 		this.auditorRepository.delete(auditor);
@@ -112,13 +113,13 @@ public class AuditorService {
 
 	public void checkPrincipal() {
 
-		UserAccount userAccount = LoginService.getPrincipal();
+		final UserAccount userAccount = LoginService.getPrincipal();
 		Assert.notNull(userAccount);
 
-		Collection<Authority> authorities = userAccount.getAuthorities();
+		final Collection<Authority> authorities = userAccount.getAuthorities();
 		Assert.notNull(authorities);
 
-		Authority auth = new Authority();
+		final Authority auth = new Authority();
 		auth.setAuthority("AUDITOR");
 
 		Assert.isTrue(authorities.contains(auth));

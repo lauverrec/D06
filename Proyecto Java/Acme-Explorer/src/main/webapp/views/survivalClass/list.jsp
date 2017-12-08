@@ -55,7 +55,7 @@
 
 	<!-- El boton de display estara siempre presente en todos los usuarios que puedan acceder al listado de survival Class -->
 	<display:column>
-		<spring:url value="survivalClass/explorer/display.do" var="displayURL">
+		<spring:url value="survivalClass/manager/display.do" var="displayURL">
 			<spring:param name="survivalClassId" value="${row.id}" />
 		</spring:url>
 		<a href="${displayURL}"><spring:message

@@ -11,7 +11,9 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import repositories.EndorserRecordRepository;
+import domain.Curricula;
 import domain.EndorserRecord;
+import domain.Ranger;
 
 @Service
 @Transactional
@@ -22,8 +24,14 @@ public class EndorserRecordService {
 	@Autowired
 	private EndorserRecordRepository	endorserRecordRepository;
 
-
 	// Supporting services ----------------------------------------------------
+
+	@Autowired
+	private RangerService				rangerService;
+
+	@Autowired
+	private CurriculaService			curriculaService;
+
 
 	// Constructors-------------------------------------------------------
 
@@ -53,7 +61,7 @@ public class EndorserRecordService {
 		return endorserRecords;
 	}
 
-	public EndorserRecord findOne(int endorserRecordId) {
+	public EndorserRecord findOne(final int endorserRecordId) {
 		Assert.isTrue(endorserRecordId != 0);
 		Assert.notNull(endorserRecordId);
 
@@ -64,21 +72,34 @@ public class EndorserRecordService {
 		return endorserRecord;
 	}
 
-	public EndorserRecord save(EndorserRecord endorserRecord) {
+	public EndorserRecord save(final EndorserRecord endorserRecord) {
 		Assert.notNull(endorserRecord);
 
-		EndorserRecord newResult;
+		EndorserRecord result;
+		Ranger rangerPrincipal;
+		final Curricula curriculaPrincipal;
 
-		newResult = this.endorserRecordRepository.save(endorserRecord);
+		result = this.endorserRecordRepository.save(endorserRecord);
+		rangerPrincipal = this.rangerService.findByPrincipal();
+		curriculaPrincipal = this.curriculaService.findCurriculaFromRanger(rangerPrincipal.getId());
+		if (!curriculaPrincipal.getEndorserRecords().contains(result))
+			curriculaPrincipal.getEndorserRecords().add(result);
 
-		return newResult;
+		Assert.notNull(result);
 
+		return result;
 	}
 
-	public void delete(EndorserRecord endorserRecord) {
+	public void delete(final EndorserRecord endorserRecord) {
 		Assert.notNull(endorserRecord);
-		Assert.notNull(this.endorserRecordRepository.findOne(endorserRecord.getId()));
+		Assert.isTrue(endorserRecord.getId() != 0);
 
+		Ranger rangerPrincipal;
+		final Curricula curriculaPrincipal;
+
+		rangerPrincipal = this.rangerService.findByPrincipal();
+		curriculaPrincipal = this.curriculaService.findCurriculaFromRanger(rangerPrincipal.getId());
+		curriculaPrincipal.getEndorserRecords().remove(endorserRecord);
 		this.endorserRecordRepository.delete(endorserRecord);
 
 		Assert.isNull(this.endorserRecordRepository.findOne(endorserRecord.getId()));

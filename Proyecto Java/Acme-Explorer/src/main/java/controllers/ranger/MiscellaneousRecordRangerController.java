@@ -76,7 +76,6 @@ public class MiscellaneousRecordRangerController extends AbstractController {
 			result = this.createEditModelAndView(miscellaneousRecord);
 		else
 			try {
-				//TODO ESPI: Falla al hacer edit por hacer miscellaneousRecordService.save en un miscellaneous sacado de la bd
 				this.miscellaneousRecordService.save(miscellaneousRecord);
 				result = new ModelAndView("redirect:/curricula/ranger/display.do");
 			} catch (final Throwable oops) {

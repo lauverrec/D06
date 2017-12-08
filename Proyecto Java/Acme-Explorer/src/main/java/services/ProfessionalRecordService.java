@@ -11,7 +11,9 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import repositories.ProfessionalRecordRepository;
+import domain.Curricula;
 import domain.ProfessionalRecord;
+import domain.Ranger;
 
 @Service
 @Transactional
@@ -22,8 +24,14 @@ public class ProfessionalRecordService {
 	@Autowired
 	private ProfessionalRecordRepository	professionalRecordRepository;
 
-
 	// Supporting services ----------------------------------------------------
+
+	@Autowired
+	private RangerService					rangerService;
+
+	@Autowired
+	private CurriculaService				curriculaService;
+
 
 	// Constructors-------------------------------------------------------
 
@@ -53,7 +61,7 @@ public class ProfessionalRecordService {
 		return professionalRecords;
 	}
 
-	public ProfessionalRecord findOne(int professionalRecordId) {
+	public ProfessionalRecord findOne(final int professionalRecordId) {
 		Assert.isTrue(professionalRecordId != 0);
 
 		ProfessionalRecord professionalRecord;
@@ -62,24 +70,37 @@ public class ProfessionalRecordService {
 		return professionalRecord;
 	}
 
-	public ProfessionalRecord save(ProfessionalRecord professionalRecord) {
+	public ProfessionalRecord save(final ProfessionalRecord professionalRecord) {
 		Assert.notNull(professionalRecord);
+
 		ProfessionalRecord result;
+		Ranger rangerPrincipal;
+		final Curricula curriculaPrincipal;
 
 		result = this.professionalRecordRepository.save(professionalRecord);
-		Assert.notNull(result);
-		Assert.isTrue(result.getId() != 0);
-		return result;
+		rangerPrincipal = this.rangerService.findByPrincipal();
+		curriculaPrincipal = this.curriculaService.findCurriculaFromRanger(rangerPrincipal.getId());
+		if (!curriculaPrincipal.getProfessionalRecords().contains(result))
+			curriculaPrincipal.getProfessionalRecords().add(result);
 
+		Assert.notNull(result);
+
+		return result;
 	}
 
-	public void delete(ProfessionalRecord professionalRecord) {
+	public void delete(final ProfessionalRecord professionalRecord) {
 
 		Assert.notNull(professionalRecord);
-		Assert.notNull(this.professionalRecordRepository.findOne(professionalRecord.getId()));
+		Assert.isTrue(professionalRecord.getId() != 0);
 
+		Ranger rangerPrincipal;
+		final Curricula curriculaPrincipal;
+
+		rangerPrincipal = this.rangerService.findByPrincipal();
+		curriculaPrincipal = this.curriculaService.findCurriculaFromRanger(rangerPrincipal.getId());
+		curriculaPrincipal.getProfessionalRecords().remove(professionalRecord);
 		this.professionalRecordRepository.delete(professionalRecord);
-		Assert.isNull(this.professionalRecordRepository.findOne(professionalRecord.getId()));
+
 	}
 
 }
