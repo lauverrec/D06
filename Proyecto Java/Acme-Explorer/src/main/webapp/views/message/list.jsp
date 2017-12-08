@@ -117,17 +117,13 @@
 
 	<!-- Attributes -->
 
-	<spring:message code="message.moment" var="momentHeader" />
-	<display:column property="moment" title="${momentHeader}" />
+	<spring:message code="message.format.date" var="pattern"></spring:message>
+	<spring:message code="message.moment" var="momentHeader"  />
+	<display:column property="moment" title="${momentHeader}"  format="pattern"/>
 
 	<spring:message code="message.subject" var="subjectHeader" />
 	<display:column property="subject" title="${subjectHeader}" />
 
-	<spring:message code="message.body" var="bodyHeader" />
-	<display:column property="body" title="${bodyHeader}" />
-
-	<spring:message code="message.priority" var="priorityHeader" />
-	<display:column property="priority" title="${priorityHeader}" />
 
 </display:table>
 

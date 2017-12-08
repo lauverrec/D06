@@ -21,32 +21,52 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
 
-
-<display:table name="messageFolder" class="displaytag"
+<display:table name="mess" class="displaytag"
 	requestURI="${requestURI }" id="row">
 
 	<!-- Attributes -->
-
 	<display:column>
-		<spring:message code="messageFolder.name" />:
+
+		<spring:message code="message.moment" />
 		<jstl:out value=":" />
-		<jstl:out value="${row.name }"></jstl:out>
+		<jstl:out value="${row.moment}"></jstl:out>
 
 		<p>
-			<spring:message code="messageFolder.modifiable" />
+			<spring:message code="message.subject"></spring:message>
 			<jstl:out value=":" />
-			<jstl:out value="${row.modifiable}"></jstl:out>
+			<jstl:out value="${row.subject}"></jstl:out>
 		</p>
 
 		<p>
-			<spring:message code="messageFolder.messages"></spring:message>
+			<spring:message code="message.body"></spring:message>
 			<jstl:out value=":" />
-			<jstl:out value="${row.messages}"></jstl:out>
-			
+			<jstl:out value="${row.body}"></jstl:out>
+		</p>
+
+		<p>
+			<spring:message code="message.priority"></spring:message>
+			<jstl:out value=":" />
+			<jstl:out value="${row.priority}"></jstl:out>
 		</p>
 
 
+		<p>
+			<spring:message code="message.messageFolder"></spring:message>
+			<jstl:out value=":" />
+			<jstl:out value="${row.messageFolder.name}"></jstl:out>
+		</p>
 
+		<p>
+			<spring:message code="message.sender"></spring:message>
+			<jstl:out value=":" />
+			<jstl:out value="${row.sender.surname }, ${row.sender.name} "></jstl:out>
+		</p>
+
+		<p>
+			<spring:message code="message.recipient"></spring:message>
+			<jstl:out value=":" />
+			<jstl:out value="${row.sender.surname }, ${row.sender.name}"></jstl:out>
+		</p>
 
 
 	</display:column>
