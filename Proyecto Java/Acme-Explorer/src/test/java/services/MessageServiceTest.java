@@ -63,10 +63,6 @@ public class MessageServiceTest extends AbstractTest {
 		//Añado las carpetas por defecto a los dos administradores
 		adminSend = this.administratorService.findByPrincipal();
 		adminRecip = this.administratorService.findOne(super.getEntityId("administrator2"));
-		adminSend.getMessagesFolders().addAll(this.messageFolderService.createDefaultFolders());
-		adminRecip.getMessagesFolders().addAll(this.messageFolderService.createDefaultFolders());
-		adminSend = this.administratorService.save(adminSend);
-		adminRecip = this.administratorService.save(adminRecip);
 		//Creo el mensaje y lo guardo
 		message = this.messageService.create();
 		message.setBody("hola caracola");

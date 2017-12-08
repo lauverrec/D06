@@ -173,7 +173,7 @@ public class MessageFolderService {
 		MessageFolder res;
 
 		res = null;
-		Assert.isTrue(name.equals("in box") || name.equals("out box") || name.equals("Notification box") || name.equals("trash box") || name.equals("spam box"));
+		Assert.isTrue(name.equals("In box") || name.equals("Out box") || name.equals("Notification box") || name.equals("Trash box") || name.equals("Spam box"));
 		for (final MessageFolder folder : actor.getMessagesFolders())
 			if (folder.getName().equals(name)) {
 				res = folder;

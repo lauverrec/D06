@@ -68,7 +68,6 @@ public class MessageFolderSponsorController extends AbstractController {
 		ModelAndView result;
 		MessageFolder messageFolder;
 
-		this.messageFolderService.createDefaultFolders();
 		messageFolder = this.messageFolderService.findOne(messageFolderId);
 		Assert.notNull(messageFolder);
 		result = this.createEditModelAndView(messageFolder);

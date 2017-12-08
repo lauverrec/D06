@@ -27,20 +27,16 @@
 	<form:hidden path="id" />
 	<form:hidden path="version" />
 	<form:hidden path="messages"/>
+	<form:hidden path="modifiable" value="true"/>
 
 	<form:label path="name">
 		<spring:message code="messageFolder.name" />:
 	</form:label>
-	<form:input path="name" />
+	<form:input path="name"/>
 	<form:errors cssClass="error" path="name" />
 	<br />
 	
-	<form:label path="modifiable">
-		<spring:message code="messageFolder.modifiable" />:
-	</form:label>
-	<form:input path="modifiable" />
-	<form:errors cssClass="error" path="modifiable" />
-	<br />
+	
 
 	<!-- Boton save y deletes -->
 	<input type="submit" name="save"

@@ -80,11 +80,11 @@ public class MessageService {
 		final Message messageRecipient;
 
 		senderAct = message.getSender();
-		outBoxSender = this.messageFolderService.returnDefaultFolder(senderAct, "out box");
+		outBoxSender = this.messageFolderService.returnDefaultFolder(senderAct, "Out box");
 		if (this.MessageisSpam(message))
-			inBoxRecipient = this.messageFolderService.returnDefaultFolder(message.getRecipient(), "spam box");
+			inBoxRecipient = this.messageFolderService.returnDefaultFolder(message.getRecipient(), "Spam box");
 		else
-			inBoxRecipient = this.messageFolderService.returnDefaultFolder(message.getRecipient(), "in box");
+			inBoxRecipient = this.messageFolderService.returnDefaultFolder(message.getRecipient(), "In box");
 
 		current = new Date(System.currentTimeMillis() - 1000);
 		message.setMoment(current);
