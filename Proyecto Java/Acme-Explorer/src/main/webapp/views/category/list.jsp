@@ -42,13 +42,6 @@
 	<spring:message code="category.name" var="nameHeader" />
 	<display:column property="name" title="${nameHeader}" sortable="false" />
 	
-	<display:column>
-		<spring:url value="trip/list.do" var="tripListURL">
-		<spring:param name="categoryId" value="${row.id}"/>
-		</spring:url>
-		<a href="${tripListURL}"><spring:message code="category.trips"/></a>
-	</display:column> 
-
 </display:table>
 	
 <!-- Action links -->

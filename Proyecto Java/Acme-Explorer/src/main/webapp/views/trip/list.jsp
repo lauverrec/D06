@@ -130,6 +130,23 @@
 	<spring:message code="trip.format.date" var="pattern"></spring:message>
 	<spring:message code="trip.finishDate" var="finishDateHeader" />
 	<display:column property="finishDate" title="${finishDateHeader}" sortable="true" format="${pattern}" />
+	
+	<security:authorize access= "hasRole('MANAGER')">
+	<display:column>
+		<spring:url value="stage/manager/list.do" var="stageURL">
+			<spring:param name="tripId" value="${row.id }" />
+		</spring:url>
+			<a href="${stageURL}"><spring:message code="trip.stage" /></a>
+	</display:column>
+	</security:authorize>
+		<security:authorize access= "hasRole('MANAGER')">
+	<display:column>
+		<spring:url value="stage/manager/create.do" var="stageURL">
+			<spring:param name="tripId" value="${row.id }" />
+		</spring:url>
+			<a href="${stageURL}"><spring:message code="trip.stage.create" /></a>
+	</display:column>
+	</security:authorize>
 
 
 </display:table>

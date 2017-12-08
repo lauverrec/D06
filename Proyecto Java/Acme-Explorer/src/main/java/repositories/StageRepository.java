@@ -14,4 +14,7 @@ public interface StageRepository extends JpaRepository<Stage, Integer> {
 
 	@Query("select c from Stage c")
 	Collection<Stage> stages();
+
+	@Query("select s from Stage s where s.trip.id=?1")
+	Collection<Stage> stagesOfTrip(int idTrip);
 }

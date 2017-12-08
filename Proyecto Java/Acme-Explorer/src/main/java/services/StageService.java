@@ -98,4 +98,14 @@ public class StageService {
 		for (Stage s : stages)
 			s.setTotalPrice(s.getPrice() * (1 + VAT));
 	}
+
+	public Collection<Stage> stagesOfTrip(int idTrip) {
+
+		Collection<Stage> stages;
+
+		stages = this.stageRepository.stagesOfTrip(idTrip);
+
+		return stages;
+
+	}
 }
