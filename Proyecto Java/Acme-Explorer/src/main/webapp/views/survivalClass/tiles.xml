@@ -32,4 +32,9 @@
 		<put-attribute name="body" value="/views/survivalClass/edit.jsp" />
 	</definition>
 	
+	<definition name="survivalClass/displayTrip" extends="master.page">
+	<put-attribute name="title" value="Display trip" />
+		<put-attribute name="body" value="/views/survivalClass/displayTrip.jsp" />
+	</definition>
+	
 </tiles-definitions>

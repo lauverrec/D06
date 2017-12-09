@@ -45,9 +45,17 @@
 	 <form:label path="organisedMoment">
 		<spring:message code="survivalClass.organisedMoment" />:
 	</form:label>
-	<form:input path="organisedMoment" />
+	<form:input path="organisedMoment" readonly="true"/>
 	<form:errors cssClass="error" path="organisedMoment" />
 	<br />
+	
+	<form:label path="location">
+		<spring:message code="survivalClass.location" />:
+	</form:label>
+	<br />
+	
+	<br/> 
+	<fieldset>
 	
 	
 	
@@ -55,13 +63,27 @@
 		<spring:message code="survivalClass.location.name" />:
 	</form:label>
 	<form:input path="location.name" />
-	<form:errors cssClass="error" path="location.name" />
+	
+	<br />
+	
+	<form:label path="location.longitude">
+		<spring:message code="survivalClass.location.longitude" />:
+	</form:label>
+	<form:input path="location.name" />
+	
+	<br />
+	
+	<form:label path="location.latitude">
+		<spring:message code="survivalClass.location.latitude" />:
+	</form:label>
+	<form:input path="location.name" />
+
 	<br />
 	
 	
+	</fieldset>
 	
-	
-	
+	<br />
 	
 <!-- 	botones -->
 

@@ -140,4 +140,12 @@ public class SurvivalClassService {
 
 		return classes;
 	}
+
+	public Trip findByPrincipalSurvivalClassTrip(SurvivalClass survivalClass) {
+
+		Trip result;
+		result = this.survivalClassRecordRepository.findTripBySurvivalClass(survivalClass.getId());
+		return result;
+
+	}
 }

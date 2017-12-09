@@ -66,11 +66,7 @@
 	<!-- Attributes -->
 	<spring:message code="survivalClass.title" var="titleHeader" />
 	<display:column property="title" title="${titleHeader}" sortable="true" />
-
-	<spring:message code="survivalClass.tripTitle" var="tripTitleHeader" />
-	<display:column property="trip.title" title="${tripTitleHeader }"
-		href="trip/display.do?tripId=${row.trip.id}" />
-
+	
 </display:table>
 
 <security:authorize access="hasRole('MANAGER')">

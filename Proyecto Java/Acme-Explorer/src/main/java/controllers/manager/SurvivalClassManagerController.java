@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import services.SurvivalClassService;
 import controllers.AbstractController;
 import domain.SurvivalClass;
+import domain.Trip;
 
 @Controller
 @RequestMapping("/survivalClass/manager")
@@ -144,6 +145,20 @@ public class SurvivalClassManagerController extends AbstractController {
 
 		return result;
 
+	}
+	// Display ----------------------------------------------------------------
+	@RequestMapping(value = "/displayTrip", method = RequestMethod.GET)
+	public ModelAndView displayTrip(@RequestParam int survivalClassId) {
+		ModelAndView result;
+		Trip trip;
+		SurvivalClass survivalClass;
+		survivalClass = this.survivalClassService.findOne(survivalClassId);
+		trip = this.survivalClassService.findByPrincipalSurvivalClassTrip(survivalClass);
+		result = new ModelAndView("survivalClass/displayTrip");
+		result.addObject("trip", trip);
+		result.addObject("survivalClass", survivalClass);
+
+		return result;
 	}
 
 }

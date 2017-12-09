@@ -27,26 +27,43 @@
 
 	<!-- Attributes -->
 
-
-	<spring:message code="survivalClass.title" />
+<display:column>
+	<spring:message code="survivalClass.title" />:
 	<jstl:out value="${row.title }"></jstl:out>
 
 	<p>
-		<spring:message code="survivalClass.description" />
+		<spring:message code="survivalClass.description" />:
 		<jstl:out value="${row.description }"></jstl:out>
 	</p>
 
 	<p>
-		<spring:message code="survivalClass.organisedMoment" />
+		<spring:message code="survivalClass.organisedMoment" />:
 		<jstl:out value="${row.organisedMoment }"></jstl:out>
 	</p>
 
 	<p>
-		<spring:message code="survivalClass.location" />
-		<jstl:out value="${row.location }"></jstl:out>
+		<spring:message code="survivalClass.location" />:
+		<jstl:out value="${row.location.name }"></jstl:out>
+	</p>
+	
+	<p>
+		<spring:message code="survivalClass.location.longitude" />:
+		<jstl:out value="${row.location.longitude }"></jstl:out>
+	</p>
+	
+	<p>
+		<spring:message code="survivalClass.location.latitude" />:
+		<jstl:out value="${row.location.latitude }"></jstl:out>
 	</p>
 
-	
+<security:authorize access="hasRole('MANAGER')">
+		<spring:url value="survivalClass/manager/displayTrip.do" var="displayURL">
+		<spring:param name="survivalClassId" value="${row.id}"/>
+		</spring:url>
+		<a href="${displayURL}"><spring:message code="survivalClass.trip.display"/></a>
+		
+	</security:authorize> 
+	</display:column>
 
 
 </display:table>
