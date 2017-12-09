@@ -32,7 +32,7 @@ public class ApplicationForExplorerController {
 	private ExplorerService			explorerSerice;
 
 
-	//private Trip					tripAsociado;
+	//public Trip						tripAsociado;
 
 	// Constructors -----------------------------------------------------------
 	public ApplicationForExplorerController() {
@@ -47,10 +47,12 @@ public class ApplicationForExplorerController {
 
 		trip = this.tripService.findOne(tripId);
 		Assert.notNull(trip);
-		applicationFor = this.applicationForService.create();
-
+		applicationFor = this.applicationForService.create(trip);
 		result = this.createEditModelAndView(applicationFor);
-		trip.getApplicationsFor().add(applicationFor);
+		result.addObject("trip", trip);
+
+		//this.tripAsociado = trip;
+		//trip.getApplicationsFor().add(applicationFor);
 		return result;
 	}
 
@@ -67,9 +69,9 @@ public class ApplicationForExplorerController {
 				explorer = this.explorerSerice.findByPrincipal();
 				explorer.getApplicationsFor().add(applicationFor);
 
-				result = new ModelAndView("redirect:list.do");
+				result = new ModelAndView("redirect:apply.do");
 			} catch (final Throwable oops) {
-				result = this.createEditModelAndView(applicationFor, "curriculum.commit.error");
+				result = this.createEditModelAndView(applicationFor, "applicationfor.commit.error");
 			}
 		return result;
 	}

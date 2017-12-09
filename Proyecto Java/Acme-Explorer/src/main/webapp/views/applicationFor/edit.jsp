@@ -30,12 +30,13 @@
 	<form:hidden path="moment"/>
 	<form:hidden path="status"/>
 	<form:hidden path="reasonWhy"/>
-
+	<form:hidden path="trip"/>
 	
 
 
 <security:authorize access="hasRole('EXPLORER')">
 
+<p><spring:message code="trip.ticker" />: <jstl:out value="${trip.ticker}"></jstl:out></p>
 	<form:label path="comments">
 		<spring:message code="applicationfor.comment" />:
 	</form:label>

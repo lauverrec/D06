@@ -45,12 +45,14 @@ public class ApplicationForService {
 
 	// Simple CRUD methods ----------------------------------------------------
 
-	public ApplicationFor create() {
+	public ApplicationFor create(Trip trip) {
 		ApplicationFor result;
 		String status;
 		Date moment;
 		Collection<String> comments;
 		Explorer explorerPrincipal;
+		//Trip trip;
+		//trip = this.tripService.findOne(tripId);
 
 		result = new ApplicationFor();
 		moment = new Date();
@@ -63,6 +65,9 @@ public class ApplicationForService {
 		result.setStatus(status);
 		result.setComments(comments);
 		result.setExplorer(explorerPrincipal);
+		result.setTrip(trip);
+		//trip.setApplicationsFor(applicationsFor);
+		//trip.getApplicationsFor().add(result);
 
 		return result;
 	}
@@ -100,7 +105,7 @@ public class ApplicationForService {
 			applicationFor.setMoment(moment);
 		}
 		result = this.applicationForRepository.save(applicationFor);
-
+		//trip.getApplicationsFor().add(result);
 		return result;
 	}
 	public void delete(final ApplicationFor applicationFor) {
