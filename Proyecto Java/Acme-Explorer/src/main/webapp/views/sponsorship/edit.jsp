@@ -94,7 +94,7 @@
 	</fieldset>
 	
 
-	<form:label path="trip">
+	<%-- <form:label path="trip">
 		<spring:message code="sponsorship.trip" />:
 	</form:label>
 	<form:select id="trips" path="trip">
@@ -103,7 +103,7 @@
 	</form:select>
 	<form:errors cssClass="error" path="trip" />
 	<br /> 
-	<br/> 
+	<br/>  --%>
 	
 	<!-- botones --> 
 	

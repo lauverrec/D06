@@ -148,6 +148,16 @@
 	</display:column>
 	</security:authorize>
 
+<security:authorize access="hasRole('SPONSOR')">
+	<display:column>
+		<spring:url value="sponsorship/sponsor/create.do" var="createURL">
+			<spring:param name="tripId" value="${row.id}" />
+		</spring:url>
+		<a href="${createURL}"><spring:message code="sponsorship.create" /></a>
+	</display:column>
+</security:authorize>
+
+
 
 </display:table>
 

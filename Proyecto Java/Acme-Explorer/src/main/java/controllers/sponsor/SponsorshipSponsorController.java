@@ -58,11 +58,15 @@ public class SponsorshipSponsorController extends AbstractController {
 	//Creation-----------------------------------------------------------
 
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
-	public ModelAndView create() {
+	public ModelAndView create(@RequestParam final int tripId) {
 		ModelAndView result;
 		Sponsorship sponsorship;
 
-		sponsorship = this.sponsorshipService.create();
+		Trip trip;
+
+		trip = this.tripService.findOne(tripId);
+
+		sponsorship = this.sponsorshipService.create(trip);
 		result = this.createEditModelAndView(sponsorship);
 		return result;
 

@@ -69,14 +69,14 @@
 	<form:label path="location.longitude">
 		<spring:message code="survivalClass.location.longitude" />:
 	</form:label>
-	<form:input path="location.name" />
+	<form:input path="location.longitude" />
 	
 	<br />
 	
 	<form:label path="location.latitude">
 		<spring:message code="survivalClass.location.latitude" />:
 	</form:label>
-	<form:input path="location.name" />
+	<form:input path="location.latitude" />
 
 	<br />
 	

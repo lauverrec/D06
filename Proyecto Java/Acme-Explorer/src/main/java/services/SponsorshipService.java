@@ -35,7 +35,7 @@ public class SponsorshipService {
 
 	// Simple CRUD methods------------------------------------------------
 
-	public Sponsorship create() {
+	public Sponsorship create(Trip trip) {
 		Sponsorship result;
 		Sponsor sponsorPrincipal;
 
@@ -44,6 +44,7 @@ public class SponsorshipService {
 		Assert.notNull(sponsorPrincipal);
 
 		result.setSponsor(sponsorPrincipal);
+		result.setTrip(trip);
 		return result;
 	}
 
