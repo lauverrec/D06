@@ -24,7 +24,7 @@ public class SurvivalClassService {
 	// Managed repository -----------------------------------------------------
 
 	@Autowired
-	private SurvivalClassRepository	survivalClassRecordRepository;
+	private SurvivalClassRepository	survivalClassRepository;
 
 	// Supporting services ----------------------------------------------------
 
@@ -33,6 +33,9 @@ public class SurvivalClassService {
 
 	@Autowired
 	private TripService				tripService;
+
+	@Autowired
+	private ExplorerService			explorerService;
 
 
 	// Constructors-------------------------------------------------------
@@ -83,23 +86,23 @@ public class SurvivalClassService {
 
 		Collection<SurvivalClass> result;
 
-		result = this.survivalClassRecordRepository.findAll();
+		result = this.survivalClassRepository.findAll();
 
 		Assert.notNull(result);
 
 		return result;
 	}
 
-	public SurvivalClass findOne(int survivalClassId) {
+	public SurvivalClass findOne(final int survivalClassId) {
 
 		SurvivalClass result;
 
-		result = this.survivalClassRecordRepository.findOne(survivalClassId);
+		result = this.survivalClassRepository.findOne(survivalClassId);
 
 		return result;
 	}
 
-	public SurvivalClass save(SurvivalClass survivalClass) {
+	public SurvivalClass save(final SurvivalClass survivalClass) {
 
 		this.managerService.checkPrincipal();
 
@@ -108,24 +111,24 @@ public class SurvivalClassService {
 		SurvivalClass result;
 
 		if (survivalClass.getId() == 0) {
-			Date organisedMoment = new Date();
+			final Date organisedMoment = new Date();
 			survivalClass.setOrganisedMoment(organisedMoment);
 		}
 
-		result = this.survivalClassRecordRepository.save(survivalClass);
+		result = this.survivalClassRepository.save(survivalClass);
 
 		Assert.notNull(result);
 
 		return result;
 	}
-	public void delete(SurvivalClass survivalClass) {
+	public void delete(final SurvivalClass survivalClass) {
 
 		this.managerService.checkPrincipal();
 
 		Assert.notNull(survivalClass);
 		Assert.isTrue(survivalClass.getId() != 0);
 
-		this.survivalClassRecordRepository.delete(survivalClass);
+		this.survivalClassRepository.delete(survivalClass);
 
 	}
 
@@ -136,16 +139,67 @@ public class SurvivalClassService {
 		Trip trip;
 
 		trip = this.tripService.findAll().iterator().next();
-		classes = this.survivalClassRecordRepository.findSurvivalClassByManager(trip.getId());
+		classes = this.survivalClassRepository.findSurvivalClassByManager(trip.getId());
 
 		return classes;
 	}
 
-	public Trip findByPrincipalSurvivalClassTrip(SurvivalClass survivalClass) {
+	public Trip findByPrincipalSurvivalClassTrip(final SurvivalClass survivalClass) {
 
 		Trip result;
-		result = this.survivalClassRecordRepository.findTripBySurvivalClass(survivalClass.getId());
+		result = this.survivalClassRepository.findTripBySurvivalClass(survivalClass.getId());
 		return result;
 
 	}
+
+	public Trip findByPrincipalSurvivalClassTripId(final int survivalClassId) {
+
+		Trip result;
+		result = this.survivalClassRepository.findTripBySurvivalClass(survivalClassId);
+		return result;
+
+	}
+
+	public Collection<SurvivalClass> findAllByTripIdEnrol(final int tripId, final int explorerId) {
+		Collection<SurvivalClass> result;
+
+		result = this.survivalClassRepository.findAllByTripIdEnrol(tripId, explorerId);
+
+		return result;
+	}
+
+	public Collection<SurvivalClass> findAllByTripIdNotEnrol(final int tripId, final int explorerId) {
+		Collection<SurvivalClass> result;
+
+		result = this.survivalClassRepository.findAllByTripIdNotEnrol(tripId, explorerId);
+
+		return result;
+	}
+
+	public void notEnrolExplorerPrincipal(final int survivalClassId) {
+		Assert.notNull(survivalClassId);
+		Explorer explorerPrincipal;
+		SurvivalClass survivalClass;
+
+		explorerPrincipal = this.explorerService.findByPrincipal();
+		survivalClass = this.findOne(survivalClassId);
+		Assert.notNull(survivalClass);
+		Assert.isTrue(survivalClass.getExplorers().contains(explorerPrincipal));
+		survivalClass.getExplorers().remove(explorerPrincipal);
+
+	}
+
+	public void enrolExplorerPrincipal(final int survivalClassId) {
+		Assert.notNull(survivalClassId);
+		Explorer explorerPrincipal;
+		SurvivalClass survivalClass;
+
+		explorerPrincipal = this.explorerService.findByPrincipal();
+		survivalClass = this.findOne(survivalClassId);
+		Assert.notNull(survivalClass);
+		Assert.isTrue(!survivalClass.getExplorers().contains(explorerPrincipal));
+		survivalClass.getExplorers().add(explorerPrincipal);
+
+	}
+
 }

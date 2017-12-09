@@ -96,7 +96,7 @@
 	
 	<input type="submit" name="save"
 		value="<spring:message code="ranger.save" />" onclick="valida();" />&nbsp; 
-		<!-- El siguiente codigo esta comentado porque en ningun lado del documento te dice que se puede eliminar el Ranger -->
+		<%-- El siguiente codigo esta comentado porque en ningun lado del documento te dice que se puede eliminar el Ranger -->
 	<%-- <jstl:if test="${ranger.id != 0}">
 		<input type="submit" name="delete"
 			value="<spring:message code="ranger.delete" />"

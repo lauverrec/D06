@@ -57,7 +57,7 @@ public class RangerService {
 		messagesFolders = new ArrayList<>();
 		trips = new ArrayList<>();
 
-		messagesFolders.addAll(this.messageFolderService.createDefaultFolders());
+		messagesFolders.addAll(this.messageFolderService.createDefaultFoldersForRegister(result));
 
 		authority.setAuthority("RANGER");
 		userAccount.addAuthority(authority);
@@ -89,7 +89,8 @@ public class RangerService {
 	public Ranger save(final Ranger ranger) {
 
 		Assert.notNull(ranger);
-		Ranger result;
+		final Ranger result;
+
 		result = this.RangerRepository.save(ranger);
 
 		Assert.notNull(result);

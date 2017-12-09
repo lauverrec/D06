@@ -20,8 +20,27 @@
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
-<!-- Listing survival Class -->
 
+<!-- Show url enrol-unEnrol -->
+<security:authorize access="hasRole('EXPLORER')">
+	<jstl:choose>
+		<jstl:when test="${!enrol}">
+			<spring:url value="survivalClass/explorer/list-enrol.do" var="enrolURL">
+				<spring:param name="tripId" value="${tripId}" />
+			</spring:url>
+			<a href="${enrolURL}"><spring:message code="survivalClass.showEnrol" /></a>			
+		</jstl:when>
+		<jstl:otherwise>
+			<spring:url value="survivalClass/explorer/list-not-enrol.do" var="enrolURL">
+				<spring:param name="tripId" value="${tripId}" />
+			</spring:url>
+			<a href="${enrolURL}"><spring:message code="survivalClass.showNotEnrol" /></a>			
+		</jstl:otherwise>
+	</jstl:choose>		
+</security:authorize>
+
+
+<!-- Listing survival Class -->
 <display:table pagesize="5" class="displaytag" keepStatus="true"
 	name="survivalClasses" requestURI="${requestURI}" id="row">
 
@@ -39,16 +58,21 @@
 	</security:authorize>
 
 	<security:authorize access="hasRole('EXPLORER')">
-		<jstl:if test="${registered==false}">
-			<display:column>
-				<spring:url value="survivalClass/explorer/registration.do"
-					var="registeredURL">
-					<spring:param name="survivalClassId" value="${row.id}" />
-				</spring:url>
-				<a href="${registeredURL}"><spring:message
-						code="survivalClass.register" /></a>
-			</display:column>
-		</jstl:if>
+		<display:column>
+			<jstl:choose>
+				<jstl:when test="${!enrol}">
+					<a href="survivalClass/explorer/enrol.do?survivalClassId=${row.id}" 
+					   onclick="javascript: return confirm('<spring:message code="survivalClass.confirm.enrol" />')">
+						<spring:message code="survivalClass.enrol" />
+					</a>					
+				</jstl:when>
+				<jstl:otherwise>
+					<a href="survivalClass/explorer/notEnrol.do?survivalClassId=${row.id}">
+						<spring:message code="survivalClass.notEnrol" />
+					</a>
+				</jstl:otherwise>
+			</jstl:choose>
+		</display:column>
 	</security:authorize>
 
 
