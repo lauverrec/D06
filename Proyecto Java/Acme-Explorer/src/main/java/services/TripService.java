@@ -219,12 +219,30 @@ public class TripService {
 	}
 
 	public Collection<Trip> findAllTripsNotApplyByExplorerId(int explorerId) {
-		Collection<Trip> trips;
-		trips = new ArrayList<>(this.tripRepository.findAllTripsNotApplyByExplorerId(explorerId));
-		Assert.notNull(trips);
-		return trips;
-	}
+		Collection<Trip> alltrips;
+		Collection<Trip> tripsOfExplorer;
+		Collection<Trip> tripsForApply;
+		Collection<ApplicationFor> applicationsForOfExplorer;
+		Explorer explorer;
 
+		tripsForApply = new ArrayList<Trip>();
+		tripsOfExplorer = new ArrayList<Trip>();
+		applicationsForOfExplorer = new ArrayList<ApplicationFor>();
+		alltrips = new ArrayList<Trip>();
+
+		explorer = this.explorerService.findOne(explorerId);
+		applicationsForOfExplorer = explorer.getApplicationsFor();
+		alltrips = this.tripRepository.findAll();
+		tripsForApply = this.tripRepository.findAllTripsPublishedNotStarted();
+
+		for (ApplicationFor a : applicationsForOfExplorer)
+			tripsOfExplorer.add(a.getTrip());
+
+		alltrips.removeAll(tripsOfExplorer);
+		alltrips.retainAll(tripsForApply);
+		return alltrips;
+
+	}
 	//Trips auditados por el auditorId
 	//***** TEST HECHO *******
 	public Collection<Trip> findByAuditorId(final int auditorId) {

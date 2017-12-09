@@ -69,7 +69,7 @@ public class ApplicationForExplorerController {
 				explorer = this.explorerSerice.findByPrincipal();
 				explorer.getApplicationsFor().add(applicationFor);
 
-				result = new ModelAndView("redirect:apply.do");
+				result = new ModelAndView("redirect:../../trip/explorer/list-apply.do");
 			} catch (final Throwable oops) {
 				result = this.createEditModelAndView(applicationFor, "applicationfor.commit.error");
 			}

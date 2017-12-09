@@ -113,6 +113,6 @@
 	</jstl:if>
 	<input type="button" name="cancel"
 		value="<spring:message code="applicationfor.cancel" />"
-		onclick="javascript:  window.location.replace('applicationfor/explorer/list.do');" />
+		onclick="javascript:  window.location.replace('trip/explorer/list-not-apply.do');" />
 	<br />
 </form:form>
