@@ -8,6 +8,7 @@ import javax.transaction.Transactional;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.util.Assert;
@@ -55,20 +56,24 @@ public class MessageServiceTest extends AbstractTest {
 	}
 
 	@Test
+	@Rollback(false)
 	public void testSave() {
 		super.authenticate("administrator1");
+
 		Administrator adminSend;
 		Administrator adminRecip;
 		Message message;
-		//Añado las carpetas por defecto a los dos administradores
+
 		adminSend = this.administratorService.findByPrincipal();
 		adminRecip = this.administratorService.findOne(super.getEntityId("administrator2"));
+
 		//Creo el mensaje y lo guardo
 		message = this.messageService.create();
 		message.setBody("hola caracola");
 		message.setRecipient(adminRecip);
 		message.setPriority("NEUTRAL");
 		message.setSubject("hola");
+
 		message = this.messageService.save(message);
 
 		super.unauthenticate();

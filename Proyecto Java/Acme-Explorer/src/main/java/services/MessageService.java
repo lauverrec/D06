@@ -70,14 +70,18 @@ public class MessageService {
 	public Message save(final Message message) {
 		//Guarda el mensaje en la carpeta outbox del que lo envia
 		//Guarda el mensaje en la carpeta inbox del que lo recibe
+
 		Assert.notNull(message.getSender());
 		Assert.notNull(message.getRecipient());
+
 		MessageFolder outBoxSender;
-		final MessageFolder inBoxRecipient;
+		MessageFolder inBoxRecipient;
+
 		Date current;
 		Actor senderAct;
+
 		Message messageSender;
-		final Message messageRecipient;
+		Message messageRecipient;
 
 		senderAct = message.getSender();
 		outBoxSender = this.messageFolderService.returnDefaultFolder(senderAct, "Out box");
