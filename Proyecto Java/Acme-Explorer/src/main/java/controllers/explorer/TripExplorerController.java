@@ -100,7 +100,27 @@ public class TripExplorerController extends AbstractController {
 		return result;
 	}
 
-	//Save
+	/*
+	 * //Apply
+	 * 
+	 * @RequestMapping(value = "/apply", method = RequestMethod.GET)
+	 * public ModelAndView apply(@RequestParam final int tripId) {
+	 * ModelAndView result;
+	 * 
+	 * try {
+	 * this.eventService.register(eventId);
+	 * result = this.listNotRegistered();
+	 * result.addObject("message", "event.commit.ok");
+	 * } catch (final Throwable oops) {
+	 * result = this.listNotRegistered();
+	 * result.addObject("message", "event.commit.error");
+	 * }
+	 * 
+	 * return result;
+	 * }
+	 */
+
+	//Cancel
 
 	//Delete
 

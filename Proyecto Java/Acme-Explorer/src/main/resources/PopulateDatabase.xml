@@ -4140,6 +4140,7 @@
 		<property name="creditCard" ref="creditCard1" />
 		<property name="explorer" ref="explorer1" />
 		<property name="manager" ref="manager1" />
+		<property name="trip" ref="trip1" />
 	</bean>
 	<bean id="applicationFor2" class="domain.ApplicationFor">
 		<property name="moment" value="2017/10/21 00:10" />
@@ -4155,6 +4156,7 @@
 		<property name="creditCard" ref="creditCard2" />
 		<property name="explorer" ref="explorer2" />
 		<property name="manager" ref="manager2" />
+		<property name="trip" ref="trip1" />
 	</bean>
 
 	<bean id="applicationFor3" class="domain.ApplicationFor">
@@ -4171,6 +4173,7 @@
 		<property name="creditCard" ref="creditCard3" />
 		<property name="explorer" ref="explorer3" />
 		<property name="manager" ref="manager3" />
+		<property name="trip" ref="trip2" />
 	</bean>
 
 	<bean id="applicationFor4" class="domain.ApplicationFor">
@@ -4187,6 +4190,7 @@
 		<property name="creditCard" ref="creditCard4" />
 		<property name="explorer" ref="explorer3" />
 		<property name="manager" ref="manager4" />
+		<property name="trip" ref="trip3" />
 	</bean>
 
 	<bean id="applicationFor5" class="domain.ApplicationFor">
@@ -4203,6 +4207,7 @@
 		<property name="creditCard" ref="creditCard5" />
 		<property name="explorer" ref="explorer5" />
 		<property name="manager" ref="manager5" />
+		<property name="trip" ref="trip3" />
 	</bean>
 
 	<bean id="applicationFor6" class="domain.ApplicationFor">
@@ -4221,6 +4226,7 @@
 		<property name="manager">
 			<null />
 		</property>
+		<property name="trip" ref="trip3" />
 	</bean>
 
 	<bean id="applicationFor7" class="domain.ApplicationFor">
@@ -4234,6 +4240,7 @@
 		<property name="creditCard" ref="creditCard5" />
 		<property name="explorer" ref="explorer5" />
 		<property name="manager" ref="manager1" />
+		<property name="trip" ref="trip5" />
 	</bean>
 
 

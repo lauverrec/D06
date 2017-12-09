@@ -177,7 +177,7 @@ public class Trip extends DomainEntity {
 	}
 
 	@Valid
-	@OneToMany
+	@OneToMany(mappedBy = "trip")
 	public Collection<ApplicationFor> getApplicationsFor() {
 		return this.applicationsFor;
 	}
