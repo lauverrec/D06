@@ -111,6 +111,15 @@
 		
 	</security:authorize>
 	
+<!-- survivalClass  Para un Explorer-->
+	<security:authorize access="hasRole('EXPLORER')">
+	<display:column>
+		<spring:url value="survivalClass/explorer/list-enrol.do" var="displayURL">
+			<spring:param name="tripId" value="${row.id}" />
+		</spring:url>
+		<a href="${displayURL}"><spring:message code="trip.survivalClass" /></a>
+	</display:column>
+	</security:authorize>
 <!-- Cancel  Para un Explorer-->
 
 
