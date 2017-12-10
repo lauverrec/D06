@@ -169,4 +169,11 @@ public class MessageService {
 
 	}
 
+	public Collection<Message> messagesOfFolder(int messageFolderId) {
+		Collection<Message> messages;
+
+		messages = this.messageRepository.messagesOfFolder(messageFolderId);
+		return messages;
+	}
+
 }

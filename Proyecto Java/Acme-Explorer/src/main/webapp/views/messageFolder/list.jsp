@@ -27,7 +27,8 @@
 	<!-- Botones para sponsor -->
 	<security:authorize access="hasRole('SPONSOR')">
 		<display:column>
-			<spring:url value="messageFolder/sponsor/display.do" var="displaySponsorURL">
+			<spring:url value="messageFolder/sponsor/display.do"
+				var="displaySponsorURL">
 				<spring:param name="messageFolderId" value="${row.id}" />
 			</spring:url>
 
@@ -37,10 +38,12 @@
 
 		<display:column>
 			<jstl:if test="${row.modifiable==true }">
-				<spring:url value="messageFolder/sponsor/edit.do" var="editSponsorURL">
+				<spring:url value="messageFolder/sponsor/edit.do"
+					var="editSponsorURL">
 					<spring:param name="messageFolderId" value="${row.id }"></spring:param>
 				</spring:url>
-				<a href="${editSponsorURL }"><spring:message code="messageFolder.edit" /></a>
+				<a href="${editSponsorURL }"><spring:message
+						code="messageFolder.edit" /></a>
 			</jstl:if>
 		</display:column>
 
@@ -64,17 +67,26 @@
 					var="editAdministratorURL">
 					<spring:param name="messageFolderId" value="${row.id }"></spring:param>
 				</spring:url>
-				<a href="${editAdministratorURL }"><spring:message code="messageFolder.edit" /></a>
+				<a href="${editAdministratorURL }"><spring:message
+						code="messageFolder.edit" /></a>
 			</jstl:if>
 		</display:column>
 
+		<display:column>
+			<spring:url value="message/administrator/list.do"
+				var="listMessagesURL">
+				<spring:param name="messageFolderId" value="${row.id }"></spring:param>
+			</spring:url>
+			<a href="${listMessagesURL }">Ver mensajes</a>
+		</display:column>
 	</security:authorize>
 
 
 	<!-- Botones para ranger -->
 	<security:authorize access="hasRole('RANGER')">
 		<display:column>
-			<spring:url value="messageFolder/ranger/display.do" var="displayRangerURL">
+			<spring:url value="messageFolder/ranger/display.do"
+				var="displayRangerURL">
 				<spring:param name="messageFolderId" value="${row.id}" />
 			</spring:url>
 
@@ -87,7 +99,8 @@
 				<spring:url value="messageFolder/ranger/edit.do" var="editRangerURL">
 					<spring:param name="messageFolderId" value="${row.id }"></spring:param>
 				</spring:url>
-				<a href="${editRangerURL }"><spring:message code="messageFolder.edit" /></a>
+				<a href="${editRangerURL }"><spring:message
+						code="messageFolder.edit" /></a>
 			</jstl:if>
 		</display:column>
 
@@ -108,10 +121,12 @@
 
 		<display:column>
 			<jstl:if test="${row.modifiable==true }">
-				<spring:url value="messageFolder/explorer/edit.do" var="editExplorerURL">
+				<spring:url value="messageFolder/explorer/edit.do"
+					var="editExplorerURL">
 					<spring:param name="messageFolderId" value="${row.id }"></spring:param>
 				</spring:url>
-				<a href="${editExplorerURL }"><spring:message code="messageFolder.edit" /></a>
+				<a href="${editExplorerURL }"><spring:message
+						code="messageFolder.edit" /></a>
 			</jstl:if>
 		</display:column>
 
@@ -120,7 +135,8 @@
 	<!-- Botones para manager -->
 	<security:authorize access="hasRole('MANAGER')">
 		<display:column>
-			<spring:url value="messageFolder/manager/display.do" var="displayManagerURL">
+			<spring:url value="messageFolder/manager/display.do"
+				var="displayManagerURL">
 				<spring:param name="messageFolderId" value="${row.id}" />
 			</spring:url>
 
@@ -130,10 +146,12 @@
 
 		<display:column>
 			<jstl:if test="${row.modifiable==true }">
-				<spring:url value="messageFolder/manager/edit.do" var="editManagerURL">
+				<spring:url value="messageFolder/manager/edit.do"
+					var="editManagerURL">
 					<spring:param name="messageFolderId" value="${row.id }"></spring:param>
 				</spring:url>
-				<a href="${editManagerURL }"><spring:message code="messageFolder.edit" /></a>
+				<a href="${editManagerURL }"><spring:message
+						code="messageFolder.edit" /></a>
 			</jstl:if>
 		</display:column>
 
@@ -172,50 +190,50 @@
 
 </display:table>
 <security:authorize access="hasRole('SPONSOR')">
-<div>
-	<a href="messageFolder/sponsor/create.do"> <spring:message
-			code="messageFolder.create" />
-	</a>
-</div>
+	<div>
+		<a href="messageFolder/sponsor/create.do"> <spring:message
+				code="messageFolder.create" />
+		</a>
+	</div>
 </security:authorize>
 
 <security:authorize access="hasRole('ADMINISTRATOR')">
-<div>
-	<a href="messageFolder/administrator/create.do"> <spring:message
-			code="messageFolder.create" />
-	</a>
-</div>
+	<div>
+		<a href="messageFolder/administrator/create.do"> <spring:message
+				code="messageFolder.create" />
+		</a>
+	</div>
 </security:authorize>
 
 <security:authorize access="hasRole('RANGER')">
-<div>
-	<a href="messageFolder/ranger/create.do"> <spring:message
-			code="messageFolder.create" />
-	</a>
-</div>
+	<div>
+		<a href="messageFolder/ranger/create.do"> <spring:message
+				code="messageFolder.create" />
+		</a>
+	</div>
 </security:authorize>
 
 <security:authorize access="hasRole('EXPLORER')">
-<div>
-	<a href="messageFolder/explorer/create.do"> <spring:message
-			code="messageFolder.create" />
-	</a>
-</div>
+	<div>
+		<a href="messageFolder/explorer/create.do"> <spring:message
+				code="messageFolder.create" />
+		</a>
+	</div>
 </security:authorize>
 
 <security:authorize access="hasRole('MANAGER')">
-<div>
-	<a href="messageFolder/manager/create.do"> <spring:message
-			code="messageFolder.create" />
-	</a>
-</div>
+	<div>
+		<a href="messageFolder/manager/create.do"> <spring:message
+				code="messageFolder.create" />
+		</a>
+	</div>
 </security:authorize>
 
 <security:authorize access="hasRole('AUDITOR')">
-<div>
-	<a href="messageFolder/auditor/create.do"> <spring:message
-			code="messageFolder.create" />
-	</a>
-</div>
+	<div>
+		<a href="messageFolder/auditor/create.do"> <spring:message
+				code="messageFolder.create" />
+		</a>
+	</div>
 </security:authorize>
 

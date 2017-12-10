@@ -33,11 +33,12 @@ public class MessageAdministratorController extends AbstractController {
 	//	Listing ---------------------------------------------------------
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public ModelAndView list() {
-		final ModelAndView result;
+	public ModelAndView list(@RequestParam int messageFolderId) {
+
+		ModelAndView result;
 		Collection<Message> mess;
 
-		mess = this.messageService.findAll();
+		mess = this.messageService.messagesOfFolder(messageFolderId);
 
 		result = new ModelAndView("message/list");
 		result.addObject("messages", mess);

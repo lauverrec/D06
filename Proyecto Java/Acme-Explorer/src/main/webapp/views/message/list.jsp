@@ -119,7 +119,7 @@
 
 	<spring:message code="message.format.date" var="pattern"></spring:message>
 	<spring:message code="message.moment" var="momentHeader"  />
-	<display:column property="moment" title="${momentHeader}"  format="pattern"/>
+	<display:column property="moment" title="${momentHeader}" format="${pattern }"/>
 
 	<spring:message code="message.subject" var="subjectHeader" />
 	<display:column property="subject" title="${subjectHeader}" />

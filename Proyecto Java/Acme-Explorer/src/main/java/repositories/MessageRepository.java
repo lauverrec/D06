@@ -18,4 +18,7 @@ public interface MessageRepository extends JpaRepository<Message, Integer> {
 	@Query("select m from Message m where m.recipient=?1")
 	Collection<Message> recipientAllByActor(int idActor);
 
+	@Query("select c.messages from MessageFolder c where c.id=?1")
+	Collection<Message> messagesOfFolder(int messageFolderId);
+
 }
