@@ -46,7 +46,7 @@ public class LegalTextService {
 		trips = new ArrayList<Trip>();
 
 		result.setMoment(moment);
-		result.setDraftMode(true);
+		//result.setDraftMode(true);
 		result.setTrips(trips);
 
 		return result;

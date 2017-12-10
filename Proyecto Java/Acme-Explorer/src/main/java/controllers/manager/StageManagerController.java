@@ -78,22 +78,6 @@ public class StageManagerController extends AbstractController {
 
 		return result;
 	}
-	//	//Editing---------
-	//
-	//	@RequestMapping(value = "/edit", method = RequestMethod.GET)
-	//	public ModelAndView edit(@RequestParam int stageId) {
-	//
-	//		ModelAndView result;
-	//		Stage stage;
-	//
-	//		stage = this.stageService.findOne(stageId);
-	//
-	//		Assert.notNull(stage);
-	//
-	//		result = this.createEditModelAndView(stage);
-	//
-	//		return result;
-	//	}
 
 	//Saving---------------------
 
@@ -107,7 +91,7 @@ public class StageManagerController extends AbstractController {
 			try {
 				this.stageService.save(stage);
 
-				result = new ModelAndView("redirect:../../stage/explorer/list.do");
+				result = new ModelAndView("redirect:list.do");
 			} catch (Throwable oops) {
 				result = this.createEditModelAndView(stage, "stage.commit.error");
 			}

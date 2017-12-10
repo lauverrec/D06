@@ -43,7 +43,7 @@
 			itemLabel="name" />
 	</form:select>
 	<form:errors cssClass="error" path="fatherCategory" />
-	</br>
+	<br/>
 	
 	
 	

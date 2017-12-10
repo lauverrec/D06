@@ -74,6 +74,7 @@
 					<li><a href="messageFolder/administrator/list.do"><spring:message code="master.page.messageFolder.list" /></a></li>	
 					<li><a href="rangerProfile/administrator/create.do"><spring:message code="master.page.rangerProfile.administrator.create" /></a></li>
 					<li><a href="messageFolder/administrator/list.do"><spring:message code="master.page.messageFolder.list" /></a></li>
+					<li><a href="legalText/administrator/list.do"><spring:message code="master.page.legaltext.list" /></a></li>
 					
 				</ul>
 			</li>
