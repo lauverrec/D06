@@ -21,7 +21,7 @@
 
 // TODO: TO BE COMPLETED
 
-<form:form action="auditRecord/auditor/edit.do" modelAttribute="auditRecord">
+<form:form action="${requestURI}" modelAttribute="auditRecord">
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />

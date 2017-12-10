@@ -166,6 +166,15 @@
 	</display:column>
 </security:authorize>
 
+<security:authorize access="hasRole('AUDITOR')">
+	<display:column>
+		<spring:url value="auditRecord/auditor/create.do" var="createURL">
+			<spring:param name="tripId" value="${row.id}" />
+		</spring:url>
+		<a href="${createURL}"><spring:message code="auditRecord.create" /></a>
+	</display:column>
+</security:authorize>
+
 
 
 </display:table>

@@ -16,9 +16,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.AuditRecordService;
+import services.TripService;
 import controllers.AbstractController;
 import domain.Attachment;
 import domain.AuditRecord;
+import domain.Trip;
 
 @Controller
 @RequestMapping("/auditRecord/auditor")
@@ -28,6 +30,9 @@ public class AuditRecordAuditorController extends AbstractController {
 
 	@Autowired
 	private AuditRecordService	auditRecordService;
+
+	@Autowired
+	private TripService			tripService;
 
 
 	//Constructor--------------------------------------------------------
@@ -72,12 +77,35 @@ public class AuditRecordAuditorController extends AbstractController {
 	//Creation-----------------------------------------------------------
 
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
-	public ModelAndView create() {
+	public ModelAndView create(@RequestParam final int tripId) {
 		ModelAndView result;
 		AuditRecord auditRecord;
 
 		auditRecord = this.auditRecordService.create();
 		result = this.createEditModelAndView(auditRecord);
+		result.addObject("requestURI", "auditRecord/auditor/addTrip.do?tripId=" + tripId);
+		return result;
+
+	}
+
+	@RequestMapping(value = "/addTrip", method = RequestMethod.POST, params = "save")
+	public ModelAndView addTrip(@Valid AuditRecord auditRecord, final BindingResult bindingResult, @RequestParam final int tripId) {
+		ModelAndView result;
+		Trip trip;
+
+		if (bindingResult.hasErrors())
+			result = this.createEditModelAndView(auditRecord);
+		else
+			try {
+				auditRecord = this.auditRecordService.save(auditRecord);
+				trip = this.tripService.findOne(tripId);
+				trip.getAuditRecords().add(auditRecord);
+				this.tripService.save(trip);
+				result = new ModelAndView("redirect:list.do");
+
+			} catch (final Throwable oops) {
+				result = this.createEditModelAndView(auditRecord, "auditRecord.commit.error");
+			}
 		return result;
 
 	}
@@ -92,9 +120,9 @@ public class AuditRecordAuditorController extends AbstractController {
 		auditRecord = this.auditRecordService.findOne(auditRecordId);
 		Assert.notNull(auditRecord);
 		result = this.createEditModelAndView(auditRecord);
+		result.addObject("requestURI", "auditRecord/auditor/edit.do");
 		return result;
 	}
-
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
 	public ModelAndView save(@Valid final AuditRecord auditRecord, final BindingResult bindingResult) {
 		ModelAndView result;
