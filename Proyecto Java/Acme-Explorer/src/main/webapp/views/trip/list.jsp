@@ -148,13 +148,16 @@
 			<a href="${stageURL}"><spring:message code="trip.stage" /></a>
 	</display:column>
 	</security:authorize>
-		<security:authorize access= "hasRole('MANAGER')">
-	<display:column>
-		<spring:url value="stage/manager/create.do" var="stageURL">
-			<spring:param name="tripId" value="${row.id }" />
-		</spring:url>
-			<a href="${stageURL}"><spring:message code="trip.stage.create" /></a>
-	</display:column>
+		<security:authorize access="hasRole('MANAGER')">
+	<spring:message code="trip.publicationDate" var="publicationDate" />	
+		<display:column>
+			<jstl:if test="${row.publicationDate==null}">
+				<spring:url value="stage/manager/create.do" var="editURL">
+					<spring:param name="tripId" value="${row.id}" />
+				</spring:url>
+				<a href="${editURL}"><spring:message code="trip.stage.create" /></a>
+			</jstl:if>
+		</display:column>		
 	</security:authorize>
 
 <security:authorize access="hasRole('SPONSOR')">
@@ -184,6 +187,8 @@
 		<a href="${createURL}"><spring:message code="note.create" /></a>
 	</display:column>
 </security:authorize>
+
+
 
 
 </display:table>
