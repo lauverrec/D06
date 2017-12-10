@@ -40,6 +40,8 @@ public class RangerProfileController extends AbstractController {
 		ranger = this.rangerService.create();
 		Assert.notNull(ranger);
 		result = this.createEditModelAndView(ranger);
+		//		ranger.setUserAccount(this.userAccountService.save(ranger.getUserAccount()));
+
 		return result;
 	}
 
@@ -59,7 +61,6 @@ public class RangerProfileController extends AbstractController {
 
 		return result;
 	}
-
 	// Ancillary methods ------------------------------------------------------
 
 	protected ModelAndView createEditModelAndView(final Ranger ranger) {

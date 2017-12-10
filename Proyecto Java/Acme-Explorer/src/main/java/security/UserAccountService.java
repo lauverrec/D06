@@ -38,6 +38,23 @@ public class UserAccountService {
 		return result;
 	}
 
+	public UserAccount save(final UserAccount userAccount) {
+		Assert.notNull(userAccount);
+		UserAccount result;
+
+		result = this.userAccountRepository.save(userAccount);
+
+		Assert.isTrue(result.getId() != 0);
+
+		return result;
+	}
+
+	public void delete(final UserAccount userAccount) {
+		Assert.isTrue(userAccount.getId() != 0);
+
+		this.userAccountRepository.delete(userAccount);
+	}
+
 	// Other business methods -------------------------------------------------
 
 }

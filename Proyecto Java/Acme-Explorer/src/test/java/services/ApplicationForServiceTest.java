@@ -2,7 +2,6 @@
 package services;
 
 import java.util.Collection;
-import java.util.Date;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -34,35 +33,35 @@ public class ApplicationForServiceTest extends AbstractTest {
 	private ManagerService			managerService;
 
 
-	@Test
-	public void testCreatePositive() {
-		super.authenticate("explorer1");
-		ApplicationFor applicationFor;
-		applicationFor = this.applicationForService.create();
-		Assert.notNull(applicationFor);
-		Assert.isTrue(applicationFor.getStatus() == "PENDING");
-		super.unauthenticate();
-	}
-
-	@Test
-	public void testSavePositive() {
-		super.authenticate("explorer1");
-		ApplicationFor applicationFor;
-
-		applicationFor = this.applicationForService.create();
-
-		applicationFor.setMoment(new Date());
-		applicationFor.setStatus("DUE");
-		applicationFor.setCreditCard(this.applicationForService.findOne(super.getEntityId("applicationFor1")).getCreditCard());
-
-		Assert.notNull(applicationFor.getId());
-		Assert.notNull(applicationFor.getExplorer());
-		Assert.notNull(applicationFor.getCreditCard());
-
-		applicationFor = this.applicationForService.save(applicationFor);
-		super.unauthenticate();
-
-	}
+	//	@Test
+	//	public void testCreatePositive() {
+	//		super.authenticate("explorer1");
+	//		ApplicationFor applicationFor;
+	//		applicationFor = this.applicationForService.create();
+	//		Assert.notNull(applicationFor);
+	//		Assert.isTrue(applicationFor.getStatus() == "PENDING");
+	//		super.unauthenticate();
+	//	}
+	//
+	//	@Test
+	//	public void testSavePositive() {
+	//		super.authenticate("explorer1");
+	//		ApplicationFor applicationFor;
+	//
+	//		applicationFor = this.applicationForService.create();
+	//
+	//		applicationFor.setMoment(new Date());
+	//		applicationFor.setStatus("DUE");
+	//		applicationFor.setCreditCard(this.applicationForService.findOne(super.getEntityId("applicationFor1")).getCreditCard());
+	//
+	//		Assert.notNull(applicationFor.getId());
+	//		Assert.notNull(applicationFor.getExplorer());
+	//		Assert.notNull(applicationFor.getCreditCard());
+	//
+	//		applicationFor = this.applicationForService.save(applicationFor);
+	//		super.unauthenticate();
+	//
+	//	}
 
 	@Test
 	public void testChangeStatus() {

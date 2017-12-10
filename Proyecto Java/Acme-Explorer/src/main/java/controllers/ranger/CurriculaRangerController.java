@@ -42,13 +42,17 @@ public class CurriculaRangerController extends AbstractController {
 		rangerPrincipal = this.rangerService.findByPrincipal();
 		curricula = this.curriculaService.findCurriculaFromRanger(rangerPrincipal.getId());
 
-		result = new ModelAndView("curricula/display");
-		result.addObject("curricula", curricula);
-		result.addObject("miscellaneousRecord", curricula.getMiscellaneousRecords());
-		result.addObject("endorserRecord", curricula.getEndorserRecords());
-		result.addObject("professionalRecord", curricula.getProfessionalRecords());
-		result.addObject("educationRecord", curricula.getEducationRecords());
-		result.addObject("personalRecord", curricula.getPersonalRecord());
+		if (curricula == null)
+			result = new ModelAndView("redirect:/curricula/ranger/create.do");
+		else {
+			result = new ModelAndView("curricula/display");
+			result.addObject("curricula", curricula);
+			result.addObject("miscellaneousRecord", curricula.getMiscellaneousRecords());
+			result.addObject("endorserRecord", curricula.getEndorserRecords());
+			result.addObject("professionalRecord", curricula.getProfessionalRecords());
+			result.addObject("educationRecord", curricula.getEducationRecords());
+			result.addObject("personalRecord", curricula.getPersonalRecord());
+		}
 
 		return result;
 	}
@@ -59,10 +63,11 @@ public class CurriculaRangerController extends AbstractController {
 		ModelAndView result;
 		Curricula curricula;
 
-		//TODO ESPI:Comprobar el metodo create
 		curricula = this.curriculaService.create();
-		curricula = this.curriculaService.save(curricula);
-		result = new ModelAndView("redirect:display.do");
+		curricula.setRanger(this.rangerService.findByPrincipal());
+
+		result = new ModelAndView("curricula/edit");
+		result.addObject("curricula", curricula);
 
 		return result;
 

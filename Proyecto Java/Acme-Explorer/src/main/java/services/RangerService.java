@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
@@ -66,6 +67,7 @@ public class RangerService {
 		result.setSocialIdentities(socialIdentities);
 		result.setTrips(trips);
 		result.setPhone("+34");
+		result.setSuspicious(false);
 
 		return result;
 	}
@@ -90,14 +92,18 @@ public class RangerService {
 
 		Assert.notNull(ranger);
 		final Ranger result;
+		final Md5PasswordEncoder encoder;
+		final String passwordHash;
 
+		encoder = new Md5PasswordEncoder();
+		passwordHash = encoder.encodePassword(ranger.getUserAccount().getPassword(), null);
+		ranger.getUserAccount().setPassword(passwordHash);
 		result = this.RangerRepository.save(ranger);
 
 		Assert.notNull(result);
 
 		return result;
 	}
-
 	public void delete(final Ranger ranger) {
 
 		Assert.notNull(ranger);

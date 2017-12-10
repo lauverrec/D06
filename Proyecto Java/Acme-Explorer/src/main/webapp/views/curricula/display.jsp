@@ -29,14 +29,19 @@
 	</jstl:if>
 	
 	<jstl:if test="${row.id == 0}">
-	<display:column>
+	<spring:message code="curricula.notCurricula" var="notCurriculaHeader" />
+	<h2><jstl:out value="${notCurriculaHeader}" /></h2>
+	</jstl:if>
+	
 	<security:authorize access="hasRole('RANGER')">
+	<jstl:if test="${row.id == 0}">
+	<display:column>
 	<spring:url value="curricula/ranger/create.do" var="linkcreate" />
 	<a href="${linkcreate}"><spring:message
 			code="curricula.create" /></a>
-	</security:authorize>
 	</display:column>
 	</jstl:if>
+	</security:authorize>
 	
 </display:table>
 

@@ -39,19 +39,20 @@ public class CurriculaController extends AbstractController {
 		Assert.notNull(rangerId);
 		ModelAndView result;
 		Curricula curricula;
-		Ranger rangerPrincipal;
+		Ranger ranger;
 
-		rangerPrincipal = this.rangerService.findOne(rangerId);
-		Assert.notNull(rangerPrincipal);
-		curricula = this.curriculaService.findCurriculaFromRanger(rangerPrincipal.getId());
-
+		ranger = this.rangerService.findOne(rangerId);
+		Assert.notNull(ranger);
+		curricula = this.curriculaService.findCurriculaFromRanger(ranger.getId());
 		result = new ModelAndView("curricula/display");
-		result.addObject("curricula", curricula);
-		result.addObject("miscellaneousRecord", curricula.getMiscellaneousRecords());
-		result.addObject("endorserRecord", curricula.getEndorserRecords());
-		result.addObject("professionalRecord", curricula.getProfessionalRecords());
-		result.addObject("educationRecord", curricula.getEducationRecords());
-		result.addObject("personalRecord", curricula.getPersonalRecord());
+		if (curricula != null) {
+			result.addObject("curricula", curricula);
+			result.addObject("miscellaneousRecord", curricula.getMiscellaneousRecords());
+			result.addObject("endorserRecord", curricula.getEndorserRecords());
+			result.addObject("professionalRecord", curricula.getProfessionalRecords());
+			result.addObject("educationRecord", curricula.getEducationRecords());
+			result.addObject("personalRecord", curricula.getPersonalRecord());
+		}
 
 		return result;
 	}

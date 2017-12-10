@@ -117,6 +117,9 @@
 		<bean class="converters.StringToGPSConverter"/>
 		<bean class="converters.GPSToStringConverter"/>
 		
+		<bean class="converters.StringToAuthorityConverter"/>
+		<bean class="converters.AuthorityToStringConverter"/>
+		
 	</util:list>
 	
 </beans>
