@@ -46,8 +46,3 @@
 	<display:column property="trip.title" titleKey="sponsorship.trip" sortable="true" />	
 </display:table>
 
-<security:authorize access="hasRole('SPONSOR')">
-      <a href="sponsorship/sponsor/create.do">
-        <spring:message  code="sponsorship.create" />
-      </a>  
-	</security:authorize>

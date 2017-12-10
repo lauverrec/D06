@@ -32,9 +32,6 @@ public class SurvivalClassService {
 	private ManagerService			managerService;
 
 	@Autowired
-	private TripService				tripService;
-
-	@Autowired
 	private ExplorerService			explorerService;
 
 
@@ -47,30 +44,34 @@ public class SurvivalClassService {
 
 	// Simple CRUD methods------------------------------------------------
 
-	public SurvivalClass create() {
+	public SurvivalClass create(Trip trip) {
 
-		this.managerService.checkPrincipal();
+		Manager managerPrincipal;
 
-		Manager manager;
+		managerPrincipal = this.managerService.findByPrincipal();
+		Assert.notNull(managerPrincipal);
+
 		Collection<Explorer> explorers;
 		Date organisedMoment;
-		Trip trip;
+
 		GPS location;
 		String title;
 		String description;
 
 		SurvivalClass result;
 
-		manager = new Manager();
 		explorers = new ArrayList<>();
 		organisedMoment = new Date();
-		trip = new Trip();
+
 		location = new GPS();
 		title = new String();
 		description = new String();
 
+		location.setLatitude(37.35);
+		location.setLongitude(-5.98);
+		location.setName("por defecto");
 		result = new SurvivalClass();
-		result.setManager(manager);
+		result.setManager(managerPrincipal);
 		result.setExplorers(explorers);
 		result.setOrganisedMoment(organisedMoment);
 		result.setTrip(trip);
@@ -136,10 +137,10 @@ public class SurvivalClassService {
 
 	public Collection<SurvivalClass> findSurvivalClassByManager() {
 		Collection<SurvivalClass> classes;
-		Trip trip;
+		Manager manager;
+		manager = this.managerService.findByPrincipal();
 
-		trip = this.tripService.findAll().iterator().next();
-		classes = this.survivalClassRepository.findSurvivalClassByManager(trip.getId());
+		classes = this.survivalClassRepository.findSurvivalClassByManager(manager.getId());
 
 		return classes;
 	}

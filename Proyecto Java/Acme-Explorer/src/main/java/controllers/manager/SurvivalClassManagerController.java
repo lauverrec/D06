@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.SurvivalClassService;
+import services.TripService;
 import controllers.AbstractController;
 import domain.SurvivalClass;
 import domain.Trip;
@@ -28,6 +29,9 @@ public class SurvivalClassManagerController extends AbstractController {
 
 	@Autowired
 	private SurvivalClassService	survivalClassService;
+
+	@Autowired
+	private TripService				tripService;
 
 
 	//Constructor--------------------------------------------------------
@@ -70,12 +74,17 @@ public class SurvivalClassManagerController extends AbstractController {
 	//Creation-----------------------------------------------------------
 
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
-	public ModelAndView create() {
+	public ModelAndView create(@RequestParam final int tripId) {
 		ModelAndView result;
 		SurvivalClass survivalClass;
 
-		survivalClass = this.survivalClassService.create();
+		Trip trip;
+
+		trip = this.tripService.findOne(tripId);
+
+		survivalClass = this.survivalClassService.create(trip);
 		result = this.createEditModelAndView(survivalClass);
+
 		return result;
 
 	}

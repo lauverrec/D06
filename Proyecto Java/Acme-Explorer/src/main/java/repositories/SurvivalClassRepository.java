@@ -13,8 +13,8 @@ import domain.Trip;
 @Repository
 public interface SurvivalClassRepository extends JpaRepository<SurvivalClass, Integer> {
 
-	@Query("select s from SurvivalClass s where s.trip.id=?1 and s.trip.manager=s.manager")
-	Collection<SurvivalClass> findSurvivalClassByManager(int tripId);
+	@Query("select s from SurvivalClass s where s.trip.manager=s.manager and manager.id =?1")
+	Collection<SurvivalClass> findSurvivalClassByManager(int managerId);
 
 	@Query("select s.trip from SurvivalClass s where s.id=?1 and s.trip.manager=s.manager")
 	Trip findTripBySurvivalClass(int survivalClassId);

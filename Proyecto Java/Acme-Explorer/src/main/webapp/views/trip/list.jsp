@@ -188,6 +188,15 @@
 	</display:column>
 </security:authorize>
 
+<security:authorize access="hasRole('MANAGER')">
+	<display:column>
+		<spring:url value="survivalClass/manager/create.do" var="createURL">
+			<spring:param name="tripId" value="${row.id}" />
+		</spring:url>
+		<a href="${createURL}"><spring:message code="survivalClass.create" /></a>
+	</display:column>
+</security:authorize>
+
 
 
 
