@@ -44,7 +44,8 @@
 					<li><a href="auditRecord/auditor/list.do"><spring:message code="master.page.auditRecord.auditor.list" /></a></li>
 					 <li><a href="note/auditor/list.do"><spring:message code="master.page.note.auditor.list" /></a></li>
 					<li><a href="messageFolder/auditor/list.do"><spring:message code="master.page.messageFolder.list" /></a></li>	
-					<li><a href="message/auditor/list.do"><spring:message code="master.page.message.list" /></a></li>		
+					<li><a href="message/auditor/list.do"><spring:message code="master.page.message.list" /></a></li>	
+					<li><a href="trip/auditor/list.do"><spring:message code="master.page.auditor.list.trips" /></a></li>	
 				</ul>
 			</li>
 		</security:authorize>
