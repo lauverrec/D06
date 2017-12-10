@@ -71,6 +71,38 @@
 	</display:table>
 	
 	<br/>
+	
+	<h2><spring:message code="trip.notes.name.table" /></h2>	
+	<display:table name="notes" id="row" class="displaytag">
+	
+		<spring:message code="trip.notes.createdMoment" var="titleHeader" />
+		<display:column property="createdMoment" title="${titleHeader}" sortable="false" >
+			<jstl:out value="${row.createdMoment}"></jstl:out>
+		</display:column>
+		
+		<spring:message code="trip.notes.body" var="titleHeader2" />
+		<display:column property="body" title="${titleHeader2}" sortable="false" >
+			<jstl:out value="${row.body}"></jstl:out>
+		</display:column>
+		
+		<spring:message code="trip.notes.remark" var="titleHeader3" />
+		<display:column property="remark" title="${titleHeader3}" sortable="false" >
+			<jstl:out value="${row.remark}"></jstl:out>
+		</display:column>
+		
+		<spring:message code="trip.notes.reply" var="titleHeader4" />
+		<display:column property="reply" title="${titleHeader4}" sortable="false" >
+			<jstl:out value="${row.reply}"></jstl:out>
+		</display:column>
+		
+		<spring:message code="trip.notes.replyMoment" var="titleHeader5" />
+		<display:column property="replyMoment" title="${titleHeader5}" sortable="false" >
+			<jstl:out value="${row.replyMoment}"></jstl:out>
+		</display:column>
+		
+	</display:table>
+	
+	<br/>
 
 	<input type="button" name="back" value="<spring:message code="trip.back" />"
 		onclick="javascript:  window.location.replace('trip/list.do');" />

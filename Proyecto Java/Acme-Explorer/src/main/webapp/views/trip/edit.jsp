@@ -29,10 +29,12 @@
 	<form:hidden path="cancelled"/>
 	<form:hidden path="manager"/>
 	<form:hidden path="stages"/>
-	<!--<form:hidden path="tags"/>-->
+	<form:hidden path="tags"/>
 	<form:hidden path="applicationsFor"/>
 	<form:hidden path="notes"/>
 	<form:hidden path="auditRecords"/>
+	
+
 	
 	
 	<!--  <input id="cancelled" name="cancelled" type="hidden" value="0"/>-->
@@ -79,7 +81,35 @@
 	<form:errors cssClass="error" path="finishDate" />
 	<br />
 	
+	<form:label path="ranger">
+		<spring:message code="trip.tag" />:
+	</form:label>
+	<form:select id="ranger" path="ranger" >		
+		<form:options items="${rangers}" itemValue="id" itemLabel="name" />		
+	</form:select>
+	<form:errors cssClass="error" path="ranger" />
+	<br />  
 	
+		<br />
+	
+	<form:label path="tags">
+		<spring:message code="trip.tag" />:
+	</form:label>
+	<form:select id="tags" path="tags" multiple="multiple">		
+		<form:options items="${tags}" itemValue="id" itemLabel="name" />		
+	</form:select>
+	<form:errors cssClass="error" path="tags" />
+	<br />  
+	
+<%-- 	<form:label path="tags">
+		<spring:message code="trip.tag" />:
+	</form:label>
+	<form:select id="tags" path="tags" >
+			
+		<form:options items="${tags}" itemValue="id" itemLabel="name" />		
+	</form:select>
+	<form:errors cssClass="error" path="tags" />
+	<br />  --%>
 	
 
 	
@@ -110,15 +140,7 @@
 	<br />
 	
 	--%>
-	<form:label path="tags">
-		<spring:message code="trip.tag" />:
-	</form:label>
-	<form:select id="tags" path="tags" >
-			
-		<form:options items="${tags}" itemValue="id" itemLabel="name" />		
-	</form:select>
-	<form:errors cssClass="error" path="tags" />
-	<br /> 
+	
 
 	
 

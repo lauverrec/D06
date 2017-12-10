@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import services.TripService;
 import domain.AuditRecord;
+import domain.Note;
 import domain.Stage;
 import domain.Tag;
 import domain.Trip;
@@ -73,8 +74,10 @@ public class TripController extends AbstractController {
 		Collection<String> requirements;
 		Collection<Stage> stages;
 		Collection<AuditRecord> auditRecords;
+		Collection<Note> notes;
 
 		trip = this.tripService.findOne(tripId);
+		notes = new ArrayList<Note>(trip.getNotes());
 		tags = new ArrayList<Tag>(trip.getTags());
 		requirements = new ArrayList<String>(trip.getRequirementsExplorers());
 		stages = new ArrayList<Stage>(trip.getStages());
@@ -86,6 +89,7 @@ public class TripController extends AbstractController {
 		result.addObject("requirements", requirements);
 		result.addObject("stages", stages);
 		result.addObject("auditRecords", auditRecords);
+		result.addObject("notes", notes);
 
 		return result;
 	}

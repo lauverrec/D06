@@ -16,6 +16,7 @@ import domain.AuditRecord;
 import domain.Explorer;
 import domain.Manager;
 import domain.Note;
+import domain.Ranger;
 import domain.Stage;
 import domain.Tag;
 import domain.Trip;
@@ -43,7 +44,6 @@ public class TripService {
 	// Simple CRUD methods-----------------------------------------------------
 	//***** TEST HECHO *******
 	public Trip create(final Manager manager) {
-		//this.managerService.checkPrincipal();
 
 		Collection<ApplicationFor> applicationsFor;
 		Collection<AuditRecord> auditRecords;
@@ -51,7 +51,9 @@ public class TripService {
 		Collection<Stage> stages;
 		Collection<Tag> tags;
 		Trip trip;
+		Ranger ranger;
 
+		ranger = new Ranger();
 		trip = new Trip();
 		applicationsFor = new ArrayList<ApplicationFor>();
 		auditRecords = new ArrayList<AuditRecord>();
@@ -66,7 +68,7 @@ public class TripService {
 		trip.setStages(stages);
 		trip.setTags(tags);
 		trip.setTicker(this.generatedTicker());
-		//if (trip.getId() == 0)
+		trip.setRanger(ranger);
 		trip.setTicker(this.generatedTicker());
 
 		return trip;
@@ -75,7 +77,6 @@ public class TripService {
 	//***** TEST HECHO *******
 	public Trip save(final Trip trip) {
 		Assert.notNull(trip);
-
 		Trip result;
 		result = this.tripRepository.save(trip);
 		return result;

@@ -2491,6 +2491,7 @@
 		<property name="reasonWhy" value=""></property>
 		<property name="cancelled" value="false"></property>
 		<property name="manager" ref="manager1"></property>
+		<property name="ranger" ref="ranger1"></property>
 		<property name="stages">
 			<list>
 				<ref bean="stage1"></ref>
@@ -2541,6 +2542,7 @@
 		</property>
 		<property name="cancelled" value="false"></property>
 		<property name="manager" ref="manager1"></property>
+		<property name="ranger" ref="ranger2"></property>
 		<property name="stages">
 			<list>
 				<ref bean="stage6"></ref>
@@ -2588,6 +2590,7 @@
 		</property>
 		<property name="cancelled" value="false"></property>
 		<property name="manager" ref="manager2"></property>
+		<property name="ranger" ref="ranger3"></property>
 		<property name="stages">
 			<list>
 				<ref bean="stage3"></ref>
@@ -2635,6 +2638,7 @@
 		<property name="reasonWhy" value="reasonWhy 4"></property>
 		<property name="cancelled" value="true"></property>
 		<property name="manager" ref="manager4"></property>
+		<property name="ranger" ref="ranger4"></property>
 		<property name="stages">
 			<list>
 				<ref bean="stage4"></ref>
@@ -2685,6 +2689,7 @@
 		</property>
 		<property name="cancelled" value="false"></property>
 		<property name="manager" ref="manager5"></property>
+		<property name="ranger" ref="ranger5"></property>
 		<property name="stages">
 			<list>
 				<ref bean="stage5"></ref>
