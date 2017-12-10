@@ -69,8 +69,7 @@
 			<jstl:out value="${row.description}"></jstl:out>
 		</display:column>
 	</display:table>
-	
-	<br/>
+
 	
 	<h2><spring:message code="trip.notes.name.table" /></h2>	
 	<display:table name="notes" id="row" class="displaytag">
@@ -105,6 +104,6 @@
 	<br/>
 
 	<input type="button" name="back" value="<spring:message code="trip.back" />"
-		onclick="javascript:  window.location.replace('trip/list.do');" />
+		onclick="javascript:  window.location.replace('trip/manager_/list.do');" />
 	<br />
 </form:form>
