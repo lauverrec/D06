@@ -176,6 +176,15 @@
 </security:authorize>
 
 
+<security:authorize access="hasRole('AUDITOR')">
+	<display:column>
+		<spring:url value="note/auditor/create.do" var="createURL">
+			<spring:param name="tripId" value="${row.id}" />
+		</spring:url>
+		<a href="${createURL}"><spring:message code="note.create" /></a>
+	</display:column>
+</security:authorize>
+
 
 </display:table>
 

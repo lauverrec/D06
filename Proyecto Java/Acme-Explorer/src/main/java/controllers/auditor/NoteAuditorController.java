@@ -7,7 +7,6 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.Assert;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.NoteService;
+import services.TripService;
 import controllers.AbstractController;
 import domain.Note;
+import domain.Trip;
 
 @Controller
 @RequestMapping("/note/auditor")
@@ -26,6 +27,9 @@ public class NoteAuditorController extends AbstractController {
 
 	@Autowired
 	private NoteService	noteService;
+
+	@Autowired
+	private TripService	tripService;
 
 
 	//Constructor--------------------------------------------------------
@@ -42,7 +46,6 @@ public class NoteAuditorController extends AbstractController {
 		Collection<Note> notes;
 
 		notes = this.noteService.findByPrincipal();
-		//note/auditor/list.do
 
 		result = new ModelAndView("note/list");
 		result.addObject("requestURI", "note/auditor/list.do");
@@ -54,27 +57,37 @@ public class NoteAuditorController extends AbstractController {
 	//Creation-----------------------------------------------------------
 
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
-	public ModelAndView create() {
+	public ModelAndView create(@RequestParam final int tripId) {
 		ModelAndView result;
 		Note note;
 
 		note = this.noteService.create();
 		result = this.createEditModelAndView(note);
+		result.addObject("requestURI", "note/auditor/addTrip.do?tripId=" + tripId);
 		return result;
 
 	}
 
-	//Edition------------------------------------------------------------
-
-	@RequestMapping(value = "/edit", method = RequestMethod.GET)
-	public ModelAndView edit(@RequestParam final int noteId) {
+	@RequestMapping(value = "/addTrip", method = RequestMethod.POST, params = "save")
+	public ModelAndView addTrip(@Valid Note note, final BindingResult bindingResult, @RequestParam final int tripId) {
 		ModelAndView result;
-		Note note;
+		Trip trip;
 
-		note = this.noteService.findOne(noteId);
-		Assert.notNull(note);
-		result = this.createEditModelAndView(note);
+		if (bindingResult.hasErrors())
+			result = this.createEditModelAndView(note);
+		else
+			try {
+				note = this.noteService.save(note);
+				trip = this.tripService.findOne(tripId);
+				trip.getNotes().add(note);
+				this.tripService.save(trip);
+				result = new ModelAndView("redirect:list.do");
+
+			} catch (final Throwable oops) {
+				result = this.createEditModelAndView(note, "note.commit.error");
+			}
 		return result;
+
 	}
 
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
