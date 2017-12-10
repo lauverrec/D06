@@ -66,6 +66,7 @@
 		<security:intercept-url pattern="/trip/manager_/**" access="hasRole('MANAGER')"/>
 		<security:intercept-url pattern="/trip/explorer/**" access="hasRole('EXPLORER')"/>
 		<security:intercept-url pattern="/trip/sponsor/list.do" access="hasRole('SPONSOR')"/>
+		<security:intercept-url pattern="/trip/auditor/list.do" access="hasRole('AUDITOR')"/>
 		<security:intercept-url pattern="/trip/administrator/**" access="hasRole('ADMINISTRATOR')" /> 
 		<security:intercept-url pattern="/trip/list.do" access="permitAll"/>
 		<security:intercept-url pattern="/stage/manager/**" access="hasRole('MANAGER')" /> 
