@@ -66,8 +66,3 @@
 
 </display:table>
 
-<security:authorize access="hasRole('AUDITOR')">
-      <a href="auditRecord/auditor/create.do">
-        <spring:message  code="auditRecord.create" />
-      </a>  
-	</security:authorize>
