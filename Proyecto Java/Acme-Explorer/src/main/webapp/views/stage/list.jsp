@@ -39,18 +39,16 @@
 	
 	<spring:message code="stage.totalPrice" var="totalPrice" />
 	<display:column property="totalPrice" title="${totalPrice}" sortable="true" />
-	
-	<spring:message code="stage.totalPrice" var="totalPrice" />
-	<display:column property="totalPrice" title="${totalPrice}" sortable="true" />
-
 
 
 </display:table>
 
 <security:authorize access="hasRole('MANAGER')">
 	<div>
-		<a href="stage/manager/create.do"> 
-			<spring:message	code="stage.create" />
-		</a>
+		
+		<spring:url value="stage/manager/create.do" var="stageURL">
+				<spring:param name="tripId" value="${tripId}" />
+			</spring:url>
+		<a href="${stageURL}"><spring:message code="stage.create" /></a>	
 	</div>
 </security:authorize>

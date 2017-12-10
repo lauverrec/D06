@@ -99,6 +99,12 @@ public class StageService {
 			s.setTotalPrice(s.getPrice() * (1 + VAT));
 	}
 
+	public void setTotalPriceStage(Stage stage) {
+		Double VAT = this.configurationSystemService.getVat();
+
+		stage.setTotalPrice(stage.getPrice() * (1 + VAT));
+	}
+
 	public Collection<Stage> stagesOfTrip(int idTrip) {
 
 		Collection<Stage> stages;

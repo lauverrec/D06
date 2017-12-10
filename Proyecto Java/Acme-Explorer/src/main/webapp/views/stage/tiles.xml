@@ -16,23 +16,13 @@
       
 <tiles-definitions>
 
-	<definition name="sponsorship/list" extends="master.page">	
-		<put-attribute name="title" value="List Sponsorships" />
-		<put-attribute name="body" value="/views/sponsorship/list.jsp" />
+	<definition name="stage/list" extends="master.page">	
+		<put-attribute name="title" value="List of stages" />
+		<put-attribute name="body" value="/views/stage/list.jsp" />
 	</definition>
 	
-	<definition name="sponsorship/edit" extends="master.page">	
-		<put-attribute name="title" value="Edit Sponsorship" />
-		<put-attribute name="body" value="/views/sponsorship/edit.jsp" />
-	</definition>
-	
-	<definition name="sponsorship/display" extends="master.page">	
-		<put-attribute name="title" value="Display Sponsorship" />
-		<put-attribute name="body" value="/views/sponsorship/display.jsp" />
-	</definition>
-
-	<definition name="sponsorship/displayTrip" extends="master.page">	
-		<put-attribute name="title" value="Display a trip" />
-		<put-attribute name="body" value="/views/sponsorship/displayTrip.jsp" />
+	<definition name="stage/edit" extends="master.page">	
+		<put-attribute name="title" value="Create stage" />
+		<put-attribute name="body" value="/views/stage/edit.jsp" />
 	</definition>
 </tiles-definitions>

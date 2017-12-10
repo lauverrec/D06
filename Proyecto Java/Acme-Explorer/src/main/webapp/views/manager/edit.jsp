@@ -19,7 +19,7 @@
 <%@taglib prefix="security"	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
-<form:form action="manager/manager/edit.do" modelAttribute="manager">
+<form:form action="manager/edit.do" modelAttribute="manager">
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />
@@ -83,11 +83,7 @@
 	
 	<input type="submit" name="save"
 		value="<spring:message code="manager.save" />" onclick="valida();"/>&nbsp; 
-	<jstl:if test="${manager.id != 0}">
-		<input type="submit" name="delete"
-			value="<spring:message code="manager.delete" />"
-			onclick="javascript: return confirm('<spring:message code="manager.confirm.delete" />')" />&nbsp;
-	</jstl:if>
+
 	<input type="button" name="cancel"
 		value="<spring:message code="manager.cancel" />"
 		onclick="javascript: window.location.replace('welcome/index.do');" />

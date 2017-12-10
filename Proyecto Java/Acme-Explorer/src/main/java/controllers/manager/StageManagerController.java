@@ -41,12 +41,24 @@ public class StageManagerController extends AbstractController {
 
 		ModelAndView result;
 		Collection<Stage> stages;
+		double totalPrice;
+
+		totalPrice = 0;
 
 		stages = this.stageService.stagesOfTrip(tripId);
+
+		for (Stage stage : stages) {
+			stage = this.stageService.findOne(stage.getId());
+			this.stageService.setTotalPriceStage(stage);
+			totalPrice = stage.getTotalPrice();
+		}
 
 		result = new ModelAndView("stage/list");
 		result.addObject("requestURI", "stage/manager/list.do");
 		result.addObject("stages", stages);
+		result.addObject("totalPrice", totalPrice);
+		result.addObject("tripId", tripId);
+
 		return result;
 
 	}
@@ -93,9 +105,9 @@ public class StageManagerController extends AbstractController {
 			result = this.createEditModelAndView(stage);
 		else
 			try {
-
 				this.stageService.save(stage);
-				result = new ModelAndView("redirect:list.do");
+
+				result = new ModelAndView("redirect:../../stage/explorer/list.do");
 			} catch (Throwable oops) {
 				result = this.createEditModelAndView(stage, "stage.commit.error");
 			}
