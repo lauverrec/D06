@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.MessageService;
@@ -32,12 +33,11 @@ public class MessageSponsorController extends AbstractController {
 	//	Listing ---------------------------------------------------------
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public ModelAndView list() {
+	public ModelAndView list(@RequestParam int messageFolderId) {
 		final ModelAndView result;
 		Collection<Message> mess;
 
-		mess = this.messageService.findAll();
-
+		mess = this.messageService.messagesOfFolder(messageFolderId);
 		result = new ModelAndView("message/list");
 		result.addObject("messages", mess);
 		return result;

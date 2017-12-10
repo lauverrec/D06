@@ -46,6 +46,14 @@
 						code="messageFolder.edit" /></a>
 			</jstl:if>
 		</display:column>
+		
+		<display:column>
+			<spring:url value="message/sponsor/list.do"
+				var="listMessagesSponsorRL">
+				<spring:param name="messageFolderId" value="${row.id }"></spring:param>
+			</spring:url>
+			<a href="${listMessagesSponsorURL }">Ver mensajes</a>
+		</display:column>
 
 	</security:authorize>
 
@@ -103,6 +111,14 @@
 						code="messageFolder.edit" /></a>
 			</jstl:if>
 		</display:column>
+		
+		<display:column>
+			<spring:url value="message/ranger/list.do"
+				var="listMessagesRangerURL">
+				<spring:param name="messageFolderId" value="${row.id }"></spring:param>
+			</spring:url>
+			<a href="${listMessagesRangerURL }">Ver mensajes</a>
+		</display:column>
 
 	</security:authorize>
 
@@ -129,6 +145,14 @@
 						code="messageFolder.edit" /></a>
 			</jstl:if>
 		</display:column>
+		
+		<display:column>
+			<spring:url value="message/explorer/list.do"
+				var="listMessagesExplorerURL">
+				<spring:param name="messageFolderId" value="${row.id }"></spring:param>
+			</spring:url>
+			<a href="${listMessagesExplorerURL }">Ver mensajes</a>
+		</display:column>
 
 	</security:authorize>
 
@@ -154,6 +178,14 @@
 						code="messageFolder.edit" /></a>
 			</jstl:if>
 		</display:column>
+		
+		<display:column>
+			<spring:url value="message/manager/list.do"
+				var="listMessagesManagerURL">
+				<spring:param name="messageFolderId" value="${row.id }"></spring:param>
+			</spring:url>
+			<a href="${listMessagesManagerURL }">Ver mensajes</a>
+		</display:column>
 
 	</security:authorize>
 
@@ -178,6 +210,14 @@
 				<a href="${editAuditorURL }"><spring:message
 						code="messageFolder.edit" /></a>
 			</jstl:if>
+		</display:column>
+		
+		<display:column>
+			<spring:url value="message/auditor/list.do"
+				var="listMessagesAuditorURL">
+				<spring:param name="messageFolderId" value="${row.id }"></spring:param>
+			</spring:url>
+			<a href="${listMessagesAuditorURL }">Ver mensajes</a>
 		</display:column>
 
 	</security:authorize>
