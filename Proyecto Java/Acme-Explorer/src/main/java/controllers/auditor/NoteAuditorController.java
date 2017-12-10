@@ -90,24 +90,6 @@ public class NoteAuditorController extends AbstractController {
 
 	}
 
-	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
-	public ModelAndView save(@Valid final Note note, final BindingResult bindingResult) {
-		ModelAndView result;
-
-		if (bindingResult.hasErrors())
-			result = this.createEditModelAndView(note);
-
-		else
-			try {
-				this.noteService.save(note);
-				result = new ModelAndView("redirect:list.do");
-			} catch (final Throwable oops) {
-				result = this.createEditModelAndView(note, "note.commit.error");
-			}
-
-		return result;
-	}
-
 	// Ancillary methods ------------------------------------------------------
 
 	protected ModelAndView createEditModelAndView(final Note note) {
