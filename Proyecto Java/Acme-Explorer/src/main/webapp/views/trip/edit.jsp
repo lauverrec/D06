@@ -29,7 +29,6 @@
 	<form:hidden path="cancelled"/>
 	<form:hidden path="manager"/>
 	<form:hidden path="stages"/>
-	<form:hidden path="tags"/>
 	<form:hidden path="applicationsFor"/>
 	<form:hidden path="notes"/>
 	<form:hidden path="auditRecords"/>
@@ -45,12 +44,14 @@
 	<form:input path="title" />
 	<form:errors cssClass="error" path="title" />
 	<br />
+	<br />
 	
 	<form:label path="description">
 		<spring:message code="trip.description" />:
 	</form:label>
 	<form:input path="description" />
 	<form:errors cssClass="error" path="description" />
+	<br />
 	<br />
 	
 	<form:label path="requirementsExplorers">
@@ -59,12 +60,14 @@
 	<form:input path="requirementsExplorers" />
 	<form:errors cssClass="error" path="requirementsExplorers" />
 	<br />
+	<br />
 	
 	<form:label path="publicationDate">
 		<spring:message code="trip.publicationDate" />:
 	</form:label>
 	<form:input path="publicationDate" placeholder=" yyyy/dd/MM HH:hh" />
 	<form:errors cssClass="error" path="publicationDate" />
+	<br />
 	<br />
 	
 	<form:label path="startDate">
@@ -73,6 +76,7 @@
 	<form:input path="startDate" placeholder=" yyyy/dd/MM HH:hh" />
 	<form:errors cssClass="error" path="startDate" />
 	<br />
+	<br />
 	
 	<form:label path="finishDate">
 		<spring:message code="trip.finishDate" />:
@@ -80,26 +84,31 @@
 	<form:input path="finishDate" placeholder=" yyyy/dd/MM HH:hh" />
 	<form:errors cssClass="error" path="finishDate" />
 	<br />
+	<br />
 	
+	<h2><spring:message code="trip.ranger.name1" /></h2>
 	<form:label path="ranger">
-		<spring:message code="trip.tag" />:
+		<spring:message code="trip.ranger" />:
 	</form:label>
 	<form:select id="ranger" path="ranger" >		
 		<form:options items="${rangers}" itemValue="id" itemLabel="name" />		
 	</form:select>
 	<form:errors cssClass="error" path="ranger" />
+	<br />
 	<br />  
 	
-		<br />
-	
+	<h2><spring:message code="trip.tags.name" /></h2>
 	<form:label path="tags">
 		<spring:message code="trip.tag" />:
 	</form:label>
-	<form:select id="tags" path="tags" multiple="multiple">		
+	<form:select id="tags" path="tags" multiple="multiple" >		
 		<form:options items="${tags}" itemValue="id" itemLabel="name" />		
 	</form:select>
-	<form:errors cssClass="error" path="tags" />
-	<br />  
+	<form:errors cssClass="error" path="ranger" />
+	<br /> 
+	<br /> 
+	
+
 	
 <%-- 	<form:label path="tags">
 		<spring:message code="trip.tag" />:

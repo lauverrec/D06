@@ -69,11 +69,6 @@ public class TripManagerController extends AbstractController {
 		ModelAndView result;
 		Trip trip;
 		Manager manager;
-		//Collection<Ranger> rangers = new ArrayList<Ranger>();
-		//rangers = this.rangerService.findAll();
-		//Collection<Tag> tags;
-		//tags = this.tagService.findAll();
-
 		manager = this.managerService.findByPrincipal();
 		trip = this.tripService.create(manager);
 		result = this.createEditModelAndView(trip);
