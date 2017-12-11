@@ -71,7 +71,6 @@ public class MessageAdministratorController extends AbstractController {
 
 	}
 
-	//	save ---------------------------------------------------------
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
 	public ModelAndView save(@Valid final Message mess, final BindingResult bindingResult) {
 		ModelAndView result;
@@ -85,6 +84,20 @@ public class MessageAdministratorController extends AbstractController {
 			} catch (final Throwable oops) {
 				result = this.createEditModelAndView(mess, "message.commit.error");
 			}
+
+		return result;
+	}
+
+	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "delete")
+	public ModelAndView delete(Message messag, BindingResult bindingResult) {
+		ModelAndView result;
+
+		try {
+			this.messageService.delete(messag);
+			result = new ModelAndView("redirect:list.do?messageFolderId=" + messag.getMessageFolder().getId());
+		} catch (final Throwable oops) {
+			result = this.createEditModelAndView(messag, "message.commit.error");
+		}
 
 		return result;
 	}
@@ -113,18 +126,15 @@ public class MessageAdministratorController extends AbstractController {
 	protected ModelAndView createEditModelAndView(Message messag, String messageCode) {
 		ModelAndView result;
 		Collection<MessageFolder> messageFolders;
-		MessageFolder messageFolderMessage;
 		Actor sender;
 		Actor recipient;
 
-		messageFolderMessage = messag.getMessageFolder();
 		messageFolders = this.messageFolderService.findAllByActorAutenticate();
 
 		sender = messag.getSender();
 		recipient = messag.getRecipient();
 
 		result = new ModelAndView("message/edit");
-		result.addObject("messageFolderMessage", messageFolderMessage);
 		result.addObject("mess", messag);
 		result.addObject("messageFolders", messageFolders);
 		result.addObject("sender", sender);

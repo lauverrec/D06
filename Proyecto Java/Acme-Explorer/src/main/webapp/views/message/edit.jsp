@@ -41,7 +41,7 @@
 	<form:label path="subject">
 		<spring:message code="message.subject" />:
 	</form:label>
-	<form:input path="subject"/>
+	<form:input path="subject" readonly="true"/>
 	<form:errors cssClass="error" path="subject" />
 	<br />
 

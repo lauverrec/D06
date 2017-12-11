@@ -67,37 +67,24 @@ public class MessageService {
 
 	}
 
-	public Message save(final Message message) {
-		//Guarda el mensaje en la carpeta outbox del que lo envia
-		//Guarda el mensaje en la carpeta inbox del que lo recibe
+	public Message save(Message message) {
+		Message messageBD;
+		Message messageNew;
+		messageNew = null;
+		Assert.notNull(message);
+		if (message.getId() != 0) {
+			Assert.notNull(message.getMessageFolder());
+			messageBD = this.messageRepository.findOne(message.getId());
 
-		Assert.notNull(message.getSender());
-		Assert.notNull(message.getRecipient());
+			if (message.getMessageFolder() != messageBD.getMessageFolder()) {
+				messageNew = this.messageRepository.save(message);
+				Assert.notNull(messageNew);
+				message = messageNew;
 
-		MessageFolder outBoxSender;
-		MessageFolder inBoxRecipient;
+			}
+		}
+		return message;
 
-		Date current;
-		Actor senderAct;
-
-		Message messageSender;
-		Message messageRecipient;
-
-		senderAct = message.getSender();
-		outBoxSender = this.messageFolderService.returnDefaultFolder(senderAct, "Out box");
-		if (this.MessageisSpam(message))
-			inBoxRecipient = this.messageFolderService.returnDefaultFolder(message.getRecipient(), "Spam box");
-		else
-			inBoxRecipient = this.messageFolderService.returnDefaultFolder(message.getRecipient(), "In box");
-
-		current = new Date(System.currentTimeMillis() - 1000);
-		message.setMoment(current);
-		message.setMessageFolder(outBoxSender);
-		messageSender = this.messageRepository.save(message);
-		message.setMessageFolder(inBoxRecipient);
-		messageRecipient = this.messageRepository.save(message);
-		Assert.isTrue(!(messageSender.getMessageFolder().equals(messageRecipient.getMessageFolder())));
-		return messageSender;
 	}
 	public void delete(final Message message) {
 		Assert.notNull(message);

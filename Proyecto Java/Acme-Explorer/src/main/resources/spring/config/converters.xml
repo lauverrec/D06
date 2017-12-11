@@ -120,6 +120,9 @@
 		<bean class="converters.StringToAuthorityConverter"/>
 		<bean class="converters.AuthorityToStringConverter"/>
 		
+		<bean class="converters.StringToActorConverter"/>
+		<bean class="converters.ActorToStringConverter"/>
+		
 	</util:list>
 	
 </beans>
