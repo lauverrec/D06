@@ -102,8 +102,19 @@
 	</display:table>
 	
 	<br/>
-
+	
+	
+<security:authorize access="hasRole('MAMANGER')">
 	<input type="button" name="back" value="<spring:message code="trip.back" />"
 		onclick="javascript:  window.location.replace('trip/manager_/list.do');" />
 	<br />
+</security:authorize>
+
+<security:authorize access="hasRole('EXPLORER')">
+	<input type="button" name="back" value="<spring:message code="trip.back" />"
+		onclick="javascript:  window.location.replace('applicationFor/explorer/list.do');" />
+	<br />
+</security:authorize>
+
+
 </form:form>

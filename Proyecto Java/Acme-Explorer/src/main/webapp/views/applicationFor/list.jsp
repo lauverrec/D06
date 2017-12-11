@@ -42,10 +42,10 @@
 		title="${creditCardHeader}" sortable="true" />
 
 	<display:column>
-		<spring:url value="trip/list.do" var="tripListURL">
-			<spring:param name="applicationForId" value="${row.id}" />
+		<spring:url value="trip/display.do" var="displayURL">
+			<spring:param name="tripId" value="${row.trip.id}" />
 		</spring:url>
-		<a href="${tripListURL}"><spring:message
+		<a href="${displayURL}"><spring:message
 				code="applicationfor.trip" /></a>
 	</display:column>
 
@@ -56,6 +56,13 @@
 				<spring:param name="applicationForId" value="${row.id}" />
 			</spring:url>
 			<a href="${editlink}"><spring:message code="applicationfor.edit" /></a>
+		</display:column>
+		
+		<display:column>
+			<spring:url value="applicationFor/explorer/cancel.do" var="cancellink">
+				<spring:param name="applicationForId" value="${row.id}" />
+			</spring:url>
+			<a href="${cancellink}"><spring:message code="applicationfor.cancel" /></a>
 		</display:column>
 	</security:authorize>
 
@@ -70,8 +77,8 @@
 	</security:authorize>
 
 </display:table>
-<security:authorize access="hasRole('EXPLORER')">
+<%-- <security:authorize access="hasRole('EXPLORER')">
 	<spring:url value="applicationFor/explorer/create.do" var="linkcreate" />
 	<a href="${linkcreate}"><spring:message
 			code="applicationfor.create" /></a>
-</security:authorize>
+</security:authorize> --%>

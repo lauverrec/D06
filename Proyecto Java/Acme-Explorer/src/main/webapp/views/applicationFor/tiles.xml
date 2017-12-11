@@ -26,6 +26,11 @@
 		<put-attribute name="body" value="/views/applicationFor/edit.jsp" />
 	</definition>
 	
+		<definition name="applicationFor/cancel" extends="master.page">	
+		<put-attribute name="title" value="Cancel Application" />
+		<put-attribute name="body" value="/views/applicationFor/cancel.jsp" />
+	</definition>
+	
 
 	
 	

@@ -97,7 +97,7 @@
 	
 		<jstl:if test="${apply}">
 			<display:column>
-				<spring:url value="trip/explorer/cancel.do" var="applyURL">
+				<spring:url value="applicationFor/explorer/cancel.do" var="applyURL">
 					<spring:param name="tripId" value="${row.id }" />
 				</spring:url>
 				<a href="${cancelURL}"><spring:message code="trip.cancel" /></a>
