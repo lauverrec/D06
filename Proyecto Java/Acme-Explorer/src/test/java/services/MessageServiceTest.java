@@ -16,6 +16,7 @@ import org.springframework.util.Assert;
 import utilities.AbstractTest;
 import domain.Administrator;
 import domain.Message;
+import domain.MessageFolder;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {
@@ -56,7 +57,6 @@ public class MessageServiceTest extends AbstractTest {
 	}
 
 	@Test
-	@Rollback(false)
 	public void testSave() {
 		super.authenticate("administrator1");
 
@@ -91,5 +91,18 @@ public class MessageServiceTest extends AbstractTest {
 		this.messageService.delete(message);
 
 		super.unauthenticate();
+	}
+
+	@Test
+	@Rollback(false)
+	public void testChangeFolderMessage() {
+		this.authenticate("administrator1");
+		Message mes;
+		MessageFolder messageFolder;
+		messageFolder = this.messageFolderService.findOne(this.getEntityId("TrashBoxAdministrator1"));
+
+		mes = this.messageService.findOne(this.getEntityId("message1"));
+
+		this.messageService.ChangeMessageOfFolder(mes, messageFolder);
 	}
 }

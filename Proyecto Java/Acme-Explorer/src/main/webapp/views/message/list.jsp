@@ -35,6 +35,16 @@
 			<a href="${displaySponsorURL}"><spring:message
 					code="message.display" /></a>
 		</display:column>
+		
+		<display:column>
+			<spring:url value="message/sponsor/edit.do"
+				var="editSponsorURL">
+				<spring:param name="messageId" value="${row.id}" />
+			</spring:url>
+
+			<a href="${editSponsorURL}"><spring:message
+					code="message.edit" /></a>
+		</display:column>
 
 	</security:authorize>
 
@@ -48,6 +58,16 @@
 
 			<a href="${displayAdministratorURL}"><spring:message
 					code="message.display" /></a>
+		</display:column>
+		
+		<display:column>
+			<spring:url value="message/administrator/edit.do"
+				var="editAdministratorURL">
+				<spring:param name="messageId" value="${row.id}" />
+			</spring:url>
+
+			<a href="${editAdministratorURL}"><spring:message
+					code="message.edit" /></a>
 		</display:column>
 
 	</security:authorize>
@@ -64,6 +84,16 @@
 			<a href="${displayRangerURL}"><spring:message
 					code="message.display" /></a>
 		</display:column>
+		
+		<display:column>
+			<spring:url value="message/ranger/edit.do"
+				var="editRangerURL">
+				<spring:param name="messageId" value="${row.id}" />
+			</spring:url>
+
+			<a href="${editRangerURL}"><spring:message
+					code="message.edit" /></a>
+		</display:column>
 
 	</security:authorize>
 
@@ -78,6 +108,16 @@
 
 			<a href="${displayExplorerURL}"><spring:message
 					code="message.display" /></a>
+		</display:column>
+		
+		<display:column>
+			<spring:url value="message/explorer/edit.do"
+				var="editExplorerURL">
+				<spring:param name="messageId" value="${row.id}" />
+			</spring:url>
+
+			<a href="${editExplorerURL}"><spring:message
+					code="message.edit" /></a>
 		</display:column>
 
 	</security:authorize>
@@ -94,6 +134,16 @@
 			<a href="${displayManagerURL}"><spring:message
 					code="message.display" /></a>
 		</display:column>
+		
+		<display:column>
+			<spring:url value="message/manager/edit.do"
+				var="editManagerURL">
+				<spring:param name="messageId" value="${row.id}" />
+			</spring:url>
+
+			<a href="${editManagerURL}"><spring:message
+					code="message.edit" /></a>
+		</display:column>
 
 
 
@@ -109,6 +159,16 @@
 
 			<a href="${displayAuditorURL}"><spring:message
 					code="message.display" /></a>
+		</display:column>
+		
+		<display:column>
+			<spring:url value="message/auditor/edit.do"
+				var="editAuditorURL">
+				<spring:param name="messageId" value="${row.id}" />
+			</spring:url>
+
+			<a href="${editAuditorURL}"><spring:message
+					code="message.edit" /></a>
 		</display:column>
 
 
