@@ -53,11 +53,12 @@ public class TripManagerController extends AbstractController {
 	public ModelAndView list() {
 		ModelAndView result;
 		Collection<Trip> trips;
-
+		Manager manager = this.managerService.findByPrincipal();
 		trips = this.tripService.findAll();
 
 		result = new ModelAndView("trip/list");
 		result.addObject("trips", trips);
+		result.addObject("manager", manager);
 		result.addObject("requestURI", "trip/manager_/list.do");
 
 		return result;
