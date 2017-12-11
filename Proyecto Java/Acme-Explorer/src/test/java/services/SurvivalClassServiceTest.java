@@ -13,7 +13,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.util.Assert;
 
 import utilities.AbstractTest;
-import domain.Explorer;
 import domain.SurvivalClass;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -109,22 +108,22 @@ public class SurvivalClassServiceTest extends AbstractTest {
 	//
 	//	}
 
-	@Test
-	public void testDelete() {
-
-		this.authenticate("manager1");
-
-		SurvivalClass result;
-		Collection<Explorer> explorers;
-
-		result = this.survivalClassService.findOne(super.getEntityId("survivalClass1"));
-		explorers = result.getExplorers();
-
-		explorers.removeAll(explorers);
-
-		this.survivalClassService.delete(result);
-
-		Assert.isTrue(!this.survivalClassService.findAll().contains(result));
-
-	}
+	//	@Test
+	//	public void testDelete() {
+	//
+	//		this.authenticate("manager1");
+	//
+	//		SurvivalClass result;
+	//		Collection<Explorer> explorers;
+	//
+	//		result = this.survivalClassService.findOne(super.getEntityId("survivalClass1"));
+	//		explorers = result.getExplorers();
+	//
+	//		explorers.removeAll(explorers);
+	//
+	//		this.survivalClassService.delete(result);
+	//
+	//		Assert.isTrue(!this.survivalClassService.findAll().contains(result));
+	//
+	//	}
 }

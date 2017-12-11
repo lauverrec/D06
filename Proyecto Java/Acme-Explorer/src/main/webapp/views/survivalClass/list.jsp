@@ -93,10 +93,3 @@
 	
 </display:table>
 
-<security:authorize access="hasRole('MANAGER')">
-	<div>
-		<a href="survivalClass/manager/create.do"> <spring:message
-				code="survivalClass.create" />
-		</a>
-	</div>
-</security:authorize>

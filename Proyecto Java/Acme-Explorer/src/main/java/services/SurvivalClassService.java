@@ -145,6 +145,16 @@ public class SurvivalClassService {
 		return classes;
 	}
 
+	public Collection<Trip> findTrips() {
+		Collection<Trip> trips;
+		Manager manager;
+
+		manager = this.managerService.findByPrincipal();
+		trips = this.survivalClassRepository.findTripsByManager(manager.getId());
+
+		return trips;
+	}
+
 	public Trip findByPrincipalSurvivalClassTrip(final SurvivalClass survivalClass) {
 
 		Trip result;
