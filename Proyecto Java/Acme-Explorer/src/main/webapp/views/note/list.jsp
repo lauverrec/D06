@@ -69,8 +69,3 @@
 	
 </display:table>
 
-<security:authorize access="hasRole('AUDITOR')">
-      <a href="note/auditor/create.do">
-        <spring:message  code="note.create" />
-      </a>  
-</security:authorize>
