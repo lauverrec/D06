@@ -53,7 +53,7 @@
 			<li><a class="fNiv"><spring:message	code="master.page.explorer" /></a>
 				<ul>
 					<li class="arrow"></li>
-					<li><a href="trip/explorer/list-apply.do"><spring:message code="master.page.explorer.list.apply.trips" /></a></li>					
+					<li><a href="applicationFor/explorer/list.do"><spring:message code="master.page.explorer.list.applicationFor" /></a></li>					
 					<li><a href="trip/explorer/list-not-apply.do"><spring:message code="master.page.explorer.list.not.apply.trips" /></a></li>
 					<li><a href="explorer/edit.do"><spring:message code="master.page.explorer.edit" /></a></li>
 					<li><a href="story/explorer/list.do"><spring:message code="master.page.explorer.stories" /></a></li>
