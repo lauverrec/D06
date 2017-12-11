@@ -23,16 +23,6 @@
 				<value>jes extender</value>
 			</list>
 		</property>
-		<property name="welcomeMessages">
-			<list>
-				<value>Tanzanika is an adven-ture company that makes your explorer’s
-					dreams true
-				</value>
-				<value>Tanzanika es la empresa de aven-turas que hará tus sueños de
-					explorador realidad
-				</value>
-			</list>
-		</property>
 		<property name="defaultCategories">
 			<list>
 				<ref bean="category" />
@@ -3989,7 +3979,7 @@
 		<property name="description" value="description survivalClass 2" />
 		<property name="organisedMoment" value="2017/10/21 10:10" />
 		<property name="location" ref="gps2" />
-		<property name="manager" ref="manager2" />
+		<property name="manager" ref="manager1" />
 		<property name="trip" ref="trip2" />
 		<property name="explorers">
 			<list>
@@ -4004,7 +3994,7 @@
 		<property name="description" value="description survivalClass 3" />
 		<property name="organisedMoment" value="2017/10/21 10:10" />
 		<property name="location" ref="gps3" />
-		<property name="manager" ref="manager3" />
+		<property name="manager" ref="manager2" />
 		<property name="trip" ref="trip3" />
 		<property name="explorers">
 			<list>

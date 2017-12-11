@@ -20,7 +20,6 @@ public class ConfigurationSystem extends DomainEntity {
 	private double					VAT;
 	private String					banner;
 	private Collection<String>		spamWords;
-	private Collection<String>		welcomeMessages;
 	private Collection<Category>	defaultCategories;
 
 
@@ -51,17 +50,6 @@ public class ConfigurationSystem extends DomainEntity {
 
 	public void setSpamWords(final Collection<String> spamWords) {
 		this.spamWords = spamWords;
-	}
-
-	@ElementCollection
-	@NotEmpty
-	@NotNull
-	public Collection<String> getWelcomeMessages() {
-		return this.welcomeMessages;
-	}
-
-	public void setWelcomeMessages(final Collection<String> welcomeMessages) {
-		this.welcomeMessages = welcomeMessages;
 	}
 
 	@ElementCollection
