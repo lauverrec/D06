@@ -78,7 +78,8 @@
 <!-- Edit Para un Manager-->
 	<security:authorize access="hasRole('MANAGER')">
 	<spring:message code="trip.publicationDate" var="publicationDate" />	
-		<display:column>
+	<spring:message code="trip.edit" var="Edit" />
+		<display:column title="${Edit}">
 			<jstl:if test="${row.publicationDate==null && row.manager==manager}">
 			
 				<spring:url value="trip/manager_/edit.do" var="editURL">
@@ -143,7 +144,8 @@
 	<display:column property="finishDate" title="${finishDateHeader}" sortable="true" format="${pattern}" />
 	
 	<security:authorize access= "hasRole('MANAGER')">
-	<display:column>
+	<spring:message code="trip.stage" var="Stages" />
+	<display:column title="${Stages}">
 		<spring:url value="stage/manager/list.do" var="stageURL">
 			<spring:param name="tripId" value="${row.id }" />
 		</spring:url>
@@ -152,7 +154,8 @@
 	</security:authorize>
 		<security:authorize access="hasRole('MANAGER')">
 	<spring:message code="trip.publicationDate" var="publicationDate" />	
-		<display:column>
+	<spring:message code="trip.createStage" var="CreateStages" />
+		<display:column title="${CreateStages}">
 			<jstl:if test="${row.publicationDate==null && row.manager==manager}">
 				<spring:url value="stage/manager/create.do" var="editURL">
 					<spring:param name="tripId" value="${row.id}" />
@@ -191,7 +194,8 @@
 </security:authorize>
 
 <security:authorize access="hasRole('MANAGER')">
-	<display:column>
+	<spring:message code="trip.survivalClass" var="SurvivalClasses" />
+	<display:column title="${SurvivalClasses}">
 	<jstl:if test="${row.manager==manager}">
 		<spring:url value="survivalClass/manager/create.do" var="createURL">
 			<spring:param name="tripId" value="${row.id}" />
