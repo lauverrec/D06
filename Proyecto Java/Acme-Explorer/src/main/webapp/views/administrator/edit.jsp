@@ -22,7 +22,7 @@
 
 
 
-<form:form action="administrator/administrator/edit.do" modelAttribute="administrator">
+<form:form action="administrator/edit.do" modelAttribute="administrator">
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />
@@ -64,6 +64,9 @@
 	<form:label path="phone">
 		<spring:message code="administrator.phone" />:
 	</form:label>
+	<form:input path="phone"/>
+	<form:errors cssClass="error" path="phone"/>
+	<br/>
 
 	
 	<form:errors cssClass="error" path="phone" />
@@ -86,11 +89,7 @@
 	
 	<input type="submit" name="save"
 		value="<spring:message code="administrator.save" />" onclick="valida();"/>&nbsp; 
-	<jstl:if test="${administrator.id != 0}">
-		<input type="submit" name="delete"
-			value="<spring:message code="administrator.delete" />"
-			onclick="javascript: return confirm('<spring:message code="administrator.confirm.delete" />')" />&nbsp;
-	</jstl:if>
+	
 	<input type="button" name="cancel"
 		value="<spring:message code="administrator.cancel" />"
 		onclick="javascript: window.location.replace('welcome/index.do');" />

@@ -69,6 +69,7 @@
 			<li><a class="fNiv"><spring:message	code="master.page.administrator" /></a>
 				<ul>
 					<li class="arrow"></li>
+					<li><a href="administrator/edit.do"><spring:message code="master.page.administrator.edit" /></a></li>
 					<li><a href="category/administrator/list.do"><spring:message code="master.page.administrator.categories" /></a></li>
 					<li><a href="category/administrator/create.do"><spring:message code="master.page.administrator.category.create" /></a></li>
 					<li><a href="messageFolder/administrator/list.do"><spring:message code="master.page.messageFolder.list" /></a></li>	
