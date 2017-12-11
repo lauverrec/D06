@@ -19,7 +19,7 @@
 <%@taglib prefix="security"	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
-// TODO: TO BE COMPLETED
+
 
 <form:form action="${requestURI}" modelAttribute="auditRecord">
 

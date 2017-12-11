@@ -26,8 +26,8 @@
 	<!-- Action links -->
 
 	<security:authorize access="hasRole('AUDITOR')">
-		
-		<display:column>
+		<spring:message code="auditRecord.edit" var="Edit" />
+		<display:column title="${Edit}" sortable="true">
 		
 		<jstl:if test="${row.draftMode==true}">
 		<spring:url value="auditRecord/auditor/edit.do" var="editURL">
@@ -38,8 +38,8 @@
 		</display:column>	
 		
 	
-	
-		<display:column>
+		<spring:message code="auditRecord.display" var="Display" />
+		<display:column title="${Display}" sortable="true">
 		<spring:url value="auditRecord/auditor/display.do" var="displayURL">
 		<spring:param name="auditRecordId" value="${row.id}"/>
 		</spring:url>

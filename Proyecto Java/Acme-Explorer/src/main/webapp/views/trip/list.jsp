@@ -68,7 +68,8 @@
 <display:table name="trips" id="row" requestURI="${requestURI}" pagesize="5" class="displaytag" keepStatus="true">
 
 <!-- Display -->
-	<display:column>
+	<spring:message code="trip.display" var="Display" />
+	<display:column title="${Display}" sortable="true">
 		<spring:url value="trip/display.do" var="displayURL">
 			<spring:param name="tripId" value="${row.id}" />
 		</spring:url>
@@ -175,7 +176,8 @@
 </security:authorize>
 
 <security:authorize access="hasRole('AUDITOR')">
-	<display:column>
+<spring:message code="trip.auditRecord.create" var="Create" />
+	<display:column title="${Create}" sortable="true">
 		<spring:url value="auditRecord/auditor/create.do" var="createURL">
 			<spring:param name="tripId" value="${row.id}" />
 		</spring:url>
@@ -185,7 +187,8 @@
 
 
 <security:authorize access="hasRole('AUDITOR')">
-	<display:column>
+<spring:message code="note.create" var="Create" />
+	<display:column title="${Create}" sortable="true">
 		<spring:url value="note/auditor/create.do" var="createURL">
 			<spring:param name="tripId" value="${row.id}" />
 		</spring:url>
