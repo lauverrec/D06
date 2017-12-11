@@ -8,7 +8,6 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -27,16 +26,16 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Trip extends DomainEntity {
 
 	// Attributes -------------------------------------------------------------
-	private String				ticker;
-	private String				title;
-	private String				description;
-	private double				price;
-	private Collection<String>	requirementsExplorers;
-	private Date				publicationDate;
-	private Date				startDate;
-	private Date				finishDate;
-	private String				reasonWhy;
-	private boolean				cancelled;
+	private String	ticker;
+	private String	title;
+	private String	description;
+	private double	price;
+	private String	requirementsExplorers;
+	private Date	publicationDate;
+	private Date	startDate;
+	private Date	finishDate;
+	private String	reasonWhy;
+	private boolean	cancelled;
 
 
 	@NotBlank
@@ -78,12 +77,12 @@ public class Trip extends DomainEntity {
 	}
 
 	@NotNull
-	@ElementCollection
-	public Collection<String> getRequirementsExplorers() {
+	//@ElementCollection
+	public String getRequirementsExplorers() {
 		return this.requirementsExplorers;
 	}
 
-	public void setRequirementsExplorers(final Collection<String> requirementsExplorers) {
+	public void setRequirementsExplorers(final String requirementsExplorers) {
 		this.requirementsExplorers = requirementsExplorers;
 	}
 
