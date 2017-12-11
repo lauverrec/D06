@@ -167,7 +167,8 @@
 	</security:authorize>
 
 <security:authorize access="hasRole('SPONSOR')">
-	<display:column>
+	<spring:message code="sponsorship.create" var="Create" />
+	<display:column title="${Create}" sortable="true">
 		<spring:url value="sponsorship/sponsor/create.do" var="createURL">
 			<spring:param name="tripId" value="${row.id}" />
 		</spring:url>
@@ -176,7 +177,7 @@
 </security:authorize>
 
 <security:authorize access="hasRole('AUDITOR')">
-<spring:message code="trip.auditRecord.create" var="Create" />
+	<spring:message code="trip.auditRecord.create" var="Create" />
 	<display:column title="${Create}" sortable="true">
 		<spring:url value="auditRecord/auditor/create.do" var="createURL">
 			<spring:param name="tripId" value="${row.id}" />
