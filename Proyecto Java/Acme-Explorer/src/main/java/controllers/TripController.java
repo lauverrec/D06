@@ -71,7 +71,7 @@ public class TripController extends AbstractController {
 		ModelAndView result;
 		Trip trip;
 		Collection<Tag> tags;
-		Collection<String> requirements;
+		//Collection<String> requirements;
 		Collection<Stage> stages;
 		Collection<AuditRecord> auditRecords;
 		Collection<Note> notes;
@@ -79,14 +79,13 @@ public class TripController extends AbstractController {
 		trip = this.tripService.findOne(tripId);
 		notes = new ArrayList<Note>(trip.getNotes());
 		tags = new ArrayList<Tag>(trip.getTags());
-		requirements = new ArrayList<String>(trip.getRequirementsExplorers());
 		stages = new ArrayList<Stage>(trip.getStages());
 		auditRecords = new ArrayList<AuditRecord>(trip.getAuditRecords());
 
 		result = new ModelAndView("trip/display");
 		result.addObject("trip", trip);
 		result.addObject("tags", tags);
-		result.addObject("requirements", requirements);
+		//result.addObject("requirements", requirements);
 		result.addObject("stages", stages);
 		result.addObject("auditRecords", auditRecords);
 		result.addObject("notes", notes);
