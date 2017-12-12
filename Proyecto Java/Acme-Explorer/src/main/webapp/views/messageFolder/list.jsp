@@ -52,7 +52,7 @@
 				var="listMessagesSponsorRL">
 				<spring:param name="messageFolderId" value="${row.id }"></spring:param>
 			</spring:url>
-			<a href="${listMessagesSponsorURL }">Ver mensajes</a>
+			<a href="${listMessagesSponsorURL }"><spring:message code="messageFolder.displayMessages"/></a>
 		</display:column>
 
 	</security:authorize>
@@ -85,7 +85,7 @@
 				var="listMessagesURL">
 				<spring:param name="messageFolderId" value="${row.id }"></spring:param>
 			</spring:url>
-			<a href="${listMessagesURL }">Ver mensajes</a>
+			<a href="${listMessagesURL }"><spring:message code="messageFolder.displayMessages"/></a>
 		</display:column>
 	</security:authorize>
 
@@ -117,7 +117,7 @@
 				var="listMessagesRangerURL">
 				<spring:param name="messageFolderId" value="${row.id }"></spring:param>
 			</spring:url>
-			<a href="${listMessagesRangerURL }">Ver mensajes</a>
+			<a href="${listMessagesRangerURL }"><spring:message code="messageFolder.displayMessages"/></a>
 		</display:column>
 
 	</security:authorize>
@@ -151,7 +151,7 @@
 				var="listMessagesExplorerURL">
 				<spring:param name="messageFolderId" value="${row.id }"></spring:param>
 			</spring:url>
-			<a href="${listMessagesExplorerURL }">Ver mensajes</a>
+			<a href="${listMessagesExplorerURL }"><spring:message code="messageFolder.displayMessages"/></a>
 		</display:column>
 
 	</security:authorize>
@@ -184,7 +184,7 @@
 				var="listMessagesManagerURL">
 				<spring:param name="messageFolderId" value="${row.id }"></spring:param>
 			</spring:url>
-			<a href="${listMessagesManagerURL }">Ver mensajes</a>
+			<a href="${listMessagesManagerURL }"><spring:message code="messageFolder.displayMessages"/></a>
 		</display:column>
 
 	</security:authorize>
@@ -217,7 +217,7 @@
 				var="listMessagesAuditorURL">
 				<spring:param name="messageFolderId" value="${row.id }"></spring:param>
 			</spring:url>
-			<a href="${listMessagesAuditorURL }">Ver mensajes</a>
+			<a href="${listMessagesAuditorURL }"><spring:message code="messageFolder.displayMessages"/></a>
 		</display:column>
 
 	</security:authorize>

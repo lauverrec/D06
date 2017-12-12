@@ -158,8 +158,8 @@ public class MessageService {
 
 		bool = false;
 		words = new ArrayList<String>();
-		words.add(message.getBody());
-		words.add(message.getSubject());
+		words.add(message.getBody().toLowerCase());
+		words.add(message.getSubject().toLowerCase());
 
 		spams = this.SpamWord();
 

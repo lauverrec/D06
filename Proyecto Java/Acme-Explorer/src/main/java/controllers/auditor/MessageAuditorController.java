@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import services.ActorService;
 import services.MessageFolderService;
 import services.MessageService;
 import controllers.AbstractController;
@@ -33,6 +34,9 @@ public class MessageAuditorController extends AbstractController {
 	@Autowired
 	private MessageFolderService	messageFolderService;
 
+	@Autowired
+	private ActorService			actorService;
+
 
 	//Constructor--------------------------------------------------------
 
@@ -40,10 +44,27 @@ public class MessageAuditorController extends AbstractController {
 		super();
 	}
 
+	//	Creation --------------------------------------------------------
+	@RequestMapping(value = "/create", method = RequestMethod.GET)
+	public ModelAndView create() {
+
+		ModelAndView result;
+		Message messag;
+		Collection<Actor> actors;
+
+		actors = this.actorService.findAll();
+
+		messag = this.messageService.create();
+		result = this.createEditModelAndViewExchange(messag);
+		result.addObject("actors", actors);
+
+		return result;
+	}
 	//	Listing ---------------------------------------------------------
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ModelAndView list(@RequestParam int messageFolderId) {
+
 		ModelAndView result;
 		Collection<Message> mess;
 
@@ -79,14 +100,13 @@ public class MessageAuditorController extends AbstractController {
 		else
 			try {
 				this.messageService.save(mess);
-				result = new ModelAndView("redirect:/messageFolder/auditor/list.do");
+				result = new ModelAndView("redirect:list.do?messageFolderId=" + mess.getMessageFolder().getId());
 			} catch (final Throwable oops) {
 				result = this.createEditModelAndView(mess, "message.commit.error");
 			}
 
 		return result;
 	}
-
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "delete")
 	public ModelAndView delete(Message messag, BindingResult bindingResult) {
 		ModelAndView result;
@@ -111,6 +131,25 @@ public class MessageAuditorController extends AbstractController {
 		mess = this.messageService.findOne(messageId);
 		result = new ModelAndView("message/display");
 		result.addObject("mess", mess);
+
+		return result;
+	}
+
+	//Send message -----------------------------------------------------------
+
+	@RequestMapping(value = "/exchangeMessage", method = RequestMethod.POST, params = "send")
+	public ModelAndView sendMessage(@Valid final Message mess, final BindingResult bindingResult) {
+		ModelAndView result;
+
+		if (bindingResult.hasErrors())
+			result = this.createEditModelAndView(mess);
+		else
+			try {
+				this.messageService.save(mess);
+				result = new ModelAndView("redirect:list.do?messageFolderId=" + mess.getMessageFolder().getId());
+			} catch (final Throwable oops) {
+				result = this.createEditModelAndView(mess, "message.commit.error");
+			}
 
 		return result;
 	}
@@ -140,6 +179,34 @@ public class MessageAuditorController extends AbstractController {
 		result.addObject("recipient", recipient);
 		result.addObject("messageCode", messageCode);
 		result.addObject("requestURI", "message/auditor/edit.do");
+
+		return result;
+
+	}
+
+	protected ModelAndView createEditModelAndViewExchange(Message messag) {
+		ModelAndView result;
+		result = this.createEditModelAndViewExchange(messag, null);
+		return result;
+	}
+
+	protected ModelAndView createEditModelAndViewExchange(Message messag, String messageCode) {
+		ModelAndView result;
+		MessageFolder messageFolderOfMessage;
+		Actor sender;
+		Actor recipient;
+
+		messageFolderOfMessage = messag.getMessageFolder();
+		sender = messag.getSender();
+		recipient = messag.getRecipient();
+
+		result = new ModelAndView("message/exchangeMessage");
+		result.addObject("mess", messag);
+		result.addObject("messageFolder", messageFolderOfMessage);
+		result.addObject("sender", sender);
+		result.addObject("recipient", recipient);
+		result.addObject("messageCode", messageCode);
+		result.addObject("requestURI", "message/auditor/exchangeMessage.do");
 
 		return result;
 
