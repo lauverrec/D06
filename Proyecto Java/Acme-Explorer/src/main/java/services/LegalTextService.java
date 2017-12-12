@@ -74,9 +74,6 @@ public class LegalTextService {
 
 		LegalText result;
 
-		if (legalText.isDraftMode() == true)
-			Assert.isTrue(legalText.getTrips().isEmpty());
-
 		result = this.legalTextRepository.save(legalText);
 
 		return result;
