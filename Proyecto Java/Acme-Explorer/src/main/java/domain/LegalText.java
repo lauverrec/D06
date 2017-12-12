@@ -14,7 +14,6 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
-import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -83,7 +82,6 @@ public class LegalText extends DomainEntity {
 
 
 	@Valid
-	@NotEmpty
 	@OneToMany
 	public Collection<Trip> getTrips() {
 		return this.trips;

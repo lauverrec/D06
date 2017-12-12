@@ -27,7 +27,8 @@
 
 	<security:authorize access="hasRole('ADMINISTRATOR')">
 		
-		<display:column>
+		<spring:message code="legalText.edit" var="editHeader" />
+		<display:column title="${editHeader}" sortable="true">
 		
 		<jstl:if test="${row.draftMode==true}">
 		<spring:url value="legalText/administrator/edit.do" var="editURL">
@@ -38,8 +39,8 @@
 		</display:column>	
 		
 	
-	
-		<display:column>
+		<spring:message code="legalText.display" var="displayHeader"></spring:message>
+		<display:column title="${displayHeader }" sortable="true">
 		<spring:url value="legalText/administrator/display.do" var="displayURL">
 		<spring:param name="legalTextId" value="${row.id}"/>
 		</spring:url>
@@ -59,7 +60,12 @@
 	<display:column property="moment" title="${moment}" sortable="true" />
 	
 	<spring:message code="legalText.trip.title" var="trips" />:
-	<display:column property="trips" title="${trips}" sortable="true" />
+	<display:column title =" ${trips}" sortable="true">
+		<jstl:forEach var="trip" items="${row.trips}">
+			<jstl:out value="${trip.title}"></jstl:out><br/>
+		
+		</jstl:forEach>	
+	</display:column>
 	
 	
 	<spring:message code="legalText.draftMode" var="draftModeHeader" />:

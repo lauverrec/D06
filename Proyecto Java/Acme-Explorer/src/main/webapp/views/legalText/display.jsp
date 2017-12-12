@@ -47,6 +47,14 @@
 		<jstl:out value="${row.moment}"></jstl:out>
  
 	 </p>
+	
+	<p>
+		<spring:message code="legalText.trip.title"></spring:message>:
+		<jstl:forEach var="trip" items="${row.trips}">
+			<jstl:out value="${trip.title}"></jstl:out>
+		
+		</jstl:forEach>	
+	</p>
 
 	<p>
 		<spring:message code="legalText.draftMode" />:
