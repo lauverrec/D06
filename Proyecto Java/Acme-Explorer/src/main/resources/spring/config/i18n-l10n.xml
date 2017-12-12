@@ -50,6 +50,8 @@
 		<value>/views/stage/messages</value>
 		<value>/views/legalText/messages</value>
 		<value>/views/administrator/messages</value>
+		<value>/views/configurationSystem/messages</value>
+		
 		
 	</util:list>
 

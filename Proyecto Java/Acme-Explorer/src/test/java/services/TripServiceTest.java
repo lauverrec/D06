@@ -266,11 +266,11 @@ public class TripServiceTest extends AbstractTest {
 	}
 
 	@Test
-	public void testSearchingForTrips() {
+	public void testFindAllTripsByKeyWord() {
 		Collection<Trip> trips;
 		String search;
 		search = "description";
-		trips = new ArrayList<>(this.tripService.searchingForTrips(search));
+		trips = new ArrayList<>(this.tripService.findAllTripsByKeyWord(search));
 		Assert.notNull(trips);
 	}
 

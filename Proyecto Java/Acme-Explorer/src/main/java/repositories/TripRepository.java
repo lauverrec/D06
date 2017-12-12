@@ -51,7 +51,7 @@ public interface TripRepository extends JpaRepository<Trip, Integer> {
 	Collection<Trip> findAllTripsByTagId(int tagId);
 
 	@Query("select t from Trip t where t.ticker like %?1% or t.title like %?1% or t.description like %?1%")
-	Page<Trip> searchingForTrips(String search, Pageable pageable);
+	Page<Trip> findAllTripsByKeyWord(String search, Pageable pageable);
 
 	@Query("select c.trips from Category c where c.id = ?1")
 	Collection<Trip> findByCategory(int categoryId);

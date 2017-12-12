@@ -30,13 +30,15 @@ public class TripService {
 
 	// Managed repository -----------------------------------------------------
 	@Autowired
-	private TripRepository	tripRepository;
+	private TripRepository				tripRepository;
 
 	// Supporting services ----------------------------------------------------
 	@Autowired
-	private ManagerService	managerService;
+	private ManagerService				managerService;
 	@Autowired
-	private ExplorerService	explorerService;
+	private ExplorerService				explorerService;
+	@Autowired
+	private ConfigurationSystemService	configurationSystemService;
 
 
 	// Constructors------------------------------------------------------------
@@ -278,13 +280,15 @@ public class TripService {
 		return res;
 	}
 
-	public Collection<Trip> searchingForTrips(final String search) {
+	public Collection<Trip> findAllTripsByKeyWord(final String search) {
 		final Collection<Trip> res;
 		final Page<Trip> resPage;
+		int maxNumberFinder;
 
-		final Pageable pageable = new PageRequest(0, 10);
+		maxNumberFinder = this.configurationSystemService.findOne().getMaxNumberFinder();
+		final Pageable pageable = new PageRequest(0, maxNumberFinder);
 
-		resPage = this.tripRepository.searchingForTrips(search, pageable);
+		resPage = this.tripRepository.findAllTripsByKeyWord(search, pageable);
 		res = resPage.getContent();
 		return res;
 	}

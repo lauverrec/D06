@@ -11,6 +11,7 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.Range;
 import org.hibernate.validator.constraints.URL;
 
 @Entity
@@ -65,6 +66,7 @@ public class ConfigurationSystem extends DomainEntity {
 	}
 
 	@NotNull
+	@Range(min = 1, max = 100)
 	public int getMaxNumberFinder() {
 		return this.maxNumberFinder;
 	}

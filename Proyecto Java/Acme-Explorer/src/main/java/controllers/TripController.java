@@ -42,7 +42,7 @@ public class TripController extends AbstractController {
 		ModelAndView result;
 		Collection<Trip> trips;
 
-		trips = this.tripService.searchingForTrips(keyword);
+		trips = this.tripService.findAllTripsByKeyWord(keyword);
 		result = new ModelAndView("trip/list");
 
 		result.addObject("trips", trips);
