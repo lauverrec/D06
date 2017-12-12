@@ -34,8 +34,7 @@ public class LegalTextService {
 
 	// Simple CRUD methods-----------------------------------------------------
 	public LegalText create() {
-
-		this.administratorService.checkPrincipal();
+		Assert.notNull(this.administratorService.findByPrincipal());
 
 		LegalText result;
 		Date moment;
@@ -46,7 +45,6 @@ public class LegalTextService {
 		trips = new ArrayList<Trip>();
 
 		result.setMoment(moment);
-		//result.setDraftMode(true);
 		result.setTrips(trips);
 
 		return result;
@@ -72,9 +70,12 @@ public class LegalTextService {
 
 		Assert.notNull(legalText);
 
-		this.administratorService.checkPrincipal();
+		Assert.notNull(this.administratorService.findByPrincipal());
 
 		LegalText result;
+
+		if (legalText.isDraftMode() == true)
+			Assert.isTrue(legalText.getTrips().isEmpty());
 
 		result = this.legalTextRepository.save(legalText);
 

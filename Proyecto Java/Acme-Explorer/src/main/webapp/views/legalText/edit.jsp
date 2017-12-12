@@ -24,6 +24,7 @@
 
 	<form:hidden path="id" />
 	<form:hidden path="version" /> 
+	<form:hidden path="trips"/>
 	
 	<form:label path="title">
 		<spring:message code="legalText.title" />:
@@ -35,7 +36,7 @@
 	<form:label path="body">
 		<spring:message code="legalText.body" />:
 	</form:label>
-	<form:input path="body" />
+	<form:textarea path="body" />
 	<form:errors cssClass="error" path="body" />
 	<br />
 	
@@ -52,17 +53,6 @@
 	<form:input path="moment" readonly="true"/>
 	<form:errors cssClass="error" path="moment" />
 	<br />
-	
-	<form:label path="trips">
-		<spring:message code="legalText.trip.title" />:
-	</form:label>
-	<form:select id="trips" path="trips">
-	<form:option value="0" label="----" />		
-	<form:options items="${trips}" itemValue="id"
-			itemLabel="title" />
-	</form:select>
-	<form:errors cssClass="error" path="trips" />
-	<br/>
 	
 	<form:label path="draftMode">
 		<spring:message code="auditRecord.draftMode" />:

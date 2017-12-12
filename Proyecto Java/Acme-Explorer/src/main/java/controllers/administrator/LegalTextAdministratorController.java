@@ -122,7 +122,6 @@ public class LegalTextAdministratorController extends AbstractController {
 		return result;
 
 	}
-
 	//Deleting-----------------------
 
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "delete")
@@ -154,13 +153,16 @@ public class LegalTextAdministratorController extends AbstractController {
 		assert legalText != null;
 
 		ModelAndView result;
+		Collection<Trip> trips;
+
+		trips = this.tripService.findAll();
 
 		result = new ModelAndView("legalText/edit");
 		result.addObject("legalText", legalText);
+		result.addObject("trips", trips);
 		result.addObject("message", messageCode);
 
 		return result;
 
 	}
-
 }
