@@ -11,6 +11,7 @@ import org.springframework.util.Assert;
 
 import repositories.NoteRepository;
 import domain.Auditor;
+import domain.Manager;
 import domain.Note;
 
 @Service
@@ -102,6 +103,16 @@ public class NoteService {
 
 		auditor = this.auditorService.findByPrincipal();
 		notes = this.noteRepository.findNotesByAuditor(auditor.getId());
+
+		return notes;
+	}
+
+	public Collection<Note> findNotesByManager() {
+		Collection<Note> notes;
+		Manager manager;
+
+		manager = this.managerService.findByPrincipal();
+		notes = this.noteRepository.findNotesByManager(manager.getId());
 
 		return notes;
 	}

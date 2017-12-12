@@ -19,7 +19,7 @@ import controllers.AbstractController;
 import domain.Note;
 
 @Controller
-@RequestMapping(value = "/note/manager")
+@RequestMapping("/note/manager")
 public class NoteManagerController extends AbstractController {
 
 	//Services--------------------------------------------
@@ -35,12 +35,11 @@ public class NoteManagerController extends AbstractController {
 		final ModelAndView result;
 		Collection<Note> notes;
 
-		notes = this.noteService.findAll();
-		//note/auditor/list.do
+		notes = this.noteService.findNotesByManager();
 
-		result = new ModelAndView("note/list");
-		result.addObject("requestURI", "note/manager/list.do");
+		result = new ModelAndView("note/list/manager");
 		result.addObject("notes", notes);
+
 		return result;
 
 	}
@@ -108,7 +107,7 @@ public class NoteManagerController extends AbstractController {
 
 		ModelAndView result;
 
-		result = new ModelAndView("note/edit");
+		result = new ModelAndView("note/reply");
 		result.addObject("note", note);
 		result.addObject("message", messageCode);
 
