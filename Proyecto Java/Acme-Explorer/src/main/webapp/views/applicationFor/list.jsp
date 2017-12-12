@@ -77,6 +77,14 @@
 			<a href="${editlink}"><spring:message code="applicationfor.edit" /></a>
 		</display:column>
 	</security:authorize>
+	
+			<spring:message code="applicationfor.display" var="Display" />
+		<display:column title="${Display}" sortable="true">
+		<spring:url value="applicationFor/explorer/display.do" var="displayURL">
+		<spring:param name="applicationforId" value="${row.id}"/>
+		</spring:url>
+		<a href="${displayURL}"><spring:message code="applicationfor.view"/></a>
+		</display:column>	
 
 </display:table>
 <%-- <security:authorize access="hasRole('EXPLORER')">

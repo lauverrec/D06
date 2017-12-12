@@ -79,37 +79,25 @@ public class ApplicationForExplorerController {
 		return result;
 	}
 
-	/*
-	 * @RequestMapping(value = "/cancel", method = RequestMethod.GET)
-	 * public ModelAndView cancel(@RequestParam final int applicationForId) {
-	 * ModelAndView result;
-	 * ApplicationFor applicationForToCancel;
-	 * Explorer explorer;
-	 * Trip trip;
-	 * 
-	 * explorer = this.explorerService.findByPrincipal();
-	 * applicationForToCancel = this.applicationForService.findOne(applicationForId);
-	 * 
-	 * explorer.getApplicationsFor().remove(applicationForToCancel);
-	 * trip = applicationForToCancel.getTrip();
-	 * trip.getApplicationsFor().remove(applicationForToCancel);
-	 * 
-	 * result = new ModelAndView("redirect:list.do");
-	 * return result;
-	 * }
-	 */
+	//Display--------------------------------------------------------------------------------------
+	@RequestMapping(value = "/display", method = RequestMethod.GET)
+	public ModelAndView display(@RequestParam final int applicationforId) {
+		ModelAndView result;
+		ApplicationFor applicationfor = new ApplicationFor();
+
+		applicationfor = this.applicationForService.findOne(applicationforId);
+
+		result = new ModelAndView("applicationFor/display");
+		result.addObject("applicationFor", applicationfor);
+
+		return result;
+	}
 
 	@RequestMapping(value = "/cancel", method = RequestMethod.GET)
 	public ModelAndView cancel(@RequestParam final int applicationForId) {
 		ModelAndView result;
-		//Trip trip;
 		ApplicationFor applicationFor;
 		applicationFor = this.applicationForService.findOne(applicationForId);
-
-		//trip = this.tripService.findOne(tripId);
-		//Assert.notNull(trip);
-		//applicationFor = this.applicationForService.create(trip);
-
 		result = this.createCancelModelAndView(applicationFor);
 		result.addObject("applicationFor", applicationFor);
 		Trip trip = applicationFor.getTrip();
@@ -121,7 +109,6 @@ public class ApplicationForExplorerController {
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
 	public ModelAndView save(@Valid ApplicationFor applicationFor, BindingResult binding) {
 		ModelAndView result;
-		//Collection<ApplicationFor> applicationsFor;	
 		if (binding.hasErrors())
 			result = this.createEditModelAndView(applicationFor);
 		else
