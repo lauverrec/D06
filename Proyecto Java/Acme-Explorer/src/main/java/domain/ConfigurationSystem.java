@@ -21,6 +21,7 @@ public class ConfigurationSystem extends DomainEntity {
 	private String					banner;
 	private Collection<String>		spamWords;
 	private Collection<Category>	defaultCategories;
+	private int						maxNumberFinder;
 
 
 	public double getVAT() {
@@ -61,6 +62,15 @@ public class ConfigurationSystem extends DomainEntity {
 
 	public void setDefaultCategories(final Collection<Category> defaultCategories) {
 		this.defaultCategories = defaultCategories;
+	}
+
+	@NotNull
+	public int getMaxNumberFinder() {
+		return this.maxNumberFinder;
+	}
+
+	public void setMaxNumberFinder(final int maxNumberFinder) {
+		this.maxNumberFinder = maxNumberFinder;
 	}
 
 }

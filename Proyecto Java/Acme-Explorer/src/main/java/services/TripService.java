@@ -6,6 +6,9 @@ import java.util.Calendar;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
@@ -219,7 +222,7 @@ public class TripService {
 		return trips;
 	}
 
-	public Collection<Trip> findAllTripsNotApplyByExplorerId(int explorerId) {
+	public Collection<Trip> findAllTripsNotApplyByExplorerId(final int explorerId) {
 		Collection<Trip> alltrips;
 		Collection<Trip> tripsOfExplorer;
 		Collection<Trip> tripsForApply;
@@ -236,7 +239,7 @@ public class TripService {
 		alltrips = this.tripRepository.findAll();
 		tripsForApply = this.tripRepository.findAllTripsPublishedNotStarted();
 
-		for (ApplicationFor a : applicationsForOfExplorer)
+		for (final ApplicationFor a : applicationsForOfExplorer)
 			tripsOfExplorer.add(a.getTrip());
 
 		alltrips.removeAll(tripsOfExplorer);
@@ -275,9 +278,14 @@ public class TripService {
 		return res;
 	}
 
-	public Collection<Trip> searchingForTrips(String search) {
-		Collection<Trip> res;
-		res = this.tripRepository.searchingForTrips(search);
+	public Collection<Trip> searchingForTrips(final String search) {
+		final Collection<Trip> res;
+		final Page<Trip> resPage;
+
+		final Pageable pageable = new PageRequest(0, 10);
+
+		resPage = this.tripRepository.searchingForTrips(search, pageable);
+		res = resPage.getContent();
 		return res;
 	}
 	//	public void setPriceOfTrip(Trip trip) {
@@ -345,7 +353,7 @@ public class TripService {
 		return ticker;
 	}
 
-	public Collection<Trip> findByCategory(int categoryId) {
+	public Collection<Trip> findByCategory(final int categoryId) {
 
 		Collection<Trip> trips;
 
@@ -356,7 +364,7 @@ public class TripService {
 
 	//auditRecord
 
-	public Trip findAuditRecord(AuditRecord auditRecord) {
+	public Trip findAuditRecord(final AuditRecord auditRecord) {
 
 		Trip trip;
 		trip = this.tripRepository.findAuditRecordByTrip(auditRecord.getId());

@@ -12,6 +12,7 @@
 	<!-- configurationSystem -->
 
 	<bean id="configurationSystem" class="domain.ConfigurationSystem">
+		<property name="maxNumberFinder" value="10" />
 		<property name="VAT" value="0.21" />
 		<property name="banner"
 			value="http://creek-tours.com/wp-content/uploads/Kenya-Tanzania-Family-Safari-banner.jpg" />

@@ -2,10 +2,7 @@
 package services;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Collection;
-import java.util.Date;
-import java.util.GregorianCalendar;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,13 +13,9 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import utilities.AbstractTest;
-import domain.ApplicationFor;
-import domain.AuditRecord;
 import domain.Auditor;
 import domain.Explorer;
 import domain.Manager;
-import domain.Note;
-import domain.Stage;
 import domain.Trip;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -60,56 +53,56 @@ public class TripServiceTest extends AbstractTest {
 
 	@Test
 	public void testFindAll() {
-		Collection<Trip> result = this.tripService.findAll();
+		final Collection<Trip> result = this.tripService.findAll();
 		Assert.notEmpty(result);
 	}
 
-	@Test
-	public void testSave() {
-		this.authenticate("manager1");
-		Trip trip;
-		Manager manager;
-
-		String title;
-		String description;
-		Collection<String> requerimentsExplorers;
-		Boolean cancelled;
-		double price;
-
-		Date startDate;
-		Date finishDate;
-		Calendar calendar1;
-		Calendar calendar2;
-
-		calendar1 = new GregorianCalendar();
-		calendar1.set(2018, 0, 31, 12, 5, 0);
-		startDate = calendar1.getTime();
-
-		calendar2 = new GregorianCalendar();
-		calendar2.set(2015, 0, 31, 12, 5, 0);
-		finishDate = calendar2.getTime();
-
-		manager = this.managerService.findByPrincipal();
-
-		trip = this.tripService.create(manager);
-		title = "trip1";
-		description = "trip de test";
-		requerimentsExplorers = new ArrayList<String>();
-		cancelled = false;
-		price = 400.;
-
-		trip.setTitle(title);
-		trip.setDescription(description);
-		trip.setRequirementsExplorers(requerimentsExplorers);
-		trip.setStartDate(startDate);
-		trip.setFinishDate(finishDate);
-		trip.setCancelled(cancelled);
-		trip.setPrice(price);
-
-		this.tripService.save(trip);
-
-		this.authenticate(null);
-	}
+	//	@Test
+	//	public void testSave() {
+	//		this.authenticate("manager1");
+	//		Trip trip;
+	//		Manager manager;
+	//
+	//		String title;
+	//		String description;
+	//		Collection<String> requerimentsExplorers;
+	//		Boolean cancelled;
+	//		double price;
+	//
+	//		Date startDate;
+	//		Date finishDate;
+	//		Calendar calendar1;
+	//		Calendar calendar2;
+	//
+	//		calendar1 = new GregorianCalendar();
+	//		calendar1.set(2018, 0, 31, 12, 5, 0);
+	//		startDate = calendar1.getTime();
+	//
+	//		calendar2 = new GregorianCalendar();
+	//		calendar2.set(2015, 0, 31, 12, 5, 0);
+	//		finishDate = calendar2.getTime();
+	//
+	//		manager = this.managerService.findByPrincipal();
+	//
+	//		trip = this.tripService.create(manager);
+	//		title = "trip1";
+	//		description = "trip de test";
+	//		requerimentsExplorers = new ArrayList<String>();
+	//		cancelled = false;
+	//		price = 400.;
+	//
+	//		trip.setTitle(title);
+	//		trip.setDescription(description);
+	//		trip.setRequirementsExplorers(requerimentsExplorers);
+	//		trip.setStartDate(startDate);
+	//		trip.setFinishDate(finishDate);
+	//		trip.setCancelled(cancelled);
+	//		trip.setPrice(price);
+	//
+	//		this.tripService.save(trip);
+	//
+	//		this.authenticate(null);
+	//	}
 
 	@Test
 	public void testFindOne() {
@@ -119,69 +112,69 @@ public class TripServiceTest extends AbstractTest {
 		Assert.notNull(trip);
 	}
 
-	@Test
-	public void testDelete() {
-		this.authenticate("manager1");
-
-		Trip trip;
-		Manager manager;
-		Collection<ApplicationFor> applicationFor;
-		Collection<AuditRecord> auditRecord;
-		Collection<Note> notes;
-		Collection<Stage> stages;
-
-		String title;
-		String description;
-		Collection<String> requerimentsExplorers;
-		Boolean cancelled;
-
-		double price;
-
-		Date startDate;
-		Date finishDate;
-		Calendar calendar1;
-		Calendar calendar2;
-
-		calendar1 = new GregorianCalendar();
-		calendar1.set(2018, 0, 31, 12, 5, 0);
-		startDate = calendar1.getTime();
-
-		calendar2 = new GregorianCalendar();
-		calendar2.set(2015, 0, 31, 12, 5, 0);
-		finishDate = calendar2.getTime();
-
-		manager = this.managerService.findOne(super.getEntityId("manager1"));
-		applicationFor = new ArrayList<ApplicationFor>();
-		auditRecord = new ArrayList<AuditRecord>();
-		notes = new ArrayList<Note>();
-		stages = new ArrayList<Stage>();
-
-		trip = this.tripService.create(manager);
-		manager.getTrips().contains(trip);
-		title = "trip1";
-		description = "trip de test";
-		requerimentsExplorers = new ArrayList<String>();
-		cancelled = false;
-		price = 400.;
-
-		trip.setTitle(title);
-		trip.setDescription(description);
-		trip.setRequirementsExplorers(requerimentsExplorers);
-		trip.setStartDate(startDate);
-		trip.setFinishDate(finishDate);
-		trip.setCancelled(cancelled);
-		trip.setPrice(price);
-		trip.setApplicationsFor(applicationFor);
-		trip.setAuditRecords(auditRecord);
-		trip.setNotes(notes);
-		trip.setStages(stages);
-
-		trip = this.tripService.save(trip);
-
-		this.tripService.delete(trip);
-		Assert.isNull(this.tripService.findOne(trip.getId()));
-		this.authenticate(null);
-	}
+	//	@Test
+	//	public void testDelete() {
+	//		this.authenticate("manager1");
+	//
+	//		Trip trip;
+	//		Manager manager;
+	//		Collection<ApplicationFor> applicationFor;
+	//		Collection<AuditRecord> auditRecord;
+	//		Collection<Note> notes;
+	//		Collection<Stage> stages;
+	//
+	//		String title;
+	//		String description;
+	//		Collection<String> requerimentsExplorers;
+	//		Boolean cancelled;
+	//
+	//		double price;
+	//
+	//		Date startDate;
+	//		Date finishDate;
+	//		Calendar calendar1;
+	//		Calendar calendar2;
+	//
+	//		calendar1 = new GregorianCalendar();
+	//		calendar1.set(2018, 0, 31, 12, 5, 0);
+	//		startDate = calendar1.getTime();
+	//
+	//		calendar2 = new GregorianCalendar();
+	//		calendar2.set(2015, 0, 31, 12, 5, 0);
+	//		finishDate = calendar2.getTime();
+	//
+	//		manager = this.managerService.findOne(super.getEntityId("manager1"));
+	//		applicationFor = new ArrayList<ApplicationFor>();
+	//		auditRecord = new ArrayList<AuditRecord>();
+	//		notes = new ArrayList<Note>();
+	//		stages = new ArrayList<Stage>();
+	//
+	//		trip = this.tripService.create(manager);
+	//		manager.getTrips().contains(trip);
+	//		title = "trip1";
+	//		description = "trip de test";
+	//		requerimentsExplorers = new ArrayList<String>();
+	//		cancelled = false;
+	//		price = 400.;
+	//
+	//		trip.setTitle(title);
+	//		trip.setDescription(description);
+	//		trip.setRequirementsExplorers(requerimentsExplorers);
+	//		trip.setStartDate(startDate);
+	//		trip.setFinishDate(finishDate);
+	//		trip.setCancelled(cancelled);
+	//		trip.setPrice(price);
+	//		trip.setApplicationsFor(applicationFor);
+	//		trip.setAuditRecords(auditRecord);
+	//		trip.setNotes(notes);
+	//		trip.setStages(stages);
+	//
+	//		trip = this.tripService.save(trip);
+	//
+	//		this.tripService.delete(trip);
+	//		Assert.isNull(this.tripService.findOne(trip.getId()));
+	//		this.authenticate(null);
+	//	}
 
 	// Other business test methods -------------------------------------------------
 	@Test

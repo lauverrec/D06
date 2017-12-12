@@ -3,6 +3,8 @@ package repositories;
 
 import java.util.Collection;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -49,7 +51,7 @@ public interface TripRepository extends JpaRepository<Trip, Integer> {
 	Collection<Trip> findAllTripsByTagId(int tagId);
 
 	@Query("select t from Trip t where t.ticker like %?1% or t.title like %?1% or t.description like %?1%")
-	Collection<Trip> searchingForTrips(String search);
+	Page<Trip> searchingForTrips(String search, Pageable pageable);
 
 	@Query("select c.trips from Category c where c.id = ?1")
 	Collection<Trip> findByCategory(int categoryId);
@@ -59,4 +61,5 @@ public interface TripRepository extends JpaRepository<Trip, Integer> {
 
 	@Query("select t from Trip t join t.applicationsFor a where a.status='ACCEPTED' and t.finishDate<CURRENT_TIMESTAMP and a.explorer.id=?1 and t.cancelled=false")
 	Collection<Trip> findTripsForStory(int explorerId);
+
 }

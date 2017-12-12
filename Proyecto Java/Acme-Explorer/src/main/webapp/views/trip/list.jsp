@@ -21,15 +21,17 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
 <!-- Listing trips -->
-<%-- 
-<form:form action="trip/list.do" modelAttribute="trip">
 
-	<form:label path="search">
-		<spring:message code="trip.search" />:
-	</form:label>
-	<form:input path="search" />
+<form:form action="${requestURI}" method="get">
 
-	<security:authorize access="hasRole('MANAGER')">
+	<label><spring:message code="trip.search"/></label>
+	<input type="text" name="keyword"/> <br />
+	<br>
+	<input type="submit" value="<spring:message code="trip.search" />" /> 	 
+	
+</form:form>
+
+	<%-- <security:authorize access="hasRole('MANAGER')">
 		<form:label path="lowprice">
 			<spring:message code="trip.lowprice" />:
 	</form:label>
@@ -50,9 +52,9 @@
 	</form:label>
 		<form:input path="finishDate" />
 
-	</security:authorize>
+	</security:authorize> --%>
 
-	<spring:url value="applicationFor/manager/edit.do" var="editlink">
+	<%-- <spring:url value="applicationFor/manager/edit.do" var="editlink">
 		<spring:param name="search" value="search" />
 		<spring:param name="lowprice" value="lowprice" />
 		<spring:param name="highprice" value="highprice" />
@@ -61,11 +63,9 @@
 	</spring:url>
 	<input type="submit" name="search"
 		value="<spring:message code="trip.search"/>"
-		onClick=" window.location.href='${editlink}' ">/>&nbsp;
-		
-</form:form> --%>
+		onClick=" window.location.href='${editlink}' ">/>&nbsp; --%>
 
-<display:table name="trips" id="row" requestURI="${requestURI}" pagesize="5" class="displaytag" keepStatus="true">
+<display:table name="trips" id="row" pagesize="5" class="displaytag" keepStatus="true">
 
 <!-- Display -->
 	<spring:message code="trip.display" var="Display" />

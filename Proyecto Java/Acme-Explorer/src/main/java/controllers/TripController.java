@@ -35,6 +35,22 @@ public class TripController extends AbstractController {
 
 	}
 
+	// Search -----------------------------------------------------------------
+
+	@RequestMapping(value = "/search", method = RequestMethod.GET)
+	public ModelAndView listByKeyword(@RequestParam final String keyword) {
+		ModelAndView result;
+		Collection<Trip> trips;
+
+		trips = this.tripService.searchingForTrips(keyword);
+		result = new ModelAndView("trip/list");
+
+		result.addObject("trips", trips);
+		result.addObject("requestURI", "trip/search.do");
+
+		return result;
+	}
+
 	// Listing ----------------------------------------------------------------
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ModelAndView list() {
@@ -45,13 +61,13 @@ public class TripController extends AbstractController {
 
 		result = new ModelAndView("trip/list");
 		result.addObject("trips", trips);
-		result.addObject("requestURI", "trip/list.do");
+		result.addObject("requestURI", "trip/search.do");
 
 		return result;
 	}
 
 	@RequestMapping(value = "/category/list", method = RequestMethod.GET)
-	public ModelAndView list(@RequestParam int categoryId) {
+	public ModelAndView list(@RequestParam final int categoryId) {
 
 		ModelAndView result;
 		Collection<Trip> trips;
@@ -60,7 +76,7 @@ public class TripController extends AbstractController {
 
 		result = new ModelAndView("trip/list");
 		result.addObject("trips", trips);
-		result.addObject("requestURI", "trip/category/list.do");
+		result.addObject("requestURI", "trip/search.do");
 
 		return result;
 	}
