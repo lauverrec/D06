@@ -45,7 +45,10 @@ public class CurriculaController extends AbstractController {
 		Assert.notNull(ranger);
 		curricula = this.curriculaService.findCurriculaFromRanger(ranger.getId());
 		result = new ModelAndView("curricula/display");
-		if (curricula != null) {
+		if (curricula == null)
+			result.addObject("existCurricula", false);
+		else {
+			result.addObject("existCurricula", true);
 			result.addObject("curricula", curricula);
 			result.addObject("miscellaneousRecord", curricula.getMiscellaneousRecords());
 			result.addObject("endorserRecord", curricula.getEndorserRecords());

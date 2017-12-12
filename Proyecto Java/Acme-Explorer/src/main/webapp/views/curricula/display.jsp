@@ -19,6 +19,15 @@
 <%@taglib prefix="security"	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
+<jstl:if test="${!existCurricula}">
+	<spring:message code="curricula.notCurricula" var="notCurriculaHeader" />
+	<h2><jstl:out value="${notCurriculaHeader}"></jstl:out></h2>
+</jstl:if>
+
+
+<!-- Si existe el curriculum  se muestra todos los atributos -->
+<jstl:if test="${existCurricula}">
+
 <display:table name="curricula" class="displaytag" id="row">
 
   	<!-- Attributes -->
@@ -26,11 +35,6 @@
 	<spring:message code="curricula.ticker" var="tickerHeader" />
 	<display:column property="ticker" title="${tickerHeader}"
 		sortable="true" />
-	</jstl:if>
-	
-	<jstl:if test="${row.id == 0}">
-	<spring:message code="curricula.notCurricula" var="notCurriculaHeader" />
-	<h2><jstl:out value="${notCurriculaHeader}" /></h2>
 	</jstl:if>
 	
 	<security:authorize access="hasRole('RANGER')">
@@ -242,3 +246,5 @@
 	</security:authorize>
 	
 </display:table>
+
+</jstl:if>

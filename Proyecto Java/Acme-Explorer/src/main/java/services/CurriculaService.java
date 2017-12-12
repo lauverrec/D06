@@ -64,10 +64,12 @@ public class CurriculaService {
 		curricula.setMiscellaneousRecords(miscellaneousRecords);
 		curricula.setProfessionalRecords(professionalRecords);
 
+		curricula.setTicker(this.generatedTicker());
+
 		return curricula;
 
 	}
-	public Curricula save(Curricula curricula) {
+	public Curricula save(final Curricula curricula) {
 
 		this.rangerService.checkPrincipal();
 		Assert.notNull(curricula);
@@ -101,7 +103,7 @@ public class CurriculaService {
 		return curriculaBeforeSave;
 	}
 
-	public void delete(Curricula curricula) {
+	public void delete(final Curricula curricula) {
 
 		Assert.notNull(curricula);
 		Assert.notNull(this.curriculaRepository.findOne(curricula.getId()));
@@ -119,7 +121,7 @@ public class CurriculaService {
 		return curriculas;
 	}
 
-	public Curricula findOne(int curriculaId) {
+	public Curricula findOne(final int curriculaId) {
 		Assert.notNull(curriculaId);
 		Assert.isTrue(curriculaId != 0);
 
@@ -132,7 +134,7 @@ public class CurriculaService {
 
 	// Other methods Bussiness --------------------------------------------------------
 
-	public Curricula findCurriculaFromRanger(int rangerId) {
+	public Curricula findCurriculaFromRanger(final int rangerId) {
 
 		Curricula curricula;
 
@@ -149,12 +151,12 @@ public class CurriculaService {
 		String ticker;
 
 		ticker = String.valueOf(calendar.get(Calendar.YEAR)).substring(2) + String.valueOf(calendar.get(Calendar.MONTH) + 1) + String.valueOf(calendar.get(Calendar.DAY_OF_MONTH));
-		char[] arr = new char[] {
+		final char[] arr = new char[] {
 			'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
 		};
 		String cadenaAleatoria = "";
 		for (Integer i = 0; i <= 3; i++) {
-			char elegido = arr[(int) (Math.random() * 26)];
+			final char elegido = arr[(int) (Math.random() * 26)];
 			cadenaAleatoria = cadenaAleatoria + elegido;
 
 		}
@@ -164,7 +166,7 @@ public class CurriculaService {
 		return ticker;
 	}
 
-	public Curricula CurriculaWithThisPersonalRecord(int personalRecordId) {
+	public Curricula CurriculaWithThisPersonalRecord(final int personalRecordId) {
 
 		Assert.isTrue(personalRecordId != 0);
 		return this.curriculaRepository.CurriculaWithThisPersonalRecord(personalRecordId);

@@ -50,13 +50,13 @@ public class Curricula extends DomainEntity {
 		return this.ranger;
 	}
 
-	public void setRanger(Ranger ranger) {
+	public void setRanger(final Ranger ranger) {
 		this.ranger = ranger;
 	}
 
 	@Valid
 	@NotNull
-	@OneToOne(optional = false)
+	@OneToOne(optional = true)
 	public PersonalRecord getPersonalRecord() {
 		return this.personalRecord;
 	}

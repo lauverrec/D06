@@ -8,9 +8,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.CurriculaService;
+import services.PersonalRecordService;
 import services.RangerService;
 import controllers.AbstractController;
 import domain.Curricula;
+import domain.PersonalRecord;
 import domain.Ranger;
 
 @Controller
@@ -20,9 +22,11 @@ public class CurriculaRangerController extends AbstractController {
 	// Services---------------------------------------------------------
 
 	@Autowired
-	private CurriculaService	curriculaService;
+	private CurriculaService		curriculaService;
 	@Autowired
-	private RangerService		rangerService;
+	private RangerService			rangerService;
+	@Autowired
+	private PersonalRecordService	personalRecordService;
 
 
 	//Constructor--------------------------------------------------------
@@ -43,9 +47,10 @@ public class CurriculaRangerController extends AbstractController {
 		curricula = this.curriculaService.findCurriculaFromRanger(rangerPrincipal.getId());
 
 		if (curricula == null)
-			result = new ModelAndView("redirect:/curricula/ranger/create.do");
+			result = new ModelAndView("redirect:/personalRecord/ranger/create.do");
 		else {
 			result = new ModelAndView("curricula/display");
+			result.addObject("existCurricula", true);
 			result.addObject("curricula", curricula);
 			result.addObject("miscellaneousRecord", curricula.getMiscellaneousRecords());
 			result.addObject("endorserRecord", curricula.getEndorserRecords());
@@ -62,17 +67,19 @@ public class CurriculaRangerController extends AbstractController {
 	public ModelAndView create() {
 		ModelAndView result;
 		Curricula curricula;
+		final PersonalRecord personalRecord;
 
 		curricula = this.curriculaService.create();
 		curricula.setRanger(this.rangerService.findByPrincipal());
+		personalRecord = this.personalRecordService.create();
 
 		result = new ModelAndView("curricula/edit");
 		result.addObject("curricula", curricula);
+		result.addObject("personalRecord", personalRecord);
 
 		return result;
 
 	}
-
 	//Edition------------------------------------------------------------
 
 	// Ancillary methods ------------------------------------------------------

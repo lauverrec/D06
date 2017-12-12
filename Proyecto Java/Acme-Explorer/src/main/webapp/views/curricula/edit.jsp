@@ -19,10 +19,6 @@
 <%@taglib prefix="security"	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
-<jstl:if test="${!existCurricula}">
-<spring:message code="personalRecord.notCurricula.createPersonalRecord" var="notCurriculaHeader" />
-<h2><jstl:out value="${notCurriculaHeader}"></jstl:out></h2>
-</jstl:if>
 
 <form:form action="${RequestURI }" modelAttribute="personalRecord">
 

@@ -70,14 +70,15 @@ public class PersonalRecordService {
 		Assert.notNull(personalRecord);
 
 		PersonalRecord result;
-		Ranger rangerPrincipal;
+		final Ranger rangerPrincipal;
 		final Curricula curriculaPrincipal;
 
 		result = this.personalRecordRepository.save(personalRecord);
-		rangerPrincipal = this.rangerService.findByPrincipal();
-		curriculaPrincipal = this.curriculaService.findCurriculaFromRanger(rangerPrincipal.getId());
-		if (!curriculaPrincipal.getPersonalRecord().equals(personalRecord))
-			curriculaPrincipal.setPersonalRecord(personalRecord);
+		//Se comenta el siguiente codigo porque en PersonalRecordRangerController es donde le asigno a la curricula el personalRecord
+		//		rangerPrincipal = this.rangerService.findByPrincipal();
+		//		curriculaPrincipal = this.curriculaService.findCurriculaFromRanger(rangerPrincipal.getId());
+		//		if (!curriculaPrincipal.getPersonalRecord().equals(personalRecord))
+		//			curriculaPrincipal.setPersonalRecord(personalRecord);
 
 		Assert.notNull(result);
 

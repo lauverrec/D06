@@ -12,8 +12,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import services.CurriculaService;
 import services.PersonalRecordService;
+import services.RangerService;
 import controllers.AbstractController;
+import domain.Curricula;
 import domain.PersonalRecord;
 
 @Controller
@@ -24,6 +27,10 @@ public class PersonalRecordRangerController extends AbstractController {
 
 	@Autowired
 	private PersonalRecordService	personalRecordService;
+	@Autowired
+	private CurriculaService		curriculaService;
+	@Autowired
+	private RangerService			rangerService;
 
 
 	//Constructor--------------------------------------------------------
@@ -43,6 +50,7 @@ public class PersonalRecordRangerController extends AbstractController {
 
 		personalRecord = this.personalRecordService.create();
 		result = this.createEditModelAndView(personalRecord);
+		result.addObject("existCurricula", false);
 
 		return result;
 
@@ -68,7 +76,7 @@ public class PersonalRecordRangerController extends AbstractController {
 	//Saving-----------------
 
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
-	public ModelAndView save(@Valid final PersonalRecord personalRecord, final BindingResult binding) {
+	public ModelAndView save(@Valid PersonalRecord personalRecord, final BindingResult binding) {
 
 		ModelAndView result;
 
@@ -76,7 +84,15 @@ public class PersonalRecordRangerController extends AbstractController {
 			result = this.createEditModelAndView(personalRecord);
 		else
 			try {
-				this.personalRecordService.save(personalRecord);
+				Curricula curricula;
+				curricula = this.curriculaService.findCurriculaFromRanger(this.rangerService.findByPrincipal().getId());
+				personalRecord = this.personalRecordService.save(personalRecord);
+				if (curricula == null) {
+					curricula = this.curriculaService.create();
+					curricula.setRanger(this.rangerService.findByPrincipal());
+					curricula.setPersonalRecord(personalRecord);
+					this.curriculaService.save(curricula);
+				}
 				result = new ModelAndView("redirect:/curricula/ranger/display.do");
 			} catch (final Throwable oops) {
 				result = this.createEditModelAndView(personalRecord, "personalRecord.commit.error");
