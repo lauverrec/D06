@@ -121,6 +121,11 @@ public class ApplicationForService {
 	}
 
 	public void cancel(final ApplicationFor applicationFor) {
+		Trip trip;
+		Date date;
+		trip = applicationFor.getTrip();
+		date = new Date();
+		Assert.isTrue(trip.getStartDate().after(date));
 		Assert.notNull(applicationFor != null);
 		Assert.isTrue(applicationFor.getId() != 0);
 		Assert.isTrue(applicationFor.getStatus().equals("ACCEPTED"));
