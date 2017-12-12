@@ -64,7 +64,12 @@ public class CategoryService {
 		Assert.notNull(category);
 		Assert.notNull(this.administratorService.findByPrincipal());
 		Category result;
+		Collection<Category> categories;
 
+		//Comprobamos si la category no tiene el mismo nombre y mismo padre que una ya guardada
+		categories = this.findAll();
+		for (final Category c : categories)
+			Assert.isTrue(!(c.getName().equals(category.getName()) && c.getFatherCategory().equals(category.getFatherCategory())));
 		result = this.categoryRepository.save(category);
 
 		return result;
