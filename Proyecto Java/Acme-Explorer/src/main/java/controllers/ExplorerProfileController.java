@@ -1,5 +1,5 @@
 
-package controllers.explorer;
+package controllers;
 
 import javax.validation.Valid;
 
@@ -12,12 +12,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.ExplorerService;
-import controllers.AbstractController;
 import domain.Explorer;
 
 @Controller
-@RequestMapping("/explorer")
-public class ExplorerController extends AbstractController {
+@RequestMapping("/explorerProfile")
+public class ExplorerProfileController extends AbstractController {
 
 	// Services---------------------------------------------------------
 
@@ -27,21 +26,21 @@ public class ExplorerController extends AbstractController {
 
 	//Constructor--------------------------------------------------------
 
-	public ExplorerController() {
+	public ExplorerProfileController() {
 		super();
 	}
-	//List---------------------------------------------------------------
 
 	//Edition------------------------------------------------------------
 
-	@RequestMapping(value = "/edit", method = RequestMethod.GET)
-	public ModelAndView edit() {
+	@RequestMapping(value = "/create", method = RequestMethod.GET)
+	public ModelAndView create() {
 		ModelAndView result;
 		Explorer explorer;
 
-		explorer = this.explorerService.findByPrincipal();
+		explorer = this.explorerService.create();
 		Assert.notNull(explorer);
 		result = this.createEditModelAndView(explorer);
+
 		return result;
 	}
 
@@ -56,18 +55,17 @@ public class ExplorerController extends AbstractController {
 				this.explorerService.save(explorer);
 				result = new ModelAndView("redirect:/welcome/index.do");
 			} catch (final Throwable oops) {
-				result = this.createEditModelAndView(explorer, "sponsor.commit.error");
+				result = this.createEditModelAndView(explorer, "explorer.commit.error");
 			}
 
 		return result;
 	}
-
 	// Ancillary methods ------------------------------------------------------
 
-	protected ModelAndView createEditModelAndView(final Explorer sponsor) {
+	protected ModelAndView createEditModelAndView(final Explorer explorer) {
 
 		ModelAndView result;
-		result = this.createEditModelAndView(sponsor, null);
+		result = this.createEditModelAndView(explorer, null);
 		return result;
 	}
 
@@ -78,7 +76,7 @@ public class ExplorerController extends AbstractController {
 		result = new ModelAndView("explorer/edit");
 		result.addObject("explorer", explorer);
 		result.addObject("message", message);
-		result.addObject("RequestURI", "explorer/edit.do");
+		result.addObject("RequestURI", "explorerProfile/edit.do");
 
 		return result;
 

@@ -29,7 +29,6 @@
 	<form:hidden path="trips"/>
 	<form:hidden path="suspicious"/>
 	<form:hidden path="userAccount.authorities"/>
-	<form:hidden path="userAccount"/>
 	
 	<jstl:if test="${ranger.id == 0}">		
 		<form:label path="userAccount.username">

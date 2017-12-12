@@ -40,7 +40,6 @@ public class RangerProfileController extends AbstractController {
 		ranger = this.rangerService.create();
 		Assert.notNull(ranger);
 		result = this.createEditModelAndView(ranger);
-		//		ranger.setUserAccount(this.userAccountService.save(ranger.getUserAccount()));
 
 		return result;
 	}

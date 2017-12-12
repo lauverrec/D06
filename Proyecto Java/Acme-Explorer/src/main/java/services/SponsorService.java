@@ -53,7 +53,7 @@ public class SponsorService {
 		messagesFolders = new ArrayList<>();
 		sponsorships = new ArrayList<>();
 
-		messagesFolders.addAll(this.messageFolderService.createDefaultFolders());
+		messagesFolders.addAll(this.messageFolderService.createDefaultFoldersForRegister(result));
 
 		authority.setAuthority(Authority.SPONSOR);
 		userAccount.addAuthority(authority);

@@ -61,7 +61,7 @@ public class ManagerService {
 		trips = new ArrayList<>();
 		applicationsFor = new ArrayList<>();
 
-		messagesFolders.addAll(this.messageFolderService.createDefaultFolders());
+		messagesFolders.addAll(this.messageFolderService.createDefaultFoldersForRegister(result));
 
 		authority.setAuthority(Authority.MANAGER);
 		userAccount.addAuthority(authority);

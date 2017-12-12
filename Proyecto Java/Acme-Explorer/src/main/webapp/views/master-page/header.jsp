@@ -118,6 +118,7 @@
 			<li><a class="fNiv"><spring:message	code="master.page.register" /></a>
 				<ul>
 					<li><a href="rangerProfile/create.do"><spring:message code="master.page.rangerProfile.create" /></a></li>
+					<li><a href="explorerProfile/create.do"><spring:message code="master.page.explorerProfile.create" /></a></li>
 				</ul>
 			</li>
 		</security:authorize>

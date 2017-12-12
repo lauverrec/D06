@@ -64,7 +64,7 @@ public class ExplorerService {
 		contactsEmergency = new ArrayList<ContactEmergency>();
 
 		result.setSocialIdentities(socialIdentities);
-		defaultFolders = this.messageFolderService.createDefaultFolders();
+		defaultFolders = this.messageFolderService.createDefaultFoldersForRegister(result);
 		messagesFolders.addAll(defaultFolders);
 		result.setMessagesFolders(messagesFolders);
 		authority.setAuthority(Authority.EXPLORER);

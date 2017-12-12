@@ -59,7 +59,7 @@ public class AuditorService {
 		notes = new ArrayList<Note>();
 		auditrecords = new ArrayList<AuditRecord>();
 
-		messagesFolders = this.messageFolderService.createDefaultFolders();
+		messagesFolders = this.messageFolderService.createDefaultFoldersForRegister(result);
 
 		authority.setAuthority(Authority.AUDITOR);
 		useraccount.addAuthority(authority);
