@@ -104,12 +104,12 @@
 </security:authorize>
 
 
+<input type="submit" name="cancel" value="<spring:message code="applicationfor.cancel" />"
+			onclick="javascript: return confirm('<spring:message code="applicationfor.confirm.cancel" />')" />&nbsp;
 
-
-	<input type="submit" name="cancel" value="<spring:message code="applicationfor.cancel" />" />&nbsp;
 	 
-	<input type="button" name="cancel"
+	<input type="button" name="back"
 		value="<spring:message code="applicationfor.back" />"
-		onclick="javascript:  window.location.replace('trip/explorer/list-not-apply.do');" />
+		onclick="javascript:  window.location.replace('applicationFor/explorer/list.do');" />
 	<br />
 </form:form>

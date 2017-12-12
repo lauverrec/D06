@@ -3,6 +3,7 @@ package controllers.explorer;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 
 import javax.validation.Valid;
 
@@ -49,13 +50,14 @@ public class ApplicationForExplorerController {
 		//Collection<Trip> trips;
 		Collection<ApplicationFor> applicationFor;
 		Explorer explorer;
-
+		Date date = new Date();
 		explorer = this.explorerService.findByPrincipal();
 		applicationFor = new ArrayList<ApplicationFor>(explorer.getApplicationsFor());
 		//trips = this.tripService.findAllTripsApplyByExplorerId(explorer.getId());
 
 		result = new ModelAndView("applicationFor/list");
 		result.addObject("applicationFor", applicationFor);
+		result.addObject("date", date);
 		//result.addObject("apply", true);
 		result.addObject("requestURI", "applicationFor/explorer/list.do");
 
@@ -144,15 +146,11 @@ public class ApplicationForExplorerController {
 			result = this.createEditModelAndView(applicationFor);
 		else
 			try {
-				applicationFor.setStatus("CANCELLED");
+				this.applicationForService.cancel(applicationFor);
 				this.applicationForService.save(applicationFor);
-				Explorer explorer;
-				explorer = this.explorerService.findByPrincipal();
-				explorer.getApplicationsFor().add(applicationFor);
-
 				result = new ModelAndView("redirect:list.do");
 			} catch (final Throwable oops) {
-				result = this.createEditModelAndView(applicationFor, "applicationfor.commit.error");
+				result = this.createCancelModelAndView(applicationFor, "applicationfor.cancel.error");
 			}
 		return result;
 	}

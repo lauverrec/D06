@@ -120,6 +120,14 @@ public class ApplicationForService {
 		this.applicationForRepository.delete(applicationFor);
 	}
 
+	public void cancel(final ApplicationFor applicationFor) {
+		Assert.notNull(applicationFor != null);
+		Assert.isTrue(applicationFor.getId() != 0);
+		Assert.isTrue(applicationFor.getStatus().equals("ACCEPTED"));
+		Assert.isTrue(this.applicationForRepository.exists(applicationFor.getId()));
+		applicationFor.setStatus("CANCELLED");
+	}
+
 	// Other business methods------------------------------------------------------
 	private boolean checkCreditCard(final CreditCard creditCard) {
 		boolean res;
