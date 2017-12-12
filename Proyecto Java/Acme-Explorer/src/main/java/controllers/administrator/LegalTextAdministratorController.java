@@ -122,6 +122,21 @@ public class LegalTextAdministratorController extends AbstractController {
 		return result;
 
 	}
+
+	//Association trip
+
+	@RequestMapping(value = "/trip", method = RequestMethod.GET)
+	public ModelAndView trip(@RequestParam int legalTextId) {
+		ModelAndView result;
+		LegalText legalText;
+
+		legalText = this.legalTextService.findOne(legalTextId);
+
+		result = this.createEditModelAndView(legalText);
+
+		return result;
+	}
+
 	//Deleting-----------------------
 
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "delete")
@@ -165,4 +180,5 @@ public class LegalTextAdministratorController extends AbstractController {
 		return result;
 
 	}
+
 }

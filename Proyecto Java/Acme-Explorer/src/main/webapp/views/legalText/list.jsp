@@ -71,6 +71,22 @@
 	<spring:message code="legalText.draftMode" var="draftModeHeader" />:
 	<display:column property="draftMode" title="${draftModeHeader}" sortable="true" />
 	
+	<jstl:if test="${row.draftMode==false}">
+	<spring:message code="legalText.associationTrip" var="associationTrip"></spring:message>
+	<display:column title = "${associationTrip}" sortable="true" >
+	
+		<spring:url value="legalText/administrator/trip.do" var="triptURL">
+		 <spring:param name="legalTextId" value="${row.id }"/>
+		 </spring:url>
+		
+		<a href="${triptURL }"> 
+		<spring:message code = "legalText.associationTrip"></spring:message>
+		</a>
+	
+	</display:column>
+	</jstl:if>
+	
+
 
 </display:table>
 

@@ -51,7 +51,7 @@
 	<p>
 		<spring:message code="legalText.trip.title"></spring:message>:
 		<jstl:forEach var="trip" items="${row.trips}">
-			<jstl:out value="${trip.title}"></jstl:out>
+			<jstl:out value="${trip.title}"></jstl:out><br/>
 		
 		</jstl:forEach>	
 	</p>
