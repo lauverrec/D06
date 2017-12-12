@@ -144,6 +144,14 @@
 	<spring:message code="trip.finishDate" var="finishDateHeader" />
 	<display:column property="finishDate" title="${finishDateHeader}" sortable="true" format="${pattern}" />
 	
+	<spring:message code="trip.ranger" var="rangerHeader" />
+	<display:column title="${rangerHeader}" sortable="true">
+		<spring:url value="curricula/display.do" var="stageURL">
+			<spring:param name="rangerId" value="${row.ranger.id }" />
+		</spring:url>
+			<a href="${stageURL}"><spring:message code="trip.ranger" /></a>
+	</display:column>
+	
 	<security:authorize access= "hasRole('MANAGER')">
 	<spring:message code="trip.stage" var="Stages" />
 	<display:column title="${Stages}" sortable="true">
