@@ -60,6 +60,9 @@
 	<spring:message code="note.remark" var="remarkHeader" />
 	<display:column property="remark" title="${remarkHeader}" sortable="true"/>
 	
+	<spring:message code="note.replyMoment" var="replyMomentHeader" />
+	<display:column property="replyMoment" title="${replyMomentHeader}" sortable="true"/>
+	
 	
 </display:table>
 

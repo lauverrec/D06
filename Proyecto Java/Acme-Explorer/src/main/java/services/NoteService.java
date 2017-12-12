@@ -51,6 +51,7 @@ public class NoteService {
 
 		result.setCreatedMoment(createdMoment);
 		result.setAuditor(auditorPrincipal);
+
 		return result;
 	}
 
@@ -70,11 +71,31 @@ public class NoteService {
 	public Note save(Note note) {
 		Assert.notNull(note);
 		Note result;
-		result = this.noteRepository.save(note);
+
 		Date createdMoment;
+
 		createdMoment = new Date(System.currentTimeMillis() - 1000);
+
+		result = this.noteRepository.save(note);
 		result.setCreatedMoment(createdMoment);
+
 		Assert.notNull(result);
+
+		return result;
+	}
+
+	public Note saveReply(Note note) {
+		Assert.notNull(note);
+		Note result;
+
+		Date replyMoment;
+
+		replyMoment = new Date(System.currentTimeMillis() - 1000);
+		result = this.noteRepository.save(note);
+
+		result.setReplyMoment(replyMoment);
+		Assert.notNull(result);
+
 		return result;
 	}
 

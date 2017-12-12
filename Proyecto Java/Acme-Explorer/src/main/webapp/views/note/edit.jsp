@@ -45,17 +45,7 @@
 	<form:errors cssClass="error" path="remark" />
 	<br />
 	
-	<form:label path="reply" >
-		<spring:message code="note.reply" />
-	</form:label>
-	<form:input path="reply" readonly="true"/>
-	<br />
-	
-	<form:label path="replyMoment" >
-		<spring:message code="note.replyMoment" />
-	</form:label>
-	<form:input path="replyMoment" readonly="true"/>
-	<br />
+
 	
 	
 	<!-- botones -->

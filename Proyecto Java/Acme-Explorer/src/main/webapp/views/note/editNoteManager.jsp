@@ -25,7 +25,7 @@
 	<form:hidden path ="auditor"/>
 	
 	
-	<form:label path="createdMoment" placeholder=" yyyy/dd/MM HH:hh" >
+	<form:label path="createdMoment" >
 		<spring:message code="note.createdMoment" />:
 	</form:label>
 	<form:input path="createdMoment" readonly="true"/>
@@ -48,13 +48,9 @@
 	<form:label path="reply" >
 		<spring:message code="note.reply" />
 	</form:label>
-	<form:input path="reply" readonly="true"/>
+	<form:input path="reply" />
 	<br />
 	
-	<form:label path="replyMoment" >
-		<spring:message code="note.replyMoment" />
-	</form:label>
-	<form:input path="replyMoment" readonly="true"/>
 	<br />
 	
 	
@@ -66,7 +62,7 @@
 	
 	<input type="button" name="cancel"
 		value="<spring:message code="note.cancel"/>"
-		onclick="javascript: window.location.replace('note/auditor/list.do')" />
+		onclick="javascript: window.location.replace('note/manager/list.do')" />
 	<br />
 </form:form>
  

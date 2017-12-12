@@ -61,7 +61,7 @@ public class NoteManagerController extends AbstractController {
 	}
 	//Editing---------
 
-	@RequestMapping(value = "/edit", method = RequestMethod.GET)
+	@RequestMapping(value = "/reply", method = RequestMethod.GET)
 	public ModelAndView edit(@RequestParam int noteId) {
 
 		ModelAndView result;
@@ -76,8 +76,8 @@ public class NoteManagerController extends AbstractController {
 	}
 	//Saving------------------
 
-	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
-	public ModelAndView save(@Valid Note note, BindingResult binding) {
+	@RequestMapping(value = "/reply", method = RequestMethod.POST, params = "save")
+	public ModelAndView saveReply(@Valid Note note, BindingResult binding) {
 
 		ModelAndView result;
 
@@ -85,7 +85,7 @@ public class NoteManagerController extends AbstractController {
 			result = this.createEditModelAndView(note);
 		else
 			try {
-				this.noteService.save(note);
+				this.noteService.saveReply(note);
 				result = new ModelAndView("redirect:list.do");
 			} catch (Throwable oops) {
 				result = this.createEditModelAndView(note, "note.commit.error");
