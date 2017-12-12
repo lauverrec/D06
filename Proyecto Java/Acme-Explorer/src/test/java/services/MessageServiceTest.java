@@ -57,6 +57,7 @@ public class MessageServiceTest extends AbstractTest {
 	}
 
 	@Test
+	@Rollback(false)
 	public void testSave() {
 		super.authenticate("administrator1");
 
@@ -71,6 +72,7 @@ public class MessageServiceTest extends AbstractTest {
 		message = this.messageService.create();
 		message.setBody("hola caracola");
 		message.setRecipient(adminRecip);
+		message.setSender(adminSend);
 		message.setPriority("NEUTRAL");
 		message.setSubject("hola");
 
@@ -94,7 +96,6 @@ public class MessageServiceTest extends AbstractTest {
 	}
 
 	@Test
-	@Rollback(false)
 	public void testChangeFolderMessage() {
 		this.authenticate("administrator1");
 		Message mes;
@@ -104,5 +105,30 @@ public class MessageServiceTest extends AbstractTest {
 		mes = this.messageService.findOne(this.getEntityId("message1"));
 
 		this.messageService.ChangeMessageOfFolder(mes, messageFolder);
+	}
+
+	@Test
+	@Rollback(false)
+	public void testSaveMessageWithWordSpam() {
+		super.authenticate("administrator1");
+
+		Administrator adminSend;
+		Administrator adminRecip;
+		Message message;
+
+		adminSend = this.administratorService.findByPrincipal();
+		adminRecip = this.administratorService.findOne(super.getEntityId("administrator2"));
+
+		//Creo el mensaje y lo guardo
+		message = this.messageService.create();
+		message.setBody("viagra");
+		message.setRecipient(adminRecip);
+		message.setSender(adminSend);
+		message.setPriority("NEUTRAL");
+		message.setSubject("hola");
+
+		message = this.messageService.save(message);
+
+		super.unauthenticate();
 	}
 }

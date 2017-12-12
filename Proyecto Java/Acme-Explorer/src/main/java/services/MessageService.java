@@ -28,8 +28,10 @@ public class MessageService {
 
 	@Autowired
 	private ActorService				actorService;
+
 	@Autowired
 	private MessageFolderService		messageFolderService;
+
 	@Autowired
 	private ConfigurationSystemService	configurationSystemService;
 
@@ -47,6 +49,7 @@ public class MessageService {
 		message = new Message();
 		message.setMoment(new Date());
 		message.setSender(sender);
+		message.setMessageFolder(this.messageFolderService.returnDefaultFolder(sender, "Out box"));
 		return message;
 	}
 	public Message findOne(final int messageId) {
@@ -68,10 +71,16 @@ public class MessageService {
 	}
 
 	public Message save(Message message) {
+		Assert.notNull(message.getSender());
+		Assert.notNull(message.getRecipient());
+		Assert.notNull(message);
+
 		Message messageBD;
 		Message messageNew;
+		Date current;
+
 		messageNew = null;
-		Assert.notNull(message);
+
 		if (message.getId() != 0) {
 			Assert.notNull(message.getMessageFolder());
 			messageBD = this.messageRepository.findOne(message.getId());
@@ -82,6 +91,51 @@ public class MessageService {
 				message = messageNew;
 
 			}
+		}
+		if (message.getId() == 0) {
+			current = new Date(System.currentTimeMillis() - 1000);
+			message.setMoment(current);
+			Actor sender;
+			Actor recipient;
+
+			sender = message.getSender();
+			recipient = message.getRecipient();
+
+			MessageFolder messageFolderInboxOfRecipient;
+			MessageFolder messageFolderOutboxOfSender;
+			MessageFolder messageFolderSpamOfRecipient;
+
+			Message messageNewInbox;
+			Message messageNewOutbox;
+			Message messageNewSpambox;
+
+			messageFolderInboxOfRecipient = this.messageFolderService.returnDefaultFolder(recipient, "In box");
+			messageFolderOutboxOfSender = this.messageFolderService.returnDefaultFolder(sender, "Out box");
+			messageFolderSpamOfRecipient = this.messageFolderService.returnDefaultFolder(recipient, "Spam box");
+
+			if (this.MessageisSpam(message)) {
+
+				message.setMessageFolder(messageFolderSpamOfRecipient);
+				messageNewSpambox = this.messageRepository.save(message);
+
+				Assert.notNull(messageNewSpambox);
+				messageFolderSpamOfRecipient.getMessages().add(messageNewSpambox);
+
+			} else {
+				message.setMessageFolder(messageFolderInboxOfRecipient);
+				messageNewInbox = this.messageRepository.save(message);
+
+				Assert.notNull(messageNewInbox);
+				messageFolderInboxOfRecipient.getMessages().add(messageNewInbox);
+			}
+
+			message.setMessageFolder(messageFolderOutboxOfSender);
+			messageNewOutbox = this.messageRepository.save(message);
+
+			Assert.notNull(messageNewOutbox);
+			messageFolderOutboxOfSender.getMessages().add(messageNewOutbox);
+
+			message = messageNewOutbox;
 		}
 		return message;
 
