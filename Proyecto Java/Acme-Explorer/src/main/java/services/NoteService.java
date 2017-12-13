@@ -1,6 +1,7 @@
 
 package services;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 
@@ -20,15 +21,18 @@ public class NoteService {
 
 	// Managed repository -----------------------------------------------------
 	@Autowired
-	private NoteRepository	noteRepository;
+	private NoteRepository				noteRepository;
 
 	// Supporting services ----------------------------------------------------
 
 	@Autowired
-	private ManagerService	managerService;
+	private ManagerService				managerService;
 
 	@Autowired
-	private AuditorService	auditorService;
+	private AuditorService				auditorService;
+
+	@Autowired
+	private ConfigurationSystemService	configurationSystemService;
 
 
 	// Constructors-------------------------------------------------------
@@ -136,5 +140,27 @@ public class NoteService {
 		notes = this.noteRepository.findNotesByManager(manager.getId());
 
 		return notes;
+	}
+
+	public Boolean noteContainsSpam(Auditor auditor) {
+		Boolean result;
+		Collection<Note> notes;
+		Collection<String> words;
+		Collection<String> spamWords;
+
+		notes = this.noteRepository.findNotesByAuditor(auditor.getId());
+		result = false;
+		spamWords = this.configurationSystemService.spamWord();
+		words = new ArrayList<String>();
+
+		for (Note note : notes)
+			words.add(note.getBody());
+
+		for (String spam : spamWords)
+			if (words.contains(spam)) {
+				result = true;
+				break;
+			}
+		return result;
 	}
 }

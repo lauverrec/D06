@@ -33,6 +33,12 @@ public class ManagerService {
 	@Autowired
 	private MessageFolderService	messageFolderService;
 
+	@Autowired
+	private ActorService			actorService;
+
+	@Autowired
+	private SurvivalClassService	survivalClassService;
+
 
 	// Constructors-------------------------------------------------------
 
@@ -139,6 +145,19 @@ public class ManagerService {
 		auth.setAuthority(Authority.MANAGER);
 
 		Assert.isTrue(authorities.contains(auth));
+	}
+
+	public Boolean managerIsSpam(Manager manager) {
+		Boolean result;
+		result = false;
+
+		result = this.actorService.actorIsSpam(manager);
+		if (result == true)
+			return result;
+		result = this.survivalClassService.survivalClassContainsSpam(manager);
+		if (result == true)
+			return result;
+		return result;
 	}
 
 }

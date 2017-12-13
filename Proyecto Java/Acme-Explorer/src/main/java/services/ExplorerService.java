@@ -34,6 +34,18 @@ public class ExplorerService {
 	@Autowired
 	private MessageFolderService	messageFolderService;
 
+	@Autowired
+	private ActorService			actorService;
+
+	@Autowired
+	private ContactEmergencyService	contactEmergencyService;
+
+	@Autowired
+	private ApplicationForService	applicationForService;
+
+	@Autowired
+	private StoryService			storyService;
+
 
 	// Constructors -----------------------------------------------------------
 
@@ -183,5 +195,24 @@ public class ExplorerService {
 
 		contacts = this.explorerRepository.findContactsByExplorer(explorer.getId());
 		return contacts;
+	}
+
+	public Boolean explorerIsSpam(Explorer explorer) {
+		Boolean result;
+		result = false;
+
+		result = this.actorService.actorIsSpam(explorer);
+		if (result == true)
+			return result;
+		result = this.contactEmergencyService.contactEmergencyContainsSpam(explorer);
+		if (result == true)
+			return result;
+		result = this.applicationForService.applicationForContainsSpam(explorer);
+		if (result == true)
+			return result;
+		result = this.storyService.storyContainsSpam(explorer);
+		if (result == true)
+			return result;
+		return result;
 	}
 }

@@ -30,6 +30,9 @@ public class AdministratorService {
 	@Autowired
 	private MessageFolderService	messageFolderService;
 
+	@Autowired
+	private ActorService			actorService;
+
 
 	// Constructors-------------------------------------------------------
 
@@ -228,6 +231,17 @@ public class AdministratorService {
 		Double result;
 		result = this.administratorRepository.findTheRatOFSuspiciousRangers();
 		return result;
+	}
+
+	public Boolean administratorIsSpam(Administrator administrator) {
+		Boolean result;
+		result = false;
+
+		result = this.actorService.actorIsSpam(administrator);
+		if (result == true)
+			return result;
+		return result;
+
 	}
 
 }

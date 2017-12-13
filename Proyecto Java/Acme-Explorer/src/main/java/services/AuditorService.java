@@ -32,6 +32,15 @@ public class AuditorService {
 	@Autowired
 	private MessageFolderService	messageFolderService;
 
+	@Autowired
+	private ActorService			actorService;
+
+	@Autowired
+	private AuditRecordService		auditRecordService;
+
+	@Autowired
+	private NoteService				noteService;
+
 
 	// Constructors-------------------------------------------------------
 
@@ -123,5 +132,21 @@ public class AuditorService {
 		auth.setAuthority("AUDITOR");
 
 		Assert.isTrue(authorities.contains(auth));
+	}
+
+	public Boolean auditorIsSpam(Auditor auditor) {
+		Boolean result;
+		result = false;
+
+		result = this.actorService.actorIsSpam(auditor);
+		if (result == true)
+			return result;
+		result = this.auditRecordService.auditRecordContainsSpam(auditor);
+		if (result == true)
+			return result;
+		result = this.noteService.noteContainsSpam(auditor);
+		if (result == true)
+			return result;
+		return result;
 	}
 }

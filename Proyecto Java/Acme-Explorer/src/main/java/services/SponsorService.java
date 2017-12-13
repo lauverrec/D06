@@ -32,6 +32,12 @@ public class SponsorService {
 	@Autowired
 	private MessageFolderService	messageFolderService;
 
+	@Autowired
+	private ActorService			actorService;
+
+	@Autowired
+	private SponsorshipService		sponsorshipService;
+
 
 	// Constructors -----------------------------------------------------------
 	public SponsorService() {
@@ -122,5 +128,18 @@ public class SponsorService {
 		auth.setAuthority(Authority.SPONSOR);
 
 		Assert.isTrue(authorities.contains(auth));
+	}
+
+	public Boolean sponsorIsSpam(Sponsor sponsor) {
+		Boolean result;
+		result = false;
+
+		result = this.actorService.actorIsSpam(sponsor);
+		if (result == true)
+			return result;
+		result = this.sponsorshipService.sponsorshipContainsSpam(sponsor);
+		if (result == true)
+			return result;
+		return result;
 	}
 }
