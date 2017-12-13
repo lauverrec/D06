@@ -39,6 +39,8 @@ public class TripService {
 	private ExplorerService				explorerService;
 	@Autowired
 	private ConfigurationSystemService	configurationSystemService;
+	@Autowired
+	private StageService				stageService;
 
 
 	// Constructors------------------------------------------------------------
@@ -389,4 +391,30 @@ public class TripService {
 		return trips;
 	}
 
+	public double setPrice(Collection<Stage> stages) {
+
+		double priceTrip;
+		priceTrip = 0;
+		for (Stage s : stages) {
+			this.stageService.setTotalPriceStage(s);
+			s.setTotalPrice(s.getTotalPrice());
+			priceTrip = priceTrip + s.getTotalPrice();
+		}
+
+		return priceTrip;
+	}
+
+	public double setPriceTrip(Collection<Trip> trips) {
+
+		double price;
+
+		price = 0.0;
+
+		for (Trip t : trips) {
+			price = this.setPrice(t.getStages());
+			t.setPrice(price);
+		}
+
+		return price;
+	}
 }

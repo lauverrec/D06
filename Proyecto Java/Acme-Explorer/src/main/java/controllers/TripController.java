@@ -56,11 +56,14 @@ public class TripController extends AbstractController {
 	public ModelAndView list() {
 		ModelAndView result;
 		Collection<Trip> trips;
+		double price;
 
 		trips = this.tripService.findAllTripsNoAuthenticate();
+		price = this.tripService.setPriceTrip(trips);
 
 		result = new ModelAndView("trip/list");
 		result.addObject("trips", trips);
+		result.addObject("price", price);
 		result.addObject("requestURI", "trip/search.do");
 
 		return result;

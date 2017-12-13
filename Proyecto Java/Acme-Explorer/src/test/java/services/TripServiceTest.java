@@ -310,4 +310,17 @@ public class TripServiceTest extends AbstractTest {
 		Assert.notNull(trips);
 
 	}
+
+	@Test
+	public void testPrice() {
+
+		Trip trip;
+		double price;
+
+		trip = this.tripService.findOne(super.getEntityId("trip1"));
+
+		price = this.tripService.setPrice(trip.getStages());
+
+		Assert.isTrue(price > 0.0);
+	}
 }
