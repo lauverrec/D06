@@ -8,6 +8,13 @@
  * http://www.tdg-seville.info/License.html
  --%>
 
+<%@page import="repositories.ApplicationForRepository"%>
+<%@page import="domain.ApplicationFor"%>
+<%@page import="java.text.DateFormat"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
+<%@page
+	import="org.aspectj.weaver.reflect.Java14GenericSignatureInformationProvider"%>
 <%@page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
@@ -22,7 +29,51 @@
 
 <display:table class="displaytag" name="applicationFor"
 	requestURI="applicationFor/explorer/display.do" id="row">
-	
-	
+
+	<display:column>
+
+		<p>
+			<spring:message code="applicationfor.trip" />
+			:
+			<jstl:out value="${row.trip.ticker}"></jstl:out>
+		</p>
+		<br>
+		<spring:message code="applicationfor.moment" />:
+			<jstl:out value="${row.moment }"></jstl:out>
+		<br>
+		<spring:message code="applicationfor.status" />:
+			<jstl:out value="${row.status }"></jstl:out>
+		<br>
+		<jstl:if test="${row.status=='REJECTED'}">
+			<spring:message code="applicationfor.reason" />:
+			<jstl:out value="${row.reasonWhy}"></jstl:out>
+			<br>
+		</jstl:if>
+		<jstl:choose>
+			<jstl:when test="${row.status=='PENDING'}">
+		<jstl:if test="${morethirtyDays==false}">
+		<body style="background-color:red;">
+		
+		</jstl:if>
+			</jstl:when>
+
+			<jstl:when test="${row.status=='REJECTED'}">
+				<body style="background-color: grey;">
+			</jstl:when>
+
+			<jstl:when test="${row.status=='DUE'}">
+				<body style="background-color: yellow;">
+			</jstl:when>
+
+			<jstl:when test="${row.status=='ACCEPTED'}">
+				<body style="background-color: green;">
+			</jstl:when>
+
+			<jstl:when test="${row.status=='CANCELLED'}">
+				<body style="background-color: cyan;">
+			</jstl:when>
+
+		</jstl:choose>
+	</display:column>
 
 </display:table>

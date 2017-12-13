@@ -207,4 +207,15 @@ public class ApplicationForService {
 
 		return result;
 	}
+
+	public boolean moreThanThirtyDays(Date startdate) {
+		boolean res = false;
+		Date dNow = new Date(System.currentTimeMillis());
+		long uno = dNow.getTime();
+		long dos = startdate.getTime();
+		double dias = ((uno - dos) * 1.0 / 86400000);
+		if (dias > 30)
+			res = true;
+		return res;
+	}
 }

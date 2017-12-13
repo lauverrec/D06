@@ -2472,8 +2472,8 @@
 		<property name="publicationDate">
 			<null />
 		</property>
-		<property name="startDate" value="2015/02/03"></property>
-		<property name="finishDate" value="2016/02/04"></property>
+		<property name="startDate" value="2017/11/14"></property>
+		<property name="finishDate" value="2017/12/30"></property>
 		<property name="reasonWhy" value=""></property>
 		<property name="cancelled" value="false"></property>
 		<property name="manager" ref="manager1"></property>
@@ -4114,8 +4114,8 @@
 		<property name="trip" ref="trip1" />
 	</bean>
 	<bean id="applicationFor2" class="domain.ApplicationFor">
-		<property name="moment" value="2017/10/21 00:10" />
-		<property name="status" value="REJECTED" />
+		<property name="moment" value="2017/12/11 00:10" />
+		<property name="status" value="PENDING" />
 		<property name="reasonWhy" value="because ...." />
 		<property name="comments">
 			<list>

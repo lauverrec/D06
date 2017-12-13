@@ -1,6 +1,7 @@
 
 package controllers.explorer;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -81,14 +82,17 @@ public class ApplicationForExplorerController {
 
 	//Display--------------------------------------------------------------------------------------
 	@RequestMapping(value = "/display", method = RequestMethod.GET)
-	public ModelAndView display(@RequestParam final int applicationforId) {
+	public ModelAndView display(@RequestParam final int applicationforId) throws ParseException {
 		ModelAndView result;
 		ApplicationFor applicationfor = new ApplicationFor();
+		boolean morethirtyDays;
 
 		applicationfor = this.applicationForService.findOne(applicationforId);
+		morethirtyDays = this.applicationForService.moreThanThirtyDays(applicationfor.getTrip().getStartDate());
 
 		result = new ModelAndView("applicationFor/display");
 		result.addObject("applicationFor", applicationfor);
+		result.addObject("morethirtyDays", morethirtyDays);
 
 		return result;
 	}
