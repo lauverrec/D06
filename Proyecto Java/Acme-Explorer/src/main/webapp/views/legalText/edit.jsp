@@ -25,7 +25,7 @@
 	<form:hidden path="id" />
 	<form:hidden path="version" /> 
 
-	
+	<jstl:if test="${legalText.draftMode == true}">
 	<form:label path="title">
 		<spring:message code="legalText.title" />:
 	</form:label>
@@ -62,6 +62,7 @@
 		<form:option value="0" label="NO"/> 
 	</form:select>  
 	<br /> 
+	</jstl:if>
 	
 	<jstl:if test="${legalText.id !=0 and legalText.draftMode == false}">
 	<form:label path="trips">
