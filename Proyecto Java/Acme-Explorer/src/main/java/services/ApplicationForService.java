@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import repositories.ApplicationForRepository;
+import domain.Actor;
 import domain.ApplicationFor;
 import domain.CreditCard;
 import domain.Explorer;
@@ -35,6 +36,9 @@ public class ApplicationForService {
 	private ManagerService				managerService;
 	@Autowired
 	private TripService					tripService;
+
+	@Autowired
+	private ConfigurationSystemService	configurationSystemService;
 
 
 	// Constructors -----------------------------------------------------------
@@ -176,5 +180,31 @@ public class ApplicationForService {
 
 		return result;
 
+	}
+
+	public Boolean applicationForContainsSpam(Actor actor) {
+		Collection<ApplicationFor> applicationForFromActor;
+		Collection<String> words;
+		Collection<String> spamWords;
+		Boolean result;
+
+		applicationForFromActor = this.applicationForRepository.applicationsForOfActor(actor.getId());
+		result = false;
+		words = new ArrayList<String>();
+		spamWords = this.configurationSystemService.spamWord();
+
+		for (ApplicationFor application : applicationForFromActor) {
+			words.add(application.getReasonWhy());
+			words.addAll(application.getComments());
+
+		}
+
+		for (String spam : spamWords)
+			if (words.contains(spam)) {
+				result = true;
+				break;
+			}
+
+		return result;
 	}
 }

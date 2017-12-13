@@ -1,6 +1,7 @@
 
 package services;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,9 @@ public class ContactEmergencyService {
 	// Supporting services ----------------------------------------------------
 	@Autowired
 	private ExplorerService				explorerService;
+
+	@Autowired
+	private ConfigurationSystemService	configurationSystemService;
 
 
 	// Constructors -----------------------------------------------------------
@@ -94,4 +98,28 @@ public class ContactEmergencyService {
 			explorer.getContactsEmergency().add(contactemergency);
 	}
 
+	public Boolean contactEmergencyContainsSpam(Explorer explorer) {
+		Boolean result;
+		Collection<ContactEmergency> contactsEmergency;
+		Collection<String> words;
+		Collection<String> spamWords;
+
+		result = false;
+		words = new ArrayList<String>();
+		spamWords = this.configurationSystemService.spamWord();
+		contactsEmergency = explorer.getContactsEmergency();
+
+		for (ContactEmergency contact : contactsEmergency) {
+			words.add(contact.getEmail());
+			words.add(contact.getName());
+
+		}
+		for (String spam : spamWords)
+			if (words.contains(spam)) {
+				result = true;
+				break;
+
+			}
+		return result;
+	}
 }

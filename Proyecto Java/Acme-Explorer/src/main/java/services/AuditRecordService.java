@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import repositories.AuditRecordRepository;
+import domain.Actor;
 import domain.Attachment;
 import domain.AuditRecord;
 import domain.Auditor;
@@ -22,15 +23,18 @@ public class AuditRecordService {
 
 	// Managed repository -----------------------------------------------------
 	@Autowired
-	private AuditRecordRepository	auditRecordRepository;
+	private AuditRecordRepository		auditRecordRepository;
 
 	// Supporting services ----------------------------------------------------
 
 	@Autowired
-	private AuditorService			auditorService;
+	private AuditorService				auditorService;
 
 	@Autowired
-	private TripService				tripService;
+	private TripService					tripService;
+
+	@Autowired
+	private ConfigurationSystemService	cofigurationSystemService;
 
 
 	// Constructors-------------------------------------------------------
@@ -134,6 +138,34 @@ public class AuditRecordService {
 
 		result = this.auditRecordRepository.urlOfAttachments(auditrecord.getId());
 
+		return result;
+
+	}
+
+	public Boolean auditRecordContainsSpam(Actor actor) {
+		Boolean result;
+		Collection<AuditRecord> auditsRecordFromActor;
+		Collection<String> words;
+		Collection<String> spamWords;
+
+		auditsRecordFromActor = this.auditRecordRepository.findByAuditorId(actor.getId());
+		words = new ArrayList<String>();
+		spamWords = this.cofigurationSystemService.spamWord();
+		result = false;
+
+		for (AuditRecord auditRecord : auditsRecordFromActor) {
+			words.add(auditRecord.getDescription());
+			words.add(auditRecord.getTitle());
+
+			for (Attachment attach : auditRecord.getAttachments())
+				words.add(attach.getUrl());
+		}
+
+		for (String spam : spamWords)
+			if (words.contains(spam)) {
+				result = true;
+				break;
+			}
 		return result;
 
 	}

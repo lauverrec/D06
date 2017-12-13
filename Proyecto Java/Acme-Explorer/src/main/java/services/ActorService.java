@@ -1,6 +1,7 @@
 
 package services;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.transaction.Transactional;
@@ -13,6 +14,7 @@ import repositories.ActorRepository;
 import security.LoginService;
 import security.UserAccount;
 import domain.Actor;
+import domain.SocialIdentity;
 
 @Service
 @Transactional
@@ -20,10 +22,12 @@ public class ActorService {
 
 	// Managed repository -----------------------------------------------------
 	@Autowired
-	private ActorRepository	actorRepository;
-
+	private ActorRepository				actorRepository;
 
 	// Supporting services ----------------------------------------------------
+	@Autowired
+	private ConfigurationSystemService	configurationSystemService;
+
 
 	// Constructors -----------------------------------------------------------
 	public ActorService() {
@@ -90,5 +94,49 @@ public class ActorService {
 		res = this.findActorByUseraccount(id);
 		return res;
 
+	}
+
+	public Boolean isSpam(Collection<String> text) {
+
+		Boolean res = false;
+		Collection<String> spamWords;
+		spamWords = this.configurationSystemService.spamWord();
+
+		for (String spam : spamWords)
+			if (text.contains(spam)) {
+				res = true;
+				break;
+			}
+
+		return res;
+	}
+
+	public Boolean actorIsSpam(Actor actor) {
+		Boolean result;
+		Collection<String> words;
+		Collection<String> spamWords;
+
+		spamWords = this.configurationSystemService.spamWord();
+		words = new ArrayList<String>();
+		result = false;
+
+		words.add(actor.getAddress());
+		words.add(actor.getEmail());
+		words.add(actor.getName());
+		words.add(actor.getSurname());
+
+		for (SocialIdentity social : actor.getSocialIdentities()) {
+			words.add(social.getLink());
+			words.add(social.getName());
+			words.add(social.getNick());
+		}
+
+		for (String spam : spamWords)
+			if (words.contains(spam)) {
+				result = true;
+				break;
+
+			}
+		return result;
 	}
 }

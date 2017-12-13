@@ -1,6 +1,7 @@
 
 package services;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,12 +20,15 @@ public class SponsorshipService {
 
 	// Managed repository -----------------------------------------------------
 	@Autowired
-	private SponsorshipRepository	sponsorshipRepository;
+	private SponsorshipRepository		sponsorshipRepository;
 
 	// Supporting services ----------------------------------------------------
 
 	@Autowired
-	private SponsorService			sponsorService;
+	private SponsorService				sponsorService;
+
+	@Autowired
+	private ConfigurationSystemService	configurationSystemService;
 
 
 	// Constructors-------------------------------------------------------
@@ -103,4 +107,28 @@ public class SponsorshipService {
 	//		return trip;
 	//
 	//	}
+
+	public Boolean sponsorshipContainsSpam(Sponsor sponsor) {
+		Boolean result = false;
+		Collection<Sponsorship> sponsorships;
+		Collection<String> words;
+		Collection<String> spamWords;
+
+		result = false;
+		sponsorships = this.sponsorshipRepository.findBySponsorId(sponsor.getId());
+		spamWords = this.configurationSystemService.spamWord();
+		words = new ArrayList<String>();
+
+		for (Sponsorship sponsorship : sponsorships) {
+			words.add(sponsorship.getBannerURL());
+			words.add(sponsorship.getLink());
+		}
+
+		for (String spam : spamWords)
+			if (words.contains(spam)) {
+				result = true;
+				break;
+			}
+		return result;
+	}
 }

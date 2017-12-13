@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import repositories.CurriculaRepository;
+import domain.Actor;
 import domain.Curricula;
 import domain.EducationRecord;
 import domain.EndorserRecord;
@@ -25,11 +26,14 @@ public class CurriculaService {
 
 	// Managed repository -----------------------------------------------------
 	@Autowired
-	private CurriculaRepository	curriculaRepository;
+	private CurriculaRepository			curriculaRepository;
 
 	// Supporting services ----------------------------------------------------
 	@Autowired
-	private RangerService		rangerService;
+	private RangerService				rangerService;
+
+	@Autowired
+	private ConfigurationSystemService	configurationSystemService;
 
 
 	// Constructors-------------------------------------------------------
@@ -170,5 +174,52 @@ public class CurriculaService {
 
 		Assert.isTrue(personalRecordId != 0);
 		return this.curriculaRepository.CurriculaWithThisPersonalRecord(personalRecordId);
+	}
+
+	public Boolean curriculaContainsSpam(Actor actor) {
+		Boolean result;
+		Curricula curriculaFromActor;
+		Collection<String> spamWords;
+		Collection<String> wordsPublicated;
+
+		curriculaFromActor = this.curriculaRepository.findCurriculaFromRanger(actor.getId());
+		result = false;
+		spamWords = this.configurationSystemService.spamWord();
+		wordsPublicated = new ArrayList<String>();
+
+		wordsPublicated.add(curriculaFromActor.getPersonalRecord().getEmail());
+		wordsPublicated.add(curriculaFromActor.getPersonalRecord().getFullName());
+
+		for (EducationRecord edcuation : curriculaFromActor.getEducationRecords()) {
+			wordsPublicated.add(edcuation.getDiplomaTitle());
+			wordsPublicated.add(edcuation.getInstitution());
+			wordsPublicated.addAll(edcuation.getComments());
+			wordsPublicated.add(edcuation.getLink());
+		}
+		for (EndorserRecord endorser : curriculaFromActor.getEndorserRecords()) {
+			wordsPublicated.add(endorser.getEmail());
+			wordsPublicated.add(endorser.getFullName());
+			wordsPublicated.addAll(endorser.getComments());
+			wordsPublicated.add(endorser.getLinkedProfile());
+		}
+		for (MiscellaneousRecord miscellaneous : curriculaFromActor.getMiscellaneousRecords()) {
+			wordsPublicated.add(miscellaneous.getTitle());
+			wordsPublicated.add(miscellaneous.getLink());
+			wordsPublicated.addAll(miscellaneous.getComments());
+		}
+		for (ProfessionalRecord professional : curriculaFromActor.getProfessionalRecords()) {
+			wordsPublicated.add(professional.getCompanyName());
+			wordsPublicated.add(professional.getLink());
+			wordsPublicated.add(professional.getRole());
+			wordsPublicated.addAll(professional.getComments());
+		}
+		for (String spam : spamWords)
+			if (wordsPublicated.contains(spam)) {
+				result = true;
+				break;
+			}
+
+		return result;
+
 	}
 }

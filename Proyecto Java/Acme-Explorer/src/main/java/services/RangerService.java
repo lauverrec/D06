@@ -33,6 +33,12 @@ public class RangerService {
 	@Autowired
 	private MessageFolderService	messageFolderService;
 
+	@Autowired
+	private CurriculaService		curriculaService;
+
+	@Autowired
+	private ActorService			actorService;
+
 
 	// Constructors-------------------------------------------------------
 
@@ -129,6 +135,7 @@ public class RangerService {
 	public void checkPrincipal() {
 
 		final UserAccount userAccount = LoginService.getPrincipal();
+
 		Assert.notNull(userAccount);
 
 		final Collection<Authority> authorities = userAccount.getAuthorities();
@@ -140,4 +147,18 @@ public class RangerService {
 		Assert.isTrue(authorities.contains(auth));
 	}
 
+	public Boolean rangerIsSpam(Ranger ranger) {
+		Boolean result;
+
+		result = false;
+
+		result = this.curriculaService.curriculaContainsSpam(ranger);
+		if (result == true)
+			return result;
+		result = this.actorService.actorIsSpam(ranger);
+		if (result == true)
+			return result;
+
+		return result;
+	}
 }

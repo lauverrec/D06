@@ -22,11 +22,14 @@ public class StoryService {
 	// Managed repository -----------------------------------------------------
 
 	@Autowired
-	private StoryRepository	storyRepository;
+	private StoryRepository				storyRepository;
 
 	// Supporting services ----------------------------------------------------
 	@Autowired
-	private ExplorerService	explorerService;
+	private ExplorerService				explorerService;
+
+	@Autowired
+	private ConfigurationSystemService	configurationSystemService;
 
 
 	// Constructors -----------------------------------------------------------
@@ -99,5 +102,29 @@ public class StoryService {
 
 		return result;
 
+	}
+
+	public Boolean storyContainsSpam(Explorer explorer) {
+		Boolean result;
+		Collection<Story> storysOfExplorer;
+		Collection<String> spamWords;
+		Collection<String> words;
+
+		result = false;
+		words = new ArrayList<String>();
+		spamWords = this.configurationSystemService.spamWord();
+		storysOfExplorer = this.storyRepository.storyOfExplore(explorer.getId());
+
+		for (Story story : storysOfExplorer) {
+			words.add(story.getText());
+			words.add(story.getTitle());
+
+		}
+		for (String spam : spamWords)
+			if (words.contains(spam)) {
+				result = true;
+				break;
+			}
+		return result;
 	}
 }

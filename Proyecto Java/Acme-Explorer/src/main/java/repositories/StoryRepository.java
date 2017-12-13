@@ -16,4 +16,7 @@ public interface StoryRepository extends JpaRepository<Story, Integer> {
 	@Query("select a.url from Story s join s.attachments a where s.id=?1")
 	Collection<Attachment> urlOfAttachments(int storyId);
 
+	@Query("select c from Story c where c.explorer.id=?1")
+	Collection<Story> storyOfExplore(int explorerId);
+
 }

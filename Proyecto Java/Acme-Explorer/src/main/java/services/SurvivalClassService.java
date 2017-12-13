@@ -24,15 +24,18 @@ public class SurvivalClassService {
 	// Managed repository -----------------------------------------------------
 
 	@Autowired
-	private SurvivalClassRepository	survivalClassRepository;
+	private SurvivalClassRepository		survivalClassRepository;
 
 	// Supporting services ----------------------------------------------------
 
 	@Autowired
-	private ManagerService			managerService;
+	private ManagerService				managerService;
 
 	@Autowired
-	private ExplorerService			explorerService;
+	private ExplorerService				explorerService;
+
+	@Autowired
+	private ConfigurationSystemService	configurationSystemService;
 
 
 	// Constructors-------------------------------------------------------
@@ -213,4 +216,28 @@ public class SurvivalClassService {
 
 	}
 
+	public Boolean survivalClassContainsSpam(Manager manager) {
+		Boolean result;
+		Collection<String> spamWords;
+		Collection<String> words;
+		Collection<SurvivalClass> survivalClasses;
+
+		words = new ArrayList<String>();
+		spamWords = this.configurationSystemService.spamWord();
+		result = false;
+		survivalClasses = this.survivalClassRepository.findSurvivalClassByManager(manager.getId());
+
+		for (SurvivalClass survival : survivalClasses) {
+			words.add(survival.getDescription());
+			words.add(survival.getTitle());
+		}
+
+		for (String spam : spamWords)
+			if (words.contains(spam)) {
+				result = true;
+				break;
+			}
+		return result;
+
+	}
 }
