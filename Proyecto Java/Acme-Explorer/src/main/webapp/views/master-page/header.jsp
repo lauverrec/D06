@@ -111,6 +111,7 @@
 				<ul>
 					<li class="arrow"></li>
 					<li><a href="manager/edit.do"><spring:message code="master.page.sponsor.edit" /></a></li>
+					<li><a href="applicationFor/manager/list.do"><spring:message code="master.page.manager.list.applicationFor" /></a></li>					
 					<li><a href="trip/manager_/list.do"><spring:message code="master.page.manager.list.trips" /></a></li>
 					<li><a href="messageFolder/manager/list.do"><spring:message code="master.page.messageFolder.list" /></a></li>	
 					<li><a href="survivalClass/manager/list.do"><spring:message code="master.page.survivalClass.manager" /></a></li>	

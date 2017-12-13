@@ -78,14 +78,25 @@
 		</display:column>
 	</security:authorize>
 	
-			<spring:message code="applicationfor.display" var="Display" />
+	<security:authorize access="hasRole('EXPLORER')">
+		<spring:message code="applicationfor.display" var="Display" />
 		<display:column title="${Display}" sortable="true">
 		<spring:url value="applicationFor/explorer/display.do" var="displayURL">
 		<spring:param name="applicationforId" value="${row.id}"/>
 		</spring:url>
 		<a href="${displayURL}"><spring:message code="applicationfor.view"/></a>
 		</display:column>	
-
+	</security:authorize>
+	
+	<security:authorize access="hasRole('MANAGER')">
+		<spring:message code="applicationfor.display" var="Display" />
+		<display:column title="${Display}" sortable="true">
+		<spring:url value="applicationFor/manager/display.do" var="displayURL">
+		<spring:param name="applicationforId" value="${row.id}"/>
+		</spring:url>
+		<a href="${displayURL}"><spring:message code="applicationfor.view"/></a>
+		</display:column>	
+	</security:authorize>
 </display:table>
 <%-- <security:authorize access="hasRole('EXPLORER')">
 	<spring:url value="applicationFor/explorer/create.do" var="linkcreate" />

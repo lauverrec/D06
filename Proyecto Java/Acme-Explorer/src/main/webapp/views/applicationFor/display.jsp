@@ -28,7 +28,7 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
 <display:table class="displaytag" name="applicationFor"
-	requestURI="applicationFor/explorer/display.do" id="row">
+	requestURI="${requestURI }" id="row">
 
 	<display:column>
 
