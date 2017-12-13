@@ -4,6 +4,7 @@ package services;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -282,7 +283,7 @@ public class TripService {
 		return res;
 	}
 
-	public Collection<Trip> findAllTripsByKeyWord(final String search) {
+	public Collection<Trip> findAllTripsByKeyWord(final String keyWord) {
 		final Collection<Trip> res;
 		final Page<Trip> resPage;
 		int maxNumberFinder;
@@ -290,10 +291,24 @@ public class TripService {
 		maxNumberFinder = this.configurationSystemService.findOne().getMaxNumberFinder();
 		final Pageable pageable = new PageRequest(0, maxNumberFinder);
 
-		resPage = this.tripRepository.findAllTripsByKeyWord(search, pageable);
+		resPage = this.tripRepository.findAllTripsByKeyWord(keyWord, pageable);
 		res = resPage.getContent();
 		return res;
 	}
+
+	public Collection<Trip> findAllTripsByKeyWordPriceDate(final String keyword, final double lowPrice, final double highPrice, final Date initialDate, final Date finalDate) {
+		final Collection<Trip> res;
+		final Page<Trip> resPage;
+		int maxNumberFinder;
+
+		maxNumberFinder = this.configurationSystemService.findOne().getMaxNumberFinder();
+		final Pageable pageable = new PageRequest(0, maxNumberFinder);
+
+		resPage = this.tripRepository.findAllTripsByKeyWordPriceDate(keyword, lowPrice, highPrice, initialDate, finalDate, pageable);
+		res = resPage.getContent();
+		return res;
+	}
+
 	//	public void setPriceOfTrip(Trip trip) {
 	//		Collection<Stage> stagesOfTrip;
 	//		Double priceOfTrip;
@@ -391,11 +406,11 @@ public class TripService {
 		return trips;
 	}
 
-	public double setPrice(Collection<Stage> stages) {
+	public double setPrice(final Collection<Stage> stages) {
 
 		double priceTrip;
 		priceTrip = 0;
-		for (Stage s : stages) {
+		for (final Stage s : stages) {
 			this.stageService.setTotalPriceStage(s);
 			s.setTotalPrice(s.getTotalPrice());
 			priceTrip = priceTrip + s.getTotalPrice();
@@ -404,13 +419,13 @@ public class TripService {
 		return priceTrip;
 	}
 
-	public double setPriceTrip(Collection<Trip> trips) {
+	public double setPriceTrip(final Collection<Trip> trips) {
 
 		double price;
 
 		price = 0.0;
 
-		for (Trip t : trips) {
+		for (final Trip t : trips) {
 			price = this.setPrice(t.getStages());
 			t.setPrice(price);
 		}

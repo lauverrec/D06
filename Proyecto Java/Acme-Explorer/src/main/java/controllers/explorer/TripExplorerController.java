@@ -2,6 +2,7 @@
 package controllers.explorer;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -47,7 +48,7 @@ public class TripExplorerController extends AbstractController {
 		result = new ModelAndView("trip/list");
 		result.addObject("trips", trips);
 		result.addObject("apply", true);
-		result.addObject("requestURI", "trip/explorer/list-apply.do");
+		result.addObject("requestURI", "trip/explorer/search.do");
 
 		return result;
 	}
@@ -64,7 +65,7 @@ public class TripExplorerController extends AbstractController {
 		result = new ModelAndView("trip/list");
 		result.addObject("trips", trips);
 		result.addObject("apply", false);
-		result.addObject("requestURI", "trip/explorer/list-not-apply.do");
+		result.addObject("requestURI", "trip/explorer/search.do");
 
 		return result;
 	}
@@ -78,7 +79,7 @@ public class TripExplorerController extends AbstractController {
 
 		result = new ModelAndView("trip/liststory");
 		result.addObject("trips", trips);
-		//result.addObject("requestURI", "trip/explorer/listTrip.do");
+		result.addObject("requestURI", "trip/explorer/search.do");
 
 		return result;
 	}
@@ -126,15 +127,30 @@ public class TripExplorerController extends AbstractController {
 
 	//Cancel
 
+	// Search -----------------------------------------------------------------
+
+	@RequestMapping(value = "/search", method = RequestMethod.GET)
+	public ModelAndView listByKeywordPriceDate(@RequestParam final String keyword, @RequestParam final double lowPrice, @RequestParam final double highPrice, @RequestParam final Date initialDate, @RequestParam final Date finalDate) {
+		ModelAndView result;
+		Collection<Trip> trips;
+
+		trips = this.tripService.findAllTripsByKeyWordPriceDate(keyword, lowPrice, highPrice, initialDate, finalDate);
+		result = new ModelAndView("trip/list");
+
+		result.addObject("trips", trips);
+		result.addObject("requestURI", "trip/explorer/search.do");
+
+		return result;
+	}
 	// Ancillary methods ------------------------------------------------------
-	protected ModelAndView createEditModelAndView(Trip trip) {
+	protected ModelAndView createEditModelAndView(final Trip trip) {
 		ModelAndView result;
 
 		result = this.createEditModelAndView(trip, null);
 		return result;
 	}
 
-	private ModelAndView createEditModelAndView(Trip trip, String message) {
+	private ModelAndView createEditModelAndView(final Trip trip, final String message) {
 		ModelAndView result;
 
 		result = new ModelAndView("trip/edit");

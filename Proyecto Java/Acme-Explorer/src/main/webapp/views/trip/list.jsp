@@ -24,35 +24,32 @@
 
 <form:form action="${requestURI}" method="get">
 
-	<label><spring:message code="trip.search"/></label>
+	<label><spring:message code="trip.search.keyword"/></label>
 	<input type="text" name="keyword"/> <br />
 	<br>
+	
+	<security:authorize access="hasRole('EXPLORER')">
+	<label><spring:message code="trip.search.lowPrice"/></label>
+	<input type="text" name="lowPrice"/> <br />
+	<br>
+	
+	<label><spring:message code="trip.search.highPrice"/></label>
+	<input type="text" name="highPrice"/> <br />
+	<br>
+	
+	<label><spring:message code="trip.search.initialDate"/></label>
+	<input type="text" name="initialDate"/> <br />
+	<br>
+	
+	<label><spring:message code="trip.search.finalDate"/></label>
+	<input type="text" name="finalDate"/> <br />
+	<br>
+	</security:authorize>
+	
 	<input type="submit" value="<spring:message code="trip.search" />" /> 	 
 	
 </form:form>
 
-	<%-- <security:authorize access="hasRole('MANAGER')">
-		<form:label path="lowprice">
-			<spring:message code="trip.lowprice" />:
-	</form:label>
-		<form:input path="lowprice" />
-
-		<form:label path="highprice">
-			<spring:message code="trip.highprice" />:
-	</form:label>
-		<form:input path="highprice" />
-
-		<form:label path="trip.startDate">
-			<spring:message code="trip.startDate" />:
-	</form:label>
-		<form:input path="startDate" />
-
-		<form:label path="trip.finishDate">
-			<spring:message code="trip.finishDate" />:
-	</form:label>
-		<form:input path="finishDate" />
-
-	</security:authorize> --%>
 
 	<%-- <spring:url value="applicationFor/manager/edit.do" var="editlink">
 		<spring:param name="search" value="search" />
