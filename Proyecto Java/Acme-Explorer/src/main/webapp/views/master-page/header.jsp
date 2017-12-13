@@ -33,6 +33,8 @@
           			
 				</ul>
 			</li>
+			<li><a href="trip/list.do"><spring:message code="master.page.trips" /></a></li>
+			<li><a href="category/list.do"><spring:message code="master.page.administrator.categories" /></a></li>
 		</security:authorize>
 		
 		<security:authorize access="hasRole('AUDITOR')">
@@ -47,6 +49,8 @@
 					<li><a href="trip/auditor/list.do"><spring:message code="master.page.auditor.list.trips"/></a>
 				</ul>
 			</li>
+			<li><a href="trip/list.do"><spring:message code="master.page.trips" /></a></li>
+			<li><a href="category/list.do"><spring:message code="master.page.administrator.categories" /></a></li>
 		</security:authorize>
 		
 		<security:authorize access="hasRole('EXPLORER')">
@@ -63,6 +67,8 @@
 					
 				</ul>
 			</li>
+			<li><a href="trip/list.do"><spring:message code="master.page.trips" /></a></li>
+			<li><a href="category/list.do"><spring:message code="master.page.administrator.categories" /></a></li>
 		</security:authorize>
 		
 		<security:authorize access="hasRole('ADMINISTRATOR')">
@@ -80,6 +86,8 @@
 					<li><a href="configurationSystem/administrator/edit.do"><spring:message code="master.page.configurationSystem.edit"/></a>
 				</ul>
 			</li>
+			<li><a href="trip/list.do"><spring:message code="master.page.trips" /></a></li>
+			<li><a href="category/list.do"><spring:message code="master.page.administrator.categories" /></a></li>
 		</security:authorize>
 		
 		<security:authorize access="hasRole('RANGER')">
@@ -92,10 +100,14 @@
 					
 				</ul>
 			</li>
+			<li><a href="trip/list.do"><spring:message code="master.page.trips" /></a></li>
+			<li><a href="category/list.do"><spring:message code="master.page.administrator.categories" /></a></li>
 		</security:authorize>
 		
 		<security:authorize access="hasRole('MANAGER')">
-			<li><a class="fNiv"><spring:message	code="master.page.manager" /></a>
+			
+			
+			<li><a class="fNiv "><spring:message code="master.page.manager" /></a>
 				<ul>
 					<li class="arrow"></li>
 					<li><a href="manager/edit.do"><spring:message code="master.page.sponsor.edit" /></a></li>
@@ -106,6 +118,8 @@
 					
 				</ul>
 			</li>
+			<li><a href="trip/list.do"><spring:message code="master.page.trips" /></a></li>
+			<li><a href="category/list.do"><spring:message code="master.page.administrator.categories" /></a></li>
 		</security:authorize>
 
 		
@@ -131,7 +145,6 @@
 				</a>
 				<ul>
 					<li class="arrow"></li>
-									
 					<li><a href="j_spring_security_logout"><spring:message code="master.page.logout" /> </a></li>
 				</ul>
 			</li>
