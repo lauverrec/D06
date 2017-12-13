@@ -20,13 +20,14 @@ import org.springframework.web.servlet.ModelAndView;
 import services.ApplicationForService;
 import services.ExplorerService;
 import services.TripService;
+import controllers.AbstractController;
 import domain.ApplicationFor;
 import domain.Explorer;
 import domain.Trip;
 
 @Controller
 @RequestMapping("/applicationFor/explorer")
-public class ApplicationForExplorerController {
+public class ApplicationForExplorerController extends AbstractController {
 
 	// Services ---------------------------------------------------------------
 	@Autowired
