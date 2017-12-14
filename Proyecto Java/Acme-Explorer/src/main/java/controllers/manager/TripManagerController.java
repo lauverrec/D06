@@ -3,6 +3,7 @@ package controllers.manager;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 
 import javax.validation.Valid;
 
@@ -15,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import services.LegalTextService;
 import services.ManagerService;
 import services.RangerService;
 import services.TagService;
@@ -31,16 +31,18 @@ import domain.Trip;
 public class TripManagerController extends AbstractController {
 
 	// Services ---------------------------------------------------------------
+
 	@Autowired
-	private TripService			tripService;
+	private TripService		tripService;
+
 	@Autowired
-	private ManagerService		managerService;
+	private ManagerService	managerService;
+
 	@Autowired
-	private RangerService		rangerService;
+	private RangerService	rangerService;
+
 	@Autowired
-	private LegalTextService	legalTextService;
-	@Autowired
-	private TagService			tagService;
+	private TagService		tagService;
 
 
 	// Constructors -----------------------------------------------------------
@@ -55,10 +57,13 @@ public class TripManagerController extends AbstractController {
 		Collection<Trip> trips;
 		Manager manager = this.managerService.findByPrincipal();
 		trips = this.tripService.findAll();
+		Date date;
+		date = new Date();
 
 		result = new ModelAndView("trip/list");
 		result.addObject("trips", trips);
 		result.addObject("manager", manager);
+		result.addObject("date", date);
 		result.addObject("requestURI", "trip/manager_/list.do");
 
 		return result;
@@ -149,4 +154,52 @@ public class TripManagerController extends AbstractController {
 		//result.addObject("legalTexts", legalTexts);
 		return result;
 	}
+
+	//Cancel----------------------------------------------------------------
+
+	@RequestMapping(value = "/cancel", method = RequestMethod.GET)
+	public ModelAndView cancel(@RequestParam final int tripId) {
+		ModelAndView result;
+		Trip trip;
+		trip = this.tripService.findOne(tripId);
+		result = this.createCancelModelAndView(trip);
+		result.addObject("trip", trip);
+
+		return result;
+	}
+
+	@RequestMapping(value = "/cancel", method = RequestMethod.POST, params = "cancel")
+	public ModelAndView cancel(@Valid Trip trip, BindingResult binding) {
+		ModelAndView result;
+
+		if (binding.hasErrors())
+			result = this.createEditModelAndView(trip);
+		else
+			try {
+				this.tripService.cancel(trip);
+				this.tripService.save(trip);
+				result = new ModelAndView("redirect:list.do");
+			} catch (final Throwable oops) {
+				result = this.createCancelModelAndView(trip, "trip.cancel.error");
+			}
+		return result;
+	}
+
+	protected ModelAndView createCancelModelAndView(final Trip trip) {
+		ModelAndView result;
+
+		result = this.createCancelModelAndView(trip, null);
+		return result;
+	}
+
+	protected ModelAndView createCancelModelAndView(final Trip trip, final String message) {
+		ModelAndView result;
+
+		result = new ModelAndView("trip/cancel");
+		result.addObject("trip", trip);
+		result.addObject("message", message);
+
+		return result;
+	}
+
 }

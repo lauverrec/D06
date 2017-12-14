@@ -120,7 +120,19 @@ public class TripService {
 		Assert.notNull(manager);
 		this.tripRepository.delete(trip);
 	}
-	//
+
+	public void cancel(Trip trip) {
+
+		Date date;
+		Manager manager;
+
+		date = new Date();
+		manager = this.managerService.findByPrincipal();
+
+		Assert.isTrue(manager.getTrips().contains(trip));
+		Assert.isTrue(trip.getStartDate().after(date));
+
+	}
 	//	// Other business methods -------------------------------------------------
 	//	//***** TEST HECHO *******
 	//	//Para quien no esté autenticado devolvemos todos los trips con restricciones

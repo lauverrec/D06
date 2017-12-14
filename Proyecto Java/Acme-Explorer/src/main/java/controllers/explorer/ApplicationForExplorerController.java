@@ -170,7 +170,7 @@ public class ApplicationForExplorerController extends AbstractController {
 		return result;
 	}
 
-	private ModelAndView createEditModelAndView(final ApplicationFor applicationFor, final String message) {
+	protected ModelAndView createEditModelAndView(final ApplicationFor applicationFor, final String message) {
 		ModelAndView result;
 
 		result = new ModelAndView("applicationFor/edit");
