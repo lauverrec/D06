@@ -143,6 +143,7 @@ public class Trip extends DomainEntity {
 	private Collection<Note>			notes;
 	private Collection<AuditRecord>		auditRecords;
 	private Ranger						ranger;
+	private Collection<Value>			values;
 
 
 	@NotNull
@@ -214,6 +215,17 @@ public class Trip extends DomainEntity {
 
 	public void setRanger(Ranger ranger) {
 		this.ranger = ranger;
+	}
+
+	@Valid
+	@OneToMany
+	@NotNull
+	public Collection<Value> getValues() {
+		return this.values;
+	}
+
+	public void setValues(Collection<Value> values) {
+		this.values = values;
 	}
 
 }

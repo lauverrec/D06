@@ -2393,22 +2393,49 @@
 
 	<bean id="tag1" class="domain.Tag">
 		<property name="name" value="country" />
+		<property name="values">
+			<list>
+				<ref bean="value1"></ref>
+			</list>
+		</property>
 	</bean>
 
 	<bean id="tag2" class="domain.Tag">
 		<property name="name" value="expertise" />
+		<property name="values">
+			<list>
+				<ref bean="value2"></ref>
+			</list>
+		</property>
 	</bean>
 
 	<bean id="tag3" class="domain.Tag">
 		<property name="name" value="dangerousness" />
+		<property name="values">
+			<list>
+				<ref bean="value3"/>
+			</list>
+		</property>
+		
 	</bean>
 
 	<bean id="tag4" class="domain.Tag">
 		<property name="name" value="name 4" />
+		<property name="values">
+			<list>
+				<ref bean="value4"></ref>
+			</list>
+		</property>
 	</bean>
+
 
 	<bean id="tag5" class="domain.Tag">
 		<property name="name" value="name 5" />
+		<property name="values">
+			<list>
+				<ref bean="value5"></ref>
+			</list>
+		</property>
 	</bean>
 
 	<!-- STAGEs -->
@@ -2505,6 +2532,11 @@
 				<ref bean="auditrecord1"></ref>
 			</list>
 		</property>
+		<property name="values">
+			<list>
+				<ref bean="value1"></ref>
+			</list>
+		</property>
 	</bean>
 
 	<bean id="trip2" class="domain.Trip">
@@ -2550,6 +2582,12 @@
 				<ref bean="auditrecord2"></ref>
 			</list>
 		</property>
+		<property name="values">
+			<list>
+				<ref bean="value2"></ref>
+				
+			</list>
+		</property>
 	</bean>
 
 	<bean id="trip3" class="domain.Trip">
@@ -2574,8 +2612,8 @@
 		</property>
 		<property name="tags">
 			<list>
-				<ref bean="tag2"></ref>
-				<ref bean="tag1"></ref>
+				<ref bean="tag3"></ref>
+				
 			</list>
 		</property>
 		<property name="applicationsFor">
@@ -2593,6 +2631,11 @@
 			<list>
 				<ref bean="auditrecord3"></ref>
 				<ref bean="auditrecord4"></ref>
+			</list>
+		</property>
+		<property name="values">
+			<list>
+				<ref bean="value3"></ref>
 			</list>
 		</property>
 	</bean>
@@ -2618,7 +2661,7 @@
 		<property name="tags">
 			<list>
 				<ref bean="tag4"></ref>
-				<ref bean="tag2"></ref>
+				
 			</list>
 		</property>
 		<property name="applicationsFor">
@@ -2635,6 +2678,11 @@
 		<property name="auditRecords">
 			<list>
 				<ref bean="auditrecord5"></ref>
+			</list>
+		</property>
+		<property name="values">
+			<list>
+				<ref bean="value4"></ref>
 			</list>
 		</property>
 	</bean>
@@ -2664,7 +2712,7 @@
 		<property name="tags">
 			<list>
 				<ref bean="tag5"></ref>
-				<ref bean="tag1"></ref>
+			
 			</list>
 		</property>
 		<property name="applicationsFor">
@@ -2681,6 +2729,12 @@
 			</list>
 		</property>
 
+		<property name="values">
+			<list>
+				<ref bean="value5"></ref>
+				<ref bean="value6"/>
+			</list>
+		</property>
 	</bean>
 
 
@@ -4639,6 +4693,31 @@
 			</list>
 		</property>
 	</bean>
+	
+	<bean id="value1" class = "domain.Value">
+		<property name="value" value="1"></property>
+	</bean>
+	
+	<bean id="value2" class = "domain.Value">
+		<property name="value" value="2"></property>
+	</bean>
+
+	<bean id="value3" class = "domain.Value">
+		<property name="value" value="3"></property>
+	</bean>
+	
+	<bean id="value4" class = "domain.Value">
+		<property name="value" value="4"></property>
+	</bean>	
+	
+	<bean id="value5" class = "domain.Value">
+		<property name="value" value="5"></property>
+	</bean>
+
+	<bean id="value6" class = "domain.Value">
+		<property name="value" value="6"></property>
+	</bean>
+
 	<!-- Other domain beans come here -->
 
 </beans>
