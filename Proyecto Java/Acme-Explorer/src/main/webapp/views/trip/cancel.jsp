@@ -21,19 +21,22 @@
 
 
 
-<form:form action="${requestURI}" modelAttribute="trip">
+<form:form action="trip/manager_/cancelTrip.do" modelAttribute="trip">
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />
 	<form:hidden path="ticker"/>
 	<form:hidden path="price"/>
-	<form:hidden path="reasonWhy"/>
 	<form:hidden path="cancelled"/>
 	<form:hidden path="manager"/>
 	<form:hidden path="stages"/>
 	<form:hidden path="applicationsFor"/>
 	<form:hidden path="notes"/>
 	<form:hidden path="auditRecords"/>
+	<form:hidden path="ranger"/>
+	<form:hidden path="tags"/>
+	<form:hidden path="values"/>
+	
 
 <form:label path="title">
 		<spring:message code="trip.title" />:
@@ -91,16 +94,8 @@
 	<br />
 	<br />
 	
-	 
-
-	<input type="submit" name="save" value="<spring:message code="trip.save" />" />&nbsp; 
-	<jstl:if test="${trip.id != 0}">
-		<input type="submit" name="delete"
-			value="<spring:message code="trip.delete" />"
-			onclick="javascript: return confirm('<spring:message code="trip.confirm.delete" />')" />&nbsp;
-	</jstl:if>
-	<input type="button" name="cancel"
-		value="<spring:message code="trip.cancel" />"
-		onclick="javascript:  window.location.replace('trip/manager_/list.do');" />
+	
+	<input type="submit" name="save" value="<spring:message code="trip.save" />"
+			onclick="javascript: return confirm('<spring:message code="trip.confirm.cancel" />')" />&nbsp;
 	<br />
 </form:form>

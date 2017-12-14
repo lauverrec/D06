@@ -157,7 +157,7 @@ public class TripManagerController extends AbstractController {
 
 	//Cancel----------------------------------------------------------------
 
-	@RequestMapping(value = "/cancel", method = RequestMethod.GET)
+	@RequestMapping(value = "/cancelTrip", method = RequestMethod.GET)
 	public ModelAndView cancel(@RequestParam final int tripId) {
 		ModelAndView result;
 		Trip trip;
@@ -168,7 +168,7 @@ public class TripManagerController extends AbstractController {
 		return result;
 	}
 
-	@RequestMapping(value = "/cancel", method = RequestMethod.POST, params = "cancel")
+	@RequestMapping(value = "/cancelTrip", method = RequestMethod.POST, params = "save")
 	public ModelAndView cancel(@Valid Trip trip, BindingResult binding) {
 		ModelAndView result;
 

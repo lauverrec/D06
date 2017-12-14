@@ -165,6 +165,7 @@ public class TripService {
 
 		Assert.isTrue(manager.getTrips().contains(trip));
 		Assert.isTrue(trip.getStartDate().after(date));
+		trip.setCancelled(true);
 
 	}
 	//	// Other business methods -------------------------------------------------
