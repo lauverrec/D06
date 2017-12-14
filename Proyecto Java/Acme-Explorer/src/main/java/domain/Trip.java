@@ -157,7 +157,7 @@ public class Trip extends DomainEntity {
 		this.manager = manager;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.REMOVE)
 	@Valid
 	public Collection<Stage> getStages() {
 		return this.stages;
@@ -178,7 +178,7 @@ public class Trip extends DomainEntity {
 	}
 
 	@Valid
-	@OneToMany(mappedBy = "trip")
+	@OneToMany(mappedBy = "trip", cascade = CascadeType.REMOVE)
 	public Collection<ApplicationFor> getApplicationsFor() {
 		return this.applicationsFor;
 	}
@@ -188,7 +188,7 @@ public class Trip extends DomainEntity {
 	}
 
 	@Valid
-	@OneToMany
+	@OneToMany(cascade = CascadeType.REMOVE)
 	public Collection<Note> getNotes() {
 		return this.notes;
 	}
@@ -198,7 +198,7 @@ public class Trip extends DomainEntity {
 	}
 
 	@Valid
-	@OneToMany
+	@OneToMany(cascade = CascadeType.REMOVE)
 	public Collection<AuditRecord> getAuditRecords() {
 		return this.auditRecords;
 	}
@@ -218,7 +218,7 @@ public class Trip extends DomainEntity {
 	}
 
 	@Valid
-	@OneToMany
+	@OneToMany(cascade = CascadeType.REMOVE)
 	@NotNull
 	public Collection<Value> getValues() {
 		return this.values;

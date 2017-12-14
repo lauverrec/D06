@@ -17,11 +17,16 @@ import org.springframework.util.Assert;
 import repositories.TripRepository;
 import domain.ApplicationFor;
 import domain.AuditRecord;
+import domain.Category;
 import domain.Explorer;
+import domain.LegalText;
 import domain.Manager;
 import domain.Note;
 import domain.Ranger;
+import domain.Sponsorship;
 import domain.Stage;
+import domain.Story;
+import domain.SurvivalClass;
 import domain.Tag;
 import domain.Trip;
 
@@ -42,6 +47,16 @@ public class TripService {
 	private ConfigurationSystemService	configurationSystemService;
 	@Autowired
 	private StageService				stageService;
+	@Autowired
+	private StoryService				storyService;
+	@Autowired
+	private CategoryService				categoryService;
+	@Autowired
+	private SurvivalClassService		survivalClassService;
+	@Autowired
+	private LegalTextService			legalTextService;
+	@Autowired
+	private SponsorshipService			sponsorshipService;
 
 
 	// Constructors------------------------------------------------------------
@@ -108,16 +123,35 @@ public class TripService {
 
 	//***** TEST HECHO *******
 	public void delete(final Trip trip) {
-		Manager manager;
-		assert trip != null;
-		assert trip.getId() != 0;
-		Collection<Trip> tripsWithoutPublicationDate;
-		//Obtenemos todos los trips que no tengan Publication Date.
-		tripsWithoutPublicationDate = new ArrayList<Trip>(this.tripRepository.findAllTripsNotPublished());
-		//Comprobamos que ese trip no tenga fecha de publicación
-		Assert.isTrue(tripsWithoutPublicationDate.contains(trip));
-		manager = this.managerService.findByPrincipal();
-		Assert.notNull(manager);
+		Collection<Story> stories;
+		Collection<Category> categories;
+		Collection<SurvivalClass> survivalClasses;
+		Collection<LegalText> legalTexts;
+		Collection<Sponsorship> sponsorships;
+		int tripId;
+
+		tripId = trip.getId();
+		sponsorships = new ArrayList<Sponsorship>(this.sponsorshipService.findAllSponsorshipByTripId(tripId));
+		legalTexts = new ArrayList<LegalText>(this.legalTextService.findAllLegalTextByTripId(tripId));
+		survivalClasses = new ArrayList<SurvivalClass>(this.survivalClassService.findAllSurvivalClassByTripId(tripId));
+		categories = new ArrayList<Category>(this.categoryService.findAllCategoriesByTripId(tripId));
+		stories = new ArrayList<Story>(this.storyService.findAllStoriesByTripId(tripId));
+
+		for (Story s : stories)
+			this.storyService.delete(s);
+
+		for (Category c : categories)
+			c.getTrips().remove(trip);
+
+		for (SurvivalClass s : survivalClasses)
+			this.survivalClassService.delete(s);
+
+		for (LegalText l : legalTexts)
+			l.getTrips().remove(trip);
+
+		for (Sponsorship s : sponsorships)
+			this.sponsorshipService.delete(s);
+
 		this.tripRepository.delete(trip);
 	}
 
