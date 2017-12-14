@@ -6,7 +6,7 @@ import java.util.Collection;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
@@ -36,7 +36,7 @@ public class Tag extends DomainEntity {
 
 
 	@Valid
-	@OneToMany
+	@ManyToMany
 	@NotNull
 	public Collection<Value> getValues() {
 		return this.values;
