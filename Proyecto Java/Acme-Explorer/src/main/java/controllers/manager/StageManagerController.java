@@ -91,9 +91,9 @@ public class StageManagerController extends AbstractController {
 			try {
 				this.stageService.save(stage);
 
-				result = new ModelAndView("redirect:list.do");
+				result = new ModelAndView("redirect:list.do?tripId=" + stage.getTrip().getId());
 			} catch (Throwable oops) {
-				result = this.createEditModelAndView(stage, "stage.commit.error");
+				result = this.createEditModelAndView(stage, "stage.commit.error1");
 			}
 
 		return result;
