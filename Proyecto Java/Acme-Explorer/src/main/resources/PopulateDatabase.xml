@@ -2129,6 +2129,7 @@
 		<property name="phone" value="+34662657322" />
 		<property name="address" value="Administrator address" />
 		<property name="userAccount" ref="userAccountAdmin1" />
+		<property name="suspicious" value="False"></property>
 		<property name="messagesFolders">
 			<list>
 				<ref bean="InBoxAdministrator1" />
@@ -2158,6 +2159,7 @@
 		<property name="phone" value="+34662657322" />
 		<property name="address" value="Administrator address" />
 		<property name="userAccount" ref="userAccountAdmin2" />
+		<property name="suspicious" value="False"></property>
 		<property name="messagesFolders">
 			<list>
 				<ref bean="InBoxAdministrator2" />
@@ -2182,6 +2184,7 @@
 		<property name="phone" value="+34662657323" />
 		<property name="address" value="Administrator address" />
 		<property name="userAccount" ref="userAccountAdmin3" />
+		<property name="suspicious" value="False"></property>
 		<property name="messagesFolders">
 			<list>
 				<ref bean="InBoxAdministrator3" />
@@ -2206,6 +2209,7 @@
 		<property name="phone" value="+34662657324" />
 		<property name="address" value="Administrator address" />
 		<property name="userAccount" ref="userAccountAdmin4" />
+		<property name="suspicious" value="False"></property>
 		<property name="messagesFolders">
 			<list>
 				<ref bean="InBoxAdministrator4" />
@@ -2231,6 +2235,7 @@
 		<property name="phone" value="+34662657325" />
 		<property name="address" value="Administrator address" />
 		<property name="userAccount" ref="userAccountAdmin5" />
+		<property name="suspicious" value="False"></property>
 		<property name="messagesFolders">
 			<list>
 				<ref bean="InBoxAdministrator5" />
@@ -2258,6 +2263,7 @@
 		<property name="phone" value="+34662657322" />
 		<property name="address" value="Sponsor1 address" />
 		<property name="userAccount" ref="userAccountSponsor1" />
+		<property name="suspicious" value="False"></property>
 		<property name="messagesFolders">
 			<list>
 				<ref bean="InBoxSponsor1" />
@@ -2286,6 +2292,7 @@
 		<property name="phone" value="+34662657322" />
 		<property name="address" value="Sponsor2 address" />
 		<property name="userAccount" ref="userAccountSponsor2" />
+		<property name="suspicious" value="False"></property>
 		<property name="messagesFolders">
 			<list>
 				<ref bean="InBoxSponsor2" />
@@ -2314,6 +2321,7 @@
 		<property name="phone" value="+34662657322" />
 		<property name="address" value="Sponsor3 address" />
 		<property name="userAccount" ref="userAccountSponsor3" />
+		<property name="suspicious" value="False"></property>
 		<property name="messagesFolders">
 			<list>
 				<ref bean="InBoxSponsor3" />
@@ -2342,6 +2350,7 @@
 		<property name="phone" value="+34662657322" />
 		<property name="address" value="Sponsor4 address" />
 		<property name="userAccount" ref="userAccountSponsor4" />
+		<property name="suspicious" value="False"></property>
 		<property name="messagesFolders">
 			<list>
 				<ref bean="InBoxSponsor4" />
@@ -2370,6 +2379,7 @@
 		<property name="phone" value="+34662657322" />
 		<property name="address" value="Sponsor5 address" />
 		<property name="userAccount" ref="userAccountSponsor5" />
+		<property name="suspicious" value="False"></property>
 		<property name="messagesFolders">
 			<list>
 				<ref bean="InBoxSponsor5" />
@@ -2863,7 +2873,7 @@
 			<list>
 			</list>
 		</property>
-		<property name="suspicious" value="True"></property>
+		<property name="suspicious" value="False"></property>
 		<property name="messagesFolders">
 			<list>
 				<ref bean="InBoxRanger1" />
@@ -2908,7 +2918,7 @@
 		</property>
 	</bean>
 	<bean id="ranger3" class="domain.Ranger">
-		<property name="suspicious" value="True"></property>
+		<property name="suspicious" value="False"></property>
 		<property name="userAccount" ref="userAccountRanger3" />
 		<property name="name" value="ranger 3" />
 		<property name="surname" value="ranger3 ranger3" />
@@ -2935,7 +2945,7 @@
 		</property>
 	</bean>
 	<bean id="ranger4" class="domain.Ranger">
-		<property name="suspicious" value="True"></property>
+		<property name="suspicious" value="False"></property>
 		<property name="userAccount" ref="userAccountRanger4" />
 		<property name="name" value="ranger 4" />
 		<property name="surname" value="ranger1 ranger4" />
@@ -2962,7 +2972,7 @@
 		</property>
 	</bean>
 	<bean id="ranger5" class="domain.Ranger">
-		<property name="suspicious" value="false"></property>
+		<property name="suspicious" value="False"></property>
 		<property name="userAccount" ref="userAccountRanger5" />
 		<property name="name" value="ranger 5" />
 		<property name="surname" value="ranger5 ranger5" />
@@ -2999,6 +3009,7 @@
 		<property name="email" value="auditor1@acmeexplorer.com" />
 		<property name="phone" value="+34617557203" />
 		<property name="address" value="C/ avenida del auditor" />
+		<property name="suspicious" value="False"></property>
 		<property name="socialIdentities">
 			<list>
 			</list>
@@ -3032,6 +3043,7 @@
 		<property name="email" value="auditor2@acmeexplorer.com" />
 		<property name="phone" value="+34617557243" />
 		<property name="address" value="C/ avenida del auditor" />
+		<property name="suspicious" value="False"></property>
 		<property name="socialIdentities">
 			<list>
 			</list>
@@ -3063,6 +3075,7 @@
 		<property name="email" value="auditor3@acmeexplorer.com" />
 		<property name="phone" value="+34617357243" />
 		<property name="address" value="C/ avenida del auditor" />
+		<property name="suspicious" value="False"></property>
 		<property name="socialIdentities">
 			<list>
 			</list>
@@ -3093,6 +3106,7 @@
 		<property name="email" value="auditor4@acmeexplorer.com" />
 		<property name="phone" value="+34677557243" />
 		<property name="address" value="C/ avenida del auditor" />
+		<property name="suspicious" value="False"></property>
 		<property name="socialIdentities">
 			<list>
 			</list>
@@ -3122,6 +3136,7 @@
 		<property name="email" value="auditor5@acmeexplorer.com" />
 		<property name="phone" value="+34617557243" />
 		<property name="address" value="C/ avenida del auditor" />
+		<property name="suspicious" value="False"></property>
 		<property name="socialIdentities">
 			<list>
 			</list>
@@ -3723,7 +3738,7 @@
 		</property>
 	</bean>
 	<bean id="manager4" class="domain.Manager">
-		<property name="suspicious" value="True"></property>
+		<property name="suspicious" value="False"></property>
 		<property name="name" value="Manager 4" />
 		<property name="surname" value="surname Manager 4" />
 		<property name="email" value="manager4@mail.com" />
@@ -3755,7 +3770,7 @@
 		</property>
 	</bean>
 	<bean id="manager5" class="domain.Manager">
-		<property name="suspicious" value="True"></property>
+		<property name="suspicious" value="False"></property>
 		<property name="name" value="Manager 5" />
 		<property name="surname" value="surname Manager 5" />
 		<property name="email" value="manager5@mail.com" />
@@ -3797,6 +3812,7 @@
 		<property name="phone" value="+313(987)1121" />
 		<property name="address" value="Address explorer 1" />
 		<property name="userAccount" ref="userAccountExplorer1" />
+		<property name="suspicious" value="False"></property>
 		<property name="socialIdentities">
 			<list>
 			</list>
@@ -3833,6 +3849,7 @@
 		<property name="phone" value="+313(987)1131" />
 		<property name="address" value="Address explorer 2" />
 		<property name="userAccount" ref="userAccountExplorer2" />
+		<property name="suspicious" value="False"></property>
 		<property name="socialIdentities">
 			<list>
 			</list>
@@ -3870,6 +3887,7 @@
 		<property name="phone" value="+313(987)1141" />
 		<property name="address" value="Address explorer 3" />
 		<property name="userAccount" ref="userAccountExplorer3" />
+		<property name="suspicious" value="False"></property>
 		<property name="socialIdentities">
 			<list>
 			</list>
@@ -3909,6 +3927,7 @@
 		<property name="phone" value="+313(987)1131" />
 		<property name="address" value="Address explorer 4" />
 		<property name="userAccount" ref="userAccountExplorer4" />
+		<property name="suspicious" value="False"></property>
 		<property name="socialIdentities">
 			<list>
 			</list>
@@ -3947,6 +3966,7 @@
 		<property name="phone" value="+313(987)1131" />
 		<property name="address" value="Address explorer 5" />
 		<property name="userAccount" ref="userAccountExplorer5" />
+		<property name="suspicious" value="False"></property>
 		<property name="socialIdentities">
 			<list>
 			</list>
@@ -3985,6 +4005,7 @@
 		<property name="phone" value="+313(987)1131" />
 		<property name="address" value="Address explorer 6" />
 		<property name="userAccount" ref="userAccountExplorer6" />
+		<property name="suspicious" value="False"></property>
 		<property name="socialIdentities">
 			<list>
 			</list>
