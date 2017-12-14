@@ -86,6 +86,7 @@ public class Trip extends DomainEntity {
 		this.requirementsExplorers = requirementsExplorers;
 	}
 
+	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern = "yyyy/MM/dd HH:mm")
 	public Date getPublicationDate() {
