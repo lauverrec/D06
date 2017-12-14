@@ -40,7 +40,7 @@ public class AdministratorDashboardController extends AbstractController {
 		Double findRatOfApplicationsCancelled;
 		Double findRatOfTheTripsCancelledvsTripsOrganised;
 		Collection<Trip> findTrips10porcentMoreApplicationsThanAvg;
-		Collection<String> findNumOfTimesALegalTextIsReferenced;
+		Collection<Integer> findNumOfTimesALegalTextIsReferenced;
 		Double findMinMaxAvgStddevOfTheNumOfNotesPerTrip[];
 		Double findMinMaxAvgStddevOfTheNumOfAuditRecordsPerTrip[];
 		Double findTheRatOfTripsWihoutAnAuditRecord;

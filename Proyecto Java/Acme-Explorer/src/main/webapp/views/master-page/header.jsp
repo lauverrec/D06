@@ -84,6 +84,7 @@
 					<li><a href="legalText/administrator/list.do"><spring:message code="master.page.legaltext.list" /></a></li>
 					<li><a href="message/administrator/create.do"><spring:message code="master.page.message.exchange"/></a>
 					<li><a href="configurationSystem/administrator/edit.do"><spring:message code="master.page.configurationSystem.edit"/></a>
+					<li><a href="administrator/dashboard.do"><spring:message code="master.page.statistics"/></a>
 				</ul>
 			</li>
 			<li><a href="trip/list.do"><spring:message code="master.page.trips" /></a></li>
