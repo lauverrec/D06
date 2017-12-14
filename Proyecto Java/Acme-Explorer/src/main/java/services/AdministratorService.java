@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
@@ -83,9 +84,17 @@ public class AdministratorService {
 
 	public Administrator save(final Administrator administrator) {
 		Assert.notNull(administrator);
-		Administrator result;
+		final Administrator result;
+		final Md5PasswordEncoder encoder;
+		final String passwordHash;
+
+		encoder = new Md5PasswordEncoder();
+		passwordHash = encoder.encodePassword(administrator.getUserAccount().getPassword(), null);
+		administrator.getUserAccount().setPassword(passwordHash);
 		result = this.administratorRepository.save(administrator);
+
 		Assert.notNull(result);
+
 		return result;
 	}
 

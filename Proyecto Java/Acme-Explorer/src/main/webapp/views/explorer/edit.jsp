@@ -30,6 +30,7 @@
 	<form:hidden path="stories"/>
 	<form:hidden path="applicationsFor"/>
 	<form:hidden path="contactsEmergency"/>
+	<form:hidden path="suspicious"/>
 	
 	<jstl:if test="${explorer.id == 0}">		
 		<form:label path="userAccount.username">

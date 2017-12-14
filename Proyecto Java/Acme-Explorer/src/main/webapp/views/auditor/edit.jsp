@@ -27,6 +27,7 @@
 	<form:hidden path="messagesFolders"/>
 	<form:hidden path="userAccount"/>
 	<form:hidden path="notes"/>
+	<form:hidden path="suspicious"/>
 	<form:hidden path="auditRecords"/>
 	
 	<security:authorize access="hasRole('AUDITOR')">

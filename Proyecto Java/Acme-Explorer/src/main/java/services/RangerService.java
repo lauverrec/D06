@@ -26,7 +26,7 @@ public class RangerService {
 	// Managed repository -----------------------------------------------------
 
 	@Autowired
-	private RangerRepository		RangerRepository;
+	private RangerRepository		rangerRepository;
 
 	// Supporting services ----------------------------------------------------
 
@@ -80,7 +80,7 @@ public class RangerService {
 	public Collection<Ranger> findAll() {
 
 		Collection<Ranger> result;
-		result = this.RangerRepository.findAll();
+		result = this.rangerRepository.findAll();
 		Assert.notNull(result);
 		return result;
 	}
@@ -89,7 +89,7 @@ public class RangerService {
 
 		Assert.isTrue(rangerId != 0);
 		Ranger result;
-		result = this.RangerRepository.findOne(rangerId);
+		result = this.rangerRepository.findOne(rangerId);
 
 		return result;
 	}
@@ -104,7 +104,7 @@ public class RangerService {
 		encoder = new Md5PasswordEncoder();
 		passwordHash = encoder.encodePassword(ranger.getUserAccount().getPassword(), null);
 		ranger.getUserAccount().setPassword(passwordHash);
-		result = this.RangerRepository.save(ranger);
+		result = this.rangerRepository.save(ranger);
 
 		Assert.notNull(result);
 
@@ -114,7 +114,7 @@ public class RangerService {
 
 		Assert.notNull(ranger);
 		Assert.isTrue(ranger.getId() != 0);
-		this.RangerRepository.delete(ranger);
+		this.rangerRepository.delete(ranger);
 
 	}
 
@@ -127,7 +127,7 @@ public class RangerService {
 
 		userAccount = LoginService.getPrincipal();
 		Assert.notNull(userAccount);
-		result = this.RangerRepository.findByUserAccountId(userAccount.getId());
+		result = this.rangerRepository.findByUserAccountId(userAccount.getId());
 		Assert.notNull(result);
 
 		return result;

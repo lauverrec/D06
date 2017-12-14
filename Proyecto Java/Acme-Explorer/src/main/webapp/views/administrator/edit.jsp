@@ -28,6 +28,7 @@
 	<form:hidden path="version" />
 	<form:hidden path="socialIdentities"/>
 	<form:hidden path="messagesFolders"/>
+	<form:hidden path="suspicious"/>
 	<form:hidden path="userAccount"/>
 
 	

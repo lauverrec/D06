@@ -28,6 +28,7 @@
 	<form:hidden path="userAccount"/>
 	<form:hidden path="trips"/>
 	<form:hidden path="applicationsFor"/>
+	<form:hidden path="suspicious"/>
 	
 	<security:authorize access="hasRole('MANAGER')">
 	

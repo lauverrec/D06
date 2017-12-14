@@ -27,6 +27,7 @@
 	<form:hidden path="socialIdentities"/>
 	<form:hidden path="messagesFolders"/>
 	<form:hidden path="userAccount"/>
+	<form:hidden path="suspicious"/>
 	<form:hidden path="sponsorships"/> 
 	
 	

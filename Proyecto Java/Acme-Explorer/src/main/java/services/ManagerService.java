@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
@@ -102,7 +103,13 @@ public class ManagerService {
 	public Manager save(final Manager manager) {
 
 		Assert.notNull(manager);
-		Manager result;
+		final Manager result;
+		final Md5PasswordEncoder encoder;
+		final String passwordHash;
+
+		encoder = new Md5PasswordEncoder();
+		passwordHash = encoder.encodePassword(manager.getUserAccount().getPassword(), null);
+		manager.getUserAccount().setPassword(passwordHash);
 		result = this.managerRepository.save(manager);
 
 		Assert.notNull(result);
@@ -147,7 +154,7 @@ public class ManagerService {
 		Assert.isTrue(authorities.contains(auth));
 	}
 
-	public Boolean managerIsSpam(Manager manager) {
+	public Boolean managerIsSpam(final Manager manager) {
 		Boolean result;
 		result = false;
 

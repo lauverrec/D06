@@ -120,7 +120,7 @@ public class ExplorerService {
 		explorer.getUserAccount().setPassword(password);
 
 		newExplorer = this.explorerRepository.save(explorer);
-		//folderService.createDefaultFolders(newExplorer);
+
 		return newExplorer;
 	}
 
