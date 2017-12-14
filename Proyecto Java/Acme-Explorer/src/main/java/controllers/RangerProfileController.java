@@ -55,7 +55,10 @@ public class RangerProfileController extends AbstractController {
 				this.rangerService.save(ranger);
 				result = new ModelAndView("redirect:/welcome/index.do");
 			} catch (final Throwable oops) {
-				result = this.createEditModelAndView(ranger, "ranger.commit.error");
+				if (oops.getMessage().equals("could not execute statement; SQL [n/a]; constraint [null]" + "; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement"))
+					result = this.createEditModelAndView(ranger, "ranger.commit.error.duplicateProfile");
+				else
+					result = this.createEditModelAndView(ranger, "ranger.commit.error");
 			}
 
 		return result;
