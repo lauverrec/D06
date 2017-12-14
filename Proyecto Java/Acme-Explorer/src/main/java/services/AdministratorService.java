@@ -62,6 +62,7 @@ public class AdministratorService {
 		result.setSocialIdentities(socialIdentities);
 		result.setMessagesFolders(messagesFolders);
 		result.setPhone("+34");
+		result.setSuspicious(false);
 
 		return result;
 	}
@@ -233,7 +234,7 @@ public class AdministratorService {
 		return result;
 	}
 
-	public Boolean administratorIsSpam(Administrator administrator) {
+	public Boolean administratorIsSpam(final Administrator administrator) {
 		Boolean result;
 		result = false;
 

@@ -78,6 +78,7 @@ public class AuditorService {
 		result.setNotes(notes);
 		result.setAuditRecords(auditrecords);
 		result.setPhone("+34");
+		result.setSuspicious(false);
 
 		return result;
 	}
@@ -134,7 +135,7 @@ public class AuditorService {
 		Assert.isTrue(authorities.contains(auth));
 	}
 
-	public Boolean auditorIsSpam(Auditor auditor) {
+	public Boolean auditorIsSpam(final Auditor auditor) {
 		Boolean result;
 		result = false;
 

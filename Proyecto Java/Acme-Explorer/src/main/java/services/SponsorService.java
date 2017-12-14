@@ -68,6 +68,7 @@ public class SponsorService {
 		result.setSocialIdentities(socialIdentities);
 		result.setSponsorships(sponsorships);
 		result.setPhone("+34");
+		result.setSuspicious(false);
 
 		return result;
 	}
@@ -130,7 +131,7 @@ public class SponsorService {
 		Assert.isTrue(authorities.contains(auth));
 	}
 
-	public Boolean sponsorIsSpam(Sponsor sponsor) {
+	public Boolean sponsorIsSpam(final Sponsor sponsor) {
 		Boolean result;
 		result = false;
 

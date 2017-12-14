@@ -15,17 +15,6 @@ import javax.validation.constraints.NotNull;
 public class Manager extends Actor {
 
 	// Attributes -------------------------------------------------------------
-	private boolean	suspicious;
-
-
-	public boolean isSuspicious() {
-		return this.suspicious;
-	}
-
-	public void setSuspicious(final boolean suspicious) {
-		this.suspicious = suspicious;
-	}
-
 
 	// Relationships ----------------------------------------------------------
 

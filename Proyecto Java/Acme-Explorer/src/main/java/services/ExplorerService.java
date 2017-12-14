@@ -86,6 +86,7 @@ public class ExplorerService {
 		result.setApplicationsFor(applicationsFor);
 		result.setContactsEmergency(contactsEmergency);
 		result.setPhone("+34");
+		result.setSuspicious(false);
 
 		return result;
 	}
@@ -197,7 +198,7 @@ public class ExplorerService {
 		return contacts;
 	}
 
-	public Boolean explorerIsSpam(Explorer explorer) {
+	public Boolean explorerIsSpam(final Explorer explorer) {
 		Boolean result;
 		result = false;
 

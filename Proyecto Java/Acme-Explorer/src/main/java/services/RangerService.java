@@ -147,7 +147,7 @@ public class RangerService {
 		Assert.isTrue(authorities.contains(auth));
 	}
 
-	public Boolean rangerIsSpam(Ranger ranger) {
+	public Boolean rangerIsSpam(final Ranger ranger) {
 		Boolean result;
 
 		result = false;

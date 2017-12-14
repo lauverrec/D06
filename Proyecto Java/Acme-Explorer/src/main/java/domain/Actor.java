@@ -73,7 +73,7 @@ public abstract class Actor extends DomainEntity {
 		this.address = address;
 	}
 
-	//	@NotNull
+	@NotNull
 	public boolean isSuspicious() {
 		return this.suspicious;
 	}
