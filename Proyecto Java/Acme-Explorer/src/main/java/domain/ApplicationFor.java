@@ -69,7 +69,6 @@ public class ApplicationFor extends DomainEntity {
 		this.reasonWhy = reasonWhy;
 	}
 
-	@NotNull
 	@Valid
 	public CreditCard getCreditCard() {
 		return this.creditCard;
