@@ -60,6 +60,12 @@ public class CategoryService {
 		return result;
 	}
 
+	public Collection<Category> findAllCategoriesByTripId(int tripId) {
+		Collection<Category> result;
+		result = new ArrayList<Category>(this.categoryRepository.findAllCategoriesByTripId(tripId));
+		return result;
+	}
+
 	public Category save(final Category category) {
 		Assert.notNull(category);
 		Assert.notNull(this.administratorService.findByPrincipal());

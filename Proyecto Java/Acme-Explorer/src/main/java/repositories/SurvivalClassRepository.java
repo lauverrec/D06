@@ -27,4 +27,7 @@ public interface SurvivalClassRepository extends JpaRepository<SurvivalClass, In
 
 	@Query("select s from SurvivalClass s join s.explorers e where (select e from Explorer e where e.id=?2) not member of s.explorers and s.trip.id=?1 group by s")
 	Collection<SurvivalClass> findAllByTripIdNotEnrol(int tripId, int explorerId);
+
+	@Query("select s from SurvivalClass s where s.trip.id=?1")
+	Collection<SurvivalClass> findAllSurvivalClassByTripId(int tripId);
 }

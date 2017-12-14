@@ -174,6 +174,12 @@ public class SurvivalClassService {
 
 	}
 
+	public Collection<SurvivalClass> findAllSurvivalClassByTripId(final int tripId) {
+		Collection<SurvivalClass> result;
+		result = this.survivalClassRepository.findAllSurvivalClassByTripId(tripId);
+		return result;
+	}
+
 	public Collection<SurvivalClass> findAllByTripIdEnrol(final int tripId, final int explorerId) {
 		Collection<SurvivalClass> result;
 

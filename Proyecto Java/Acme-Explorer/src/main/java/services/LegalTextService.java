@@ -87,6 +87,12 @@ public class LegalTextService {
 		this.legalTextRepository.delete(legalText);
 	}
 
+	public Collection<LegalText> findAllLegalTextByTripId(int tripId) {
+		Collection<LegalText> result;
+		result = new ArrayList<LegalText>(this.legalTextRepository.findAllLegalTextByTripId(tripId));
+		return result;
+	}
+
 	//Other services-------------------------------
 
 	public LegalText findOneToEdit(final int idlegalText) {

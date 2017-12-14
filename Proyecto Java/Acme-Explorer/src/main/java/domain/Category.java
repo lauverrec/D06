@@ -5,6 +5,7 @@ import java.util.Collection;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -45,7 +46,7 @@ public class Category extends DomainEntity {
 
 	@NotNull
 	@Valid
-	@OneToMany(mappedBy = "fatherCategory")
+	@OneToMany(mappedBy = "fatherCategory", cascade = CascadeType.REMOVE)
 	public Collection<Category> getSubCategories() {
 		return this.subCategories;
 	}
@@ -55,7 +56,7 @@ public class Category extends DomainEntity {
 	}
 
 	@Valid
-	@ManyToOne(optional = true)
+	@ManyToOne(optional = true, cascade = CascadeType.REMOVE)
 	public Category getFatherCategory() {
 		return this.fatherCategory;
 	}
@@ -64,7 +65,7 @@ public class Category extends DomainEntity {
 		this.fatherCategory = fatherCategory;
 	}
 
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.REMOVE)
 	@Valid
 	public Collection<Trip> getTrips() {
 		return this.trips;

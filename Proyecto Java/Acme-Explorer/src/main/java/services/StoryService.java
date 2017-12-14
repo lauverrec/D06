@@ -127,4 +127,10 @@ public class StoryService {
 			}
 		return result;
 	}
+
+	public Collection<Story> findAllStoriesByTripId(int tripId) {
+		Collection<Story> result;
+		result = new ArrayList<Story>(this.storyRepository.findAllStoriesByTripId(tripId));
+		return result;
+	}
 }

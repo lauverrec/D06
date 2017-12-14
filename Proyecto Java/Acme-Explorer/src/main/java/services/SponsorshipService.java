@@ -92,6 +92,12 @@ public class SponsorshipService {
 		return result;
 	}
 
+	public Collection<Sponsorship> findAllSponsorshipByTripId(int tripId) {
+		Collection<Sponsorship> result;
+		result = new ArrayList<Sponsorship>(this.sponsorshipRepository.findAllSponsorshipByTripId(tripId));
+		return result;
+	}
+
 	public Trip findByPrincipalSponsorhipTrip(Sponsorship sponsorship) {
 		Trip result;
 
