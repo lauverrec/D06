@@ -149,6 +149,14 @@
 			<a href="${stageURL}"><spring:message code="trip.ranger" /></a>
 	</display:column>
 	
+	<spring:message code="trip.auditRecord" var="auditRecordHeader" />
+	<display:column title="${auditRecordHeader}" sortable="true">
+		<spring:url value="auditRecord/displayaudit.do" var="auditRecordURL">
+			<spring:param name="tripId" value="${row.id }" />
+		</spring:url>
+			<a href="${auditRecordURL}"><spring:message code="trip.auditRecord" /></a>
+	</display:column>
+	
 	<security:authorize access= "hasRole('MANAGER')">
 	<spring:message code="trip.stage" var="Stages" />
 	<display:column title="${Stages}" sortable="true">

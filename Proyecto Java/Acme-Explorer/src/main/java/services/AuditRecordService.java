@@ -142,6 +142,13 @@ public class AuditRecordService {
 
 	}
 
+	public Collection<AuditRecord> findAuditRecordsForTrip(int tripId) {
+		Collection<AuditRecord> auditRecords;
+
+		auditRecords = this.auditRecordRepository.auditRecordsForTrip(tripId);
+		return auditRecords;
+	}
+
 	public Boolean auditRecordContainsSpam(Actor actor) {
 		Boolean result;
 		Collection<AuditRecord> auditsRecordFromActor;

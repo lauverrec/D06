@@ -23,4 +23,10 @@ public interface AuditRecordRepository extends JpaRepository<AuditRecord, Intege
 	@Query("select r.url from AuditRecord a join a.attachments r where a.id=?1")
 	Collection<Attachment> urlOfAttachments(int auditRecordId);
 
+	@Query("select t.auditRecords from Trip t where t.id=?1")
+	Collection<AuditRecord> auditRecordsForTrip(int tripId);
+
+	@Query("select t.url from AuditRecord a join a.attachments t where a.id=?1")
+	Collection<Attachment> findAttachmentsByAuditRecord(int auditRecord);
+
 }
