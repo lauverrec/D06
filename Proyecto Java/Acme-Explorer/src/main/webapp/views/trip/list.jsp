@@ -62,7 +62,8 @@
 		value="<spring:message code="trip.search"/>"
 		onClick=" window.location.href='${editlink}' ">/>&nbsp; --%>
 
-<display:table name="trips" id="row" pagesize="5" class="displaytag" keepStatus="true">
+<display:table pagesize="5" class="displaytag" keepStatus="true"
+	name="trips" requestURI="${requestURI}" id="row">
 
 <!-- Display -->
 	<spring:message code="trip.display" var="Display" />
