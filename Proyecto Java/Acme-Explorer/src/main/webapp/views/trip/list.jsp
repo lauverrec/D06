@@ -223,6 +223,17 @@
 	</display:column>
 </security:authorize>
 
+<security:authorize access="hasRole('MANAGER')">
+	<spring:message code="trip.cancel" var="Cancel" />
+	<display:column title="${Cancel}" sortable="true">
+	<jstl:if test="${row.manager==manager && row.startDate>date}">
+		<spring:url value="trip/manager_/cancelTrip.do" var="cancelURL">
+			<spring:param name="tripId" value="${row.id}" />
+		</spring:url>
+		<a href="${cancelURL}"><spring:message code="trip.cancel" /></a>
+		</jstl:if>
+	</display:column>
+</security:authorize>
 
 
 
