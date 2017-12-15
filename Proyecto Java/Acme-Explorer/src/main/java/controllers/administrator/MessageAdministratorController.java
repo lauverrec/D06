@@ -134,15 +134,17 @@ public class MessageAdministratorController extends AbstractController {
 	}
 
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
-	public ModelAndView deleteMessage(Message messageDisplay) {
+	public ModelAndView deleteMessage(@RequestParam int messageId) {
 		ModelAndView result;
+		Message messageToDelete;
+		messageToDelete = this.messageService.findOne(messageId);
 
 		try {
 
-			this.messageService.delete(messageDisplay);
-			result = new ModelAndView("redirect:list.do?messageFolderId=" + messageDisplay.getMessageFolder().getId());
+			this.messageService.delete(messageToDelete);
+			result = new ModelAndView("redirect:list.do?messageFolderId=" + messageToDelete.getMessageFolder().getId());
 		} catch (Throwable oops) {
-			result = this.createNewModelAndView(messageDisplay, "message.commit.error");
+			result = this.createNewModelAndView(messageToDelete, "message.commit.error");
 
 		}
 
