@@ -56,6 +56,9 @@ public class ApplicationForService {
 		Collection<String> comments;
 		Explorer explorerPrincipal;
 		CreditCard creditCard;
+		Manager manager;
+
+		manager = trip.getManager();
 		//Trip trip;
 		//trip = this.tripService.findOne(tripId);
 
@@ -73,8 +76,8 @@ public class ApplicationForService {
 		comments = new ArrayList<String>();
 		explorerPrincipal = this.explorerService.findByPrincipal();
 		Assert.notNull(explorerPrincipal);
-
 		result.setMoment(moment);
+		result.setManager(manager);
 		result.setStatus(status);
 		result.setComments(comments);
 		result.setExplorer(explorerPrincipal);

@@ -32,6 +32,7 @@
 	<form:hidden path="reasonWhy"/>
 	<form:hidden path="trip"/>
 	<form:hidden path="creditCard"/>
+	<form:hidden path="manager"/>
 	
 
 
