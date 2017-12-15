@@ -73,7 +73,7 @@
 	<form:label path="startDate">
 		<spring:message code="trip.startDate" />:
 	</form:label>
-	<form:input path="startDate" placeholder=" yyyy/dd/MM HH:hh" />
+	<form:input path="startDate" placeholder="yyyy/dd/MM" />
 	<form:errors cssClass="error" path="startDate" />
 	<br />
 	<br />
@@ -81,7 +81,7 @@
 	<form:label path="finishDate">
 		<spring:message code="trip.finishDate" />:
 	</form:label>
-	<form:input path="finishDate" placeholder=" yyyy/dd/MM HH:hh" />
+	<form:input path="finishDate" placeholder="yyyy/dd/MM" />
 	<form:errors cssClass="error" path="finishDate" />
 	<br />
 	<br />

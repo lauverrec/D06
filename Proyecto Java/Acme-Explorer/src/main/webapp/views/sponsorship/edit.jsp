@@ -118,7 +118,7 @@
 	
 	<input type="button" name="cancel"
 		value="<spring:message code="sponsorship.cancel"/>"
-		onclick="javascript: window.location.replace('sponsorship/sponsor/list.do')" />
+		onclick="javascript: window.location.replace('trip/sponsor/list.do')" />
 	<br />
 	
 </form:form>

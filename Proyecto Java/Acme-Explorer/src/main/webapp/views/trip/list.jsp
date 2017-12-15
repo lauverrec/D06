@@ -62,7 +62,8 @@
 		value="<spring:message code="trip.search"/>"
 		onClick=" window.location.href='${editlink}' ">/>&nbsp; --%>
 
-<display:table name="trips" id="row" pagesize="5" class="displaytag" keepStatus="true">
+<display:table pagesize="5" class="displaytag" keepStatus="true"
+	name="trips" requestURI="${requestURI}" id="row">
 
 <!-- Display -->
 	<spring:message code="trip.display" var="Display" />
@@ -149,6 +150,14 @@
 			<a href="${stageURL}"><spring:message code="trip.ranger" /></a>
 	</display:column>
 	
+	<spring:message code="trip.auditRecord" var="auditRecordHeader" />
+	<display:column title="${auditRecordHeader}" sortable="true">
+		<spring:url value="auditRecord/displayaudit.do" var="auditRecordURL">
+			<spring:param name="tripId" value="${row.id }" />
+		</spring:url>
+			<a href="${auditRecordURL}"><spring:message code="trip.auditRecord" /></a>
+	</display:column>
+	
 	<security:authorize access= "hasRole('MANAGER')">
 	<spring:message code="trip.stage" var="Stages" />
 	<display:column title="${Stages}" sortable="true">
@@ -172,12 +181,15 @@
 	</security:authorize>
 
 <security:authorize access="hasRole('SPONSOR')">
+	
 	<spring:message code="sponsorship.create" var="Create" />
 	<display:column title="${Create}" sortable="true">
+	<jstl:if test="${row.cancelled==false}">
 		<spring:url value="sponsorship/sponsor/create.do" var="createURL">
 			<spring:param name="tripId" value="${row.id}" />
 		</spring:url>
 		<a href="${createURL}"><spring:message code="sponsorship.create" /></a>
+	</jstl:if>
 	</display:column>
 </security:authorize>
 
@@ -214,8 +226,22 @@
 	</display:column>
 </security:authorize>
 
+<security:authorize access="hasRole('MANAGER')">
+	<spring:message code="trip.cancel" var="Cancel" />
+	<display:column title="${Cancel}" sortable="true">
+	<jstl:if test="${row.manager==manager && row.startDate>date && row.cancelled==false}">
+		<spring:url value="trip/manager_/cancelTrip.do" var="cancelURL">
+			<spring:param name="tripId" value="${row.id}" />
+		</spring:url>
+		<a href="${cancelURL}"><spring:message code="trip.cancel" /></a>
+		</jstl:if>
+	</display:column>
+</security:authorize>
 
-
+<jstl:if test="${row.cancelled==false}">
+<spring:message code="trip.reasonWhy" var="reasonWhyHeader" />
+</jstl:if>
+	<display:column property="reasonWhy" title="${reasonWhyHeader}" sortable="true" />
 
 </display:table>
 

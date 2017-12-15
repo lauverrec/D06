@@ -16,10 +16,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.AuditRecordService;
+import services.AuditorService;
 import services.TripService;
 import controllers.AbstractController;
 import domain.Attachment;
 import domain.AuditRecord;
+import domain.Auditor;
 import domain.Trip;
 
 @Controller
@@ -34,6 +36,9 @@ public class AuditRecordAuditorController extends AbstractController {
 	@Autowired
 	private TripService			tripService;
 
+	@Autowired
+	private AuditorService		auditorService;
+
 
 	//Constructor--------------------------------------------------------
 
@@ -47,11 +52,14 @@ public class AuditRecordAuditorController extends AbstractController {
 	public ModelAndView list() {
 		final ModelAndView result;
 		Collection<AuditRecord> auditRecords;
+		Auditor auditor;
 
+		auditor = this.auditorService.findByPrincipal();
 		auditRecords = this.auditRecordService.findByPrincipal();
 
 		result = new ModelAndView("auditRecord/list");
 		result.addObject("auditRecords", auditRecords);
+		result.addObject("auditor", auditor);
 		return result;
 
 	}
@@ -117,10 +125,16 @@ public class AuditRecordAuditorController extends AbstractController {
 		ModelAndView result;
 		AuditRecord auditRecord;
 
+		Auditor auditor;
+
+		auditor = this.auditorService.findByPrincipal();
 		auditRecord = this.auditRecordService.findOne(auditRecordId);
+		Assert.isTrue(auditor.getAuditRecords().contains(auditRecord), "Cannot commit this operation, because it's illegal");
 		Assert.notNull(auditRecord);
+		Assert.isTrue(auditRecord.isDraftMode() == true, "Cannot commit this operation, because it's illegal");
 		result = this.createEditModelAndView(auditRecord);
 		result.addObject("requestURI", "auditRecord/auditor/edit.do");
+		result.addObject("auditor", auditor);
 		return result;
 	}
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
