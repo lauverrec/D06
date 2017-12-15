@@ -63,7 +63,6 @@
 		<spring:message code="message.messageFolder" />:
 	</form:label>
 	<form:select id="folders" path="messageFolder">
-		<form:option value="0" label="folder" />
 		<form:options items="${folders}" itemValue="id"
 			itemLabel="name" />
 	</form:select>

@@ -36,23 +36,26 @@
 					code="messageFolder.display" /></a>
 		</display:column>
 
-		<display:column>
-			<jstl:if test="${row.modifiable==true }">
+		<jstl:if test="${row.modifiable==true }">
+			<display:column>
+
 				<spring:url value="messageFolder/sponsor/edit.do"
 					var="editSponsorURL">
 					<spring:param name="messageFolderId" value="${row.id }"></spring:param>
 				</spring:url>
 				<a href="${editSponsorURL }"><spring:message
 						code="messageFolder.edit" /></a>
-			</jstl:if>
-		</display:column>
-		
+
+			</display:column>
+		</jstl:if>
+
 		<display:column>
 			<spring:url value="message/sponsor/list.do"
 				var="listMessagesSponsorRL">
 				<spring:param name="messageFolderId" value="${row.id }"></spring:param>
 			</spring:url>
-			<a href="${listMessagesSponsorURL }"><spring:message code="messageFolder.displayMessages"/></a>
+			<a href="${listMessagesSponsorURL }"><spring:message
+					code="messageFolder.displayMessages" /></a>
 		</display:column>
 
 	</security:authorize>
@@ -69,23 +72,26 @@
 					code="messageFolder.display" /></a>
 		</display:column>
 
-		<display:column>
-			<jstl:if test="${row.modifiable==true }">
+		<jstl:if test="${row.modifiable==true }">
+			<display:column>
+
 				<spring:url value="messageFolder/administrator/edit.do"
 					var="editAdministratorURL">
 					<spring:param name="messageFolderId" value="${row.id }"></spring:param>
 				</spring:url>
 				<a href="${editAdministratorURL }"><spring:message
 						code="messageFolder.edit" /></a>
-			</jstl:if>
-		</display:column>
+
+			</display:column>
+		</jstl:if>
 
 		<display:column>
 			<spring:url value="message/administrator/list.do"
 				var="listMessagesURL">
 				<spring:param name="messageFolderId" value="${row.id }"></spring:param>
 			</spring:url>
-			<a href="${listMessagesURL }"><spring:message code="messageFolder.displayMessages"/></a>
+			<a href="${listMessagesURL }"><spring:message
+					code="messageFolder.displayMessages" /></a>
 		</display:column>
 	</security:authorize>
 
@@ -101,23 +107,25 @@
 			<a href="${displayRangerURL}"><spring:message
 					code="messageFolder.display" /></a>
 		</display:column>
+		<jstl:if test="${row.modifiable==true }">
+			<display:column>
 
-		<display:column>
-			<jstl:if test="${row.modifiable==true }">
 				<spring:url value="messageFolder/ranger/edit.do" var="editRangerURL">
 					<spring:param name="messageFolderId" value="${row.id }"></spring:param>
 				</spring:url>
 				<a href="${editRangerURL }"><spring:message
 						code="messageFolder.edit" /></a>
-			</jstl:if>
-		</display:column>
-		
+
+			</display:column>
+		</jstl:if>
+
 		<display:column>
 			<spring:url value="message/ranger/list.do"
 				var="listMessagesRangerURL">
 				<spring:param name="messageFolderId" value="${row.id }"></spring:param>
 			</spring:url>
-			<a href="${listMessagesRangerURL }"><spring:message code="messageFolder.displayMessages"/></a>
+			<a href="${listMessagesRangerURL }"><spring:message
+					code="messageFolder.displayMessages" /></a>
 		</display:column>
 
 	</security:authorize>
@@ -135,23 +143,26 @@
 					code="messageFolder.display" /></a>
 		</display:column>
 
-		<display:column>
-			<jstl:if test="${row.modifiable==true }">
+		<jstl:if test="${row.modifiable==true }">
+			<display:column>
+
 				<spring:url value="messageFolder/explorer/edit.do"
 					var="editExplorerURL">
 					<spring:param name="messageFolderId" value="${row.id }"></spring:param>
 				</spring:url>
 				<a href="${editExplorerURL }"><spring:message
 						code="messageFolder.edit" /></a>
-			</jstl:if>
-		</display:column>
-		
+
+			</display:column>
+		</jstl:if>
+
 		<display:column>
 			<spring:url value="message/explorer/list.do"
 				var="listMessagesExplorerURL">
 				<spring:param name="messageFolderId" value="${row.id }"></spring:param>
 			</spring:url>
-			<a href="${listMessagesExplorerURL }"><spring:message code="messageFolder.displayMessages"/></a>
+			<a href="${listMessagesExplorerURL }"><spring:message
+					code="messageFolder.displayMessages" /></a>
 		</display:column>
 
 	</security:authorize>
@@ -168,23 +179,26 @@
 					code="messageFolder.display" /></a>
 		</display:column>
 
-		<display:column>
-			<jstl:if test="${row.modifiable==true }">
+		<jstl:if test="${row.modifiable==true }">
+			<display:column>
+
 				<spring:url value="messageFolder/manager/edit.do"
 					var="editManagerURL">
 					<spring:param name="messageFolderId" value="${row.id }"></spring:param>
 				</spring:url>
 				<a href="${editManagerURL }"><spring:message
 						code="messageFolder.edit" /></a>
-			</jstl:if>
-		</display:column>
-		
+
+			</display:column>
+		</jstl:if>
+
 		<display:column>
 			<spring:url value="message/manager/list.do"
 				var="listMessagesManagerURL">
 				<spring:param name="messageFolderId" value="${row.id }"></spring:param>
 			</spring:url>
-			<a href="${listMessagesManagerURL }"><spring:message code="messageFolder.displayMessages"/></a>
+			<a href="${listMessagesManagerURL }"><spring:message
+					code="messageFolder.displayMessages" /></a>
 		</display:column>
 
 	</security:authorize>
@@ -201,23 +215,26 @@
 					code="messageFolder.display" /></a>
 		</display:column>
 
-		<display:column>
-			<jstl:if test="${row.modifiable==true }">
+		<jstl:if test="${row.modifiable==true }">
+			<display:column>
+
 				<spring:url value="messageFolder/auditor/edit.do"
 					var="editAuditorURL">
 					<spring:param name="messageFolderId" value="${row.id }"></spring:param>
 				</spring:url>
 				<a href="${editAuditorURL }"><spring:message
 						code="messageFolder.edit" /></a>
-			</jstl:if>
-		</display:column>
-		
+
+			</display:column>
+		</jstl:if>
+
 		<display:column>
 			<spring:url value="message/auditor/list.do"
 				var="listMessagesAuditorURL">
 				<spring:param name="messageFolderId" value="${row.id }"></spring:param>
 			</spring:url>
-			<a href="${listMessagesAuditorURL }"><spring:message code="messageFolder.displayMessages"/></a>
+			<a href="${listMessagesAuditorURL }"><spring:message
+					code="messageFolder.displayMessages" /></a>
 		</display:column>
 
 	</security:authorize>
@@ -229,6 +246,7 @@
 
 
 </display:table>
+
 <security:authorize access="hasRole('SPONSOR')">
 	<div>
 		<a href="messageFolder/sponsor/create.do"> <spring:message

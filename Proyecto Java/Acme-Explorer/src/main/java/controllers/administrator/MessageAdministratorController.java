@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -46,6 +45,7 @@ public class MessageAdministratorController extends AbstractController {
 	}
 
 	// Listing methods -----------------------------------------------------------
+	//Funciona bien
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ModelAndView list(@RequestParam int messageFolderId) {
 
@@ -62,6 +62,7 @@ public class MessageAdministratorController extends AbstractController {
 	}
 
 	//Display
+	//Funciona bien 
 	@RequestMapping(value = "/display", method = RequestMethod.GET)
 	public ModelAndView display(@RequestParam int messageId) {
 
@@ -75,7 +76,10 @@ public class MessageAdministratorController extends AbstractController {
 		return result;
 	}
 
-	//Change Folder
+	// Creation and edition methods ------------------------------------
+
+	//Change Folder------------------------------------------------------------------
+	//Funciona bien
 	@RequestMapping(value = "/changefolder", method = RequestMethod.GET)
 	public ModelAndView edit(@RequestParam int messageId) {
 
@@ -97,6 +101,7 @@ public class MessageAdministratorController extends AbstractController {
 
 	}
 
+	//Funciona bien
 	@RequestMapping(value = "/changefolder", method = RequestMethod.POST, params = "save")
 	public ModelAndView edit(@Valid Message m, BindingResult binding, @RequestParam int messageId) {
 		ModelAndView result;
@@ -127,9 +132,8 @@ public class MessageAdministratorController extends AbstractController {
 			}
 		return result;
 	}
-	// Creation and edition methods ------------------------------------
 
-	@RequestMapping(value = "/display", method = RequestMethod.POST, params = "delete")
+	@RequestMapping(value = "/delete", method = RequestMethod.GET)
 	public ModelAndView deleteMessage(Message messageDisplay) {
 		ModelAndView result;
 
@@ -145,37 +149,6 @@ public class MessageAdministratorController extends AbstractController {
 		return result;
 	}
 
-	@RequestMapping(value = "/send", method = RequestMethod.GET)
-	public ModelAndView create() {
-
-		ModelAndView result;
-
-		Message message;
-		message = this.messageService.create();
-
-		result = this.createNewModelAndView(message);
-
-		return result;
-
-	}
-	@RequestMapping(value = "/send", method = RequestMethod.POST, params = "save")
-	public ModelAndView send(@ModelAttribute("m") @Valid Message m, BindingResult binding) {
-		ModelAndView result;
-		if (binding.hasErrors())
-			result = this.createNewModelAndView(m);
-		else
-			try {
-				MessageFolder folderToReturn = m.getMessageFolder();
-				this.messageService.save(m);
-				result = new ModelAndView("redirect:list.do?messageFolderId=" + folderToReturn.getId());
-			} catch (Throwable oops) {
-
-				result = this.createNewModelAndView(m, "message.commit.error");
-
-			}
-		return result;
-	}
-
 	// Ancillary methods ------------------------------------------------------
 
 	protected ModelAndView createNewModelAndView(Message m) {
@@ -187,7 +160,7 @@ public class MessageAdministratorController extends AbstractController {
 	protected ModelAndView createNewModelAndView(Message m, String message) {
 		ModelAndView result;
 
-		result = new ModelAndView("message/administrator/send");
+		result = new ModelAndView("message/send");
 
 		Actor actor = this.actorService.findPrincipal();
 		Collection<Actor> actors = this.actorService.findAll();

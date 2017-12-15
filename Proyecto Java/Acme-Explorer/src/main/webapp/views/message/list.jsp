@@ -22,8 +22,8 @@
 
 <display:table pagesize="5" class="displaytag" keepStatus="true"
 	name="messages" requestURI="${requestURI }" id="row">
-	
-	
+
+
 	<!-- Botones para sponsor -->
 	<security:authorize access="hasRole('SPONSOR')">
 		<display:column>
@@ -35,12 +35,13 @@
 			<a href="${displaySponsorURL}"><spring:message
 					code="message.display" /></a>
 		</display:column>
-		
+
 		<display:column>
-		<a href="message/sponsor/changefolder.do?messageId=${row.id}" ><spring:message code="msg.changefolder.link" /></a>
-	</display:column>
-		
-		
+			<a href="message/sponsor/changefolder.do?messageId=${row.id}"><spring:message
+					code="msg.changefolder.link" /></a>
+		</display:column>
+
+
 
 	</security:authorize>
 
@@ -56,10 +57,17 @@
 					code="message.display" /></a>
 		</display:column>
 		<display:column>
-		<a href="message/administrator/changefolder.do?messageId=${row.id}" ><spring:message code="msg.changefolder.link" /></a>
-	</display:column>
-		
-		
+			<a href="message/administrator/changefolder.do?messageId=${row.id}"><spring:message
+					code="msg.changefolder.link" /></a>
+		</display:column>
+		<display:column>
+			<a href="message/administrator/delete.do?messageId=${row.id}"><spring:message
+					code="message.delete.link" /></a>
+		</display:column>
+
+
+
+
 
 	</security:authorize>
 
@@ -67,20 +75,20 @@
 	<!-- Botones para ranger -->
 	<security:authorize access="hasRole('RANGER')">
 		<display:column>
-			<spring:url value="message/ranger/display.do"
-				var="displayRangerURL">
+			<spring:url value="message/ranger/display.do" var="displayRangerURL">
 				<spring:param name="messageId" value="${row.id}" />
 			</spring:url>
 
 			<a href="${displayRangerURL}"><spring:message
 					code="message.display" /></a>
 		</display:column>
-		
+
 		<display:column>
-		<a href="message/ranger/changefolder.do?messageId=${row.id}" ><spring:message code="msg.changefolder.link" /></a>
-	</display:column>
-		
-		
+			<a href="message/ranger/changefolder.do?messageId=${row.id}"><spring:message
+					code="msg.changefolder.link" /></a>
+		</display:column>
+
+
 	</security:authorize>
 
 
@@ -95,12 +103,13 @@
 			<a href="${displayExplorerURL}"><spring:message
 					code="message.display" /></a>
 		</display:column>
-		
+
 		<display:column>
-		<a href="message/explorer/changefolder.do?messageId=${row.id}" ><spring:message code="msg.changefolder.link" /></a>
-	</display:column>
-		
-		
+			<a href="message/explorer/changefolder.do?messageId=${row.id}"><spring:message
+					code="msg.changefolder.link" /></a>
+		</display:column>
+
+
 
 	</security:authorize>
 
@@ -116,11 +125,12 @@
 			<a href="${displayManagerURL}"><spring:message
 					code="message.display" /></a>
 		</display:column>
-		
+
 		<display:column>
-		<a href="message/manager/changefolder.do?messageId=${row.id}" ><spring:message code="msg.changefolder.link" /></a>
-	</display:column>
-		
+			<a href="message/manager/changefolder.do?messageId=${row.id}"><spring:message
+					code="msg.changefolder.link" /></a>
+		</display:column>
+
 
 
 	</security:authorize>
@@ -136,10 +146,11 @@
 			<a href="${displayAuditorURL}"><spring:message
 					code="message.display" /></a>
 		</display:column>
-		
+
 		<display:column>
-		<a href="message/auditor/changefolder.do?messageId=${row.id}" ><spring:message code="msg.changefolder.link" /></a>
-	</display:column>
+			<a href="message/auditor/changefolder.do?messageId=${row.id}"><spring:message
+					code="msg.changefolder.link" /></a>
+		</display:column>
 
 
 	</security:authorize>
@@ -148,8 +159,9 @@
 	<!-- Attributes -->
 
 	<spring:message code="message.format.date" var="pattern"></spring:message>
-	<spring:message code="message.moment" var="momentHeader"  />
-	<display:column property="moment" title="${momentHeader}" format="${pattern }"/>
+	<spring:message code="message.moment" var="momentHeader" />
+	<display:column property="moment" title="${momentHeader}"
+		format="${pattern }" />
 
 	<spring:message code="message.subject" var="subjectHeader" />
 	<display:column property="subject" title="${subjectHeader}" />
