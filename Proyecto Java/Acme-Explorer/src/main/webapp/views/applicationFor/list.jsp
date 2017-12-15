@@ -92,7 +92,7 @@
 	<security:authorize access="hasRole('EXPLORER')">
 		<spring:message code="applicationfor.creditCard" var="creditCardName" />
 		<display:column title="${creditCardName}" sortable="true">
-		<jstl:if test="${applicationFor.status == 'DUE'}">
+		<jstl:if test="${row.status == 'DUE'}">
 		<spring:url value="applicationFor/explorer/enter.do" var="displayURL">
 		<spring:param name="applicationForId" value="${row.id}"/>
 		</spring:url>
