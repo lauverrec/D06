@@ -101,7 +101,11 @@ public class TripService {
 	public Trip save(final Trip trip) {
 		Assert.notNull(trip);
 		Trip result;
+		Date dateNow;
+		dateNow = new Date();
 		Assert.isTrue(trip.getStartDate().before(trip.getFinishDate()));
+		if (trip.getId() != 0)
+			Assert.isTrue(trip.getPublicationDate().after(dateNow));
 		result = this.tripRepository.save(trip);
 		return result;
 	}
@@ -204,11 +208,13 @@ public class TripService {
 		Trip trip;
 		Trip tripEdit;
 		Manager manager;
+		Date dateNow;
+
+		dateNow = new Date();
 		//Trip a editar
 		trip = this.tripRepository.findOne(tripId);
-		//Para que un manager edite un trip NO puede tener publicationDate
-		//salta si tiene fecha
-		Assert.isNull(trip.getPublicationDate());
+		//Para que un manager edite un trip NO puede haber sido publicada
+		Assert.isTrue(trip.getPublicationDate().after(dateNow));
 		//Comprobamos que sea de ese Manager
 		manager = this.managerService.findByPrincipal();
 		Assert.isTrue(manager.getTrips().contains(trip));

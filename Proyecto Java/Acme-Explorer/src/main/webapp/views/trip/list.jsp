@@ -79,7 +79,7 @@
 	<spring:message code="trip.publicationDate" var="publicationDate" />	
 	<spring:message code="trip.edit" var="Edit" />
 		<display:column title="${Edit}" sortable="true">
-			<jstl:if test="${row.publicationDate==null && row.manager==manager}">
+			<jstl:if test="${row.publicationDate>date  && row.manager==manager}">
 			
 				<spring:url value="trip/manager_/edit.do" var="editURL">
 					<spring:param name="tripId" value="${row.id}" />
