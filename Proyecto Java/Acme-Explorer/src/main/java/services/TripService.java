@@ -101,6 +101,7 @@ public class TripService {
 	public Trip save(final Trip trip) {
 		Assert.notNull(trip);
 		Trip result;
+		Assert.isTrue(trip.getStartDate().before(trip.getFinishDate()));
 		result = this.tripRepository.save(trip);
 		return result;
 	}
