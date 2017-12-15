@@ -21,7 +21,7 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
 
-<display:table name="mess" class="displaytag"
+<display:table name="messageDisplay" class="displaytag"
 	requestURI="${requestURI }" id="row">
 
 	<!-- Attributes -->

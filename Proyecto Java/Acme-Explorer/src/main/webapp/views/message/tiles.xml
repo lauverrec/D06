@@ -31,10 +31,9 @@
 		<put-attribute name="body" value="/views/message/display.jsp" />
 	</definition>
 	
-	
-	<definition name="message/exchangeMessage" extends="master.page">	
-		<put-attribute name="title" value="Sent message" />
-		<put-attribute name="body" value="/views/message/exchangeMessage.jsp" />
+		<definition name="message/changeFolder" extends="master.page">	
+		<put-attribute name="title" value="Move message of folder" />
+		<put-attribute name="body" value="/views/message/changeFolder.jsp" />
 	</definition>
 	
 </tiles-definitions>

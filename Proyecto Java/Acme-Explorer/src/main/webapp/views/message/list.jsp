@@ -21,9 +21,9 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
 <display:table pagesize="5" class="displaytag" keepStatus="true"
-	name="messages" requestURI="${requestURI}" id="row">
-
-
+	name="messages" requestURI="${requestURI }" id="row">
+	
+	
 	<!-- Botones para sponsor -->
 	<security:authorize access="hasRole('SPONSOR')">
 		<display:column>
@@ -37,14 +37,10 @@
 		</display:column>
 		
 		<display:column>
-			<spring:url value="message/sponsor/edit.do"
-				var="editSponsorURL">
-				<spring:param name="messageId" value="${row.id}" />
-			</spring:url>
-
-			<a href="${editSponsorURL}"><spring:message
-					code="message.edit" /></a>
-		</display:column>
+		<a href="message/sponsor/changefolder.do?messageId=${row.id}" ><spring:message code="msg.changefolder.link" /></a>
+	</display:column>
+		
+		
 
 	</security:authorize>
 
@@ -59,16 +55,11 @@
 			<a href="${displayAdministratorURL}"><spring:message
 					code="message.display" /></a>
 		</display:column>
-		
 		<display:column>
-			<spring:url value="message/administrator/edit.do"
-				var="editAdministratorURL">
-				<spring:param name="messageId" value="${row.id}" />
-			</spring:url>
-
-			<a href="${editAdministratorURL}"><spring:message
-					code="message.edit" /></a>
-		</display:column>
+		<a href="message/administrator/changefolder.do?messageId=${row.id}" ><spring:message code="msg.changefolder.link" /></a>
+	</display:column>
+		
+		
 
 	</security:authorize>
 
@@ -86,15 +77,10 @@
 		</display:column>
 		
 		<display:column>
-			<spring:url value="message/ranger/edit.do"
-				var="editRangerURL">
-				<spring:param name="messageId" value="${row.id}" />
-			</spring:url>
-
-			<a href="${editRangerURL}"><spring:message
-					code="message.edit" /></a>
-		</display:column>
-
+		<a href="message/ranger/changefolder.do?messageId=${row.id}" ><spring:message code="msg.changefolder.link" /></a>
+	</display:column>
+		
+		
 	</security:authorize>
 
 
@@ -111,14 +97,10 @@
 		</display:column>
 		
 		<display:column>
-			<spring:url value="message/explorer/edit.do"
-				var="editExplorerURL">
-				<spring:param name="messageId" value="${row.id}" />
-			</spring:url>
-
-			<a href="${editExplorerURL}"><spring:message
-					code="message.edit" /></a>
-		</display:column>
+		<a href="message/explorer/changefolder.do?messageId=${row.id}" ><spring:message code="msg.changefolder.link" /></a>
+	</display:column>
+		
+		
 
 	</security:authorize>
 
@@ -136,15 +118,9 @@
 		</display:column>
 		
 		<display:column>
-			<spring:url value="message/manager/edit.do"
-				var="editManagerURL">
-				<spring:param name="messageId" value="${row.id}" />
-			</spring:url>
-
-			<a href="${editManagerURL}"><spring:message
-					code="message.edit" /></a>
-		</display:column>
-
+		<a href="message/manager/changefolder.do?messageId=${row.id}" ><spring:message code="msg.changefolder.link" /></a>
+	</display:column>
+		
 
 
 	</security:authorize>
@@ -162,14 +138,8 @@
 		</display:column>
 		
 		<display:column>
-			<spring:url value="message/auditor/edit.do"
-				var="editAuditorURL">
-				<spring:param name="messageId" value="${row.id}" />
-			</spring:url>
-
-			<a href="${editAuditorURL}"><spring:message
-					code="message.edit" /></a>
-		</display:column>
+		<a href="message/auditor/changefolder.do?messageId=${row.id}" ><spring:message code="msg.changefolder.link" /></a>
+	</display:column>
 
 
 	</security:authorize>

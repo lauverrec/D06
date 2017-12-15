@@ -21,8 +21,7 @@
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
-
-<form:form action="${requestURI }" modelAttribute="mess">
+<form:form action="${requestURI }" modelAttribute="msg">
 
 
 	<form:hidden path="id" />
@@ -63,9 +62,9 @@
 	<form:label path="messageFolder">
 		<spring:message code="message.messageFolder" />:
 	</form:label>
-	<form:select id="messageFolders" path="messageFolder">
-		<form:option value="0" label="----" />
-		<form:options items="${messageFolders}" itemValue="id"
+	<form:select id="folders" path="messageFolder">
+		<form:option value="0" label="folder" />
+		<form:options items="${folders}" itemValue="id"
 			itemLabel="name" />
 	</form:select>
 	<form:errors cssClass="error" path="messageFolder" />
@@ -76,11 +75,7 @@
 	<!-- Boton save y deletes -->
 	<input type="submit" name="save"
 		value="<spring:message code="message.save" />" />&nbsp; 
-	<jstl:if test="${mess.id != 0}">
-		<input type="submit" name="delete"
-			value="<spring:message code="message.delete" />"
-			onclick="javascript: return confirm('<spring:message code="message.confirm.delete" />')" />&nbsp;
-	</jstl:if>
+
 
 	<!--  Cancel para administrator -->
 	<security:authorize access="hasRole('ADMINISTRATOR')">
