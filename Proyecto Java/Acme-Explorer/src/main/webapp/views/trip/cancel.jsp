@@ -35,7 +35,6 @@
 	<form:hidden path="auditRecords"/>
 	<form:hidden path="ranger"/>
 	<form:hidden path="tags"/>
-	<form:hidden path="values"/>
 	
 
 <form:label path="title">

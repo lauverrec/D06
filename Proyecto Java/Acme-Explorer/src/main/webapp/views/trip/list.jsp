@@ -226,7 +226,7 @@
 <security:authorize access="hasRole('MANAGER')">
 	<spring:message code="trip.cancel" var="Cancel" />
 	<display:column title="${Cancel}" sortable="true">
-	<jstl:if test="${row.manager==manager && row.startDate>date}">
+	<jstl:if test="${row.manager==manager && row.startDate>date && row.cancelled==false}">
 		<spring:url value="trip/manager_/cancelTrip.do" var="cancelURL">
 			<spring:param name="tripId" value="${row.id}" />
 		</spring:url>
@@ -235,7 +235,8 @@
 	</display:column>
 </security:authorize>
 
-
+<spring:message code="trip.reasonWhy" var="reasonWhyHeader" />
+	<display:column property="reasonWhy" title="${reasonWhyHeader}" sortable="true" />
 
 </display:table>
 
