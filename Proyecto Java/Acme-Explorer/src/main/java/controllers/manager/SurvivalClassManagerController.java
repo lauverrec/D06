@@ -15,9 +15,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import services.ManagerService;
 import services.SurvivalClassService;
 import services.TripService;
 import controllers.AbstractController;
+import domain.Manager;
 import domain.SurvivalClass;
 import domain.Trip;
 
@@ -32,6 +34,9 @@ public class SurvivalClassManagerController extends AbstractController {
 
 	@Autowired
 	private TripService				tripService;
+
+	@Autowired
+	private ManagerService			managerService;
 
 
 	//Constructor--------------------------------------------------------
@@ -95,13 +100,16 @@ public class SurvivalClassManagerController extends AbstractController {
 	public ModelAndView edit(@RequestParam final int survivalClassId) {
 		ModelAndView result;
 		SurvivalClass survivalClass;
+		Manager manager;
 
+		manager = this.managerService.findByPrincipal();
 		survivalClass = this.survivalClassService.findOne(survivalClassId);
 		Assert.notNull(survivalClass);
+		Assert.isTrue(survivalClass.getManager().equals(manager), "Cannot commit this operation, because it's illegal");
 		result = this.createEditModelAndView(survivalClass);
+		result.addObject("manager", manager);
 		return result;
 	}
-
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
 	public ModelAndView save(@Valid final SurvivalClass survivalClass, final BindingResult bindingResult) {
 		ModelAndView result;
