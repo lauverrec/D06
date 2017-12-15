@@ -37,6 +37,10 @@
 		<put-attribute name="body" value="/views/applicationFor/display.jsp" />
 	</definition>
 	
+			<definition name="applicationFor/change" extends="master.page">
+		<put-attribute name="title" value="Change status" />
+		<put-attribute name="body" value="/views/applicationFor/changeStatus.jsp" />
+	</definition>
 	
 
 </tiles-definitions>

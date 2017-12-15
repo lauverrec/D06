@@ -6,8 +6,11 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -77,4 +80,49 @@ public class ApplicationForManagerController extends AbstractController {
 
 		return result;
 	}
+	@RequestMapping(value = "/change", method = RequestMethod.GET)
+	public ModelAndView edit(@RequestParam final int applicationforId) {
+		ModelAndView result;
+		ApplicationFor applicationFor;
+
+		applicationFor = this.applicationForService.findOne(applicationforId);
+
+		result = this.createEditModelAndView(applicationFor);
+		result.addObject("applicationFor", applicationFor);
+
+		return result;
+	}
+
+	@RequestMapping(value = "/change", method = RequestMethod.POST, params = "save")
+	public ModelAndView save(@Valid ApplicationFor applicationFor, BindingResult binding) {
+		ModelAndView result;
+		if (binding.hasErrors())
+			result = this.createEditModelAndView(applicationFor);
+		else
+			try {
+				this.applicationForService.save(applicationFor);
+				result = new ModelAndView("redirect:list.do");
+			} catch (final Throwable oops) {
+				result = this.createEditModelAndView(applicationFor, "applicationfor.commit.error");
+			}
+		return result;
+	}
+
+	protected ModelAndView createEditModelAndView(final ApplicationFor applicationFor) {
+		ModelAndView result;
+
+		result = this.createEditModelAndView(applicationFor, null);
+		return result;
+	}
+
+	protected ModelAndView createEditModelAndView(final ApplicationFor applicationFor, final String message) {
+		ModelAndView result;
+
+		result = new ModelAndView("applicationFor/change");
+		result.addObject("applicationFor", applicationFor);
+		result.addObject("message", message);
+
+		return result;
+	}
+
 }

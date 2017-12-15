@@ -29,6 +29,12 @@
 		<put-attribute name="title" value="Mostrar solicitud" />
 		<put-attribute name="body" value="/views/applicationFor/display.jsp" />
 	</definition>
+	
+		<definition name="applicationFor/change" extends="master.page">
+		<put-attribute name="title" value="Cambiar estado" />
+		<put-attribute name="body" value="/views/applicationFor/changeStatus.jsp" />
+	</definition>
+	
 
 
 </tiles-definitions>

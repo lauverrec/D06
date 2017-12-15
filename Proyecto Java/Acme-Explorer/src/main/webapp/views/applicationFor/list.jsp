@@ -96,10 +96,17 @@
 		</spring:url>
 		<a href="${displayURL}"><spring:message code="applicationfor.view"/></a>
 		</display:column>	
+		
+		<spring:message code="applicationfor.change" var="change"/>
+		<display:column title="${change}" sortable="true">
+		<jstl:if test="${row.status=='PENDING' or row.status=='DUE' or row.status=='REJECTED'}">
+		<spring:url value="applicationFor/manager/change.do" var="displayURL">
+		<spring:param name="applicationforId" value="${row.id}"/>
+		</spring:url>
+		<a href="${displayURL}"><spring:message code="applicationfor.change"/></a>
+		</jstl:if>
+		</display:column> 
+		
+		
 	</security:authorize>
 </display:table>
-<%-- <security:authorize access="hasRole('EXPLORER')">
-	<spring:url value="applicationFor/explorer/create.do" var="linkcreate" />
-	<a href="${linkcreate}"><spring:message
-			code="applicationfor.create" /></a>
-</security:authorize> --%>
