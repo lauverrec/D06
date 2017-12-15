@@ -108,7 +108,7 @@ public class MessageAdministratorController extends AbstractController {
 		return result;
 	}
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "delete")
-	public ModelAndView delete(Message messag, BindingResult bindingResult) {
+	public ModelAndView delete(final Message messag, BindingResult bindingResult) {
 		ModelAndView result;
 
 		try {
@@ -142,7 +142,7 @@ public class MessageAdministratorController extends AbstractController {
 		ModelAndView result;
 
 		if (bindingResult.hasErrors())
-			result = this.createEditModelAndView(mess);
+			result = this.createEditModelAndViewExchange(mess);
 		else
 			try {
 				this.messageService.save(mess);
@@ -155,13 +155,13 @@ public class MessageAdministratorController extends AbstractController {
 	}
 
 	// Ancillary methods ------------------------------------------------------
-	protected ModelAndView createEditModelAndView(Message messag) {
+	protected ModelAndView createEditModelAndView(@Valid final Message messag) {
 		ModelAndView result;
 		result = this.createEditModelAndView(messag, null);
 		return result;
 	}
 
-	protected ModelAndView createEditModelAndView(Message messag, String messageCode) {
+	protected ModelAndView createEditModelAndView(@Valid Message messag, String messageCode) {
 		ModelAndView result;
 		Collection<MessageFolder> messageFolders;
 		Actor sender;
@@ -184,13 +184,13 @@ public class MessageAdministratorController extends AbstractController {
 
 	}
 
-	protected ModelAndView createEditModelAndViewExchange(Message messag) {
+	protected ModelAndView createEditModelAndViewExchange(@Valid final Message messag) {
 		ModelAndView result;
 		result = this.createEditModelAndViewExchange(messag, null);
 		return result;
 	}
 
-	protected ModelAndView createEditModelAndViewExchange(Message messag, String messageCode) {
+	protected ModelAndView createEditModelAndViewExchange(@Valid final Message messag, String messageCode) {
 		ModelAndView result;
 		MessageFolder messageFolderOfMessage;
 		Actor sender;
