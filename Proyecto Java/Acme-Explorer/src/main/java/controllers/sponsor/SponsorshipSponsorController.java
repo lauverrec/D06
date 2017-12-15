@@ -15,9 +15,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import services.SponsorService;
 import services.SponsorshipService;
 import services.TripService;
 import controllers.AbstractController;
+import domain.Sponsor;
 import domain.Sponsorship;
 import domain.Trip;
 
@@ -32,6 +34,9 @@ public class SponsorshipSponsorController extends AbstractController {
 
 	@Autowired
 	private TripService			tripService;
+
+	@Autowired
+	private SponsorService		sponsorService;
 
 
 	//Constructor--------------------------------------------------------
@@ -77,10 +82,14 @@ public class SponsorshipSponsorController extends AbstractController {
 	public ModelAndView edit(@RequestParam final int sponsorshipId) {
 		ModelAndView result;
 		Sponsorship sponsorship;
+		Sponsor sponsor;
 
+		sponsor = this.sponsorService.findByPrincipal();
 		sponsorship = this.sponsorshipService.findOne(sponsorshipId);
 		Assert.notNull(sponsorship);
+		Assert.isTrue(sponsor.getSponsorships().contains(sponsorship), "Cannot commit this operation, because it's illegal");
 		result = this.createEditModelAndView(sponsorship);
+		result.addObject("sponsor", sponsor);
 		return result;
 	}
 
