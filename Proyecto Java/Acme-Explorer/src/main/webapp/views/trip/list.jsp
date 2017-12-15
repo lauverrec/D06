@@ -181,12 +181,15 @@
 	</security:authorize>
 
 <security:authorize access="hasRole('SPONSOR')">
+	
 	<spring:message code="sponsorship.create" var="Create" />
 	<display:column title="${Create}" sortable="true">
+	<jstl:if test="${row.cancelled==false}">
 		<spring:url value="sponsorship/sponsor/create.do" var="createURL">
 			<spring:param name="tripId" value="${row.id}" />
 		</spring:url>
 		<a href="${createURL}"><spring:message code="sponsorship.create" /></a>
+	</jstl:if>
 	</display:column>
 </security:authorize>
 
@@ -235,7 +238,9 @@
 	</display:column>
 </security:authorize>
 
+<jstl:if test="${row.cancelled==false}">
 <spring:message code="trip.reasonWhy" var="reasonWhyHeader" />
+</jstl:if>
 	<display:column property="reasonWhy" title="${reasonWhyHeader}" sortable="true" />
 
 </display:table>
