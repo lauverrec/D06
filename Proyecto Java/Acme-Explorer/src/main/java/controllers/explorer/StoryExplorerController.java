@@ -62,13 +62,18 @@ public class StoryExplorerController extends AbstractController {
 	public ModelAndView create(@RequestParam final int tripId) {
 		ModelAndView result;
 		Story story;
-
+		Explorer explorer;
 		Trip trip;
+		Collection<Trip> trips;
 
 		trip = this.tripService.findOne(tripId);
+		explorer = this.explorerService.findByPrincipal();
+		trips = this.tripService.findTripsForStory();
+		Assert.isTrue(trips.contains(trip), "Cannot commit this operation, because it's illegal");
 
 		story = this.storyService.create(trip);
 		result = this.createEditModelAndView(story);
+		result.addObject("explorer", explorer);
 
 		return result;
 	}

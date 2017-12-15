@@ -2680,8 +2680,8 @@
 		<property name="description" value="description 5"></property>
 		<property name="requirementsExplorers" value="requirementsExplorers 5"></property>
 		<property name="publicationDate" value="2019/01/14 23:59"></property>
-		<property name="startDate" value="2019/02/21"></property>
-		<property name="finishDate" value="2015/08/04"></property>
+		<property name="startDate" value="2015/02/21"></property>
+		<property name="finishDate" value="2016/08/04"></property>
 		<property name="reasonWhy">
 			<null />
 		</property>
@@ -4244,7 +4244,7 @@
 
 	<bean id="applicationFor7" class="domain.ApplicationFor">
 		<property name="moment" value="2017/10/27 03:10" />
-		<property name="status" value="DUE" />
+		<property name="status" value="ACCEPTED" />
 		<property name="reasonWhy" value="" />
 		<property name="comments">
 			<list>
