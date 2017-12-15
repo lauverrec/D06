@@ -102,10 +102,17 @@ public class TripService {
 		Assert.notNull(trip);
 		Trip result;
 		Date dateNow;
+		Manager managerT;
+		Manager conectado;
+
+		managerT = trip.getManager();
+		conectado = this.managerService.findByPrincipal();
 		dateNow = new Date();
 		Assert.isTrue(trip.getStartDate().before(trip.getFinishDate()));
-		if (trip.getId() != 0)
+		if (trip.getId() != 0) {
 			Assert.isTrue(trip.getPublicationDate().after(dateNow));
+			Assert.isTrue(managerT.equals(conectado));
+		}
 		result = this.tripRepository.save(trip);
 		return result;
 	}
@@ -135,9 +142,14 @@ public class TripService {
 		Collection<Sponsorship> sponsorships;
 		int tripId;
 		Date dateNow;
+		Manager managerT;
+		Manager conectado;
 
+		conectado = this.managerService.findByPrincipal();
+		managerT = trip.getManager();
 		dateNow = new Date();
 		Assert.isTrue(trip.getPublicationDate().after(dateNow));
+		Assert.isTrue(managerT.equals(conectado));
 		tripId = trip.getId();
 		sponsorships = new ArrayList<Sponsorship>(this.sponsorshipService.findAllSponsorshipByTripId(tripId));
 		legalTexts = new ArrayList<LegalText>(this.legalTextService.findAllLegalTextByTripId(tripId));
