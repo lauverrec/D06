@@ -17,6 +17,29 @@
 	color: red;
 	font-weight: bolder;
 }
-/* .ocul {
-	 visibility:hidden;	
-} */
+
+
+
+.red{
+	
+	background-color:red;
+}
+.grey{
+	
+	background-color:grey;
+}
+.yellow{
+	
+	background-color:yellow;
+}	
+.green{
+	
+	background-color:green;
+}
+.cyan{
+	
+	background-color:cyan;
+}
+.white{
+	background-color:white;
+}

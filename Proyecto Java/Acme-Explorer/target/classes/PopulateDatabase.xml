@@ -4158,7 +4158,7 @@
 	<bean id="applicationFor2" class="domain.ApplicationFor">
 		<property name="moment" value="2017/12/11 00:10" />
 		<property name="status" value="PENDING" />
-		<property name="reasonWhy" value="because ...." />
+		<property name="reasonWhy" value="" />
 		<property name="comments">
 			<list>
 				<value>comment1 ApplicaciontFor2</value>
