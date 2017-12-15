@@ -49,15 +49,9 @@
 
 	
 	<security:authorize access="hasRole('EXPLORER')">
-<%-- 	<spring:message code="applicationfor.edit1" var="edit" />
-		<display:column title="${edit}">		
-			<spring:url value="applicationFor/explorer/edit.do" var="editlink">
-				<spring:param name="applicationForId" value="${row.id}" />
-			</spring:url>
-			<a href="${editlink}"><spring:message code="applicationfor.edit" /></a>
-		</display:column> --%>
-		
-			<spring:message code="applicationfor.cancel1" var="cancel1" />
+	
+		<!-- SOLO SE CANCELAN LAS QUE AUN NO HAN EMPEZADO Y SU STATUS ES ACCEPTED -->
+		<spring:message code="applicationfor.cancel1" var="cancel1" />
 		<display:column title="${cancel1}">
 		<jstl:if test="${row.trip.startDate>date && row.status=='ACCEPTED'}">
 			<spring:url value="applicationFor/explorer/cancel.do" var="cancellink">
@@ -66,7 +60,27 @@
 			<a href="${cancellink}"><spring:message code="applicationfor.cancel" /></a>
 		</jstl:if>
 		</display:column>
-	</security:authorize>
+		
+		<!-- TODOS VEN EL DISPLAY DEL TRIP ASOCIADO A LA APPLICATION -->
+		<spring:message code="applicationfor.display" var="Display" />
+			<display:column title="${Display}" sortable="true">
+				<spring:url value="applicationFor/explorer/display.do" var="displayURL">
+				<spring:param name="applicationforId" value="${row.id}"/>
+			</spring:url>
+			<a href="${displayURL}"><spring:message code="applicationfor.view"/></a>
+		</display:column>	
+		
+		<!-- SOLO VA PODER INTRODUCIR CREDITCARD SI EL STATUS ESTÁ EN DUE -->
+		<spring:message code="applicationfor.creditCard" var="creditCardName" />
+			<display:column title="${creditCardName}" sortable="true">
+				<jstl:if test="${row.status == 'DUE'}">
+					<spring:url value="applicationFor/explorer/enter.do" var="displayURL">
+					<spring:param name="applicationForId" value="${row.id}"/>
+					</spring:url>
+				<a href="${displayURL}"><spring:message code="applicationfor.enter"/></a>
+				</jstl:if>
+			</display:column>	
+		</security:authorize>
 
 	<security:authorize access="hasRole('ADMINISTRATOR')">
 		<display:column>
@@ -77,30 +91,7 @@
 			<a href="${editlink}"><spring:message code="applicationfor.edit" /></a>
 		</display:column>
 	</security:authorize>
-	
-	<security:authorize access="hasRole('EXPLORER')">
-		<spring:message code="applicationfor.display" var="Display" />
-		<display:column title="${Display}" sortable="true">
-		<spring:url value="applicationFor/explorer/display.do" var="displayURL">
-		<spring:param name="applicationforId" value="${row.id}"/>
-		</spring:url>
-		<a href="${displayURL}"><spring:message code="applicationfor.view"/></a>
-		</display:column>	
-	</security:authorize>
-	
-	<!-- SOLO VA PODER INTRODUCIR CREDITCARD SI EL STATUS ESTÁ EN DUE -->
-	<security:authorize access="hasRole('EXPLORER')">
-		<spring:message code="applicationfor.creditCard" var="creditCardName" />
-		<display:column title="${creditCardName}" sortable="true">
-		<jstl:if test="${row.status == 'DUE'}">
-		<spring:url value="applicationFor/explorer/enter.do" var="displayURL">
-		<spring:param name="applicationForId" value="${row.id}"/>
-		</spring:url>
-		<a href="${displayURL}"><spring:message code="applicationfor.enter"/></a>
-		</jstl:if>
-		</display:column>	
-	</security:authorize>
-	
+
 	<security:authorize access="hasRole('MANAGER')">
 		<spring:message code="applicationfor.display" var="Display" />
 		<display:column title="${Display}" sortable="true">

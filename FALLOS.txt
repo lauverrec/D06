@@ -7,3 +7,5 @@
 4. No poder crear una auditoría si la excursión ha acabado. 
 
 5. No poder crear un sponsorship si la excursión ya ha acabado. 
+
+6. Created moment de una application (el mes que pone es erroneo, ej: 2017/51/15 12:51)
