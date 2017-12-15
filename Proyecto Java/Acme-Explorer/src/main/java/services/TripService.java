@@ -134,7 +134,10 @@ public class TripService {
 		Collection<LegalText> legalTexts;
 		Collection<Sponsorship> sponsorships;
 		int tripId;
+		Date dateNow;
 
+		dateNow = new Date();
+		Assert.isTrue(trip.getPublicationDate().after(dateNow));
 		tripId = trip.getId();
 		sponsorships = new ArrayList<Sponsorship>(this.sponsorshipService.findAllSponsorshipByTripId(tripId));
 		legalTexts = new ArrayList<LegalText>(this.legalTextService.findAllLegalTextByTripId(tripId));
