@@ -2,6 +2,7 @@
 package controllers.sponsor;
 
 import java.util.Collection;
+import java.util.Date;
 
 import javax.validation.Valid;
 
@@ -56,6 +57,7 @@ public class SponsorshipSponsorController extends AbstractController {
 
 		result = new ModelAndView("sponsorship/list");
 		result.addObject("sponsorships", sponsorships);
+
 		return result;
 
 	}
@@ -66,13 +68,18 @@ public class SponsorshipSponsorController extends AbstractController {
 	public ModelAndView create(@RequestParam final int tripId) {
 		ModelAndView result;
 		Sponsorship sponsorship;
-
+		Date date;
 		Trip trip;
 
 		trip = this.tripService.findOne(tripId);
+		date = new Date();
 
+		//TENGO QUE VER COMO QUITAR EL ENLACE EN LA VISTA .JSP
+		Assert.isTrue(trip.getFinishDate().after(date) && trip.isCancelled() == false);
 		sponsorship = this.sponsorshipService.create(trip);
+
 		result = this.createEditModelAndView(sponsorship);
+		result.addObject("date", date);
 		return result;
 
 	}
