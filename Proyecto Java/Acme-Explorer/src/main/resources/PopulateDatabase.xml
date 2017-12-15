@@ -2508,8 +2508,8 @@
 
 		<property name="requirementsExplorers" value="requirementsExplorers 1"></property>
 		<property name="publicationDate" value="2017/10/14 23:59"></property>
-		<property name="startDate" value="2017/11/14"></property>
-		<property name="finishDate" value="2017/12/30"></property>
+		<property name="startDate" value="2015/11/14"></property>
+		<property name="finishDate" value="2016/12/30"></property>
 		<property name="reasonWhy" value=""></property>
 		<property name="cancelled" value="false"></property>
 		<property name="manager" ref="manager1"></property>
