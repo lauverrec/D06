@@ -31,7 +31,7 @@
 	<form:hidden path="status"/>
 	<form:hidden path="reasonWhy"/>
 	<form:hidden path="trip"/>
-	<form:hidden path="creditCard"/>
+
 	
 
 
@@ -43,8 +43,8 @@
 	</form:label>
 
 	
-	<form:input path="comments" />
-	<form:errors cssClass="error" path="comments" /> 
+	<form:input path="comments" readonly="true"/>
+	<form:errors cssClass="error" path="comments"/> 
 	<br />
 	<br />
 	<br />
@@ -55,7 +55,7 @@
 
 	
 	
-<%-- 	<fieldset>
+ 	<fieldset>
 		<form:label path="creditCard.holderName">
 		<spring:message code="applicationfor.creditCard.holderName" />:
 	</form:label>
@@ -97,25 +97,16 @@
 	<form:input path="creditCard.cvv" />
 	<form:errors cssClass="error" path="creditCard.cvv" />
 	<br/>
-	</fieldset> --%>
+	</fieldset> 
 	
 	
 	<br />
 
 </security:authorize>
 
-
-
-
-	<input type="submit" name="save" value="<spring:message code="applicationfor.save" />" />&nbsp;
+	<input type="submit" name="enter" value="<spring:message code="applicationfor.save" />" />&nbsp;
 	 
-	<jstl:if test="${applicationFor.id != 0}">
-		<input type="submit" name="delete" value="<spring:message code="applicationfor.delete" />"
-			onclick="javascript: return confirm('<spring:message code="applicationfor.confirm.delete" />')" />&nbsp;
-			
-	</jstl:if>
-	<input type="button" name="cancel"
-		value="<spring:message code="applicationfor.cancel" />"
+	<input type="button" name="cancel" value="<spring:message code="applicationfor.cancel" />"
 		onclick="javascript:  window.location.replace('trip/explorer/list-not-apply.do');" />
 	<br />
 </form:form>

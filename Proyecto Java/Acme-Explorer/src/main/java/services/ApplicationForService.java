@@ -55,8 +55,17 @@ public class ApplicationForService {
 		Date moment;
 		Collection<String> comments;
 		Explorer explorerPrincipal;
+		CreditCard creditCard;
 		//Trip trip;
 		//trip = this.tripService.findOne(tripId);
+
+		creditCard = new CreditCard();
+		creditCard.setBrandName("");
+		creditCard.setHolderName("");
+		creditCard.setExpirationMonth("");
+		creditCard.setExpirationYear("");
+		creditCard.setCvv(0);
+		creditCard.setNumber("");
 
 		result = new ApplicationFor();
 		moment = new Date();
@@ -70,6 +79,7 @@ public class ApplicationForService {
 		result.setComments(comments);
 		result.setExplorer(explorerPrincipal);
 		result.setTrip(trip);
+		result.setCreditCard(creditCard);
 		//trip.setApplicationsFor(applicationsFor);
 		//trip.getApplicationsFor().add(result);
 
@@ -110,6 +120,18 @@ public class ApplicationForService {
 		}
 		result = this.applicationForRepository.save(applicationFor);
 		//trip.getApplicationsFor().add(result);
+		return result;
+	}
+
+	public ApplicationFor enter(final ApplicationFor applicationFor) {
+		Assert.notNull(applicationFor);
+		Assert.isTrue(applicationFor.getStatus().equals("DUE"));
+		ApplicationFor result;
+
+		if (this.checkCreditCard(applicationFor.getCreditCard()))
+			applicationFor.setStatus("ACCEPTED");
+
+		result = this.applicationForRepository.save(applicationFor);
 		return result;
 	}
 	public void delete(final ApplicationFor applicationFor) {

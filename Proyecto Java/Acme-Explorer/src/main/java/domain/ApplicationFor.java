@@ -69,7 +69,7 @@ public class ApplicationFor extends DomainEntity {
 		this.reasonWhy = reasonWhy;
 	}
 
-	@Valid
+	//@Valid
 	public CreditCard getCreditCard() {
 		return this.creditCard;
 	}

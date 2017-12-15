@@ -111,6 +111,35 @@ public class ApplicationForExplorerController extends AbstractController {
 		return result;
 	}
 
+	@RequestMapping(value = "/enter", method = RequestMethod.GET)
+	public ModelAndView enter(@RequestParam final int applicationForId) {
+		ModelAndView result;
+		ApplicationFor applicationFor;
+		applicationFor = this.applicationForService.findOne(applicationForId);
+		result = this.createEnterModelAndView(applicationFor);
+		result.addObject("applicationFor", applicationFor);
+		Trip trip = applicationFor.getTrip();
+		result.addObject("trip", trip);
+
+		return result;
+	}
+
+	@RequestMapping(value = "/enter", method = RequestMethod.POST, params = "enter")
+	public ModelAndView enter(@Valid ApplicationFor applicationFor, BindingResult binding) {
+		ModelAndView result;
+		if (binding.hasErrors())
+			result = this.createEditModelAndView(applicationFor);
+		else
+			try {
+				this.applicationForService.enter(applicationFor);
+
+				result = new ModelAndView("redirect:list.do");
+			} catch (final Throwable oops) {
+				result = this.createEditModelAndView(applicationFor, "applicationfor.commit.error");
+			}
+		return result;
+	}
+
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
 	public ModelAndView save(@Valid ApplicationFor applicationFor, BindingResult binding) {
 		ModelAndView result;
@@ -158,6 +187,23 @@ public class ApplicationForExplorerController extends AbstractController {
 		ModelAndView result;
 
 		result = new ModelAndView("applicationFor/cancel");
+		result.addObject("applicationFor", applicationFor);
+		result.addObject("message", message);
+
+		return result;
+	}
+
+	protected ModelAndView createEnterModelAndView(final ApplicationFor applicationFor) {
+		ModelAndView result;
+
+		result = this.createEnterModelAndView(applicationFor, null);
+		return result;
+	}
+
+	private ModelAndView createEnterModelAndView(final ApplicationFor applicationFor, final String message) {
+		ModelAndView result;
+
+		result = new ModelAndView("applicationFor/enter");
 		result.addObject("applicationFor", applicationFor);
 		result.addObject("message", message);
 
