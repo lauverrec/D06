@@ -1,0 +1,9 @@
+1. La trip 5 tiene startDate en 2019/00/21 y su finishDate es 2015/00/04. Esto hay que cambiarlo. Mirar todas las fechas de trips en el populate, para estar seguros.
+
+2. Los meses en las trips cuando se muestran siempre son 00, mirar porqué ocurre eso.
+
+3. No salen los errores cuando intentas crear una credit card a un sponsorship.
+
+4. No poder crear una auditoría si la excursión ha acabado. 
+
+5. No poder crear un sponsorship si la excursión ya ha acabado. 
