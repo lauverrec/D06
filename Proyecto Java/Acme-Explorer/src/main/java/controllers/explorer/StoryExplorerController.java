@@ -26,7 +26,7 @@ import domain.Trip;
 
 @Controller
 @RequestMapping("/story/explorer")
-public class StoryController extends AbstractController {
+public class StoryExplorerController extends AbstractController {
 
 	@Autowired
 	private ExplorerService	explorerService;
@@ -36,7 +36,7 @@ public class StoryController extends AbstractController {
 	private TripService		tripService;
 
 
-	public StoryController() {
+	public StoryExplorerController() {
 		super();
 	}
 
@@ -79,10 +79,14 @@ public class StoryController extends AbstractController {
 	public ModelAndView edit(@RequestParam final int storyId) {
 		ModelAndView result;
 		Story story;
+		Explorer explorer;
 
+		explorer = this.explorerService.findByPrincipal();
 		story = this.storyService.findOne(storyId);
 		Assert.notNull(story);
+		Assert.isTrue(story.getExplorer().equals(explorer), "Cannot commit this operation, because it's illegal");
 		result = this.createEditModelAndView(story);
+		result.addObject("explorer", explorer);
 		return result;
 	}
 

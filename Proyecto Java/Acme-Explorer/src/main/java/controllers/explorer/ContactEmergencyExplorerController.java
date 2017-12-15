@@ -31,7 +31,7 @@ import domain.ContactEmergency;
 
 @Controller
 @RequestMapping("/contactsEmergency/explorer")
-public class ContactEmergencyController extends AbstractController {
+public class ContactEmergencyExplorerController extends AbstractController {
 
 	//service---------------------------------------------------------------------------
 	@Autowired
@@ -41,7 +41,7 @@ public class ContactEmergencyController extends AbstractController {
 
 
 	//constructor-------------------------------------------------------------------------
-	public ContactEmergencyController() {
+	public ContactEmergencyExplorerController() {
 		super();
 	}
 	//Listing---------------------------------------------------------------------
