@@ -82,14 +82,18 @@ public class SurvivalClassManagerController extends AbstractController {
 	public ModelAndView create(@RequestParam final int tripId) {
 		ModelAndView result;
 		SurvivalClass survivalClass;
-
+		Manager manager;
 		Trip trip;
+		Collection<Trip> trips;
 
 		trip = this.tripService.findOne(tripId);
-
+		manager = this.managerService.findByPrincipal();
+		trips = this.survivalClassService.findTrips();
+		Assert.isTrue(trips.contains(trip) && trip.getManager().equals(manager), "Cannot commit this operation, because it's illegal");
 		survivalClass = this.survivalClassService.create(trip);
-		result = this.createEditModelAndView(survivalClass);
 
+		result = this.createEditModelAndView(survivalClass);
+		result.addObject("manager", manager);
 		return result;
 
 	}
