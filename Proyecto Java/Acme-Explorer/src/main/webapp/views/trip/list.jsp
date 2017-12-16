@@ -197,10 +197,12 @@
 <security:authorize access="hasRole('AUDITOR')">
 	<spring:message code="trip.auditRecord.create" var="Create" />
 	<display:column title="${Create}" sortable="true">
+	<jstl:if test="${row.cancelled==false && util.finishDateFuture(row.finishDate)==true}">
 		<spring:url value="auditRecord/auditor/create.do" var="createURL">
 			<spring:param name="tripId" value="${row.id}" />
 		</spring:url>
 		<a href="${createURL}"><spring:message code="auditRecord.create" /></a>
+	</jstl:if>
 	</display:column>
 </security:authorize>
 

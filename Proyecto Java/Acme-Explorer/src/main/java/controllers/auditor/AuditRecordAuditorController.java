@@ -2,6 +2,7 @@
 package controllers.auditor;
 
 import java.util.Collection;
+import java.util.Date;
 
 import javax.validation.Valid;
 
@@ -88,7 +89,13 @@ public class AuditRecordAuditorController extends AbstractController {
 	public ModelAndView create(@RequestParam final int tripId) {
 		ModelAndView result;
 		AuditRecord auditRecord;
+		Date date;
+		Trip trip;
 
+		trip = this.tripService.findOne(tripId);
+		date = new Date();
+
+		Assert.isTrue(trip.getFinishDate().after(date) && trip.isCancelled() == false);
 		auditRecord = this.auditRecordService.create();
 		result = this.createEditModelAndView(auditRecord);
 		result.addObject("requestURI", "auditRecord/auditor/addTrip.do?tripId=" + tripId);

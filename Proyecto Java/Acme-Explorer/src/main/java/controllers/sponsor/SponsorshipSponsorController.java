@@ -74,7 +74,6 @@ public class SponsorshipSponsorController extends AbstractController {
 		trip = this.tripService.findOne(tripId);
 		date = new Date();
 
-		//TENGO QUE VER COMO QUITAR EL ENLACE EN LA VISTA .JSP
 		Assert.isTrue(trip.getFinishDate().after(date) && trip.isCancelled() == false);
 		sponsorship = this.sponsorshipService.create(trip);
 
