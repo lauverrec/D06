@@ -19,6 +19,7 @@
 <%@taglib prefix="security"
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
+<jsp:useBean id="util" class="utilities.Methodutilities" scope="page" />
 
 <!-- Listing trips -->
 
@@ -184,7 +185,7 @@
 	
 	<spring:message code="sponsorship.create" var="Create" />
 	<display:column title="${Create}" sortable="true">
-	<jstl:if test="${row.cancelled==false}">
+	<jstl:if test="${row.cancelled==false && util.finishDateFuture(row.finishDate)==true}">
 		<spring:url value="sponsorship/sponsor/create.do" var="createURL">
 			<spring:param name="tripId" value="${row.id}" />
 		</spring:url>
