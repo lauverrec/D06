@@ -51,6 +51,7 @@
 		<value>/views/legalText/messages</value>
 		<value>/views/administrator/messages</value>
 		<value>/views/configurationSystem/messages</value>
+		<value>/views/tag/messages</value>
 		
 		
 	</util:list>

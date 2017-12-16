@@ -107,4 +107,18 @@ public class LegalTextService {
 		return legalText;
 
 	}
+
+	public LegalText addTrip(final LegalText legalText) {
+
+		Assert.notNull(legalText);
+
+		Assert.notNull(this.administratorService.findByPrincipal());
+
+		LegalText result;
+
+		result = this.legalTextRepository.save(legalText);
+
+		return result;
+	}
+
 }

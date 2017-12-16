@@ -123,6 +123,9 @@
 		<bean class="converters.StringToActorConverter"/>
 		<bean class="converters.ActorToStringConverter"/>
 		
+		<bean class="converters.StringToValueConverter"/>
+		<bean class="converters.ValueToStringConverter"/>
+		
 	</util:list>
 	
 </beans>

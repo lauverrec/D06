@@ -20,11 +20,13 @@ import services.ManagerService;
 import services.RangerService;
 import services.TagService;
 import services.TripService;
+import services.ValueService;
 import controllers.AbstractController;
 import domain.Manager;
 import domain.Ranger;
 import domain.Tag;
 import domain.Trip;
+import domain.Value;
 
 @Controller
 @RequestMapping("/trip/manager_")
@@ -43,6 +45,9 @@ public class TripManagerController extends AbstractController {
 
 	@Autowired
 	private TagService		tagService;
+
+	@Autowired
+	private ValueService	valueService;
 
 
 	// Constructors -----------------------------------------------------------
@@ -200,6 +205,72 @@ public class TripManagerController extends AbstractController {
 		result.addObject("message", message);
 
 		return result;
+	}
+
+	//Tags
+
+	@RequestMapping(value = "/tag/list", method = RequestMethod.GET)
+	public ModelAndView listTag(@RequestParam int tripId) {
+
+		ModelAndView result;
+		Trip trip;
+		Collection<Tag> tags;
+
+		trip = this.tripService.findOne(tripId);
+		tags = trip.getTags();
+
+		result = new ModelAndView("tag/list");
+		result.addObject("tags", tags);
+		result.addObject("requestURI", "trip/manager_/tag/list.do");
+
+		return result;
+
+	}
+
+	//Editing-----------------
+
+	@RequestMapping(value = "/tag/edit", method = RequestMethod.GET)
+	public ModelAndView editTag(@RequestParam int tagId) {
+
+		ModelAndView result;
+		Tag tag;
+		Collection<Value> values;
+
+		tag = this.tagService.findOne(tagId);
+		values = this.valueService.findAll();
+		Assert.notNull(tag);
+
+		result = this.createEditModelAndView(tag);
+		result.addObject("values", values);
+
+		return result;
+
+	}
+	//auxiliary------------------
+
+	protected ModelAndView createEditModelAndView(Tag tag) {
+
+		Assert.notNull(tag);
+		ModelAndView result;
+		result = this.createEditModelAndView(tag, null);
+		return result;
+	}
+
+	protected ModelAndView createEditModelAndView(Tag tag, String messageCode) {
+		assert tag != null;
+
+		ModelAndView result;
+		Collection<Tag> tags;
+
+		tags = this.tagService.findAll();
+
+		result = new ModelAndView("tag/edit");
+		result.addObject("tag", tag);
+		result.addObject("tags", tags);
+		result.addObject("message", messageCode);
+
+		return result;
+
 	}
 
 }

@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import services.StageService;
 import services.TripService;
@@ -82,7 +81,7 @@ public class StageManagerController extends AbstractController {
 	//Saving---------------------
 
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
-	public ModelAndView save(@Valid Stage stage, BindingResult binding, RedirectAttributes redir) {
+	public ModelAndView save(@Valid Stage stage, BindingResult binding) {
 		ModelAndView result;
 
 		if (binding.hasErrors())

@@ -104,7 +104,7 @@
 	<form:select id="tags" path="tags" multiple="multiple" >		
 		<form:options items="${tags}" itemValue="id" itemLabel="name" />		
 	</form:select>
-	<form:errors cssClass="error" path="ranger" />
+	<form:errors cssClass="error" path="tags" />
 	<br /> 
 	<br /> 
 	
