@@ -84,7 +84,7 @@ public class CategoryService {
 
 	public void delete(final Category category) {
 		Administrator admin;
-		Category father;
+		//Category father;
 
 		admin = this.administratorService.findByPrincipal();
 		Assert.notNull(admin);
@@ -95,10 +95,6 @@ public class CategoryService {
 		Assert.isTrue(!(this.configurationSystemService.defaultCategories().contains(category)));
 
 		Assert.isTrue(category.getSubCategories().isEmpty());
-
-		father = category.getFatherCategory();
-
-		father.getSubCategories().remove(category);
 
 		this.categoryRepository.delete(category);
 	}

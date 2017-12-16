@@ -56,7 +56,7 @@ public class Category extends DomainEntity {
 	}
 
 	@Valid
-	@ManyToOne(optional = true, cascade = CascadeType.REMOVE)
+	@ManyToOne(optional = true)
 	public Category getFatherCategory() {
 		return this.fatherCategory;
 	}
