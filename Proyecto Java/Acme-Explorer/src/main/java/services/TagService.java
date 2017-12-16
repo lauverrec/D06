@@ -1,6 +1,7 @@
 
 package services;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,21 +66,26 @@ public class TagService {
 	}
 
 	public void save10(final Tag tag) {
-		Collection<Tag> tagsWithTrip;
 		Value value;
-		tagsWithTrip = this.tagRepository.findTagWithTrip();
-
-		if (tag.getId() != 0) {
-			Assert.isTrue(!tagsWithTrip.contains(tag));
+		//Primera vez que la creo
+		if (tag.getId() == 0) {
 			this.administratorService.checkPrincipal();
+			for (int i = 1; i <= 10; i++) {
+				value = this.valueService.create(i);
+				tag.setValue(value);
+				this.tagRepository.save(tag);
+			}
 		}
+	}
 
-		for (int i = 1; i <= 10; i++) {
-			value = this.valueService.create(i);
-			tag.setValue(value);
-			this.tagRepository.save(tag);
+	public void save10(final Tag tag, String name) {
+		Collection<Tag> tagses;
+		tagses = new ArrayList<Tag>(this.tagRepository.findAllTagByName(name));
+
+		for (Tag t : tagses) {
+			t.setName(tag.getName());
+			this.tagRepository.save(t);
 		}
-
 	}
 
 	public Tag save(final Tag tag) {
@@ -111,4 +117,15 @@ public class TagService {
 		this.tagRepository.delete(tag);
 	}
 
+	public Collection<Tag> findAllTagUnique() {
+		Collection<Tag> result;
+		result = new ArrayList<>(this.tagRepository.findAllTagUnique());
+		return result;
+	}
+
+	public Collection<Tag> findAllTagByName(String name) {
+		Collection<Tag> result;
+		result = new ArrayList<>(this.tagRepository.findAllTagByName(name));
+		return result;
+	}
 }

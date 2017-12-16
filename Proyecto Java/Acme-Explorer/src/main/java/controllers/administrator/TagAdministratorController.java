@@ -27,6 +27,10 @@ public class TagAdministratorController extends AbstractController {
 	@Autowired
 	private TagService	tagService;
 
+	public String		oldName;
+
+
+	//public Collection<Tag>	tagss	= new ArrayList<Tag>();
 
 	//Listing
 
@@ -36,7 +40,7 @@ public class TagAdministratorController extends AbstractController {
 		ModelAndView result;
 		Collection<Tag> tags;
 
-		tags = this.tagService.findAll();
+		tags = this.tagService.findAllTagUnique();
 
 		result = new ModelAndView("tag/list");
 		result.addObject("tags", tags);
@@ -65,13 +69,13 @@ public class TagAdministratorController extends AbstractController {
 
 	@RequestMapping(value = "/edit", method = RequestMethod.GET)
 	public ModelAndView edit(@RequestParam int tagId) {
-
 		ModelAndView result;
 		Tag tag;
 
 		tag = this.tagService.findOne(tagId);
 		Assert.notNull(tag);
 
+		this.oldName = this.tagService.findOne(tagId).getName();
 		result = this.createEditModelAndView(tag);
 
 		return result;
@@ -82,15 +86,20 @@ public class TagAdministratorController extends AbstractController {
 
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
 	public ModelAndView save(@Valid Tag tag, BindingResult binding) {
-
 		ModelAndView result;
 
 		if (binding.hasErrors())
 			result = this.createEditModelAndView(tag);
 		else
 			try {
-				this.tagService.save10(tag);
-				result = new ModelAndView("redirect:list.do");
+				if (tag.getId() > 0) {
+					//	names = this.tagService.obtainName(this.nameB);
+					this.tagService.save10(tag, this.oldName);
+					result = new ModelAndView("redirect:list.do");
+				} else {
+					this.tagService.save10(tag);
+					result = new ModelAndView("redirect:list.do");
+				}
 			} catch (Throwable oops) {
 				result = this.createEditModelAndView(tag, "tag.commit.error");
 			}

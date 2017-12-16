@@ -43,7 +43,7 @@
 	</security:authorize> --%>
 	
 	<!-- Attributes -->
-	
+ 
 	<spring:message code="tag.name" var="nameHeader" />
 	<display:column property="name" title="${nameHeader}" sortable="true" />
 
