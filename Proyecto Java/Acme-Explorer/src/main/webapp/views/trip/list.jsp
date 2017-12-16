@@ -171,7 +171,7 @@
 	<spring:message code="trip.publicationDate" var="publicationDate" />	
 	<spring:message code="trip.createStage" var="CreateStages" />
 		<display:column title="${CreateStages}" sortable="true">
-			<jstl:if test="${row.publicationDate==null && row.manager==manager}">
+			<jstl:if test="${row.publicationDate>date && row.manager==manager}">
 				<spring:url value="stage/manager/create.do" var="editURL">
 					<spring:param name="tripId" value="${row.id}" />
 				</spring:url>
