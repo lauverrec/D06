@@ -70,10 +70,12 @@ public class MessageAdministratorController extends AbstractController {
 
 		ModelAndView result;
 		Message message;
+		Actor actorPrincipal = this.actorService.findPrincipal();
 
 		message = this.messageService.findOne(messageId);
 		result = new ModelAndView("message/display");
 		result.addObject("messageDisplay", message);
+		result.addObject("actorPrincipal", actorPrincipal);
 
 		return result;
 	}
@@ -187,6 +189,27 @@ public class MessageAdministratorController extends AbstractController {
 		return result;
 	}
 
+	@RequestMapping(value = "/reply", method = RequestMethod.GET)
+	public ModelAndView reply(@RequestParam int messageId) {
+
+		ModelAndView result;
+
+		Message message, aux;
+		aux = this.messageService.findOne(messageId);
+		message = this.messageService.create();
+		Assert.notNull(aux);
+
+		message.setRecipient(aux.getSender());
+		message.setSubject("Reply to:\"" + aux.getSubject() + "\"");
+		message.setBody("\n-----------------\nSender: " + aux.getSender().getName() + "\n Recipient: " + aux.getRecipient().getName() + "\n Moment: " + aux.getMoment() + "\n Subject: " + aux.getSubject() + "\n Body: " + aux.getBody() + "\"\"");
+
+		result = this.createReplyModelAndView(message);
+		result.addObject("requestURI", "message/administrator/send.do");
+
+		return result;
+
+	}
+
 	// Ancillary methods ------------------------------------------------------
 
 	protected ModelAndView createNewModelAndView(Message m) {
@@ -215,6 +238,30 @@ public class MessageAdministratorController extends AbstractController {
 
 		result.addObject("message", message);
 		result.addObject("priorities", priorities);
+		result.addObject("m", m);
+		return result;
+	}
+
+	protected ModelAndView createReplyModelAndView(Message m) {
+		ModelAndView result;
+		result = this.createReplyModelAndView(m, null);
+		return result;
+	}
+
+	protected ModelAndView createReplyModelAndView(Message m, String message) {
+		ModelAndView result;
+		String low = "LOW";
+		String neutral = "NEUTRAL";
+		String high = "HIGH";
+		Collection<String> priorities = new ArrayList<String>();
+		priorities.add(low);
+		priorities.add(neutral);
+		priorities.add(high);
+
+		result = new ModelAndView("message/send");
+
+		result.addObject("priorities", priorities);
+		result.addObject("message", message);
 		result.addObject("m", m);
 		return result;
 	}

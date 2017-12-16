@@ -19,7 +19,7 @@
 			<form:hidden path="messageFolder" />
 			<form:hidden path="moment" />
 
-
+			
 			<jstl:if test="${m.recipient == null}">
 
 				<acme:select code="message.sendTo" path="recipient"

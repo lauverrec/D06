@@ -70,10 +70,12 @@ public class MessageManagerController extends AbstractController {
 
 		ModelAndView result;
 		Message message;
+		Actor actorPrincipal = this.actorService.findPrincipal();
 
 		message = this.messageService.findOne(messageId);
 		result = new ModelAndView("message/display");
 		result.addObject("messageDisplay", message);
+		result.addObject("actorPrincipal", actorPrincipal);
 
 		return result;
 	}

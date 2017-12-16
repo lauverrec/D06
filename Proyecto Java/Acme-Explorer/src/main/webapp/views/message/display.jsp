@@ -65,9 +65,106 @@
 		<p>
 			<spring:message code="message.recipient"></spring:message>
 			<jstl:out value=":" />
-			<jstl:out value="${row.sender.surname }, ${row.sender.name}"></jstl:out>
+			<jstl:out value="${row.recipient.surname }, ${row.recipient.name}"></jstl:out>
 		</p>
 
 
 	</display:column>
+
+
 </display:table>
+
+<jstl:if test="${row.sender!=actorPrincipal }">
+<security:authorize access="hasRole('ADMINISTRATOR')">
+
+
+
+	<div>
+		<spring:url value="message/administrator/reply.do"
+			var="replyAdministratorURL">
+			<spring:param name="messageId" value="${row.id}" />
+		</spring:url>
+		<spring:message code="message.reply.link" var="replyLink"></spring:message>
+		<input type="button"
+			onclick="location.href='${replyAdministratorURL}';"
+			value="${replyLink }">
+			
+	</div>
+	
+</security:authorize>
+
+<security:authorize access="hasRole('RANGER')">
+
+	<div>
+		<spring:url value="message/ranger/reply.do"
+			var="replyRangerURL">
+			<spring:param name="messageId" value="${row.id}" />
+		</spring:url>
+		<spring:message code="message.reply.link" var="replyLink"></spring:message>
+		<input type="button"
+			onclick="location.href='${replyRangerURL}';"
+			value="${replyLink }">
+			
+	</div>
+</security:authorize>
+
+<security:authorize access="hasRole('EXPLORER')">
+
+	<div>
+		<spring:url value="message/explorer/reply.do"
+			var="replyExplorerURL">
+			<spring:param name="messageId" value="${row.id}" />
+		</spring:url>
+		<spring:message code="message.reply.link" var="replyLink"></spring:message>
+		<input type="button"
+			onclick="location.href='${replyExplorerURL}';"
+			value="${replyLink }">
+			
+	</div>
+</security:authorize>
+
+<security:authorize access="hasRole('MANAGER')">
+
+	<div>
+		<spring:url value="message/manager/reply.do"
+			var="replyManagerURL">
+			<spring:param name="messageId" value="${row.id}" />
+		</spring:url>
+		<spring:message code="message.reply.link" var="replyLink"></spring:message>
+		<input type="button"
+			onclick="location.href='${replyManagerURL}';"
+			value="${replyLink }">
+			
+	</div>
+</security:authorize>
+
+<security:authorize access="hasRole('SPONSOR')">
+
+	<div>
+		<spring:url value="message/sponsor/reply.do"
+			var="replySponsorURL">
+			<spring:param name="messageId" value="${row.id}" />
+		</spring:url>
+		<spring:message code="message.reply.link" var="replyLink"></spring:message>
+		<input type="button"
+			onclick="location.href='${replySponsorURL}';"
+			value="${replyLink }">
+			
+	</div>
+</security:authorize>
+
+<security:authorize access="hasRole('AUDITOR')">
+
+	<div>
+		<spring:url value="message/auditor/reply.do"
+			var="replyAuditorrURL">
+			<spring:param name="messageId" value="${row.id}" />
+		</spring:url>
+		<spring:message code="message.reply.link" var="replyLink"></spring:message>
+		<input type="button"
+			onclick="location.href='${replyAuditorURL}';"
+			value="${replyLink }">
+			
+	</div>
+</security:authorize>
+</jstl:if>
