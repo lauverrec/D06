@@ -13,6 +13,9 @@ import org.springframework.util.Assert;
 
 import repositories.MessageRepository;
 import domain.Actor;
+import domain.ApplicationFor;
+import domain.Explorer;
+import domain.Manager;
 import domain.Message;
 import domain.MessageFolder;
 
@@ -215,6 +218,272 @@ public class MessageService {
 
 		messages = this.messageRepository.messagesOfFolder(messageFolderId);
 		return messages;
+	}
+
+	public void sendMessageToActorOfApplicationFor(ApplicationFor applicationFor) {
+
+		switch (applicationFor.getStatus()) {
+		case "PENDING":
+			this.messageForNotificationToStatusPending(applicationFor);
+			break;
+		case "REJECTED":
+			this.messageForNotificationToStatusRejected(applicationFor);
+			break;
+		case "DUE":
+			this.messageForNotificationToStatusDue(applicationFor);
+			break;
+		case "ACCEPTED":
+			this.messageForNotificationToStatusAccepted(applicationFor);
+			break;
+		case "CANCELLED":
+			this.messageForNotificationToStatusCancelled(applicationFor);
+			break;
+		}
+
+	}
+	public void messageForNotificationToStatusPending(ApplicationFor applicationFor) {
+
+		Message messageForExplorer;
+		Message messageForManager;
+		Message messageBdOfExplorer;
+		Message messageBdOfManager;
+
+		Explorer explorerOfApplicationFor;
+		Manager managerOfApplicationFor;
+
+		explorerOfApplicationFor = applicationFor.getExplorer();
+		managerOfApplicationFor = applicationFor.getManager();
+
+		MessageFolder notificationBoxOfExplorer;
+		MessageFolder notificationBoxOfManager;
+
+		notificationBoxOfExplorer = this.messageFolderService.returnDefaultFolder(explorerOfApplicationFor, "NotificationBox");
+		notificationBoxOfManager = this.messageFolderService.returnDefaultFolder(managerOfApplicationFor, "NotificationBox");
+		messageForExplorer = new Message();
+		messageForManager = new Message();
+
+		messageForExplorer.setSender(this.actorService.findPrincipal());
+		messageForExplorer.setSubject("Status changed");
+		messageForExplorer.setBody("The status for application for " + applicationFor.getId() + " is change to pending status");
+		messageForExplorer.setPriority("HIGH");
+		messageForExplorer.setMessageFolder(notificationBoxOfExplorer);
+		Date current;
+		current = new Date(System.currentTimeMillis() - 1000);
+		messageForExplorer.setMoment(current);
+
+		messageBdOfExplorer = this.messageRepository.save(messageForExplorer);
+
+		messageForManager.setSender(this.actorService.findPrincipal());
+		messageForManager.setSubject("Status changed");
+		messageForManager.setBody("The status for application for " + applicationFor.getId() + " is change to pending status");
+		messageForManager.setPriority("HIGH");
+		messageForManager.setMessageFolder(notificationBoxOfManager);
+		Date current2;
+		current2 = new Date(System.currentTimeMillis() - 1000);
+		messageForExplorer.setMoment(current2);
+
+		messageBdOfExplorer = this.messageRepository.save(messageForExplorer);
+
+		messageBdOfManager = this.messageRepository.save(messageForManager);
+
+		Assert.notNull(messageBdOfExplorer);
+		Assert.notNull(messageBdOfManager);
+	}
+
+	public void messageForNotificationToStatusAccepted(ApplicationFor applicationFor) {
+
+		Message messageForExplorer;
+		Message messageForManager;
+		Message messageBdOfExplorer;
+		Message messageBdOfManager;
+
+		Explorer explorerOfApplicationFor;
+		Manager managerOfApplicationFor;
+
+		explorerOfApplicationFor = applicationFor.getExplorer();
+		managerOfApplicationFor = applicationFor.getManager();
+
+		MessageFolder notificationBoxOfExplorer;
+		MessageFolder notificationBoxOfManager;
+
+		notificationBoxOfExplorer = this.messageFolderService.returnDefaultFolder(explorerOfApplicationFor, "NotificationBox");
+		notificationBoxOfManager = this.messageFolderService.returnDefaultFolder(managerOfApplicationFor, "NotificationBox");
+		messageForExplorer = new Message();
+		messageForManager = new Message();
+
+		messageForExplorer.setSender(this.actorService.findPrincipal());
+		messageForExplorer.setSubject("Status changed");
+		messageForExplorer.setBody("The status for application for " + applicationFor.getId() + " is change to accepted status");
+		messageForExplorer.setPriority("HIGH");
+		messageForExplorer.setMessageFolder(notificationBoxOfExplorer);
+		Date current;
+		current = new Date(System.currentTimeMillis() - 1000);
+		messageForExplorer.setMoment(current);
+
+		messageBdOfExplorer = this.messageRepository.save(messageForExplorer);
+
+		messageForManager.setSender(this.actorService.findPrincipal());
+		messageForManager.setSubject("Status changed");
+		messageForManager.setBody("The status for application for " + applicationFor.getId() + " is change to accepted status");
+		messageForManager.setPriority("HIGH");
+		messageForManager.setMessageFolder(notificationBoxOfManager);
+		Date current2;
+		current2 = new Date(System.currentTimeMillis() - 1000);
+		messageForExplorer.setMoment(current2);
+
+		messageBdOfExplorer = this.messageRepository.save(messageForExplorer);
+
+		messageBdOfManager = this.messageRepository.save(messageForManager);
+
+		Assert.notNull(messageBdOfExplorer);
+		Assert.notNull(messageBdOfManager);
+	}
+
+	public void messageForNotificationToStatusRejected(ApplicationFor applicationFor) {
+
+		Message messageForExplorer;
+		Message messageForManager;
+		Message messageBdOfExplorer;
+		Message messageBdOfManager;
+
+		Explorer explorerOfApplicationFor;
+		Manager managerOfApplicationFor;
+
+		explorerOfApplicationFor = applicationFor.getExplorer();
+		managerOfApplicationFor = applicationFor.getManager();
+
+		MessageFolder notificationBoxOfExplorer;
+		MessageFolder notificationBoxOfManager;
+
+		notificationBoxOfExplorer = this.messageFolderService.returnDefaultFolder(explorerOfApplicationFor, "NotificationBox");
+		notificationBoxOfManager = this.messageFolderService.returnDefaultFolder(managerOfApplicationFor, "NotificationBox");
+		messageForExplorer = new Message();
+		messageForManager = new Message();
+
+		messageForExplorer.setSender(this.actorService.findPrincipal());
+		messageForExplorer.setSubject("Status changed");
+		messageForExplorer.setBody("The status for application for " + applicationFor.getId() + " is change to rejected status");
+		messageForExplorer.setPriority("HIGH");
+		messageForExplorer.setMessageFolder(notificationBoxOfExplorer);
+		Date current;
+		current = new Date(System.currentTimeMillis() - 1000);
+		messageForExplorer.setMoment(current);
+
+		messageBdOfExplorer = this.messageRepository.save(messageForExplorer);
+
+		messageForManager.setSender(this.actorService.findPrincipal());
+		messageForManager.setSubject("Status changed");
+		messageForManager.setBody("The status for application for " + applicationFor.getId() + " is change to rejected status");
+		messageForManager.setPriority("HIGH");
+		messageForManager.setMessageFolder(notificationBoxOfManager);
+		Date current2;
+		current2 = new Date(System.currentTimeMillis() - 1000);
+		messageForExplorer.setMoment(current2);
+
+		messageBdOfExplorer = this.messageRepository.save(messageForExplorer);
+
+		messageBdOfManager = this.messageRepository.save(messageForManager);
+
+		Assert.notNull(messageBdOfExplorer);
+		Assert.notNull(messageBdOfManager);
+	}
+
+	public void messageForNotificationToStatusDue(ApplicationFor applicationFor) {
+
+		Message messageForExplorer;
+		Message messageForManager;
+		Message messageBdOfExplorer;
+		Message messageBdOfManager;
+
+		Explorer explorerOfApplicationFor;
+		Manager managerOfApplicationFor;
+
+		explorerOfApplicationFor = applicationFor.getExplorer();
+		managerOfApplicationFor = applicationFor.getManager();
+
+		MessageFolder notificationBoxOfExplorer;
+		MessageFolder notificationBoxOfManager;
+
+		notificationBoxOfExplorer = this.messageFolderService.returnDefaultFolder(explorerOfApplicationFor, "NotificationBox");
+		notificationBoxOfManager = this.messageFolderService.returnDefaultFolder(managerOfApplicationFor, "NotificationBox");
+		messageForExplorer = new Message();
+		messageForManager = new Message();
+
+		messageForExplorer.setSender(this.actorService.findPrincipal());
+		messageForExplorer.setSubject("Status changed");
+		messageForExplorer.setBody("The status for application for " + applicationFor.getId() + " is change to due status");
+		messageForExplorer.setPriority("HIGH");
+		messageForExplorer.setMessageFolder(notificationBoxOfExplorer);
+		Date current;
+		current = new Date(System.currentTimeMillis() - 1000);
+		messageForExplorer.setMoment(current);
+
+		messageBdOfExplorer = this.messageRepository.save(messageForExplorer);
+
+		messageForManager.setSender(this.actorService.findPrincipal());
+		messageForManager.setSubject("Status changed");
+		messageForManager.setBody("The status for application for " + applicationFor.getId() + " is change to due status");
+		messageForManager.setPriority("HIGH");
+		messageForManager.setMessageFolder(notificationBoxOfManager);
+		Date current2;
+		current2 = new Date(System.currentTimeMillis() - 1000);
+		messageForExplorer.setMoment(current2);
+
+		messageBdOfExplorer = this.messageRepository.save(messageForExplorer);
+
+		messageBdOfManager = this.messageRepository.save(messageForManager);
+
+		Assert.notNull(messageBdOfExplorer);
+		Assert.notNull(messageBdOfManager);
+	}
+
+	public void messageForNotificationToStatusCancelled(ApplicationFor applicationFor) {
+
+		Message messageForExplorer;
+		Message messageForManager;
+		Message messageBdOfExplorer;
+		Message messageBdOfManager;
+
+		Explorer explorerOfApplicationFor;
+		Manager managerOfApplicationFor;
+
+		explorerOfApplicationFor = applicationFor.getExplorer();
+		managerOfApplicationFor = applicationFor.getManager();
+
+		MessageFolder notificationBoxOfExplorer;
+		MessageFolder notificationBoxOfManager;
+
+		notificationBoxOfExplorer = this.messageFolderService.returnDefaultFolder(explorerOfApplicationFor, "NotificationBox");
+		notificationBoxOfManager = this.messageFolderService.returnDefaultFolder(managerOfApplicationFor, "NotificationBox");
+		messageForExplorer = new Message();
+		messageForManager = new Message();
+
+		messageForExplorer.setSender(this.actorService.findPrincipal());
+		messageForExplorer.setSubject("Status changed");
+		messageForExplorer.setBody("The status for application for " + applicationFor.getId() + " is change to cancelled status");
+		messageForExplorer.setPriority("HIGH");
+		messageForExplorer.setMessageFolder(notificationBoxOfExplorer);
+		Date current;
+		current = new Date(System.currentTimeMillis() - 1000);
+		messageForExplorer.setMoment(current);
+
+		messageBdOfExplorer = this.messageRepository.save(messageForExplorer);
+
+		messageForManager.setSender(this.actorService.findPrincipal());
+		messageForManager.setSubject("Status changed");
+		messageForManager.setBody("The status for application for " + applicationFor.getId() + " is change to cancelled status");
+		messageForManager.setPriority("HIGH");
+		messageForManager.setMessageFolder(notificationBoxOfManager);
+		Date current2;
+		current2 = new Date(System.currentTimeMillis() - 1000);
+		messageForExplorer.setMoment(current2);
+
+		messageBdOfExplorer = this.messageRepository.save(messageForExplorer);
+
+		messageBdOfManager = this.messageRepository.save(messageForManager);
+
+		Assert.notNull(messageBdOfExplorer);
+		Assert.notNull(messageBdOfManager);
 	}
 
 }
