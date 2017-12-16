@@ -2403,50 +2403,28 @@
 
 	<bean id="tag1" class="domain.Tag">
 		<property name="name" value="country" />
-		<property name="values">
-			<list>
-				<ref bean="value1"></ref>
-			</list>
-		</property>
+		<property name="value"><null /></property>	
 	</bean>
 
 	<bean id="tag2" class="domain.Tag">
 		<property name="name" value="expertise" />
-		<property name="values">
-			<list>
-				<ref bean="value2"></ref>
-			</list>
-		</property>
+		<property name="value"><null /></property>	
 	</bean>
 
 	<bean id="tag3" class="domain.Tag">
 		<property name="name" value="dangerousness" />
-		<property name="values">
-			<list>
-				<ref bean="value3"/>
-			</list>
-		</property>
-		
+		<property name="value"><null /></property>	
 	</bean>
 
 	<bean id="tag4" class="domain.Tag">
 		<property name="name" value="name 4" />
-		<property name="values">
-			<list>
-				<ref bean="value4"></ref>
-			</list>
-		</property>
+		<property name="value"><null /></property>	
 	</bean>
 
 
 	<bean id="tag5" class="domain.Tag">
 		<property name="name" value="name 5" />
-		<property name="values">
-			<list>
-				<ref bean="value5"></ref>
-				<ref bean="value6"/>
-			</list>
-		</property>
+		<property name="value"><null /></property>	
 	</bean>
 
 	<!-- STAGEs -->

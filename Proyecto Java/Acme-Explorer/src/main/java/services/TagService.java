@@ -11,6 +11,7 @@ import org.springframework.util.Assert;
 import repositories.TagRepository;
 import domain.Tag;
 import domain.Trip;
+import domain.Value;
 
 @Service
 @Transactional
@@ -25,6 +26,8 @@ public class TagService {
 	private AdministratorService	administratorService;
 	@Autowired
 	private TripService				tripService;
+	@Autowired
+	private ValueService			valueService;
 
 
 	// Constructors------------------------------------------------------------
@@ -57,6 +60,24 @@ public class TagService {
 		Assert.notNull(result);
 
 		return result;
+	}
+
+	public void save10(final Tag tag) {
+		Collection<Tag> tagsWithTrip;
+		Value value;
+		tagsWithTrip = this.tagRepository.findTagWithTrip();
+
+		if (tag.getId() != 0) {
+			Assert.isTrue(!tagsWithTrip.contains(tag));
+			this.administratorService.checkPrincipal();
+		}
+
+		for (int i = 1; i <= 10; i++) {
+			value = this.valueService.create(i);
+			tag.setValue(value);
+			this.tagRepository.save(tag);
+		}
+
 	}
 
 	public Tag save(final Tag tag) {

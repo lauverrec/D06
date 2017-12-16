@@ -24,7 +24,7 @@
 
 	<form:hidden path="id" />
 	<form:hidden path="version" /> 
-	<form:hidden path="values"/>
+	<form:hidden path="value"/>
 
 	
 	<security:authorize access="hasRole('ADMINISTRATOR')">
@@ -37,7 +37,7 @@
 	<br/>
 	</security:authorize>
 	
-	<security:authorize access="hasRole('MANAGER')">
+<%-- 	<security:authorize access="hasRole('MANAGER')">
 	<h2><spring:message code="tag.value" /></h2>
 	<form:label path="values">
 		<spring:message code="tag.value" />:
@@ -48,7 +48,7 @@
 	<form:errors cssClass="error" path="values" />
 	<br /> 
 	<br />
-	</security:authorize>
+	</security:authorize> --%>
 		
 	<!-- botones --> 
 	

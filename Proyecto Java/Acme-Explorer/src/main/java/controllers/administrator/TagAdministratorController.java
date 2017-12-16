@@ -50,11 +50,11 @@ public class TagAdministratorController extends AbstractController {
 
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
 	public ModelAndView create() {
-
 		ModelAndView result;
 		Tag tag;
 
 		tag = this.tagService.create();
+
 		result = this.createEditModelAndView(tag);
 
 		return result;
@@ -89,12 +89,11 @@ public class TagAdministratorController extends AbstractController {
 			result = this.createEditModelAndView(tag);
 		else
 			try {
-				this.tagService.save(tag);
+				this.tagService.save10(tag);
 				result = new ModelAndView("redirect:list.do");
 			} catch (Throwable oops) {
 				result = this.createEditModelAndView(tag, "tag.commit.error");
 			}
-
 		return result;
 
 	}

@@ -1,6 +1,7 @@
 
 package services;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,13 @@ public class ValueService {
 		Value result;
 		result = new Value();
 
+		return result;
+	}
+
+	public Value create(Integer value) {
+		Value result;
+		result = new Value();
+		result.setValue(value);
 		return result;
 	}
 
@@ -72,6 +80,13 @@ public class ValueService {
 
 		this.valueRepository.delete(value);
 
+	}
+
+	public Collection<Value> defaultValues() {
+		Collection<Value> values;
+		values = new ArrayList<Value>();
+
+		return values;
 	}
 
 }
