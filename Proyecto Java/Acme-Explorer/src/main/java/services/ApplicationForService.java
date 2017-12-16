@@ -113,9 +113,6 @@ public class ApplicationForService {
 
 		ApplicationFor result;
 
-		if (applicationFor.getStatus().equals("DUE") && this.checkCreditCard(applicationFor.getCreditCard()))
-			applicationFor.setStatus("ACCEPTED");
-
 		if (applicationFor.getId() == 0) {
 			//Solo se cambia el moment la primera vez que se crea, si se actualiza no se cambia su moment
 			moment = new Date(System.currentTimeMillis() - 1000);
