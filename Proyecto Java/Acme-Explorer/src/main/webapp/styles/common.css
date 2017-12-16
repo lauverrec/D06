@@ -43,3 +43,6 @@
 .white{
 	background-color:white;
 }
+.ocul{
+	visibility: hidden;
+}
