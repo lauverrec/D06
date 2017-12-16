@@ -475,6 +475,14 @@ public class TripService {
 		return trips;
 	}
 
+	public Trip findTripsByNote(Note note) {
+		Trip trip;
+
+		trip = this.tripRepository.findTripByNote(note.getId());
+
+		return trip;
+
+	}
 	public double setPrice(final Collection<Stage> stages) {
 
 		double priceTrip;

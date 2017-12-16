@@ -102,6 +102,14 @@ public class ApplicationForExplorerController extends AbstractController {
 	public ModelAndView cancel(@RequestParam final int applicationForId) {
 		ModelAndView result;
 		ApplicationFor applicationFor;
+
+		Explorer explorer;
+
+		explorer = this.explorerService.findByPrincipal();
+
+		applicationFor = this.applicationForService.findOne(applicationForId);
+
+		Assert.isTrue(applicationFor.getExplorer().equals(explorer), "Cannot commit this opetation, because it's illegal");
 		applicationFor = this.applicationForService.findOne(applicationForId);
 		result = this.createCancelModelAndView(applicationFor);
 		result.addObject("applicationFor", applicationFor);

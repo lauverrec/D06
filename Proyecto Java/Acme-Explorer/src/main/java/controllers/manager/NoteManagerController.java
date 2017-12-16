@@ -14,9 +14,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import services.ManagerService;
 import services.NoteService;
+import services.TripService;
 import controllers.AbstractController;
+import domain.Manager;
 import domain.Note;
+import domain.Trip;
 
 @Controller
 @RequestMapping("/note/manager")
@@ -25,7 +29,13 @@ public class NoteManagerController extends AbstractController {
 	//Services--------------------------------------------
 
 	@Autowired
-	private NoteService	noteService;
+	private NoteService		noteService;
+
+	@Autowired
+	private ManagerService	managerService;
+
+	@Autowired
+	private TripService		tripService;
 
 
 	//Listing----------
@@ -66,10 +76,14 @@ public class NoteManagerController extends AbstractController {
 
 		ModelAndView result;
 		Note note;
+		Manager manager;
+		Trip trip;
 
 		note = this.noteService.findOne(noteId);
+		trip = this.tripService.findTripsByNote(note);
+		manager = this.managerService.findByPrincipal();
 		Assert.notNull(note);
-
+		Assert.isTrue(trip.getNotes().contains(note) && trip.getManager().equals(manager), "Cannot commit this operation, because it's illegal");
 		result = this.createEditModelAndView(note);
 
 		return result;

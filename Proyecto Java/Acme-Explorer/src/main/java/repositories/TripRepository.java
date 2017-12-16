@@ -66,4 +66,7 @@ public interface TripRepository extends JpaRepository<Trip, Integer> {
 	@Query("select t from Trip t join t.applicationsFor a where a.status='ACCEPTED' and t.finishDate<CURRENT_TIMESTAMP and a.explorer.id=?1 and t.cancelled=false")
 	Collection<Trip> findTripsForStory(int explorerId);
 
+	@Query("select t from Trip t join t.notes n where n.id=?1")
+	Trip findTripByNote(int noteId);
+
 }

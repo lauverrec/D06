@@ -15,6 +15,6 @@ public interface ApplicationForRepository extends JpaRepository<ApplicationFor, 
 	@Query("select a from Manager m join m.applicationsFor a where m.id = ?1")
 	Collection<ApplicationFor> findAllByManagerId(int managerId);
 
-	@Query("select c from ApplicationFor c where c.explorer=?1")
+	@Query("select c from ApplicationFor c where c.explorer.id=?1")
 	Collection<ApplicationFor> applicationsForOfActor(int explorerId);
 }
