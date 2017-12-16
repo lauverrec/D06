@@ -38,7 +38,12 @@
 
 		<display:column>
 			<a href="message/sponsor/changefolder.do?messageId=${row.id}"><spring:message
-					code="msg.changefolder.link" /></a>
+					code="message.changefolder.link" /></a>
+		</display:column>
+
+		<display:column>
+			<a href="message/sponsor/delete.do?messageId=${row.id}"><spring:message
+					code="message.delete.link" /></a>
 		</display:column>
 
 
@@ -58,16 +63,12 @@
 		</display:column>
 		<display:column>
 			<a href="message/administrator/changefolder.do?messageId=${row.id}"><spring:message
-					code="msg.changefolder.link" /></a>
+					code="message.changefolder.link" /></a>
 		</display:column>
 		<display:column>
 			<a href="message/administrator/delete.do?messageId=${row.id}"><spring:message
 					code="message.delete.link" /></a>
 		</display:column>
-
-
-
-
 
 	</security:authorize>
 
@@ -85,9 +86,13 @@
 
 		<display:column>
 			<a href="message/ranger/changefolder.do?messageId=${row.id}"><spring:message
-					code="msg.changefolder.link" /></a>
+					code="message.changefolder.link" /></a>
 		</display:column>
 
+		<display:column>
+			<a href="message/ranger/delete.do?messageId=${row.id}"><spring:message
+					code="message.delete.link" /></a>
+		</display:column>
 
 	</security:authorize>
 
@@ -106,9 +111,13 @@
 
 		<display:column>
 			<a href="message/explorer/changefolder.do?messageId=${row.id}"><spring:message
-					code="msg.changefolder.link" /></a>
+					code="message.changefolder.link" /></a>
 		</display:column>
 
+		<display:column>
+			<a href="message/explorer/delete.do?messageId=${row.id}"><spring:message
+					code="message.delete.link" /></a>
+		</display:column>
 
 
 	</security:authorize>
@@ -128,9 +137,13 @@
 
 		<display:column>
 			<a href="message/manager/changefolder.do?messageId=${row.id}"><spring:message
-					code="msg.changefolder.link" /></a>
+					code="message.changefolder.link" /></a>
 		</display:column>
 
+		<display:column>
+			<a href="message/manager/delete.do?messageId=${row.id}"><spring:message
+					code="message.delete.link" /></a>
+		</display:column>
 
 
 	</security:authorize>
@@ -149,10 +162,14 @@
 
 		<display:column>
 			<a href="message/auditor/changefolder.do?messageId=${row.id}"><spring:message
-					code="msg.changefolder.link" /></a>
+					code="messagechangefolder.link" /></a>
 		</display:column>
 
 
+		<display:column>
+			<a href="message/auditor/delete.do?messageId=${row.id}"><spring:message
+					code="message.delete.link" /></a>
+		</display:column>
 	</security:authorize>
 
 

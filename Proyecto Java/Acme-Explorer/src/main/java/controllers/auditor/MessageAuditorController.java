@@ -1,6 +1,7 @@
 
 package controllers.auditor;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.validation.Valid;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,189 +28,195 @@ import domain.MessageFolder;
 @RequestMapping("/message/auditor")
 public class MessageAuditorController extends AbstractController {
 
-	// Services---------------------------------------------------------
+	// Services -------------------------------------------------------------------
 
 	@Autowired
 	private MessageService			messageService;
 
 	@Autowired
-	private MessageFolderService	messageFolderService;
-
-	@Autowired
 	private ActorService			actorService;
 
+	@Autowired
+	private MessageFolderService	messageFolderService;
 
-	//Constructor--------------------------------------------------------
+
+	// Constructors ---------------------------------------------------------------
 
 	public MessageAuditorController() {
 		super();
 	}
 
-	//	Creation --------------------------------------------------------
-	@RequestMapping(value = "/create", method = RequestMethod.GET)
-	public ModelAndView create() {
-
-		ModelAndView result;
-		Message messag;
-		Collection<Actor> actors;
-
-		actors = this.actorService.findAll();
-
-		messag = this.messageService.create();
-		result = this.createEditModelAndViewExchange(messag);
-		result.addObject("actors", actors);
-
-		return result;
-	}
-	//	Listing ---------------------------------------------------------
-
+	// Listing methods -----------------------------------------------------------
+	//Funciona bien
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ModelAndView list(@RequestParam int messageFolderId) {
 
 		ModelAndView result;
-		Collection<Message> mess;
+		Collection<Message> msgs;
 
-		mess = this.messageService.messagesOfFolder(messageFolderId);
+		msgs = this.messageService.messagesOfFolder(messageFolderId);
 
 		result = new ModelAndView("message/list");
-		result.addObject("messages", mess);
+		result.addObject("messages", msgs);
+
 		return result;
 
 	}
 
-	//Edition------------------------------------------------------------
+	//Display
+	//Funciona bien 
+	@RequestMapping(value = "/display", method = RequestMethod.GET)
+	public ModelAndView display(@RequestParam int messageId) {
 
-	@RequestMapping(value = "/edit", method = RequestMethod.GET)
+		ModelAndView result;
+		Message message;
+
+		message = this.messageService.findOne(messageId);
+		result = new ModelAndView("message/display");
+		result.addObject("messageDisplay", message);
+
+		return result;
+	}
+
+	// Creation and edition methods ------------------------------------
+
+	//Change Folder------------------------------------------------------------------
+	//Funciona bien
+	@RequestMapping(value = "/changefolder", method = RequestMethod.GET)
 	public ModelAndView edit(@RequestParam int messageId) {
-		ModelAndView result;
-		Message messag;
 
-		messag = this.messageService.findOne(messageId);
-		Assert.notNull(messag);
-		result = this.createEditModelAndView(messag);
+		ModelAndView result;
+
+		Message message;
+		message = this.messageService.findOne(messageId);
+		Assert.notNull(message);
+		result = new ModelAndView("message/changeFolder");
+
+		Actor actor = this.actorService.findPrincipal();
+		Collection<MessageFolder> folders = this.messageFolderService.ActorFolders(actor.getId());
+		folders.remove(message.getMessageFolder());
+		result.addObject("folders", folders);
+		result.addObject("message", null);
+		result.addObject("msg", message);
 
 		return result;
 
 	}
 
-	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
-	public ModelAndView save(@Valid final Message mess, final BindingResult bindingResult) {
+	//Funciona bien
+	@RequestMapping(value = "/changefolder", method = RequestMethod.POST, params = "save")
+	public ModelAndView edit(@Valid Message m, BindingResult binding, @RequestParam int messageId) {
 		ModelAndView result;
+		MessageFolder messageFolderOldMessage = this.messageService.findOne(messageId).getMessageFolder();
+		if (binding.hasErrors()) {
+			Message originalMessage = this.messageService.findOne(messageId);
+			result = new ModelAndView("message/changeFolder");
 
-		if (bindingResult.hasErrors())
-			result = this.createEditModelAndView(mess);
-		else
+			Actor actor = this.actorService.findPrincipal();
+			Collection<MessageFolder> folders = this.messageFolderService.ActorFolders(actor.getId());
+			folders.remove(originalMessage.getMessageFolder());
+			result.addObject("folders", folders);
+			result.addObject("message", null);
+			result.addObject("m", m);
+		} else
 			try {
-				this.messageService.save(mess);
-				result = new ModelAndView("redirect:list.do?messageFolderId=" + mess.getMessageFolder().getId());
-			} catch (final Throwable oops) {
-				result = this.createEditModelAndView(mess, "message.commit.error");
-			}
+				this.messageService.save(m);
+				result = new ModelAndView("redirect:list.do?messageFolderId=" + messageFolderOldMessage.getId());
+			} catch (Throwable oops) {
+				Message originalMessage = this.messageService.findOne(messageId);
+				result = new ModelAndView("message/changefolder");
 
+				Actor actor = this.actorService.findPrincipal();
+				Collection<MessageFolder> folders = this.messageFolderService.ActorFolders(actor.getId());
+				folders.remove(originalMessage.getMessageFolder());
+				result.addObject("folders", folders);
+				result.addObject("message", null);
+				result.addObject("m", "msg.commit.error");
+			}
 		return result;
 	}
-	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "delete")
-	public ModelAndView delete(Message messag, BindingResult bindingResult) {
+
+	//Funciona flama
+	@RequestMapping(value = "/delete", method = RequestMethod.GET)
+	public ModelAndView deleteMessage(@RequestParam int messageId) {
 		ModelAndView result;
+		Message messageToDelete;
+		messageToDelete = this.messageService.findOne(messageId);
 
 		try {
-			this.messageService.delete(messag);
-			result = new ModelAndView("redirect:list.do?messageFolderId=" + messag.getMessageFolder().getId());
-		} catch (final Throwable oops) {
-			result = this.createEditModelAndView(messag, "message.commit.error");
+
+			this.messageService.delete(messageToDelete);
+			result = new ModelAndView("redirect:list.do?messageFolderId=" + messageToDelete.getMessageFolder().getId());
+		} catch (Throwable oops) {
+			result = this.createNewModelAndView(messageToDelete, "message.commit.error");
+
 		}
 
 		return result;
 	}
 
-	// Display ----------------------------------------------------------------
+	@RequestMapping(value = "/send", method = RequestMethod.GET)
+	public ModelAndView create() {
 
-	@RequestMapping(value = "/display", method = RequestMethod.GET)
-	public ModelAndView display(@RequestParam final int messageId) {
 		ModelAndView result;
-		Message mess;
 
-		mess = this.messageService.findOne(messageId);
-		result = new ModelAndView("message/display");
-		result.addObject("mess", mess);
+		Message message;
+		message = this.messageService.create();
+
+		result = this.createNewModelAndView(message);
+		result.addObject("requestURI", "message/auditor/send.do");
 
 		return result;
+
 	}
-
-	//Send message -----------------------------------------------------------
-
-	@RequestMapping(value = "/exchangeMessage", method = RequestMethod.POST, params = "send")
-	public ModelAndView sendMessage(@Valid final Message mess, final BindingResult bindingResult) {
+	@RequestMapping(value = "/send", method = RequestMethod.POST, params = "save")
+	public ModelAndView send(@ModelAttribute("m") @Valid Message m, BindingResult binding) {
 		ModelAndView result;
-
-		if (bindingResult.hasErrors())
-			result = this.createEditModelAndView(mess);
+		if (binding.hasErrors())
+			result = this.createNewModelAndView(m);
 		else
 			try {
-				this.messageService.save(mess);
-				result = new ModelAndView("redirect:list.do?messageFolderId=" + mess.getMessageFolder().getId());
-			} catch (final Throwable oops) {
-				result = this.createEditModelAndView(mess, "message.commit.error");
-			}
+				MessageFolder folderToReturn = m.getMessageFolder();
+				this.messageService.save(m);
+				result = new ModelAndView("redirect:list.do?messageFolderId=" + folderToReturn.getId());
+			} catch (Throwable oops) {
 
+				result = this.createNewModelAndView(m, "message.commit.error");
+
+			}
 		return result;
 	}
 
 	// Ancillary methods ------------------------------------------------------
-	protected ModelAndView createEditModelAndView(Message messag) {
+
+	protected ModelAndView createNewModelAndView(Message m) {
 		ModelAndView result;
-		result = this.createEditModelAndView(messag, null);
+		result = this.createNewModelAndView(m, null);
 		return result;
 	}
 
-	protected ModelAndView createEditModelAndView(Message messag, String messageCode) {
+	protected ModelAndView createNewModelAndView(Message m, String message) {
 		ModelAndView result;
-		Collection<MessageFolder> messageFolders;
-		Actor sender;
-		Actor recipient;
 
-		messageFolders = this.messageFolderService.findAllByActorAutenticate();
+		result = new ModelAndView("message/send");
 
-		sender = messag.getSender();
-		recipient = messag.getRecipient();
+		Actor actor = this.actorService.findPrincipal();
+		Collection<Actor> actors = this.actorService.findAll();
+		actors.remove(actor);
 
-		result = new ModelAndView("message/edit");
-		result.addObject("mess", messag);
-		result.addObject("messageFolders", messageFolders);
-		result.addObject("sender", sender);
-		result.addObject("recipient", recipient);
-		result.addObject("messageCode", messageCode);
-		result.addObject("requestURI", "message/auditor/edit.do");
+		result.addObject("actors", actors);
+		String low = "LOW";
+		String neutral = "NEUTRAL";
+		String high = "HIGH";
+		Collection<String> priorities = new ArrayList<String>();
+		priorities.add(low);
+		priorities.add(neutral);
+		priorities.add(high);
 
-		return result;
-
-	}
-
-	protected ModelAndView createEditModelAndViewExchange(Message messag) {
-		ModelAndView result;
-		result = this.createEditModelAndViewExchange(messag, null);
+		result.addObject("message", message);
+		result.addObject("priorities", priorities);
+		result.addObject("m", m);
 		return result;
 	}
 
-	protected ModelAndView createEditModelAndViewExchange(Message messag, String messageCode) {
-		ModelAndView result;
-		MessageFolder messageFolderOfMessage;
-		Actor sender;
-		Actor recipient;
-
-		messageFolderOfMessage = messag.getMessageFolder();
-		sender = messag.getSender();
-		recipient = messag.getRecipient();
-
-		result = new ModelAndView("message/exchangeMessage");
-		result.addObject("mess", messag);
-		result.addObject("messageFolder", messageFolderOfMessage);
-		result.addObject("sender", sender);
-		result.addObject("recipient", recipient);
-		result.addObject("messageCode", messageCode);
-		result.addObject("requestURI", "message/auditor/exchangeMessage.do");
-
-		return result;
-
-	}
 }

@@ -1,6 +1,7 @@
 
 package controllers.administrator;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.validation.Valid;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -133,6 +135,8 @@ public class MessageAdministratorController extends AbstractController {
 			}
 		return result;
 	}
+
+	//Funciona flama
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
 	public ModelAndView deleteMessage(@RequestParam int messageId) {
 		ModelAndView result;
@@ -148,6 +152,38 @@ public class MessageAdministratorController extends AbstractController {
 
 		}
 
+		return result;
+	}
+
+	@RequestMapping(value = "/send", method = RequestMethod.GET)
+	public ModelAndView create() {
+
+		ModelAndView result;
+
+		Message message;
+		message = this.messageService.create();
+
+		result = this.createNewModelAndView(message);
+		result.addObject("requestURI", "message/administrator/send.do");
+
+		return result;
+
+	}
+	@RequestMapping(value = "/send", method = RequestMethod.POST, params = "save")
+	public ModelAndView send(@ModelAttribute("m") @Valid Message m, BindingResult binding) {
+		ModelAndView result;
+		if (binding.hasErrors())
+			result = this.createNewModelAndView(m);
+		else
+			try {
+				MessageFolder folderToReturn = m.getMessageFolder();
+				this.messageService.save(m);
+				result = new ModelAndView("redirect:list.do?messageFolderId=" + folderToReturn.getId());
+			} catch (Throwable oops) {
+
+				result = this.createNewModelAndView(m, "message.commit.error");
+
+			}
 		return result;
 	}
 
@@ -169,8 +205,16 @@ public class MessageAdministratorController extends AbstractController {
 		actors.remove(actor);
 
 		result.addObject("actors", actors);
+		String low = "LOW";
+		String neutral = "NEUTRAL";
+		String high = "HIGH";
+		Collection<String> priorities = new ArrayList<String>();
+		priorities.add(low);
+		priorities.add(neutral);
+		priorities.add(high);
 
 		result.addObject("message", message);
+		result.addObject("priorities", priorities);
 		result.addObject("m", m);
 		return result;
 	}

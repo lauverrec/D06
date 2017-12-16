@@ -11,19 +11,18 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 <div class="col-md-6 col-centered">
 	<div class="well bs-component">
-		<form:form action="message/actor/send.do" modelAttribute="m">
+		<form:form action="${requestURI }" modelAttribute="m">
 
 			<form:hidden path="id" />
 			<form:hidden path="version" />
 			<form:hidden path="sender" />
-			<form:hidden path="folder" />
+			<form:hidden path="messageFolder" />
 			<form:hidden path="moment" />
-			<form:hidden path="spam" />
 
 
 			<jstl:if test="${m.recipient == null}">
 
-				<acme:select code="msg.recipient" path="recipient"
+				<acme:select code="message.sendTo" path="recipient"
 					items="${actors}" itemLabel="userAccount.username" />
 
 				<br />
@@ -38,17 +37,17 @@
 			<jstl:if test="${m.recipient != null}">
 				<form:hidden path="recipient" />
 			</jstl:if>
-			<acme:textarea code="msg.subject" path="subject" />
+			<acme:textarea code="message.subject" path="subject" />
 
-			<acme:textarea code="msg.body" path="body" />
+			<acme:textarea code="message.body" path="body" />
 
 
 
 				<input type="submit" name="save"
-					value="<spring:message code="msg.send.link" />"/>
+					value="<spring:message code="message.send.link" />"/>
 
 			<input type="button" name="cancel"
-				value="<spring:message code="msg.cancel.link" />"
+				value="<spring:message code="message.cancel.link" />"
 				onclick="javascript: location.replace('welcome/index.do')" />
 
 		</form:form>
