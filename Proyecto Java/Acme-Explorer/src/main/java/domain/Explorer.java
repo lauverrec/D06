@@ -8,6 +8,7 @@ import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
@@ -21,6 +22,7 @@ public class Explorer extends Actor {
 	private Collection<Story>				stories;
 	private Collection<ApplicationFor>		applicationsFor;
 	private Collection<ContactEmergency>	contactsEmergency;
+	private Finder							finder;
 
 
 	@NotNull
@@ -30,7 +32,7 @@ public class Explorer extends Actor {
 		return this.stories;
 	}
 
-	public void setStories(Collection<Story> stories) {
+	public void setStories(final Collection<Story> stories) {
 		this.stories = stories;
 	}
 
@@ -41,7 +43,7 @@ public class Explorer extends Actor {
 		return this.applicationsFor;
 	}
 
-	public void setApplicationsFor(Collection<ApplicationFor> applicationsFor) {
+	public void setApplicationsFor(final Collection<ApplicationFor> applicationsFor) {
 		this.applicationsFor = applicationsFor;
 	}
 
@@ -52,7 +54,19 @@ public class Explorer extends Actor {
 		return this.contactsEmergency;
 	}
 
-	public void setContactsEmergency(Collection<ContactEmergency> contactsEmergency) {
+	public void setContactsEmergency(final Collection<ContactEmergency> contactsEmergency) {
 		this.contactsEmergency = contactsEmergency;
 	}
+
+	@NotNull
+	@Valid
+	@OneToOne(optional = false)
+	public Finder getFinder() {
+		return this.finder;
+	}
+
+	public void setFinder(final Finder finder) {
+		this.finder = finder;
+	}
+
 }

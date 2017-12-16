@@ -3786,6 +3786,7 @@
 				<ref bean="contactEmergency1"></ref>
 			</list>
 		</property>
+		<property name="finder" ref="finder1" />
 	</bean>
 	<bean id="explorer2" class="domain.Explorer">
 		<property name="name" value="Explorer 2" />
@@ -3824,6 +3825,7 @@
 				<ref bean="contactEmergency2"></ref>
 			</list>
 		</property>
+		<property name="finder" ref="finder2" />
 	</bean>
 	<bean id="explorer3" class="domain.Explorer">
 		<property name="name" value="Explorer 3" />
@@ -3864,6 +3866,7 @@
 				<ref bean="contactEmergency3"></ref>
 			</list>
 		</property>
+		<property name="finder" ref="finder3" />
 	</bean>
 	<bean id="explorer4" class="domain.Explorer">
 		<property name="name" value="Explorer 4" />
@@ -3903,6 +3906,7 @@
 				<ref bean="contactEmergency4"></ref>
 			</list>
 		</property>
+		<property name="finder" ref="finder4" />
 	</bean>
 	<bean id="explorer5" class="domain.Explorer">
 		<property name="name" value="Explorer 5" />
@@ -3941,6 +3945,7 @@
 				<ref bean="contactEmergency5"></ref>
 			</list>
 		</property>
+		<property name="finder" ref="finder5" />
 	</bean>
 
 	<bean id="explorer6" class="domain.Explorer">
@@ -3977,6 +3982,7 @@
 			<list>
 			</list>
 		</property>
+		<property name="finder" ref="finder6" />
 	</bean>
 
 
@@ -4684,6 +4690,91 @@
 		<property name="value" value="6"></property>
 	</bean>
 
+	<!-- FINDER -->
+	
+	<bean id="finder1" class="domain.Finder">
+		<!-- <property name="keyWord"><null/></property> -->
+		<property name="lowPrice" value="0.0" />
+		<property name="highPrice" value="100.0" />
+		<property name="initialDate" value="2017/10/14" />
+		<property name="finalDate" value="2017/10/14" />
+		<property name="startCacheTime" value="2017/10/14 23:59" />
+		<property name="trips">
+			<list>
+			</list>
+		</property>
+		<property name="explorer" ref="explorer1" />
+	</bean>
+	
+	<bean id="finder2" class="domain.Finder">
+		<!-- <property name="keyWord"><null/></property> -->
+		<property name="lowPrice" value="0.0" />
+		<property name="highPrice" value="100.0" />
+		<property name="initialDate" value="2017/10/14" />
+		<property name="finalDate" value="2017/10/14" />
+		<property name="startCacheTime" value="2017/10/14 23:59" />
+		<property name="trips">
+			<list>
+			</list>
+		</property>
+		<property name="explorer" ref="explorer2" />
+	</bean>
+	
+	<bean id="finder3" class="domain.Finder">
+		<!-- <property name="keyWord"><null/></property> -->
+		<property name="lowPrice" value="0.0" />
+		<property name="highPrice" value="100.0" />
+		<property name="initialDate" value="2017/10/14" />
+		<property name="finalDate" value="2017/10/14" />
+		<property name="startCacheTime" value="2017/10/14 23:59" />
+		<property name="trips">
+			<list>
+			</list>
+		</property>
+		<property name="explorer" ref="explorer3" />
+	</bean>
+	
+	<bean id="finder4" class="domain.Finder">
+		<!-- <property name="keyWord"><null/></property> -->
+		<property name="lowPrice" value="0.0" />
+		<property name="highPrice" value="100.0" />
+		<property name="initialDate" value="2017/10/14" />
+		<property name="finalDate" value="2017/10/14" />
+		<property name="startCacheTime" value="2017/10/14 23:59" />
+		<property name="trips">
+			<list>
+			</list>
+		</property>
+		<property name="explorer" ref="explorer3" />
+	</bean>
+	
+	<bean id="finder5" class="domain.Finder">
+		<!-- <property name="keyWord"><null/></property> -->
+		<property name="lowPrice" value="0.0" />
+		<property name="highPrice" value="100.0" />
+		<property name="initialDate" value="2017/10/14" />
+		<property name="finalDate" value="2017/10/14" />
+		<property name="startCacheTime" value="2017/10/14 23:59" />
+		<property name="trips">
+			<list>
+			</list>
+		</property>
+		<property name="explorer" ref="explorer5" />
+	</bean>
+	
+	<bean id="finder6" class="domain.Finder">
+		<!-- <property name="keyWord"><null/></property> -->
+		<property name="lowPrice" value="0.0" />
+		<property name="highPrice" value="100.0" />
+		<property name="initialDate" value="2017/10/14" />
+		<property name="finalDate" value="2017/10/14" />
+		<property name="startCacheTime" value="2017/10/14 23:59" />
+		<property name="trips">
+			<list>
+			</list>
+		</property>
+		<property name="explorer" ref="explorer6" />
+	</bean>
 	<!-- Other domain beans come here -->
 
 </beans>
