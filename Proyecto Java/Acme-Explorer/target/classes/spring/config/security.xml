@@ -78,6 +78,7 @@
 		<security:intercept-url pattern="/legalText/administrator/**" access="hasRole('ADMINISTRATOR')"/>
 		<security:intercept-url pattern="/note/manager/**" access="hasRole('MANAGER')" /> 
 		<security:intercept-url pattern="/tag/administrator/**" access="hasRole('ADMINISTRATOR')"/>
+		<security:intercept-url pattern="/trip/category/**" access="permitAll"/>
 
 		
 		<security:intercept-url pattern="/curricula/ranger/**" access="hasRole('RANGER')"/>

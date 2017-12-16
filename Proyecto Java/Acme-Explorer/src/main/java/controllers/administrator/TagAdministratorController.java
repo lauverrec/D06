@@ -129,13 +129,9 @@ public class TagAdministratorController extends AbstractController {
 		assert tag != null;
 
 		ModelAndView result;
-		Collection<Tag> tags;
-
-		tags = this.tagService.findAll();
 
 		result = new ModelAndView("tag/edit");
 		result.addObject("tag", tag);
-		result.addObject("tags", tags);
 		result.addObject("message", messageCode);
 
 		return result;

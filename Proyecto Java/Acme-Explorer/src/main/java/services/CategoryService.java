@@ -85,7 +85,7 @@ public class CategoryService {
 		Assert.notNull(category);
 		Assert.isTrue(category.getId() != 0);
 		Assert.isTrue(this.categoryRepository.exists(category.getId()));
-		this.administratorService.checkPrincipal();
+		Assert.notNull(this.administratorService.findByPrincipal());
 		Assert.isTrue(!(this.configurationSystemService.defaultCategories().contains(category)));
 
 		Assert.isTrue(category.getSubCategories().isEmpty());

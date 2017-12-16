@@ -12,11 +12,11 @@ import org.hibernate.validator.constraints.Range;
 public class Value extends DomainEntity {
 
 	// Attributes -------------------------------------------------------------
-	private int	value;
+	private Integer	value;
 
 
 	@Range(min = 0, max = 10)
-	public int getValue() {
+	public Integer getValue() {
 		return this.value;
 	}
 

@@ -20,7 +20,7 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
 
-<form:form action="${requestURI}" modelAttribute="tag">
+<form:form action="tag/administrator/edit.do" modelAttribute="tag">
 
 	<form:hidden path="id" />
 	<form:hidden path="version" /> 

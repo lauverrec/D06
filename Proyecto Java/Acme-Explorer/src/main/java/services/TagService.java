@@ -38,7 +38,9 @@ public class TagService {
 	// Simple CRUD methods-----------------------------------------------------
 	public Tag create() {
 		Tag result;
+
 		result = new Tag();
+		result.setValue(this.valueService.create());
 
 		return result;
 	}

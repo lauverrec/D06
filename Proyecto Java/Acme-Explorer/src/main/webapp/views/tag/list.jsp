@@ -20,7 +20,7 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
 <display:table pagesize="5" class="displaytag" keepStatus="true"
-	name="tags" requestURI="${requestURI }" id="row">
+	name="tags" requestURI="tag/administrator/list.do" id="row">
 	
 	<!-- Action links -->
 
@@ -33,14 +33,14 @@
 		</display:column>			
 	</security:authorize>
 	
-	<security:authorize access="hasRole('MANAGER')">
+<%-- 	<security:authorize access="hasRole('MANAGER')">
 		<display:column>
 		<spring:url value="trip/manager_/tag/edit.do" var="editURL">
 		<spring:param name="tagId" value="${row.id}"/>
 		</spring:url>
 		<a href="${editURL}"><spring:message code="tag.edit"/></a>
 		</display:column>			
-	</security:authorize>
+	</security:authorize> --%>
 	
 	<!-- Attributes -->
 	
