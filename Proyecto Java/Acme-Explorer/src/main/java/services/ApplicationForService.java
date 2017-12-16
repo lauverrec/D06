@@ -36,7 +36,8 @@ public class ApplicationForService {
 	private ManagerService				managerService;
 	@Autowired
 	private TripService					tripService;
-
+	@Autowired
+	private MessageService				messageService;
 	@Autowired
 	private ConfigurationSystemService	configurationSystemService;
 
@@ -120,6 +121,17 @@ public class ApplicationForService {
 		}
 		result = this.applicationForRepository.save(applicationFor);
 		//trip.getApplicationsFor().add(result);
+		if (applicationFor.getStatus().equals("PENDING") == true)
+			this.messageService.messageForNotificationToStatusPending(applicationFor);
+		else if (applicationFor.getStatus().equals("REJECTED") == true)
+			this.messageService.messageForNotificationToStatusRejected(applicationFor);
+		else if (applicationFor.getStatus().equals("DUE") == true)
+			this.messageService.messageForNotificationToStatusDue(applicationFor);
+		else if (applicationFor.getStatus().equals("ACCEPTED") == true)
+			this.messageService.messageForNotificationToStatusAccepted(applicationFor);
+		else
+			this.messageService.messageForNotificationToStatusCancelled(applicationFor);
+
 		return result;
 	}
 
