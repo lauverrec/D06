@@ -22,7 +22,7 @@
 
 <!-- Listing messageFodler -->
 <display:table name="messageFolders" id="row" requestURI="${requestURI}"
-	pagesize="5" class="displaytag" keepStatus="true">
+	pagesize="10" class="displaytag">
 
 	<!-- Botones para sponsor -->
 	<security:authorize access="hasRole('SPONSOR')">
@@ -72,8 +72,10 @@
 					code="messageFolder.display" /></a>
 		</display:column>
 
-		<jstl:if test="${row.modifiable==true }">
-			<display:column>
+
+		<display:column>
+			<jstl:if test="${row.modifiable==true }">
+
 
 				<spring:url value="messageFolder/administrator/edit.do"
 					var="editAdministratorURL">
@@ -81,9 +83,11 @@
 				</spring:url>
 				<a href="${editAdministratorURL }"><spring:message
 						code="messageFolder.edit" /></a>
+			</jstl:if>
 
-			</display:column>
-		</jstl:if>
+		</display:column>
+
+
 
 		<display:column>
 			<spring:url value="message/administrator/list.do"
@@ -107,6 +111,7 @@
 			<a href="${displayRangerURL}"><spring:message
 					code="messageFolder.display" /></a>
 		</display:column>
+
 		<jstl:if test="${row.modifiable==true }">
 			<display:column>
 
@@ -240,9 +245,10 @@
 	</security:authorize>
 
 
+
 	<!-- Attributes -->
 	<spring:message code="messageFolder.name" var="nameHeader" />
-	<display:column property="name" title="${nameHeader}" sortable="true" />
+	<display:column property="name" title="${nameHeader}" />
 
 
 </display:table>
