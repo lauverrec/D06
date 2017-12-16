@@ -105,6 +105,7 @@ public class MessageAdministratorController extends AbstractController {
 	@RequestMapping(value = "/changefolder", method = RequestMethod.POST, params = "save")
 	public ModelAndView edit(@Valid Message m, BindingResult binding, @RequestParam int messageId) {
 		ModelAndView result;
+		MessageFolder messageFolderOldMessage = this.messageService.findOne(messageId).getMessageFolder();
 		if (binding.hasErrors()) {
 			Message originalMessage = this.messageService.findOne(messageId);
 			result = new ModelAndView("message/changeFolder");
@@ -118,7 +119,7 @@ public class MessageAdministratorController extends AbstractController {
 		} else
 			try {
 				this.messageService.save(m);
-				result = new ModelAndView("redirect:list.do?messageFolderId=" + m.getMessageFolder().getId());
+				result = new ModelAndView("redirect:list.do?messageFolderId=" + messageFolderOldMessage.getId());
 			} catch (Throwable oops) {
 				Message originalMessage = this.messageService.findOne(messageId);
 				result = new ModelAndView("message/changefolder");
@@ -132,7 +133,6 @@ public class MessageAdministratorController extends AbstractController {
 			}
 		return result;
 	}
-
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
 	public ModelAndView deleteMessage(@RequestParam int messageId) {
 		ModelAndView result;
