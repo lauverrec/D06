@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import repositories.CategoryRepository;
+import domain.Administrator;
 import domain.Category;
 
 @Service
@@ -82,13 +83,23 @@ public class CategoryService {
 	}
 
 	public void delete(final Category category) {
+		Administrator admin;
+		Category father;
+
+		admin = this.administratorService.findByPrincipal();
+		Assert.notNull(admin);
 		Assert.notNull(category);
+
 		Assert.isTrue(category.getId() != 0);
-		Assert.isTrue(this.categoryRepository.exists(category.getId()));
-		Assert.notNull(this.administratorService.findByPrincipal());
+		//Assert.isTrue(this.categoryRepository.exists(category.getId()));
 		Assert.isTrue(!(this.configurationSystemService.defaultCategories().contains(category)));
 
 		Assert.isTrue(category.getSubCategories().isEmpty());
+
+		father = category.getFatherCategory();
+
+		father.getSubCategories().remove(category);
+
 		this.categoryRepository.delete(category);
 	}
 }

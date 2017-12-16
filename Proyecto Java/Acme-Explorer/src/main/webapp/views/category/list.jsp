@@ -44,7 +44,17 @@
 	
 	<spring:message code="category.trips" var="tripsHeader"></spring:message>
 	
+	<spring:message code="category.subcategories.name" var="subCategories" />:
+	<display:column title =" ${subCategories}" sortable="true">
+		<jstl:forEach var="subCategories" items="${row.subCategories}">
+			<jstl:out value="${subCategories.name}"></jstl:out><br/>
+		
+		</jstl:forEach>	
+	</display:column>
+	
 	<display:column>
+	
+	
 		
 		<spring:url value="trip/category/list.do" var="tripListURL">
 		 <spring:param name="categoryId" value="${row.id }"/>
@@ -52,6 +62,9 @@
 		 <a href="${tripListURL}"><spring:message code="category.trips"/></a>
 		
 	</display:column>
+	
+	
+
 	
 </display:table>
 	
