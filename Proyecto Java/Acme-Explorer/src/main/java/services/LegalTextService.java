@@ -72,6 +72,8 @@ public class LegalTextService {
 
 		Assert.notNull(this.administratorService.findByPrincipal());
 
+		Assert.isTrue(legalText.isDraftMode() == true && legalText.getTrips().isEmpty());
+
 		LegalText result;
 
 		result = this.legalTextRepository.save(legalText);
@@ -114,11 +116,12 @@ public class LegalTextService {
 
 		Assert.notNull(this.administratorService.findByPrincipal());
 
+		Assert.isTrue(legalText.isDraftMode() == false);
+
 		LegalText result;
 
 		result = this.legalTextRepository.save(legalText);
 
 		return result;
 	}
-
 }

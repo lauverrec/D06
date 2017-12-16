@@ -123,20 +123,6 @@ public class LegalTextAdministratorController extends AbstractController {
 
 	}
 
-	//Association trip
-
-	@RequestMapping(value = "/trip", method = RequestMethod.GET)
-	public ModelAndView trip(@RequestParam int legalTextId) {
-		ModelAndView result;
-		LegalText legalText;
-
-		legalText = this.legalTextService.findOne(legalTextId);
-
-		result = this.createEditModelAndView(legalText);
-
-		return result;
-	}
-
 	//Deleting-----------------------
 
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "delete")
@@ -173,6 +159,64 @@ public class LegalTextAdministratorController extends AbstractController {
 		trips = this.tripService.findAll();
 
 		result = new ModelAndView("legalText/edit");
+		result.addObject("legalText", legalText);
+		result.addObject("trips", trips);
+		result.addObject("message", messageCode);
+
+		return result;
+
+	}
+
+	//Association trip
+
+	@RequestMapping(value = "/trip", method = RequestMethod.GET)
+	public ModelAndView trip(@RequestParam int legalTextId) {
+		ModelAndView result;
+		LegalText legalText;
+
+		legalText = this.legalTextService.findOne(legalTextId);
+
+		result = this.createEditModelAndViewTrip(legalText);
+
+		return result;
+	}
+
+	@RequestMapping(value = "/trip", method = RequestMethod.POST, params = "saveTrip")
+	public ModelAndView saveTrip(@Valid LegalText legalText, BindingResult binding) {
+
+		ModelAndView result;
+
+		if (binding.hasErrors())
+			result = this.createEditModelAndViewTrip(legalText);
+		else
+			try {
+				this.legalTextService.addTrip(legalText);
+				result = new ModelAndView("redirect:list.do");
+			} catch (Throwable oops) {
+				result = this.createEditModelAndViewTrip(legalText, "legalText.commit.error");
+			}
+
+		return result;
+
+	}
+
+	protected ModelAndView createEditModelAndViewTrip(LegalText legalText) {
+
+		Assert.notNull(legalText);
+		ModelAndView result;
+		result = this.createEditModelAndViewTrip(legalText, null);
+		return result;
+	}
+
+	protected ModelAndView createEditModelAndViewTrip(LegalText legalText, String messageCode) {
+		assert legalText != null;
+
+		ModelAndView result;
+		Collection<Trip> trips;
+
+		trips = this.tripService.findAll();
+
+		result = new ModelAndView("legalText/editTrip");
 		result.addObject("legalText", legalText);
 		result.addObject("trips", trips);
 		result.addObject("message", messageCode);

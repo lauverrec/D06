@@ -20,31 +20,31 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
 
-<form:form action="legalText/administrator/edit.do" modelAttribute="legalText">
+<form:form action="legalText/administrator/trip.do" modelAttribute="legalText">
 
 	<form:hidden path="id" />
 	<form:hidden path="version" /> 
-	<form:hidden path="trips"/>
+	<form:hidden path="draftMode"/>
 
-	<jstl:if test="${legalText.draftMode == true or legalText.id==0}">
+	
 	<form:label path="title">
 		<spring:message code="legalText.title" />:
 	</form:label>
-	<form:input path="title" />
+	<form:input path="title" readonly="true"/>
 	<form:errors cssClass="error" path="title" />
 	<br />
 	
 	<form:label path="body">
 		<spring:message code="legalText.body" />:
 	</form:label>
-	<form:textarea path="body" />
+	<form:textarea path="body" readonly="true"/>
 	<form:errors cssClass="error" path="body" />
 	<br />
 	
 	<form:label path="lawsNumber">
 		<spring:message code="legalText.lawsNumber" />:
 	</form:label>
-	<form:input path="lawsNumber" />
+	<form:input path="lawsNumber" readonly="true"/>
 	<form:errors cssClass="error" path="lawsNumber" />
 	<br />
 	
@@ -53,29 +53,25 @@
 	</form:label>
 	<form:input path="moment" readonly="true"/>
 	<form:errors cssClass="error" path="moment" />
-	<br />
+	<br />	
 	
-	<form:label path="draftMode">
-		<spring:message code="auditRecord.draftMode" />:
+	<jstl:if test="${legalText.id !=0 and legalText.draftMode == false}">
+	<form:label path="trips">
+		<spring:message code="legalText.trip.title" />:
 	</form:label>
-	<form:select id="draftModes" path="draftMode" multiple="true">	
-		<form:option value="1" label="YES"/>
-		<form:option value="0" label="NO"/> 
+	<form:select id="trips" path="trips" multiple="true">	
+		<form:option value="0" label="----" />		
+	<form:options items="${trips}" itemValue="id"
+			itemLabel="title" />
 	</form:select>  
-	<br /> 
 	</jstl:if>
+	<br /> 
 	
+		<!-- botones --> 
 	
-	<!-- botones --> 
-	
-	<input type="submit" name="save"
+	<input type="submit" name="saveTrip"
 		value="<spring:message code="legalText.save"/>" />&nbsp;
 		
-	<jstl:if test="${legalText.id !=0 and legalText.draftMode == true}">
-		<input type="submit" name="delete"
-			value="<spring:message code="legalText.delete"/>"
-			onclick="javascript: return confirm('<spring:message code="legalText.confirm.delete"/>')" />&nbsp;
-	</jstl:if>
 	
 	<input type="button" name="cancel"
 		value="<spring:message code="legalText.cancel"/>"
