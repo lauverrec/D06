@@ -128,9 +128,13 @@ public class ApplicationForService {
 		Assert.isTrue(applicationFor.getStatus().equals("DUE"));
 		ApplicationFor result;
 
-		if (this.checkCreditCard(applicationFor.getCreditCard()))
+		if (this.checkCreditCard(applicationFor.getCreditCard())) {
 			applicationFor.setStatus("ACCEPTED");
-
+			applicationFor.setReasonWhy("");
+		} else {
+			applicationFor.setStatus("REJECTED");
+			applicationFor.setReasonWhy("Su tarjeta está caducada");
+		}
 		result = this.applicationForRepository.save(applicationFor);
 		return result;
 	}

@@ -26,6 +26,7 @@
 	<form:hidden path="id" />
 	<form:hidden path="version" />
 	<form:hidden path="explorer"/>
+	<form:hidden path="manager"/>
 	
 	<form:hidden path="moment"/>
 	<form:hidden path="status"/>
