@@ -46,6 +46,7 @@ public class MessageFolderAdministratorController extends AbstractController {
 		result = new ModelAndView("messageFolder/list");
 		result.addObject("messageFolders", messageFolders);
 		result.addObject("requestURI", "messageFolder/administrator/list.do");
+		result.addObject("modificable", true);
 
 		return result;
 	}
