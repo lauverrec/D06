@@ -217,17 +217,28 @@ public class ExplorerService {
 		result = false;
 
 		result = this.actorService.actorIsSpam(explorer);
-		if (result == true)
+		if (result == true) {
+			explorer.setSuspicious(result);
 			return result;
+		}
 		result = this.contactEmergencyService.contactEmergencyContainsSpam(explorer);
-		if (result == true)
+		if (result == true) {
+			explorer.setSuspicious(result);
 			return result;
+		}
+
 		result = this.applicationForService.applicationForContainsSpam(explorer);
-		if (result == true)
+		if (result == true) {
+			explorer.setSuspicious(result);
 			return result;
+		}
 		result = this.storyService.storyContainsSpam(explorer);
-		if (result == true)
+		if (result == true) {
+			explorer.setSuspicious(result);
 			return result;
+		}
+
 		return result;
 	}
+
 }
