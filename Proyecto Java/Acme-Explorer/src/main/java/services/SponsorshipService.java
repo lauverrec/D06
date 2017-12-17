@@ -132,7 +132,6 @@ public class SponsorshipService {
 	}
 
 	public Sponsorship randomSponsorship(Trip trip) {
-
 		List<Sponsorship> sponsorships;
 		Integer size;
 		Sponsorship sponsorship;
@@ -141,11 +140,7 @@ public class SponsorshipService {
 		size = sponsorships.size();
 
 		int rand = (int) (Math.random() * size);
-
 		sponsorship = sponsorships.get(rand);
-
-		// de la coleccion de sponsorship que tiene la trip quiero sacar uno al azar
-		// y monstrar su bannerURL
 
 		return sponsorship;
 	}

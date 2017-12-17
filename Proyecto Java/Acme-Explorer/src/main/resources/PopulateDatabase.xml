@@ -3342,7 +3342,7 @@
 
 	<!-- SponsorShip 1 -->
 	<bean id="sponsorship1" class="domain.Sponsorship">
-		<property name="bannerURL" value="http://www.banner.com" />
+		<property name="bannerURL" value="http://www.banner1.com" />
 		<property name="link" value="http://www.link-banner.com" />
 		<property name="creditCard">
 			<ref bean="creditCard1" />
@@ -3371,7 +3371,7 @@
 
 	<!-- SponsorShip 2 -->
 	<bean id="sponsorship2" class="domain.Sponsorship">
-		<property name="bannerURL" value="http://www.banner.com" />
+		<property name="bannerURL" value="http://www.banner3.com" />
 		<property name="link" value="http://www.banner.com" />
 		<property name="creditCard">
 			<ref bean="creditCard1" />
@@ -3386,7 +3386,7 @@
 
 	<!-- SponsorShip 3 -->
 	<bean id="sponsorship3" class="domain.Sponsorship">
-		<property name="bannerURL" value="http://www.banner.com" />
+		<property name="bannerURL" value="http://www.banner4.com" />
 		<property name="link" value="http://www.banner.com" />
 		<property name="creditCard">
 			<ref bean="creditCard2" />
@@ -3401,7 +3401,21 @@
 
 	<!-- SponsorShip 4 -->
 	<bean id="sponsorship4" class="domain.Sponsorship">
-		<property name="bannerURL" value="http://www.example.com" />
+		<property name="bannerURL" value="http://www.banner5.com" />
+		<property name="link" value="http://www.example.com" />
+		<property name="creditCard">
+			<ref bean="creditCard2" />
+		</property>
+		<property name="trip">
+			<ref bean="trip4" />
+		</property>
+		<property name="sponsor">
+			<ref bean="sponsor4" />
+		</property>
+	</bean>
+	
+	<bean id="sponsorship8" class="domain.Sponsorship">
+		<property name="bannerURL" value="http://www.banner6.com" />
 		<property name="link" value="http://www.example.com" />
 		<property name="creditCard">
 			<ref bean="creditCard2" />
