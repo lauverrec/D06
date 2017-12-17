@@ -2,7 +2,6 @@
 package repositories;
 
 import java.util.Collection;
-import java.util.Date;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -53,9 +52,6 @@ public interface TripRepository extends JpaRepository<Trip, Integer> {
 
 	@Query("select t from Trip t where t.ticker like %?1% or t.title like %?1% or t.description like %?1%")
 	Page<Trip> findAllTripsByKeyWord(String search, Pageable pageable);
-
-	@Query("select t.title, t.price from Trip t where (t.ticker like %?1% or t.title like %?1% or t.description like %?1%) and (t.price>?2 and t.price<?3) and (t.startDate < '?4' and t.finishDate > '?5')")
-	Page<Trip> findAllTripsByKeyWordPriceDate(String keyword, double lowPrice, double highPrice, Date initialDate, Date finalDate, Pageable pageable);
 
 	@Query("select c.trips from Category c where c.id = ?1")
 	Collection<Trip> findByCategory(int categoryId);

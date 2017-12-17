@@ -58,7 +58,6 @@ public class Explorer extends Actor {
 		this.contactsEmergency = contactsEmergency;
 	}
 
-	@NotNull
 	@Valid
 	@OneToOne(optional = false)
 	public Finder getFinder() {

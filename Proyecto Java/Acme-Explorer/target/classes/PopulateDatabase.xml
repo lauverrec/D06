@@ -4703,7 +4703,6 @@
 			<list>
 			</list>
 		</property>
-		<property name="explorer" ref="explorer1" />
 	</bean>
 	
 	<bean id="finder2" class="domain.Finder">
@@ -4717,7 +4716,6 @@
 			<list>
 			</list>
 		</property>
-		<property name="explorer" ref="explorer2" />
 	</bean>
 	
 	<bean id="finder3" class="domain.Finder">
@@ -4731,7 +4729,6 @@
 			<list>
 			</list>
 		</property>
-		<property name="explorer" ref="explorer3" />
 	</bean>
 	
 	<bean id="finder4" class="domain.Finder">
@@ -4745,7 +4742,6 @@
 			<list>
 			</list>
 		</property>
-		<property name="explorer" ref="explorer3" />
 	</bean>
 	
 	<bean id="finder5" class="domain.Finder">
@@ -4759,7 +4755,6 @@
 			<list>
 			</list>
 		</property>
-		<property name="explorer" ref="explorer5" />
 	</bean>
 	
 	<bean id="finder6" class="domain.Finder">
@@ -4773,7 +4768,6 @@
 			<list>
 			</list>
 		</property>
-		<property name="explorer" ref="explorer6" />
 	</bean>
 	<!-- Other domain beans come here -->
 

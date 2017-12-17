@@ -41,11 +41,16 @@ public class TripController extends AbstractController {
 	public ModelAndView listByKeyword(@RequestParam final String keyword) {
 		ModelAndView result;
 		Collection<Trip> trips;
+		double price;
+
+		trips = this.tripService.findAllTripsNoAuthenticate();
+		price = this.tripService.setPriceTrip(trips);
 
 		trips = this.tripService.findAllTripsByKeyWord(keyword);
 		result = new ModelAndView("trip/list");
 
 		result.addObject("trips", trips);
+		result.addObject("price", price);
 		result.addObject("requestURI", "trip/search.do");
 
 		return result;

@@ -102,6 +102,8 @@
 		<security:intercept-url pattern="/message/manager/**" access="hasRole('MANAGER')"/>
 		<security:intercept-url pattern="/configurationSystem/administrator/**" access="hasRole('ADMINISTRATOR')"/>
 		<security:intercept-url pattern="/administrator/dashboard/**" access="hasRole('ADMINISTRATOR')"/>
+		<security:intercept-url pattern="/finder/explorer/**" access="hasRole('EXPLORER')"/>
+		
 	
 	
 		<security:intercept-url pattern="/contactsEmergency/explorer/**" access="hasRole('EXPLORER')"/>

@@ -2,7 +2,6 @@
 package controllers.explorer;
 
 import java.util.Collection;
-import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -127,21 +126,6 @@ public class TripExplorerController extends AbstractController {
 
 	//Cancel
 
-	// Search -----------------------------------------------------------------
-
-	@RequestMapping(value = "/search", method = RequestMethod.GET)
-	public ModelAndView listByKeywordPriceDate(@RequestParam final String keyword, @RequestParam final double lowPrice, @RequestParam final double highPrice, @RequestParam final Date initialDate, @RequestParam final Date finalDate) {
-		ModelAndView result;
-		Collection<Trip> trips;
-
-		trips = this.tripService.findAllTripsByKeyWordPriceDate(keyword, lowPrice, highPrice, initialDate, finalDate);
-		result = new ModelAndView("trip/list");
-
-		result.addObject("trips", trips);
-		result.addObject("requestURI", "trip/explorer/search.do");
-
-		return result;
-	}
 	// Ancillary methods ------------------------------------------------------
 	protected ModelAndView createEditModelAndView(final Trip trip) {
 		ModelAndView result;

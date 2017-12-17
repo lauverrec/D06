@@ -8,7 +8,6 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
@@ -22,8 +21,8 @@ public class Finder extends DomainEntity {
 
 	// Attributes -------------------------------------------------------------
 	private String	keyWord;
-	private double	lowPrice;
-	private double	highPrice;
+	private Double	lowPrice;
+	private Double	highPrice;
 	private Date	initialDate;
 	private Date	finalDate;
 	private Date	startCacheTime;
@@ -37,19 +36,19 @@ public class Finder extends DomainEntity {
 		this.keyWord = keyWord;
 	}
 
-	public double getLowPrice() {
+	public Double getLowPrice() {
 		return this.lowPrice;
 	}
 
-	public void setLowPrice(final double lowPrice) {
+	public void setLowPrice(final Double lowPrice) {
 		this.lowPrice = lowPrice;
 	}
 
-	public double getHighPrice() {
+	public Double getHighPrice() {
 		return this.highPrice;
 	}
 
-	public void setHighPrice(final double highPrice) {
+	public void setHighPrice(final Double highPrice) {
 		this.highPrice = highPrice;
 	}
 
@@ -85,20 +84,8 @@ public class Finder extends DomainEntity {
 
 	// Relationships ----------------------------------------------------------
 
-	private Explorer			explorer;
 	private Collection<Trip>	trips;
 
-
-	@NotNull
-	@Valid
-	@OneToOne(optional = false, mappedBy = "finder")
-	public Explorer getExplorer() {
-		return this.explorer;
-	}
-
-	public void setExplorer(final Explorer explorer) {
-		this.explorer = explorer;
-	}
 
 	@NotNull
 	@Valid

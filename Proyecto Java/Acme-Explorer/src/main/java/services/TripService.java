@@ -157,25 +157,25 @@ public class TripService {
 		categories = new ArrayList<Category>(this.categoryService.findAllCategoriesByTripId(tripId));
 		stories = new ArrayList<Story>(this.storyService.findAllStoriesByTripId(tripId));
 
-		for (Story s : stories)
+		for (final Story s : stories)
 			this.storyService.delete(s);
 
-		for (Category c : categories)
+		for (final Category c : categories)
 			c.getTrips().remove(trip);
 
-		for (SurvivalClass s : survivalClasses)
+		for (final SurvivalClass s : survivalClasses)
 			this.survivalClassService.delete(s);
 
-		for (LegalText l : legalTexts)
+		for (final LegalText l : legalTexts)
 			l.getTrips().remove(trip);
 
-		for (Sponsorship s : sponsorships)
+		for (final Sponsorship s : sponsorships)
 			this.sponsorshipService.delete(s);
 
 		this.tripRepository.delete(trip);
 	}
 
-	public void cancel(Trip trip) {
+	public void cancel(final Trip trip) {
 
 		Date date;
 		Manager manager;
@@ -365,19 +365,6 @@ public class TripService {
 		return res;
 	}
 
-	public Collection<Trip> findAllTripsByKeyWordPriceDate(final String keyword, final double lowPrice, final double highPrice, final Date initialDate, final Date finalDate) {
-		final Collection<Trip> res;
-		final Page<Trip> resPage;
-		int maxNumberFinder;
-
-		maxNumberFinder = this.configurationSystemService.findOne().getMaxNumberFinder();
-		final Pageable pageable = new PageRequest(0, maxNumberFinder);
-
-		resPage = this.tripRepository.findAllTripsByKeyWordPriceDate(keyword, lowPrice, highPrice, initialDate, finalDate, pageable);
-		res = resPage.getContent();
-		return res;
-	}
-
 	//	public void setPriceOfTrip(Trip trip) {
 	//		Collection<Stage> stagesOfTrip;
 	//		Double priceOfTrip;
@@ -475,7 +462,7 @@ public class TripService {
 		return trips;
 	}
 
-	public Trip findTripsByNote(Note note) {
+	public Trip findTripsByNote(final Note note) {
 		Trip trip;
 
 		trip = this.tripRepository.findTripByNote(note.getId());

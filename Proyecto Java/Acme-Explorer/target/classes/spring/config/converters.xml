@@ -126,6 +126,9 @@
 		<bean class="converters.StringToValueConverter"/>
 		<bean class="converters.ValueToStringConverter"/>
 		
+		<bean class="converters.StringToFinderConverter"/>
+		<bean class="converters.FinderToStringConverter"/>
+		
 	</util:list>
 	
 </beans>
