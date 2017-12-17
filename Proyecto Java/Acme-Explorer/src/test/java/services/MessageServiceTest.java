@@ -8,13 +8,13 @@ import javax.transaction.Transactional;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.util.Assert;
 
 import utilities.AbstractTest;
 import domain.Administrator;
+import domain.ApplicationFor;
 import domain.Message;
 import domain.MessageFolder;
 
@@ -34,6 +34,9 @@ public class MessageServiceTest extends AbstractTest {
 	@Autowired
 	private AdministratorService	administratorService;
 
+	@Autowired
+	private ApplicationForService	applicationForService;
+
 
 	@Test
 	public void testCreate() {
@@ -47,17 +50,17 @@ public class MessageServiceTest extends AbstractTest {
 	@Test
 	public void testFindOneAndFindAllPositive() {
 		Collection<Message> messages;
-		Message message;
-		int id;
+		Message messageFind;
+
 		messages = this.messageService.findAll();
-		id = messages.iterator().next().getId();
-		message = this.messageService.findOne(id);
-		Assert.notNull(message);
+		messageFind = this.messageService.findOne(14277);
+
+		Assert.notNull(messages);
+		Assert.notNull(messageFind);
 
 	}
 
 	@Test
-	@Rollback(false)
 	public void testSave() {
 		super.authenticate("administrator1");
 
@@ -108,7 +111,6 @@ public class MessageServiceTest extends AbstractTest {
 	}
 
 	@Test
-	@Rollback(false)
 	public void testSaveMessageWithWordSpam() {
 		super.authenticate("administrator1");
 
@@ -130,5 +132,15 @@ public class MessageServiceTest extends AbstractTest {
 		message = this.messageService.save(message);
 
 		super.unauthenticate();
+	}
+
+	@Test
+	public void testApplicationForChanged() {
+		this.authenticate("administrator1");
+		ApplicationFor applicationFor;
+		applicationFor = this.applicationForService.findOne(this.getEntityId("applicationFor3"));
+
+		this.messageService.sendMessageToActorOfApplicationFor(applicationFor);
+		this.unauthenticate();
 	}
 }

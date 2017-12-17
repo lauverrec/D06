@@ -258,8 +258,8 @@ public class MessageService {
 		MessageFolder notificationBoxOfExplorer;
 		MessageFolder notificationBoxOfManager;
 
-		notificationBoxOfExplorer = this.messageFolderService.returnDefaultFolder(explorerOfApplicationFor, "NotificationBox");
-		notificationBoxOfManager = this.messageFolderService.returnDefaultFolder(managerOfApplicationFor, "NotificationBox");
+		notificationBoxOfExplorer = this.messageFolderService.returnDefaultFolder(explorerOfApplicationFor, "Notification box");
+		notificationBoxOfManager = this.messageFolderService.returnDefaultFolder(managerOfApplicationFor, "Notification box");
 		messageForExplorer = new Message();
 		messageForManager = new Message();
 
@@ -307,8 +307,8 @@ public class MessageService {
 		MessageFolder notificationBoxOfExplorer;
 		MessageFolder notificationBoxOfManager;
 
-		notificationBoxOfExplorer = this.messageFolderService.returnDefaultFolder(explorerOfApplicationFor, "NotificationBox");
-		notificationBoxOfManager = this.messageFolderService.returnDefaultFolder(managerOfApplicationFor, "NotificationBox");
+		notificationBoxOfExplorer = this.messageFolderService.returnDefaultFolder(explorerOfApplicationFor, "Notification box");
+		notificationBoxOfManager = this.messageFolderService.returnDefaultFolder(managerOfApplicationFor, "Notification box");
 		messageForExplorer = new Message();
 		messageForManager = new Message();
 
@@ -320,6 +320,7 @@ public class MessageService {
 		Date current;
 		current = new Date(System.currentTimeMillis() - 1000);
 		messageForExplorer.setMoment(current);
+		messageForExplorer.setRecipient(explorerOfApplicationFor);
 
 		messageBdOfExplorer = this.messageRepository.save(messageForExplorer);
 
@@ -330,9 +331,8 @@ public class MessageService {
 		messageForManager.setMessageFolder(notificationBoxOfManager);
 		Date current2;
 		current2 = new Date(System.currentTimeMillis() - 1000);
-		messageForExplorer.setMoment(current2);
-
-		messageBdOfExplorer = this.messageRepository.save(messageForExplorer);
+		messageForManager.setMoment(current2);
+		messageForManager.setRecipient(managerOfApplicationFor);
 
 		messageBdOfManager = this.messageRepository.save(messageForManager);
 
@@ -356,8 +356,8 @@ public class MessageService {
 		MessageFolder notificationBoxOfExplorer;
 		MessageFolder notificationBoxOfManager;
 
-		notificationBoxOfExplorer = this.messageFolderService.returnDefaultFolder(explorerOfApplicationFor, "NotificationBox");
-		notificationBoxOfManager = this.messageFolderService.returnDefaultFolder(managerOfApplicationFor, "NotificationBox");
+		notificationBoxOfExplorer = this.messageFolderService.returnDefaultFolder(explorerOfApplicationFor, "Notification box");
+		notificationBoxOfManager = this.messageFolderService.returnDefaultFolder(managerOfApplicationFor, "Notification box");
 		messageForExplorer = new Message();
 		messageForManager = new Message();
 
@@ -405,8 +405,8 @@ public class MessageService {
 		MessageFolder notificationBoxOfExplorer;
 		MessageFolder notificationBoxOfManager;
 
-		notificationBoxOfExplorer = this.messageFolderService.returnDefaultFolder(explorerOfApplicationFor, "NotificationBox");
-		notificationBoxOfManager = this.messageFolderService.returnDefaultFolder(managerOfApplicationFor, "NotificationBox");
+		notificationBoxOfExplorer = this.messageFolderService.returnDefaultFolder(explorerOfApplicationFor, "Notification box");
+		notificationBoxOfManager = this.messageFolderService.returnDefaultFolder(managerOfApplicationFor, "Notification box");
 		messageForExplorer = new Message();
 		messageForManager = new Message();
 
@@ -454,8 +454,8 @@ public class MessageService {
 		MessageFolder notificationBoxOfExplorer;
 		MessageFolder notificationBoxOfManager;
 
-		notificationBoxOfExplorer = this.messageFolderService.returnDefaultFolder(explorerOfApplicationFor, "NotificationBox");
-		notificationBoxOfManager = this.messageFolderService.returnDefaultFolder(managerOfApplicationFor, "NotificationBox");
+		notificationBoxOfExplorer = this.messageFolderService.returnDefaultFolder(explorerOfApplicationFor, "Notification box");
+		notificationBoxOfManager = this.messageFolderService.returnDefaultFolder(managerOfApplicationFor, "Notification box");
 		messageForExplorer = new Message();
 		messageForManager = new Message();
 
