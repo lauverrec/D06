@@ -54,7 +54,7 @@ public class AuditorService {
 	public Auditor create() {
 
 		Auditor result;
-		UserAccount useraccount;
+		UserAccount userAccount;
 		Authority authority;
 		Collection<SocialIdentity> socialIdentities;
 		Collection<MessageFolder> messagesFolders;
@@ -62,7 +62,7 @@ public class AuditorService {
 		Collection<AuditRecord> auditrecords;
 
 		result = new Auditor();
-		useraccount = new UserAccount();
+		userAccount = new UserAccount();
 		authority = new Authority();
 		messagesFolders = new ArrayList<MessageFolder>();
 		socialIdentities = new ArrayList<SocialIdentity>();
@@ -72,8 +72,9 @@ public class AuditorService {
 		messagesFolders = this.messageFolderService.createDefaultFoldersForRegister(result);
 
 		authority.setAuthority(Authority.AUDITOR);
-		useraccount.addAuthority(authority);
-		result.setUserAccount(useraccount);
+		userAccount.setActivated(true);
+		userAccount.addAuthority(authority);
+		result.setUserAccount(userAccount);
 		result.setMessagesFolders(messagesFolders);
 		result.setSocialIdentities(socialIdentities);
 		result.setNotes(notes);

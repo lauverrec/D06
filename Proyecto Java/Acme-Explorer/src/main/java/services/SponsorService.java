@@ -64,6 +64,7 @@ public class SponsorService {
 
 		authority.setAuthority(Authority.SPONSOR);
 		userAccount.addAuthority(authority);
+		userAccount.setActivated(true);
 		result.setUserAccount(userAccount);
 		result.setMessagesFolders(messagesFolders);
 		result.setSocialIdentities(socialIdentities);

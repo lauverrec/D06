@@ -71,6 +71,7 @@ public class ManagerService {
 		messagesFolders.addAll(this.messageFolderService.createDefaultFoldersForRegister(result));
 
 		authority.setAuthority(Authority.MANAGER);
+		userAccount.setActivated(true);
 		userAccount.addAuthority(authority);
 		result.setUserAccount(userAccount);
 		result.setMessagesFolders(messagesFolders);

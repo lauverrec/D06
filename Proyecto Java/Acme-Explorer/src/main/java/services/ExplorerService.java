@@ -84,6 +84,7 @@ public class ExplorerService {
 		messagesFolders.addAll(defaultFolders);
 		result.setMessagesFolders(messagesFolders);
 		authority.setAuthority(Authority.EXPLORER);
+		userAccount.setActivated(true);
 		userAccount.addAuthority(authority);
 		result.setUserAccount(userAccount);
 		result.setStories(stories);

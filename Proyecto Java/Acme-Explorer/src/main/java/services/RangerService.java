@@ -68,6 +68,7 @@ public class RangerService {
 
 		authority.setAuthority("RANGER");
 		userAccount.addAuthority(authority);
+		userAccount.setActivated(true);
 		result.setUserAccount(userAccount);
 		result.setMessagesFolders(messagesFolders);
 		result.setSocialIdentities(socialIdentities);
