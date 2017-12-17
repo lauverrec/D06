@@ -101,10 +101,10 @@
 		
 	</display:table>
 	
-	<br/>
 	
+	<h2><spring:message code="sponsorship.bannerURL" /></h2>
 <display:table name="sponsorshiprandom" id="row" class="displaytag">
-	
+			
 		<spring:message code="sponsorship.bannerURL" var="bannerURLHeader" />
 		<display:column property="bannerURL" title="${bannerURLHeader}" sortable="false" >
 			<jstl:out value="${bannerURLHeader}"></jstl:out>
