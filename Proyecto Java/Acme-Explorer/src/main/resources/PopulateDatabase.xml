@@ -3354,6 +3354,20 @@
 			<ref bean="sponsor1" />
 		</property>
 	</bean>
+	
+	<bean id="sponsorship7" class="domain.Sponsorship">
+		<property name="bannerURL" value="http://www.banner2.com" />
+		<property name="link" value="http://www.link-banner.com" />
+		<property name="creditCard">
+			<ref bean="creditCard1" />
+		</property>
+		<property name="trip">
+			<ref bean="trip1" />
+		</property>
+		<property name="sponsor">
+			<ref bean="sponsor1" />
+		</property>
+	</bean>
 
 	<!-- SponsorShip 2 -->
 	<bean id="sponsorship2" class="domain.Sponsorship">
