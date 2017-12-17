@@ -352,6 +352,12 @@ public class TripService {
 		return res;
 	}
 
+	public Collection<Trip> findAllTripsByTagName(String name) {
+		Collection<Trip> res;
+		res = this.tripRepository.findAllTripsByTagName(name);
+		return res;
+	}
+
 	public Collection<Trip> findAllTripsByKeyWord(final String keyWord) {
 		final Collection<Trip> res;
 		final Page<Trip> resPage;

@@ -79,15 +79,19 @@ public class TagService {
 	}
 
 	public void save10(final Tag tag, String name) {
+		Collection<Trip> trips;
 		Collection<Tag> tagses;
+		trips = new ArrayList<Trip>(this.tripService.findAllTripsByTagName(name));
 		tagses = new ArrayList<Tag>(this.tagRepository.findAllTagByName(name));
+
+		//Quiere decir  que no hay ningun trip con esa tag que quiero editar
+		Assert.isTrue(trips.size() == 0);
 
 		for (Tag t : tagses) {
 			t.setName(tag.getName());
 			this.tagRepository.save(t);
 		}
 	}
-
 	public Tag save(final Tag tag) {
 		Collection<Tag> tagsWithTrip;
 		tagsWithTrip = this.tagRepository.findTagWithTrip();
@@ -104,17 +108,38 @@ public class TagService {
 
 		return result;
 	}
-	public void delete(final Tag tag) {
-		this.administratorService.checkPrincipal();
-		Assert.notNull(tag);
-		Assert.notNull(this.tagRepository.findOne(tag.getId()));
-		final Collection<Trip> trips;
 
-		trips = this.tripService.findAllTripsByTagId(tag.getId());
+	/*
+	 * DELETE ANTIGUO
+	 * public void delete(final Tag tag) {
+	 * this.administratorService.checkPrincipal();
+	 * Assert.notNull(tag);
+	 * Assert.notNull(this.tagRepository.findOne(tag.getId()));
+	 * final Collection<Trip> trips;
+	 * 
+	 * trips = this.tripService.findAllTripsByTagId(tag.getId());
+	 * for (final Trip t : trips)
+	 * t.getTags().remove(tag);
+	 * 
+	 * this.tagRepository.delete(tag);
+	 * }
+	 */
+
+	public void delete10(final Tag tag) {
+		String name;
+		Collection<Tag> tags;
+		Collection<Trip> trips;
+
+		name = tag.getName();
+		tags = new ArrayList<Tag>(this.tagRepository.findAllTagByName(name));
+		trips = new ArrayList<Trip>(this.tripService.findAllTripsByTagId(tag.getId()));
+
 		for (final Trip t : trips)
 			t.getTags().remove(tag);
 
-		this.tagRepository.delete(tag);
+		for (Tag t : tags)
+			this.tagRepository.delete(t);
+
 	}
 
 	public Collection<Tag> findAllTagUnique() {

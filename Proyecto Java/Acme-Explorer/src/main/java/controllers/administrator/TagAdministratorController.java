@@ -93,7 +93,6 @@ public class TagAdministratorController extends AbstractController {
 		else
 			try {
 				if (tag.getId() > 0) {
-					//	names = this.tagService.obtainName(this.nameB);
 					this.tagService.save10(tag, this.oldName);
 					result = new ModelAndView("redirect:list.do");
 				} else {
@@ -115,7 +114,7 @@ public class TagAdministratorController extends AbstractController {
 		ModelAndView result;
 
 		try {
-			this.tagService.delete(tag);
+			this.tagService.delete10(tag);
 			result = new ModelAndView("redirect:list.do");
 		} catch (Throwable oops) {
 			result = this.createEditModelAndView(tag, "tag.commit.error");
