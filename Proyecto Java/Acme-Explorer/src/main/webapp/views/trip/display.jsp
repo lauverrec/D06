@@ -103,6 +103,14 @@
 	
 	<br/>
 	
+<display:table name="sponsorship" id="row" class="displaytag">
+	
+		<spring:message code="sponsorship.bannerURL" var="bannerURLHeader" />
+		<display:column property="bannerURL" title="${bannerURLHeader}" sortable="false" >
+			<jstl:out value="${bannerURLHeader}"></jstl:out>
+		</display:column>
+</display:table>
+	
 	
 <security:authorize access="hasRole('MAMANGER')">
 	<input type="button" name="back" value="<spring:message code="trip.back" />"

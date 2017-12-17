@@ -3,6 +3,7 @@ package services;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -105,15 +106,6 @@ public class SponsorshipService {
 		return result;
 	}
 
-	//	public Trip findTripBySponsorship(Sponsorship sponsorship) {
-	//		Trip trip;
-	//
-	//		trip = this.sponsorshipRepository.findTripBySponsorship(sponsorship.getId());
-	//
-	//		return trip;
-	//
-	//	}
-
 	public Boolean sponsorshipContainsSpam(Sponsor sponsor) {
 		Boolean result = false;
 		Collection<Sponsorship> sponsorships;
@@ -137,5 +129,24 @@ public class SponsorshipService {
 					break;
 				}
 		return result;
+	}
+
+	public Sponsorship randomSponsorship(Trip trip) {
+
+		List<Sponsorship> sponsorships;
+		Integer size;
+		Sponsorship sponsorship;
+
+		sponsorships = this.sponsorshipRepository.findAllSponsorshipByTripId(trip.getId());
+		size = sponsorships.size();
+
+		int rand = (int) (Math.random() * size);
+
+		sponsorship = sponsorships.get(rand);
+
+		// de la coleccion de sponsorship que tiene la trip quiero sacar uno al azar
+		// y monstrar su bannerURL
+
+		return sponsorship;
 	}
 }
