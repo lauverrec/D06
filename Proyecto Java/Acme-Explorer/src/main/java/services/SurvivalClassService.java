@@ -238,11 +238,12 @@ public class SurvivalClassService {
 			words.add(survival.getTitle());
 		}
 
-		for (String spam : spamWords)
-			if (words.contains(spam)) {
-				result = true;
-				break;
-			}
+		for (String word : words)
+			for (String spam : spamWords)
+				if (word.indexOf(spam) > -1) {
+					result = true;
+					break;
+				}
 		return result;
 
 	}

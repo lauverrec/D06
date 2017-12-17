@@ -213,11 +213,12 @@ public class CurriculaService {
 			wordsPublicated.add(professional.getRole());
 			wordsPublicated.addAll(professional.getComments());
 		}
-		for (String spam : spamWords)
-			if (wordsPublicated.contains(spam)) {
-				result = true;
-				break;
-			}
+		for (String word : wordsPublicated)
+			for (String spam : spamWords)
+				if (word.indexOf(spam) > -1) {
+					result = true;
+					break;
+				}
 
 		return result;
 

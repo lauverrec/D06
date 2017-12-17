@@ -172,6 +172,7 @@ public class MessageService {
 				if (i != -1)
 					bool = true;
 			}
+
 		return bool;
 
 	}

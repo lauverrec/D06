@@ -130,11 +130,12 @@ public class SponsorshipService {
 			words.add(sponsorship.getLink());
 		}
 
-		for (String spam : spamWords)
-			if (words.contains(spam)) {
-				result = true;
-				break;
-			}
+		for (String word : words)
+			for (String spam : spamWords)
+				if (word.indexOf(spam) > -1) {
+					result = true;
+					break;
+				}
 		return result;
 	}
 }

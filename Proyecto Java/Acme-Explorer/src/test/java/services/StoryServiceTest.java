@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import utilities.AbstractTest;
+import domain.Explorer;
 import domain.Story;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -95,5 +96,19 @@ public class StoryServiceTest extends AbstractTest {
 		story = this.storyService.findOne(super.getEntityId("story2"));
 
 		this.storyService.delete(story);
+	}
+
+	@Test
+	public void testSpam() {
+		Story story;
+		Explorer explorer;
+		boolean result;
+
+		story = this.storyService.findOne(super.getEntityId("story1"));
+		explorer = story.getExplorer();
+
+		result = this.storyService.storyContainsSpam(explorer);
+
+		Assert.isTrue(result);
 	}
 }
