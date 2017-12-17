@@ -14,6 +14,7 @@
 	<bean id="configurationSystem" class="domain.ConfigurationSystem">
 		<property name="maxNumberFinder" value="10" />
 		<property name="VAT" value="0.21" />
+		<property name="cacheMaxTime" value="1" />
 		<property name="banner"
 			value="http://creek-tours.com/wp-content/uploads/Kenya-Tanzania-Family-Safari-banner.jpg" />
 		<property name="spamWords">
@@ -4775,10 +4776,10 @@
 	<!-- FINDER -->
 	
 	<bean id="finder1" class="domain.Finder">
-		<!-- <property name="keyWord"><null/></property> -->
+		<property name="keyWord"><null/></property>
 		<property name="lowPrice" value="0.0" />
 		<property name="highPrice" value="100.0" />
-		<property name="initialDate" value="2017/10/14" />
+		<property name="initialDate" value="2015/10/14" />
 		<property name="finalDate" value="2017/10/14" />
 		<property name="startCacheTime" value="2017/10/14 23:59" />
 		<property name="trips">
@@ -4788,10 +4789,10 @@
 	</bean>
 	
 	<bean id="finder2" class="domain.Finder">
-		<!-- <property name="keyWord"><null/></property> -->
+		<property name="keyWord"><null/></property>
 		<property name="lowPrice" value="0.0" />
 		<property name="highPrice" value="100.0" />
-		<property name="initialDate" value="2017/10/14" />
+		<property name="initialDate" value="2015/10/14" />
 		<property name="finalDate" value="2017/10/14" />
 		<property name="startCacheTime" value="2017/10/14 23:59" />
 		<property name="trips">
@@ -4801,10 +4802,10 @@
 	</bean>
 	
 	<bean id="finder3" class="domain.Finder">
-		<!-- <property name="keyWord"><null/></property> -->
+		<property name="keyWord"><null/></property>
 		<property name="lowPrice" value="0.0" />
 		<property name="highPrice" value="100.0" />
-		<property name="initialDate" value="2017/10/14" />
+		<property name="initialDate" value="2015/10/14" />
 		<property name="finalDate" value="2017/10/14" />
 		<property name="startCacheTime" value="2017/10/14 23:59" />
 		<property name="trips">
@@ -4814,10 +4815,10 @@
 	</bean>
 	
 	<bean id="finder4" class="domain.Finder">
-		<!-- <property name="keyWord"><null/></property> -->
+		<property name="keyWord"><null/></property>
 		<property name="lowPrice" value="0.0" />
 		<property name="highPrice" value="100.0" />
-		<property name="initialDate" value="2017/10/14" />
+		<property name="initialDate" value="2015/10/14" />
 		<property name="finalDate" value="2017/10/14" />
 		<property name="startCacheTime" value="2017/10/14 23:59" />
 		<property name="trips">
@@ -4827,10 +4828,10 @@
 	</bean>
 	
 	<bean id="finder5" class="domain.Finder">
-		<!-- <property name="keyWord"><null/></property> -->
+		<property name="keyWord"><null/></property>
 		<property name="lowPrice" value="0.0" />
 		<property name="highPrice" value="100.0" />
-		<property name="initialDate" value="2017/10/14" />
+		<property name="initialDate" value="2015/10/14" />
 		<property name="finalDate" value="2017/10/14" />
 		<property name="startCacheTime" value="2017/10/14 23:59" />
 		<property name="trips">
@@ -4840,10 +4841,10 @@
 	</bean>
 	
 	<bean id="finder6" class="domain.Finder">
-		<!-- <property name="keyWord"><null/></property> -->
+		<property name="keyWord"><null/></property>
 		<property name="lowPrice" value="0.0" />
 		<property name="highPrice" value="100.0" />
-		<property name="initialDate" value="2017/10/14" />
+		<property name="initialDate" value="2015/10/14" />
 		<property name="finalDate" value="2017/10/14" />
 		<property name="startCacheTime" value="2017/10/14 23:59" />
 		<property name="trips">

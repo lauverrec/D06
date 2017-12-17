@@ -101,9 +101,12 @@ public class RangerService {
 		final Md5PasswordEncoder encoder;
 		final String passwordHash;
 
-		encoder = new Md5PasswordEncoder();
-		passwordHash = encoder.encodePassword(ranger.getUserAccount().getPassword(), null);
-		ranger.getUserAccount().setPassword(passwordHash);
+		if (ranger.getId() == 0) {
+			final String password = ranger.getUserAccount().getPassword();
+			encoder = new Md5PasswordEncoder();
+			passwordHash = encoder.encodePassword(password, null);
+			ranger.getUserAccount().setPassword(passwordHash);
+		}
 		result = this.rangerRepository.save(ranger);
 
 		Assert.notNull(result);

@@ -23,6 +23,7 @@ public class ConfigurationSystem extends DomainEntity {
 	private Collection<String>		spamWords;
 	private Collection<Category>	defaultCategories;
 	private int						maxNumberFinder;
+	private int						cacheMaxTime;
 
 
 	public double getVAT() {
@@ -73,6 +74,16 @@ public class ConfigurationSystem extends DomainEntity {
 
 	public void setMaxNumberFinder(final int maxNumberFinder) {
 		this.maxNumberFinder = maxNumberFinder;
+	}
+
+	@NotNull
+	@Range(min = 1, max = 24)
+	public int getCacheMaxTime() {
+		return this.cacheMaxTime;
+	}
+
+	public void setCacheMaxTime(final int cacheMaxTime) {
+		this.cacheMaxTime = cacheMaxTime;
 	}
 
 }

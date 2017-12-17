@@ -36,6 +36,12 @@
 	<form:errors cssClass="error" path="maxNumberFinder" />
 	<br />
 	
+	<form:label path="cacheMaxTime">
+		<spring:message code="configurationSystem.cacheMaxTime" />:
+	</form:label>
+	<form:input path="cacheMaxTime"/>
+	<form:errors cssClass="error" path="cacheMaxTime" />
+	<br />
 
 	<input type="submit" name="save"
 		value="<spring:message code="configurationSystem.save" />" />&nbsp; 

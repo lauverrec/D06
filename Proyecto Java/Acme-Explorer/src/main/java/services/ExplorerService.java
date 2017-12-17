@@ -118,22 +118,24 @@ public class ExplorerService {
 		Explorer newExplorer;
 		Assert.notNull(explorer);
 
-		String password = explorer.getUserAccount().getPassword();
-		final Md5PasswordEncoder encoder = new Md5PasswordEncoder();
-		password = encoder.encodePassword(password, null);
-		explorer.getUserAccount().setPassword(password);
-
-		newExplorer = this.explorerRepository.save(explorer);
+		//Solo se cambia la contraseña por su hash la primera vez que se crea un Explorer
+		if (explorer.getId() == 0) {
+			String password = explorer.getUserAccount().getPassword();
+			final Md5PasswordEncoder encoder = new Md5PasswordEncoder();
+			password = encoder.encodePassword(password, null);
+			explorer.getUserAccount().setPassword(password);
+		}
 
 		//Si es la primera vez que creamos el explorer guardamos en la bd su finder
-		if (newExplorer.getFinder() == null) {
+		if (explorer.getFinder() == null) {
 			Finder finder;
 
 			finder = this.finderService.create();
 			finder = this.finderService.save(finder);
-			newExplorer.setFinder(finder);
-			this.save(newExplorer);
-		}
+			explorer.setFinder(finder);
+			newExplorer = this.explorerRepository.save(explorer);
+		} else
+			newExplorer = this.explorerRepository.save(explorer);
 
 		return newExplorer;
 	}

@@ -17,7 +17,6 @@ import org.springframework.util.Assert;
 import utilities.AbstractTest;
 import domain.Explorer;
 import domain.Finder;
-import domain.Trip;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {
@@ -45,12 +44,6 @@ public class FinderServiceTest extends AbstractTest {
 	// Test ------------------------------------------------------------------
 
 	@Test
-	public void testRetainAll() {
-		final Collection<Trip> trip1 = this.tripService.findAllTripsNoAuthenticate();
-
-	}
-
-	@Test
 	public void testCreate() {
 		Finder finder;
 
@@ -76,21 +69,20 @@ public class FinderServiceTest extends AbstractTest {
 		explorer = this.explorerService.save(explorer);
 		this.entityManager.flush();
 
-		//Assert.isTrue(explorer.equals(this.finderService.findOne(explorer.getFinder().getId()).getExplorer()));
 	}
 
-	//	@Test
-	//	public void testFindOne() {
-	//		Finder finder;
-	//		finder = this.finderService.findOne(super.getEntityId("finder1"));
-	//		Assert.notNull(finder);
-	//	}
-	//
-	//	@Test
-	//	public void testFindAll() {
-	//		Collection<Finder> finders;
-	//		finders = this.finderService.findAll();
-	//		Assert.notNull(finders);
-	//	}
+	@Test
+	public void testFindOne() {
+		Finder finder;
+		finder = this.finderService.findOne(super.getEntityId("finder1"));
+		Assert.notNull(finder);
+	}
+
+	@Test
+	public void testFindAll() {
+		Collection<Finder> finders;
+		finders = this.finderService.findAll();
+		Assert.notNull(finders);
+	}
 
 }

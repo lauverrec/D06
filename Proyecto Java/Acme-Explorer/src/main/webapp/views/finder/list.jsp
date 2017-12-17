@@ -25,6 +25,8 @@
 
 <form:form action="${requestURI}" modelAttribute="finder" >
 
+	<form:hidden path="id" />
+	<form:hidden path="version" />
 	<form:hidden path="trips" />
 
 	<form:label path="keyWord">
@@ -54,7 +56,7 @@
 	<form:label path="initialDate">
 		<spring:message code="trip.search.initialDate" />:
 	</form:label>
-	<form:input path="initialDate" />
+	<form:input path="initialDate" placeholder=" yyyy/dd/MM HH:hh" />
 	<form:errors cssClass="error" path="initialDate" />
 	<br />
 	<br />
@@ -62,7 +64,7 @@
 	<form:label path="finalDate">
 		<spring:message code="trip.search.finalDate" />:
 	</form:label>
-	<form:input path="finalDate" />
+	<form:input path="finalDate" placeholder=" yyyy/dd/MM HH:hh" />
 	<form:errors cssClass="error" path="finalDate" />
 	<br />
 	<br />
@@ -70,7 +72,7 @@
 	<input type="submit" name="search" value="<spring:message code="trip.search" />" onclick="valida();"/> &nbsp; 	 
 </form:form> 
 
-<%-- <display:table pagesize="5" class="displaytag" keepStatus="true"
+<display:table pagesize="5" class="displaytag" keepStatus="true"
 	name="trips" id="row">
 
  <!-- Display -->
@@ -135,4 +137,4 @@
 </jstl:if>
 <display:column property="reasonWhy" title="${reasonWhyHeader}" sortable="true" />
 
-</display:table> --%>
+</display:table>

@@ -53,6 +53,7 @@ public class Finder extends DomainEntity {
 	}
 
 	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy/MM/dd")
 	public Date getInitialDate() {
 		return this.initialDate;
 	}

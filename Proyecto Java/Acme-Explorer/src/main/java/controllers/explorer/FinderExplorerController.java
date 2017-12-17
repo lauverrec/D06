@@ -8,11 +8,13 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.Assert;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import services.ConfigurationSystemService;
 import services.ExplorerService;
 import services.FinderService;
 import services.TripService;
@@ -27,11 +29,13 @@ public class FinderExplorerController {
 	// Services---------------------------------------------------------
 
 	@Autowired
-	private ExplorerService	explorerService;
+	private ExplorerService				explorerService;
 	@Autowired
-	private FinderService	finderService;
+	private FinderService				finderService;
 	@Autowired
-	private TripService		tripService;
+	private TripService					tripService;
+	@Autowired
+	private ConfigurationSystemService	configurationSystemService;
 
 
 	//Constructor--------------------------------------------------------
@@ -46,26 +50,34 @@ public class FinderExplorerController {
 		ModelAndView result;
 		final Finder finderCache;
 		Finder finderResult;
+		Explorer explorerPrincipal;
 
 		if (bindingResult.hasErrors())
 			result = this.createEditModelAndView(finder);
 		else
 			try {
 				result = new ModelAndView("finder/list");
-				finderCache = this.explorerService.findByPrincipal().getFinder();
+				explorerPrincipal = this.explorerService.findByPrincipal();
+				finderCache = explorerPrincipal.getFinder();
 				final Date date = new Date();
 
-				if (this.finderService.checkEquals(finderCache, finder) && (date.getTime() - finderCache.getStartCacheTime().getTime()) <= 3600000)
-					finderResult = finderCache;
-				else
+				//Compruebo si el finder a modificar pertenece al explorer
+				Assert.isTrue(finderCache.getId() == finder.getId());
+
+				//Obtengo los milisegundos que el admin permite que se guarde en cache y compruebo si ha vencido el tiempo
+				int hoursCacheMaxTime;
+				final int milisecondsCacheMaxTime;
+				hoursCacheMaxTime = this.configurationSystemService.findOne().getCacheMaxTime();
+				milisecondsCacheMaxTime = hoursCacheMaxTime * 3600000;
+
+				if (!(this.finderService.checkEquals(finderCache, finder) && (date.getTime() - finderCache.getStartCacheTime().getTime()) <= milisecondsCacheMaxTime)) {
 					finderResult = this.finderService.search(finder);
+					finderResult = this.finderService.save(finderResult);
+					explorerPrincipal.setFinder(finderResult);
+					this.explorerService.save(explorerPrincipal);
+				}
 
-				final double price = this.tripService.setPriceTrip(finderResult.getTrips());
-				result = new ModelAndView("finder/list");
-				result.addObject("trips", finderResult.getTrips());
-				result.addObject("price", price);
-				result.addObject("requestURI", "finder/explorer/search.do");
-
+				result = new ModelAndView("redirect:/finder/explorer/list.do");
 			} catch (final Throwable oops) {
 				result = this.createEditModelAndView(finder, "finder.commit.error");
 			}
@@ -85,8 +97,6 @@ public class FinderExplorerController {
 		finder = explorer.getFinder();
 		trips = finder.getTrips();
 		price = this.tripService.setPriceTrip(trips);
-
-		trips = this.tripService.findAll();
 
 		result = new ModelAndView("finder/list");
 		result.addObject("trips", trips);

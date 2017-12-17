@@ -92,6 +92,8 @@
 								code="master.page.messageFolder.list" /></a></li>
 					<li><a href="message/explorer/send.do"><spring:message
 								code="master.page.message.send" /></a></li>
+					<li><a href="finder/explorer/list.do"><spring:message
+								code="master.page.message.finder" /></a></li>
 				</ul></li>
 			<li><a href="trip/list.do"><spring:message
 						code="master.page.trips" /></a></li>

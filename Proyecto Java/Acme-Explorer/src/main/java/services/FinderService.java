@@ -117,7 +117,7 @@ public class FinderService {
 		if (finder.getKeyWord() == null)
 			finder.setKeyWord("");
 		pages = this.finderRepository.findByKeyWord(finder.getKeyWord(), pageable);
-		trips = pages.getContent();
+		trips = new ArrayList<Trip>(pages.getContent());
 
 		if (finder.getLowPrice() != null) {
 			final Page<Trip> pageLowPrice;
