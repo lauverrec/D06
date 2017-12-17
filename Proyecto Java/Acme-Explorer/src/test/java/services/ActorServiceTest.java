@@ -57,4 +57,12 @@ public class ActorServiceTest extends AbstractTest {
 		this.authenticate(null);
 	}
 
+	@Test
+	public void testSuspicious() {
+		Collection<Actor> actors;
+
+		actors = this.actorService.suspicious();
+
+		Assert.notEmpty(actors);
+	}
 }

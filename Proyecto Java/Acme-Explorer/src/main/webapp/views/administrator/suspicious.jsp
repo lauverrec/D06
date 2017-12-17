@@ -21,13 +21,21 @@
 
 
 <display:table pagesize="5" class="displaytag" keepStatus="true"
-	name="suspicious" requestURI="legalText/administrator/list.do" id="row">
+	name="suspicious" requestURI="suspicious/administrator/list.do" id="row">
 	
 	
 	<!-- Attributes -->
 
 	<spring:message code="actor.name" var="titleHeader" />:
 	<display:column property="name" title="${titleHeader}" sortable="true" />
+	
+	<spring:message code="actor.ban" var="banHeader"></spring:message>
+	<display:column title="${banHeader }" sortable="true">
+	<spring:url value="suspicious/administrator/ban.do" var="banURL">
+	<spring:param name="actorId" value="${row.id}"/>
+	</spring:url>
+	<a href="${banURL}"><spring:message code="actor.ban"/></a>
+	</display:column>
 	
 
 	

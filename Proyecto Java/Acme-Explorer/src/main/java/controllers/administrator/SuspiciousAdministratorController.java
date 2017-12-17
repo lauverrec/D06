@@ -37,7 +37,7 @@ public class SuspiciousAdministratorController extends AbstractController {
 		ModelAndView result;
 		Collection<Actor> suspicious;
 
-		suspicious = this.actorService.isSuspicious();
+		suspicious = this.actorService.suspicious();
 
 		result = new ModelAndView("administrator/suspicious");
 		result.addObject("suspicious", suspicious);
@@ -56,7 +56,7 @@ public class SuspiciousAdministratorController extends AbstractController {
 		return result;
 	}
 
-	@RequestMapping(value = "/ban", method = RequestMethod.POST, params = "ban")
+	@RequestMapping(value = "/ban", method = RequestMethod.POST, params = "actorId")
 	public ModelAndView cancel(@Valid Actor actor, BindingResult binding) {
 		ModelAndView result;
 		//Collection<ApplicationFor> applicationsFor;	
@@ -68,7 +68,7 @@ public class SuspiciousAdministratorController extends AbstractController {
 				this.actorService.save(actor);
 				result = new ModelAndView("redirect:list.do");
 			} catch (final Throwable oops) {
-				result = this.createBanModelAndView(actor, "applicationfor.cancel.error");
+				result = this.createBanModelAndView(actor, "administrator.cancel.error");
 			}
 		return result;
 	}

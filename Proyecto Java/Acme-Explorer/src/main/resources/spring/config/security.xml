@@ -79,7 +79,7 @@
 		<security:intercept-url pattern="/note/manager/**" access="hasRole('MANAGER')" /> 
 		<security:intercept-url pattern="/tag/administrator/**" access="hasRole('ADMINISTRATOR')"/>
 		<security:intercept-url pattern="/trip/category/**" access="permitAll"/>
-		<security:intercept-url pattern="/suspicious/administrator/list.do" access="hasRole('ADMINISTRATOR')" /> 
+		<security:intercept-url pattern="/suspicious/administrator/**" access="hasRole('ADMINISTRATOR')" /> 
 		
 
 		
