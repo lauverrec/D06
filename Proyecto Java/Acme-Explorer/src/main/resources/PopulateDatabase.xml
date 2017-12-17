@@ -460,17 +460,38 @@
 		<property name="subject" value="subject 1" />
 		<property name="body" value="body 1" />
 		<property name="priority" value="HIGH" />
-		<property name="messageFolder" ref="InBoxAdministrator1" />
+		<property name="messageFolder" ref="InBoxAdministrator2" />
 		<property name="sender" ref="administrator1" />
 		<property name="recipient" ref="administrator2" />
 	</bean>
+	
+	<bean id="message1Copy" class="domain.Message">
+		<property name="moment" value="2017/10/01 15:20" />
+		<property name="subject" value="subject 1" />
+		<property name="body" value="body 1" />
+		<property name="priority" value="HIGH" />
+		<property name="messageFolder" ref="OutBoxAdministrator1" />
+		<property name="sender" ref="administrator1" />
+		<property name="recipient" ref="administrator2" />
+	</bean>
+	
 
 	<bean id="message2" class="domain.Message">
 		<property name="moment" value="2017/10/01 15:25" />
 		<property name="subject" value="subject 2" />
 		<property name="body" value="body 2" />
 		<property name="priority" value="HIGH" />
-		<property name="messageFolder" ref="InBoxAdministrator1" />
+		<property name="messageFolder" ref="InBoxAuditor2" />
+		<property name="sender" ref="auditor1" />
+		<property name="recipient" ref="auditor2" />
+	</bean>
+	
+	<bean id="message2Copy" class="domain.Message">
+		<property name="moment" value="2017/10/01 15:25" />
+		<property name="subject" value="subject 2" />
+		<property name="body" value="body 2" />
+		<property name="priority" value="HIGH" />
+		<property name="messageFolder" ref="OutBoxAuditor1" />
 		<property name="sender" ref="auditor1" />
 		<property name="recipient" ref="auditor2" />
 	</bean>
@@ -484,8 +505,6 @@
 		<property name="modifiable" value="false" />
 		<property name="messages">
 			<list>
-				<ref bean="message1" />
-				<ref bean="message2" />
 			</list>
 		</property>
 	</bean>
@@ -495,6 +514,7 @@
 		<property name="modifiable" value="false" />
 		<property name="messages">
 			<list>
+			<ref bean="message1Copy"/>
 			</list>
 		</property>
 	</bean>
@@ -531,6 +551,7 @@
 		<property name="modifiable" value="false" />
 		<property name="messages">
 			<list>
+			<ref bean="message1"/>
 			</list>
 		</property>
 	</bean>
@@ -1448,6 +1469,7 @@
 		<property name="modifiable" value="false" />
 		<property name="messages">
 			<list>
+			<ref bean="message2Copy"/>
 			</list>
 		</property>
 	</bean>
@@ -1484,6 +1506,7 @@
 		<property name="modifiable" value="false" />
 		<property name="messages">
 			<list>
+			<ref bean="message2"/>
 			</list>
 		</property>
 	</bean>

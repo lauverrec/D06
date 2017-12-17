@@ -53,13 +53,12 @@ public class MessageServiceTest extends AbstractTest {
 		Message messageFind;
 
 		messages = this.messageService.findAll();
-		messageFind = this.messageService.findOne(14277);
+		messageFind = this.messageService.findOne(this.getEntityId("message2"));
 
 		Assert.notNull(messages);
 		Assert.notNull(messageFind);
 
 	}
-
 	@Test
 	public void testSave() {
 		super.authenticate("administrator1");
