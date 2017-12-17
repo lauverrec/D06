@@ -2,10 +2,10 @@
 
 2. Los meses en las trips cuando se muestran siempre son 00, mirar porqué ocurre eso.
 
-3. No salen los errores cuando intentas crear una credit card a un sponsorship.
+3. No salen los errores cuando intentas crear una credit card a un sponsorship. 
 
-4. No poder crear una auditoría si la excursión ha acabado. 
+4. Created moment de una application (el mes que pone es erroneo, ej: 2017/51/15 12:51)
 
-5. No poder crear un sponsorship si la excursión ya ha acabado. 
+5. Los fallos cuando intentas salvar un gps vacío no t lo guarda pero no se muestran los errores de fallo en plan must be blank y eso.
 
-6. Created moment de una application (el mes que pone es erroneo, ej: 2017/51/15 12:51)
+
