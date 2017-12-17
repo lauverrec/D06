@@ -120,7 +120,7 @@ public class TripController extends AbstractController {
 		result.addObject("stages", stages);
 		result.addObject("auditRecords", auditRecords);
 		result.addObject("notes", notes);
-		result.addObject("sponsorship", sponsorship);
+		result.addObject("sponsorshiprandom", sponsorship);
 
 		return result;
 	}

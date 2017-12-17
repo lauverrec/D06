@@ -103,7 +103,7 @@
 	
 	<br/>
 	
-<display:table name="sponsorship" id="row" class="displaytag">
+<display:table name="sponsorshiprandom" id="row" class="displaytag">
 	
 		<spring:message code="sponsorship.bannerURL" var="bannerURLHeader" />
 		<display:column property="bannerURL" title="${bannerURLHeader}" sortable="false" >
