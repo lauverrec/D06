@@ -271,6 +271,7 @@ public class MessageService {
 		Date current;
 		current = new Date(System.currentTimeMillis() - 1000);
 		messageForExplorer.setMoment(current);
+		messageForExplorer.setRecipient(explorerOfApplicationFor);
 
 		messageBdOfExplorer = this.messageRepository.save(messageForExplorer);
 
@@ -281,9 +282,8 @@ public class MessageService {
 		messageForManager.setMessageFolder(notificationBoxOfManager);
 		Date current2;
 		current2 = new Date(System.currentTimeMillis() - 1000);
-		messageForExplorer.setMoment(current2);
-
-		messageBdOfExplorer = this.messageRepository.save(messageForExplorer);
+		messageForManager.setMoment(current2);
+		messageForManager.setRecipient(managerOfApplicationFor);
 
 		messageBdOfManager = this.messageRepository.save(messageForManager);
 
@@ -369,6 +369,7 @@ public class MessageService {
 		Date current;
 		current = new Date(System.currentTimeMillis() - 1000);
 		messageForExplorer.setMoment(current);
+		messageForExplorer.setRecipient(explorerOfApplicationFor);
 
 		messageBdOfExplorer = this.messageRepository.save(messageForExplorer);
 
@@ -379,9 +380,8 @@ public class MessageService {
 		messageForManager.setMessageFolder(notificationBoxOfManager);
 		Date current2;
 		current2 = new Date(System.currentTimeMillis() - 1000);
-		messageForExplorer.setMoment(current2);
-
-		messageBdOfExplorer = this.messageRepository.save(messageForExplorer);
+		messageForManager.setMoment(current2);
+		messageForManager.setRecipient(managerOfApplicationFor);
 
 		messageBdOfManager = this.messageRepository.save(messageForManager);
 
@@ -418,6 +418,7 @@ public class MessageService {
 		Date current;
 		current = new Date(System.currentTimeMillis() - 1000);
 		messageForExplorer.setMoment(current);
+		messageForExplorer.setRecipient(explorerOfApplicationFor);
 
 		messageBdOfExplorer = this.messageRepository.save(messageForExplorer);
 
@@ -428,9 +429,8 @@ public class MessageService {
 		messageForManager.setMessageFolder(notificationBoxOfManager);
 		Date current2;
 		current2 = new Date(System.currentTimeMillis() - 1000);
-		messageForExplorer.setMoment(current2);
-
-		messageBdOfExplorer = this.messageRepository.save(messageForExplorer);
+		messageForManager.setMoment(current2);
+		messageForManager.setRecipient(managerOfApplicationFor);
 
 		messageBdOfManager = this.messageRepository.save(messageForManager);
 
@@ -467,6 +467,7 @@ public class MessageService {
 		Date current;
 		current = new Date(System.currentTimeMillis() - 1000);
 		messageForExplorer.setMoment(current);
+		messageForExplorer.setRecipient(explorerOfApplicationFor);
 
 		messageBdOfExplorer = this.messageRepository.save(messageForExplorer);
 
@@ -477,9 +478,8 @@ public class MessageService {
 		messageForManager.setMessageFolder(notificationBoxOfManager);
 		Date current2;
 		current2 = new Date(System.currentTimeMillis() - 1000);
-		messageForExplorer.setMoment(current2);
-
-		messageBdOfExplorer = this.messageRepository.save(messageForExplorer);
+		messageForManager.setMoment(current2);
+		messageForManager.setRecipient(managerOfApplicationFor);
 
 		messageBdOfManager = this.messageRepository.save(messageForManager);
 
