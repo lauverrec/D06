@@ -123,6 +123,7 @@
 					<li><a href="message/administrator/send.do"><spring:message
 								code="master.page.message.send" /></a></li>
 					<li><a href="tag/administrator/list.do"><spring:message code="master.page.tag"/></a>
+					<li><a href="suspicious/administrator/list.do"><spring:message code="master.page.suspicious"/></a>
 				</ul></li>
 			<li><a href="trip/list.do"><spring:message
 						code="master.page.trips" /></a></li>

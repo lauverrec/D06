@@ -139,4 +139,22 @@ public class ActorService {
 			}
 		return result;
 	}
+
+	public Collection<Actor> isSuspicious() {
+		Collection<Actor> result;
+
+		result = this.actorRepository.isSuspicious();
+
+		return result;
+	}
+
+	public boolean ban(Actor actor) {
+
+		boolean result;
+
+		result = actor.getUserAccount().isEnabled();
+
+		return result;
+
+	}
 }

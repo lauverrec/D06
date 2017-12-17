@@ -149,14 +149,22 @@ public class AuditorService {
 		result = false;
 
 		result = this.actorService.actorIsSpam(auditor);
-		if (result == true)
+		if (result == true) {
+			auditor.setSuspicious(result);
 			return result;
+		}
 		result = this.auditRecordService.auditRecordContainsSpam(auditor);
-		if (result == true)
+		if (result == true) {
+			auditor.setSuspicious(result);
 			return result;
+		}
+
 		result = this.noteService.noteContainsSpam(auditor);
-		if (result == true)
+		if (result == true) {
+			auditor.setSuspicious(result);
 			return result;
+		}
+
 		return result;
 	}
 }

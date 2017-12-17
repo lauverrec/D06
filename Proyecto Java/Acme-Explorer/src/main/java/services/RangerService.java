@@ -153,12 +153,16 @@ public class RangerService {
 		result = false;
 
 		result = this.curriculaService.curriculaContainsSpam(ranger);
-		if (result == true)
+		if (result == true) {
+			ranger.setSuspicious(result);
 			return result;
-		result = this.actorService.actorIsSpam(ranger);
-		if (result == true)
-			return result;
+		}
 
+		result = this.actorService.actorIsSpam(ranger);
+		if (result == true) {
+			ranger.setSuspicious(result);
+			return result;
+		}
 		return result;
 	}
 }

@@ -248,10 +248,12 @@ public class AdministratorService {
 		result = false;
 
 		result = this.actorService.actorIsSpam(administrator);
-		if (result == true)
+		if (result == true) {
+			administrator.setSuspicious(result);
 			return result;
+		}
+
 		return result;
 
 	}
-
 }

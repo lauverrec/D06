@@ -159,11 +159,16 @@ public class ManagerService {
 		result = false;
 
 		result = this.actorService.actorIsSpam(manager);
-		if (result == true)
+		if (result == true) {
+			manager.setSuspicious(result);
 			return result;
+		}
 		result = this.survivalClassService.survivalClassContainsSpam(manager);
-		if (result == true)
+		if (result == true) {
+			manager.setSuspicious(result);
 			return result;
+
+		}
 		return result;
 	}
 
