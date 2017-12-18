@@ -150,7 +150,17 @@ public class MessageService {
 		actorPrincipal = this.actorService.findPrincipal();
 		Assert.isTrue(actorPrincipal.getMessagesFolders().contains(message.getMessageFolder()));
 
-		this.messageRepository.delete(message);
+		if (message.getMessageFolder().getName().equals("Trash box"))
+			this.messageRepository.delete(message);
+		else {
+			Message messageToTrash;
+			MessageFolder trashActor;
+
+			trashActor = this.messageFolderService.returnDefaultFolder(actorPrincipal, "Trash box");
+			messageToTrash = message;
+			messageToTrash.setMessageFolder(trashActor);
+			this.messageRepository.save(messageToTrash);
+		}
 	}
 	// Other business methods -------------------------------------------------
 	public boolean MessageisSpam(final Message message) {
