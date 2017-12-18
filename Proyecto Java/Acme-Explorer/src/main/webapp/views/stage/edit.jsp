@@ -28,6 +28,7 @@
 	<form:hidden path="id" />
 	<form:hidden path="version" />
 	<form:hidden path="trip" />
+	<form:hidden path="totalPrice"/>
 
 	
 	<form:label path="title">
@@ -63,13 +64,6 @@
 	<br />
 	<br/> 
 	
-	<form:label path="totalPrice">
-		<spring:message code="stage.totalPrice" />:
-	</form:label>
-	<form:input path="totalPrice" readonly="true"/>
-	<form:errors cssClass="error" path="totalPrice" />
-	<br />
-	<br/> 
 
 	
 	<!-- botones --> 
