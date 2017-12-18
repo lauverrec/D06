@@ -3869,7 +3869,7 @@
 				<ref bean="contactEmergency1"></ref>
 			</list>
 		</property>
-		<property name="finder" ref="finder1" />
+		<!-- <property name="finder" ref="finder1" /> -->
 	</bean>
 	<bean id="explorer2" class="domain.Explorer">
 		<property name="name" value="Explorer 2" />
@@ -3907,7 +3907,7 @@
 				<ref bean="contactEmergency2"></ref>
 			</list>
 		</property>
-		<property name="finder" ref="finder2" />
+		<!-- <property name="finder" ref="finder2" /> -->
 	</bean>
 	<bean id="explorer3" class="domain.Explorer">
 		<property name="name" value="Explorer 3" />
@@ -3948,7 +3948,7 @@
 				<ref bean="contactEmergency3"></ref>
 			</list>
 		</property>
-		<property name="finder" ref="finder3" />
+		<!-- <property name="finder" ref="finder3" /> -->
 	</bean>
 	<bean id="explorer4" class="domain.Explorer">
 		<property name="name" value="Explorer 4" />
@@ -3984,7 +3984,7 @@
 			<list>
 			</list>
 		</property>
-		<property name="finder" ref="finder4" />
+		<!-- <property name="finder" ref="finder4" /> -->
 	</bean>
 	<bean id="explorer5" class="domain.Explorer">
 		<property name="name" value="Explorer 5" />
@@ -4023,7 +4023,7 @@
 				<ref bean="contactEmergency5"></ref>
 			</list>
 		</property>
-		<property name="finder" ref="finder5" />
+		<!-- <property name="finder" ref="finder5" /> -->
 	</bean>
 
 	<bean id="explorer6" class="domain.Explorer">
@@ -4060,7 +4060,7 @@
 			<list>
 			</list>
 		</property>
-		<property name="finder" ref="finder6" />
+		<!-- <property name="finder" ref="finder6" /> -->
 	</bean>
 
 
@@ -4770,7 +4770,7 @@
 
 	<!-- FINDER -->
 	
-	<bean id="finder1" class="domain.Finder">
+	<!-- <bean id="finder1" class="domain.Finder">
 		<property name="keyWord"><null/></property>
 		<property name="lowPrice" value="0.0" />
 		<property name="highPrice" value="100.0" />
@@ -4846,7 +4846,7 @@
 			<list>
 			</list>
 		</property>
-	</bean>
+	</bean> -->
 	<!-- Other domain beans come here -->
 
 </beans>
