@@ -10,3 +10,55 @@
 
 6. El botón cancel cuando vas a crear un stage no funciona. 
 
+7. Los comentarios de micellaneus record cuando le das a salvar no te dice el error "Must not be null" te lo coge, lo mismo pasa con los comentatios de application for, endorserrecord, profesional record y education record.
+
+
+
+SEGURIDAD------------------------------------------------------(metiendo URL a piñón)
+
+-AuditRecord:
+
+1. No poder editar una auditoría que no es tuya. DONE
+2. No poder editar una en modo final. DONE
+3. No poder crear una auditoría si el finishDate de trip está en pasado. DONE
+
+- Sponsorship:
+
+1. No poder editar un sponsorship que no es tuyo. DONE
+
+- Note:
+
+1. Que un manager no pueda responder a noyas que no son suyas, es decir, que no están es sus trips. DONE
+
+- Story:
+
+1. No poder editar historias de los demás. DONE
+2. Solo poder crear historias en las trips que ha solicitado. DONE
+
+- SurvivalClass:
+
+1. Solo poder editar tus clases. DONE
+2. Solo crear survival Class en las trios que son tuyas. DONE
+
+- ApplicationFor:
+
+1. Que un explorer solo pueda cancelar una solicutud que el haya hecho. DONE
+
+SEGURIDAD POR HACER-------------------------------------------------------------------------
+
+-Stage:
+
+1. Que un manager no pueda crear un stage en trips que no son suyas (está capado el botón solamente)
+
+-Trip:
+
+1. Que un manager no pueda cancelar trios que no son suyas (está capado el botón solamente)
+
+
+- La parte de curricula:
+
+1. Que un ranger sólo pueda editar su respectivo education record.
+2. Que un ranger sólo pueda editar su respectivo endorser record.
+3. Que un ranger sólo pueda editar su respectivo profesional record.
+4. Que un ranger sólo pueda editar su respectivo personal record.
+5. Que un ranger sólo pueda editar su respectivo miscellaneus record.
