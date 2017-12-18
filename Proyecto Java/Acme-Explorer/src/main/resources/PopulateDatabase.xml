@@ -2458,10 +2458,6 @@
 
 	<bean id="tag1" class="domain.Tag">
 		<property name="name" value="country" />
-		<property name="trips">
-			<list>
-			</list>
-		</property>
 		<property name="values">
 			<list>
 			</list>
@@ -2470,10 +2466,6 @@
 
 	<bean id="tag2" class="domain.Tag">
 		<property name="name" value="expertise" />
-		<property name="trips">
-			<list>
-			</list>
-		</property>
 		<property name="values">
 			<list>
 			</list>
@@ -2482,10 +2474,6 @@
 
 	<bean id="tag3" class="domain.Tag">
 		<property name="name" value="dangerousness" />
-		<property name="trips">
-			<list>
-			</list>
-		</property>
 		<property name="values">
 			<list>
 			</list>
@@ -2494,10 +2482,6 @@
 
 	<bean id="tag4" class="domain.Tag">
 		<property name="name" value="name 4" />
-		<property name="trips">
-			<list>
-			</list>
-		</property>
 		<property name="values">
 			<list>
 			</list>
@@ -2507,10 +2491,6 @@
 
 	<bean id="tag5" class="domain.Tag">
 		<property name="name" value="name 5" />
-		<property name="trips">
-			<list>
-			</list>
-		</property>
 		<property name="values">
 			<list>
 			</list>
@@ -2588,9 +2568,8 @@
 				<ref bean="stage2"></ref>
 			</list>
 		</property>
-		<property name="tags">
+		<property name="values">
 			<list>
-				<ref bean="tag1"></ref>
 			</list>
 		</property> 
 		<property name="applicationsFor">
@@ -2631,10 +2610,8 @@
 				<ref bean="stage6"></ref>
 			</list>
 		</property>
- 		<property name="tags">
+ 		<property name="values">
 			<list>
-				<ref bean="tag2"></ref>
-				<ref bean="tag1"></ref>
 			</list>
 		</property>
 		<property name="applicationsFor">
@@ -2674,10 +2651,8 @@
 				<ref bean="stage3"></ref>
 			</list>
 		</property>
- 		<property name="tags">
+ 		<property name="values">
 			<list>
-				<ref bean="tag3"></ref>
-				
 			</list>
 		</property>
 		<property name="applicationsFor">
@@ -2717,10 +2692,8 @@
 				<ref bean="stage4"></ref>
 			</list>
 		</property>
- 		<property name="tags">
+ 		<property name="values">
 			<list>
-				<ref bean="tag4"></ref>
-				
 			</list>
 		</property> 
 		<property name="applicationsFor">
@@ -2761,10 +2734,8 @@
 				<ref bean="stage5"></ref>
 			</list>
 		</property>
- 		<property name="tags">
+ 		<property name="values">
 			<list>
-				<ref bean="tag5"></ref>
-			
 			</list>
 		</property> 
 		<property name="applicationsFor">
@@ -4781,82 +4752,62 @@
 	
 	<bean id="value1" class = "domain.Value">
 		<property name="value" value="1"></property>
-		<property name="tags">
-			<list>
-			</list>
-		</property>
+		<property name="tag"><null/></property>
+		<property name="trip"><null/></property>
 	</bean>
 	
 	<bean id="value2" class = "domain.Value">
 		<property name="value" value="2"></property>
-		<property name="tags">
-			<list>
-			</list>
-		</property>
+		<property name="tag"><null/></property>
+		<property name="trip"><null/></property>
 	</bean>
 
 	<bean id="value3" class = "domain.Value">
 		<property name="value" value="3"></property>
-		<property name="tags">
-			<list>
-			</list>
-		</property>
+		<property name="tag"><null/></property>
+		<property name="trip"><null/></property>
 	</bean>
 	
 	<bean id="value4" class = "domain.Value">
 		<property name="value" value="4"></property>
-		<property name="tags">
-			<list>
-			</list>
-		</property>
+		<property name="tag"><null/></property>
+		<property name="trip"><null/></property>
 	</bean>	
 	
 	<bean id="value5" class = "domain.Value">
 		<property name="value" value="5"></property>
-		<property name="tags">
-			<list>
-			</list>
-		</property>
+		<property name="tag"><null/></property>
+		<property name="trip"><null/></property>
 	</bean>
 
 	<bean id="value6" class = "domain.Value">
 		<property name="value" value="6"></property>
-		<property name="tags">
-			<list>
-			</list>
-		</property>
+		<property name="tag"><null/></property>
+		<property name="trip"><null/></property>
 	</bean>
 	
 	<bean id="value7" class = "domain.Value">
 		<property name="value" value="7"></property>
-		<property name="tags">
-			<list>
-			</list>
-		</property>
+		<property name="tag"><null/></property>
+		<property name="trip"><null/></property>
 	</bean>
 	
 	<bean id="value8" class = "domain.Value">
 		<property name="value" value="8"></property>
-		<property name="tags">
-			<list>
-			</list>
-		</property>
+		<property name="tag"><null/></property>
+		<property name="trip"><null/></property>
 	</bean>
 	
 	<bean id="value9" class = "domain.Value">
 		<property name="value" value="9"></property>
-		<property name="tags">
-			<list>
-			</list>
-		</property>
+		<property name="tag"><null/></property>
+		<property name="trip"><null/></property>
 	</bean>
 	
 	<bean id="value10" class = "domain.Value">
 		<property name="value" value="10"></property>
-		<property name="tags">
-			<list>
-			</list>
-		</property>
+		<property name="tag"><null/></property>
+		<property name="trip"><null/></property>
 	</bean>
 
 	<!-- FINDER -->

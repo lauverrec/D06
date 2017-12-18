@@ -27,8 +27,8 @@ import domain.Sponsorship;
 import domain.Stage;
 import domain.Story;
 import domain.SurvivalClass;
-import domain.Tag;
 import domain.Trip;
+import domain.Value;
 
 @Service
 @Transactional
@@ -72,7 +72,7 @@ public class TripService {
 		Collection<AuditRecord> auditRecords;
 		Collection<Note> notes;
 		Collection<Stage> stages;
-		Collection<Tag> tags;
+		Collection<Value> values;
 		Trip trip;
 		Ranger ranger;
 
@@ -82,14 +82,14 @@ public class TripService {
 		auditRecords = new ArrayList<AuditRecord>();
 		notes = new ArrayList<Note>();
 		stages = new ArrayList<Stage>();
-		tags = new ArrayList<Tag>();
+		values = new ArrayList<Value>();
 
 		trip.setManager(manager);
 		trip.setApplicationsFor(applicationsFor);
 		trip.setAuditRecords(auditRecords);
 		trip.setNotes(notes);
 		trip.setStages(stages);
-		trip.setTags(tags);
+		trip.setValues(values);
 		trip.setTicker(this.generatedTicker());
 		trip.setRanger(ranger);
 		trip.setTicker(this.generatedTicker());
@@ -345,18 +345,20 @@ public class TripService {
 		return res;
 	}
 
-	public Collection<Trip> findAllTripsByTagId(final int tagId) {
-		Collection<Trip> res;
-		res = this.tripRepository.findAllTripsByTagId(tagId);
-		//El resultado SI puede ser null puesto que puede no haber ninguna Trip con ese tag
-		return res;
-	}
-
-	public Collection<Trip> findAllTripsByTagName(String name) {
-		Collection<Trip> res;
-		res = this.tripRepository.findAllTripsByTagName(name);
-		return res;
-	}
+	/*
+	 * public Collection<Trip> findAllTripsByTagId(final int tagId) {
+	 * Collection<Trip> res;
+	 * res = this.tripRepository.findAllTripsByTagId(tagId);
+	 * //El resultado SI puede ser null puesto que puede no haber ninguna Trip con ese tag
+	 * return res;
+	 * }
+	 * 
+	 * public Collection<Trip> findAllTripsByTagName(String name) {
+	 * Collection<Trip> res;
+	 * res = this.tripRepository.findAllTripsByTagName(name);
+	 * return res;
+	 * }
+	 */
 
 	public Collection<Trip> findAllTripsByKeyWord(final String keyWord) {
 		final Collection<Trip> res;

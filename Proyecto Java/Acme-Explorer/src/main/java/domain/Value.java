@@ -1,12 +1,10 @@
 
 package domain;
 
-import java.util.Collection;
-
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.validation.Valid;
 
 import org.hibernate.validator.constraints.Range;
@@ -30,17 +28,27 @@ public class Value extends DomainEntity {
 
 
 	// Relationships ----------------------------------------------------------
-	private Collection<Tag>	tags;
+	private Tag		tag;
+	private Trip	trip;
 
 
 	@Valid
-	@ManyToMany
-	public Collection<Tag> getTags() {
-		return this.tags;
+	@ManyToOne(optional = true)
+	public Tag getTag() {
+		return this.tag;
 	}
 
-	public void setTags(Collection<Tag> tags) {
-		this.tags = tags;
+	public void setTag(Tag tag) {
+		this.tag = tag;
+	}
+
+	@ManyToOne(optional = true)
+	public Trip getTrip() {
+		return this.trip;
+	}
+
+	public void setTrip(Trip trip) {
+		this.trip = trip;
 	}
 
 }

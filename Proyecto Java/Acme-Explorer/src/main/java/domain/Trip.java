@@ -9,7 +9,6 @@ import javax.persistence.AccessType;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
@@ -140,7 +139,8 @@ public class Trip extends DomainEntity {
 	// Relationships ----------------------------------------------------------
 	private Manager						manager;
 	private Collection<Stage>			stages;
-	private Collection<Tag>				tags;
+	//private Collection<Tag>			tags;
+	private Collection<Value>			values;
 	private Collection<ApplicationFor>	applicationsFor;
 	private Collection<Note>			notes;
 	private Collection<AuditRecord>		auditRecords;
@@ -168,14 +168,14 @@ public class Trip extends DomainEntity {
 		this.stages = stages;
 	}
 
-	@ManyToMany
+	@OneToMany(mappedBy = "trip")
 	@Valid
-	public Collection<Tag> getTags() {
-		return this.tags;
+	public Collection<Value> getValues() {
+		return this.values;
 	}
 
-	public void setTags(final Collection<Tag> tags) {
-		this.tags = tags;
+	public void setValues(final Collection<Value> values) {
+		this.values = values;
 	}
 
 	@Valid

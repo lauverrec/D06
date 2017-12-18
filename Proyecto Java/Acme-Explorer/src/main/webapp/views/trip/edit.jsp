@@ -32,6 +32,7 @@
 	<form:hidden path="applicationsFor"/>
 	<form:hidden path="notes"/>
 	<form:hidden path="auditRecords"/>
+	<form:hidden path="values"/>
 	
 
 	
@@ -97,7 +98,7 @@
 	<br />
 	<br />  
 	
-	<h2><spring:message code="trip.tags.name" /></h2>
+	<%-- <h2><spring:message code="trip.tags.name" /></h2>
 	<form:label path="tags">
 		<spring:message code="trip.tag" />:
 	</form:label>
@@ -106,7 +107,7 @@
 	</form:select>
 	<form:errors cssClass="error" path="tags" />
 	<br /> 
-	<br /> 
+	<br />  --%>
 	
 
 	

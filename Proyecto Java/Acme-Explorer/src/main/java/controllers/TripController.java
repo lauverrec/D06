@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.SponsorshipService;
+import services.TagService;
 import services.TripService;
 import domain.AuditRecord;
 import domain.Note;
@@ -29,6 +30,8 @@ public class TripController extends AbstractController {
 
 	@Autowired
 	private SponsorshipService	sponsorshipService;
+	@Autowired
+	private TagService			tagService;
 
 
 	//@Autowired
@@ -104,9 +107,9 @@ public class TripController extends AbstractController {
 		Collection<Note> notes;
 		String url;
 
+		tags = new ArrayList<Tag>(this.tagService.findAllTagByTripId(tripId));
 		trip = this.tripService.findOne(tripId);
 		notes = new ArrayList<Note>(trip.getNotes());
-		tags = new ArrayList<Tag>(trip.getTags());
 		stages = new ArrayList<Stage>(trip.getStages());
 		auditRecords = new ArrayList<AuditRecord>(trip.getAuditRecords());
 		url = this.sponsorshipService.randomSponsorship(trip);

@@ -223,11 +223,11 @@ public class TripManagerController extends AbstractController {
 	public ModelAndView listTag(@RequestParam int tripId) {
 
 		ModelAndView result;
-		Trip trip;
+		//Trip trip;
 		Collection<Tag> tags;
 
-		trip = this.tripService.findOne(tripId);
-		tags = trip.getTags();
+		//trip = this.tripService.findOne(tripId);
+		tags = new ArrayList<>(this.tagService.findAllTagByTripId(tripId));
 
 		result = new ModelAndView("tag/list");
 		result.addObject("tags", tags);
