@@ -1,11 +1,12 @@
 
 package domain;
 
+import java.util.Collection;
+
 import javax.persistence.Access;
 import javax.persistence.AccessType;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
 import javax.validation.Valid;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -30,18 +31,28 @@ public class Tag extends DomainEntity {
 
 	// Relationships ----------------------------------------------------------
 
-	private Value	value;
+	private Collection<Value>	values;
+	private Collection<Trip>	trips;
 
 
 	@Valid
-	@ManyToOne(optional = true, cascade = CascadeType.ALL)
-	//@NotNull
-	public Value getValue() {
-		return this.value;
+	@ManyToMany(mappedBy = "tags")
+	public Collection<Value> getValues() {
+		return this.values;
 	}
 
-	public void setValue(Value value) {
-		this.value = value;
+	public void setValues(Collection<Value> values) {
+		this.values = values;
+	}
+
+	@Valid
+	@ManyToMany(mappedBy = "tags")
+	public Collection<Trip> getTrips() {
+		return this.trips;
+	}
+
+	public void setTrips(Collection<Trip> trips) {
+		this.trips = trips;
 	}
 
 }
