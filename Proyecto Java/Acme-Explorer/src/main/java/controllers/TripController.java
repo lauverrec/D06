@@ -15,7 +15,6 @@ import services.SponsorshipService;
 import services.TripService;
 import domain.AuditRecord;
 import domain.Note;
-import domain.Sponsorship;
 import domain.Stage;
 import domain.Tag;
 import domain.Trip;
@@ -100,27 +99,25 @@ public class TripController extends AbstractController {
 		ModelAndView result;
 		Trip trip;
 		Collection<Tag> tags;
-		//Collection<String> requirements;
 		Collection<Stage> stages;
 		Collection<AuditRecord> auditRecords;
 		Collection<Note> notes;
-		Sponsorship sponsorship;
+		String url;
 
 		trip = this.tripService.findOne(tripId);
 		notes = new ArrayList<Note>(trip.getNotes());
 		tags = new ArrayList<Tag>(trip.getTags());
 		stages = new ArrayList<Stage>(trip.getStages());
 		auditRecords = new ArrayList<AuditRecord>(trip.getAuditRecords());
-		sponsorship = this.sponsorshipService.randomSponsorship(trip);
+		url = this.sponsorshipService.randomSponsorship(trip);
 
 		result = new ModelAndView("trip/display");
 		result.addObject("trip", trip);
 		result.addObject("tags", tags);
-		//result.addObject("requirements", requirements);
 		result.addObject("stages", stages);
 		result.addObject("auditRecords", auditRecords);
 		result.addObject("notes", notes);
-		result.addObject("sponsorshiprandom", sponsorship);
+		result.addObject("sponsorshiprandom", url);
 
 		return result;
 	}

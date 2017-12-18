@@ -131,17 +131,21 @@ public class SponsorshipService {
 	//		return result;
 	//	}
 
-	public Sponsorship randomSponsorship(Trip trip) {
+	public String randomSponsorship(Trip trip) {
 		List<Sponsorship> sponsorships;
 		Integer size;
-		Sponsorship sponsorship;
+		String url;
+
+		url = "nothing to show";
 
 		sponsorships = this.sponsorshipRepository.findAllSponsorshipByTripId(trip.getId());
 		size = sponsorships.size();
 
-		int rand = (int) (Math.random() * size);
-		sponsorship = sponsorships.get(rand);
+		if (size != 0) {
+			int rand = (int) (Math.random() * size);
+			url = sponsorships.get(rand).getBannerURL();
+		}
 
-		return sponsorship;
+		return url;
 	}
 }

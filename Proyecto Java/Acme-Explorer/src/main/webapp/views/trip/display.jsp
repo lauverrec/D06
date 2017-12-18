@@ -104,16 +104,16 @@
 	
 <h2><spring:message code="sponsorship.bannerURL" /></h2>
 <display:table name="sponsorshiprandom" id="row" class="displaytag">
-			
-		<spring:message code="sponsorship.bannerURL" var="bannerURLHeader" />
+		<jstl:if test="${row!='nothing to show'}">
+<spring:message code="sponsorship.bannerURL" var="bannerURLHeader" />
 		 <display:column >
 		 <div
   style="position: relative; width: 500px; height: 300px; margin-left: auto; margin-right: auto;">
   			
-		  <img src="${row.bannerURL}"width= "500" height="300">
+		  <img src="${row}"width= "500" height="300">
 		  </div>
-		 </display:column>
-		
+		 </display:column> 
+	</jstl:if>
 </display:table>
 	
 	
