@@ -166,7 +166,11 @@ public class TripManagerController extends AbstractController {
 	public ModelAndView cancel(@RequestParam final int tripId) {
 		ModelAndView result;
 		Trip trip;
+		Manager manager;
+
+		manager = this.managerService.findByPrincipal();
 		trip = this.tripService.findOne(tripId);
+		Assert.isTrue(trip.getManager().equals(manager), "Cannot commit this operation, because it's illegal");
 		result = this.createCancelModelAndView(trip);
 		result.addObject("trip", trip);
 

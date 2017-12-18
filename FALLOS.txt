@@ -30,6 +30,10 @@ SEGURIDAD------------------------------------------------------(metiendo URL a p
 
 1. Que un manager no pueda responder a noyas que no son suyas, es decir, que no están es sus trips. DONE
 
+- Trip:
+
+1. Que un manager no pueda cancelar trios que no son suyas. DONE
+
 - Story:
 
 1. No poder editar historias de los demás. DONE
@@ -49,10 +53,6 @@ SEGURIDAD POR HACER-------------------------------------------------------------
 -Stage:
 
 1. Que un manager no pueda crear un stage en trips que no son suyas (está capado el botón solamente)
-
--Trip:
-
-1. Que un manager no pueda cancelar trios que no son suyas (está capado el botón solamente)
 
 
 - La parte de curricula:
