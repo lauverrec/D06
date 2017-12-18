@@ -3,11 +3,8 @@ package controllers.administrator;
 
 import java.util.Collection;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -51,25 +48,9 @@ public class SuspiciousAdministratorController extends AbstractController {
 		ModelAndView result;
 		Actor actor;
 		actor = this.actorService.findOne(actorId);
+		this.actorService.ban(actor);
 		result = this.createBanModelAndView(actor);
 
-		return result;
-	}
-
-	@RequestMapping(value = "/ban", method = RequestMethod.POST, params = "actorId")
-	public ModelAndView cancel(@Valid Actor actor, BindingResult binding) {
-		ModelAndView result;
-		//Collection<ApplicationFor> applicationsFor;	
-		if (binding.hasErrors())
-			result = this.createBanModelAndView(actor);
-		else
-			try {
-				this.actorService.ban(actor);
-				this.actorService.save(actor);
-				result = new ModelAndView("redirect:list.do");
-			} catch (final Throwable oops) {
-				result = this.createBanModelAndView(actor, "administrator.cancel.error");
-			}
 		return result;
 	}
 
@@ -80,11 +61,10 @@ public class SuspiciousAdministratorController extends AbstractController {
 		return result;
 	}
 
-	private ModelAndView createBanModelAndView(final Actor actor, final String message) {
+	protected ModelAndView createBanModelAndView(final Actor actor, final String message) {
 		ModelAndView result;
 
-		result = new ModelAndView("applicationFor/");
-		result.addObject("applicationFor", actor);
+		result = new ModelAndView("administrator/suspicious");
 		result.addObject("message", message);
 
 		return result;

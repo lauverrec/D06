@@ -148,11 +148,11 @@ public class SponsorService {
 			sponsor.setSuspicious(result);
 			return result;
 		}
-		result = this.sponsorshipService.sponsorshipContainsSpam(sponsor);
-		if (result == true) {
-			sponsor.setSuspicious(result);
-			return result;
-		}
+		//		result = this.sponsorshipService.sponsorshipContainsSpam(sponsor);
+		//		if (result == true) {
+		//			sponsor.setSuspicious(result);
+		//			return result;
+		//		}
 		return result;
 	}
 }

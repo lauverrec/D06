@@ -183,7 +183,7 @@ public class ActorService {
 		boolean result;
 		Collection<Actor> actors;
 
-		actors = new ArrayList<>();
+		actors = new ArrayList<Actor>();
 		administrators = this.administratorService.findAll();
 		auditors = this.auditorService.findAll();
 		explorers = this.explorerService.findAll();
