@@ -40,7 +40,7 @@ public class TagAdministratorController extends AbstractController {
 		ModelAndView result;
 		Collection<Tag> tags;
 
-		tags = this.tagService.findAllTagUnique();
+		tags = this.tagService.findAll();
 
 		result = new ModelAndView("tag/list");
 		result.addObject("tags", tags);
@@ -75,7 +75,6 @@ public class TagAdministratorController extends AbstractController {
 		tag = this.tagService.findOne(tagId);
 		Assert.notNull(tag);
 
-		this.oldName = this.tagService.findOne(tagId).getName();
 		result = this.createEditModelAndView(tag);
 
 		return result;
@@ -92,13 +91,10 @@ public class TagAdministratorController extends AbstractController {
 			result = this.createEditModelAndView(tag);
 		else
 			try {
-				if (tag.getId() > 0) {
-					this.tagService.save10(tag, this.oldName);
-					result = new ModelAndView("redirect:list.do");
-				} else {
-					this.tagService.save10(tag);
-					result = new ModelAndView("redirect:list.do");
-				}
+
+				this.tagService.save(tag);
+				result = new ModelAndView("redirect:list.do");
+
 			} catch (Throwable oops) {
 				result = this.createEditModelAndView(tag, "tag.commit.error");
 			}
@@ -114,7 +110,7 @@ public class TagAdministratorController extends AbstractController {
 		ModelAndView result;
 
 		try {
-			this.tagService.delete10(tag);
+			this.tagService.delete(tag);
 			result = new ModelAndView("redirect:list.do");
 		} catch (Throwable oops) {
 			result = this.createEditModelAndView(tag, "tag.commit.error");

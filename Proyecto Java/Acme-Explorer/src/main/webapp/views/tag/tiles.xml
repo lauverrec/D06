@@ -31,6 +31,10 @@
 		<put-attribute name="body" value="/views/tag/association.jsp" />
 	</definition>
 	
+	<definition name="tag/add" extends="master.page">	
+		<put-attribute name="title" value="Add Tag" />
+		<put-attribute name="body" value="/views/tag/add.jsp" />
+	</definition>
 
 
 </tiles-definitions>

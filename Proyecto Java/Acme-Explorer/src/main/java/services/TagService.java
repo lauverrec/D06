@@ -12,7 +12,6 @@ import org.springframework.util.Assert;
 import repositories.TagRepository;
 import domain.Tag;
 import domain.Trip;
-import domain.Value;
 
 @Service
 @Transactional
@@ -65,41 +64,44 @@ public class TagService {
 		return result;
 	}
 
-	public void save10(final Tag tag) {
-		Value value;
-		//Primera vez que la creo
-		if (tag.getId() == 0) {
-			this.administratorService.checkPrincipal();
-			for (int i = 1; i <= 10; i++) {
-				value = this.valueService.create(i);
-				tag.setValue(value);
-				this.tagRepository.save(tag);
-			}
-		}
-	}
+	/*
+	 * public void save10(final Tag tag) {
+	 * Value value;
+	 * //Primera vez que la creo
+	 * if (tag.getId() == 0) {
+	 * this.administratorService.checkPrincipal();
+	 * for (int i = 1; i <= 10; i++) {
+	 * value = this.valueService.create(i);
+	 * tag.setValue(value);
+	 * this.tagRepository.save(tag);
+	 * }
+	 * }
+	 * }
+	 * 
+	 * public void save10(final Tag tag, String name) {
+	 * Collection<Trip> trips;
+	 * Collection<Tag> tagses;
+	 * trips = new ArrayList<Trip>(this.tripService.findAllTripsByTagName(name));
+	 * tagses = new ArrayList<Tag>(this.tagRepository.findAllTagByName(name));
+	 * 
+	 * //Quiere decir que no hay ningun trip con esa tag que quiero editar
+	 * Assert.isTrue(trips.size() == 0);
+	 * 
+	 * for (Tag t : tagses) {
+	 * t.setName(tag.getName());
+	 * this.tagRepository.save(t);
+	 * }
+	 * }
+	 */
 
-	public void save10(final Tag tag, String name) {
-		Collection<Trip> trips;
-		Collection<Tag> tagses;
-		trips = new ArrayList<Trip>(this.tripService.findAllTripsByTagName(name));
-		tagses = new ArrayList<Tag>(this.tagRepository.findAllTagByName(name));
-
-		//Quiere decir  que no hay ningun trip con esa tag que quiero editar
-		Assert.isTrue(trips.size() == 0);
-
-		for (Tag t : tagses) {
-			t.setName(tag.getName());
-			this.tagRepository.save(t);
-		}
-	}
 	public Tag save(final Tag tag) {
-		Collection<Tag> tagsWithTrip;
-		tagsWithTrip = this.tagRepository.findTagWithTrip();
+		//Collection<Tag> tagsWithTrip;
+		//tagsWithTrip = this.tagRepository.findTagWithTrip();
 
-		if (tag.getId() != 0) {
-			Assert.isTrue(!tagsWithTrip.contains(tag));
-			this.administratorService.checkPrincipal();
-		}
+		//	if (tag.getId() != 0) {
+		//		Assert.isTrue(!tagsWithTrip.contains(tag));
+		//		this.administratorService.checkPrincipal();
+		//	}
 		Assert.notNull(tag);
 
 		Tag result;
@@ -139,6 +141,22 @@ public class TagService {
 
 		for (Tag t : tags)
 			this.tagRepository.delete(t);
+
+	}
+
+	public void delete(final Tag tag) {
+		String name;
+		//Collection<Tag> tags;
+		Collection<Trip> trips;
+
+		name = tag.getName();
+		//tags = new ArrayList<Tag>(this.tagRepository.findAllTagByName(tag.getName()));
+		trips = new ArrayList<Trip>(this.tripService.findAllTripsByTagId(tag.getId()));
+
+		for (final Trip t : trips)
+			t.getTags().remove(tag);
+
+		this.tagRepository.delete(tag);
 
 	}
 

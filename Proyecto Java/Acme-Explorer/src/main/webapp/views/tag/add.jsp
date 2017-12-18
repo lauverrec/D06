@@ -20,24 +20,13 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
 
-<form:form action="tag/administrator/edit.do" modelAttribute="tag">
+<form:form action="${RequestURI}" modelAttribute="trip">
 
 	<form:hidden path="id" />
 	<form:hidden path="version" /> 
 
 
-	
-	<security:authorize access="hasRole('ADMINISTRATOR')">
-	<form:label path="name">
-		<spring:message code="tag.name" />:
-	</form:label>
-	<form:input path="name" />
-	<form:errors cssClass="error" path="name" />
-	<br/>
-	<br/>
-	</security:authorize>
-	
-<%-- 	<security:authorize access="hasRole('MANAGER')">
+ 	<security:authorize access="hasRole('MANAGER')">
 	<h2><spring:message code="tag.value" /></h2>
 	<form:label path="values">
 		<spring:message code="tag.value" />:
@@ -48,7 +37,7 @@
 	<form:errors cssClass="error" path="values" />
 	<br /> 
 	<br />
-	</security:authorize> --%>
+	</security:authorize> 
 		
 	<!-- botones --> 
 	

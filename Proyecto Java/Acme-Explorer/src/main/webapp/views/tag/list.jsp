@@ -26,27 +26,31 @@
 
 	<security:authorize access="hasRole('ADMINISTRATOR')">
 		<display:column>
+		
 		<spring:url value="tag/administrator/edit.do" var="editURL">
 		<spring:param name="tagId" value="${row.id}"/>
 		</spring:url>
 		<a href="${editURL}"><spring:message code="tag.edit"/></a>
-		</display:column>			
-	</security:authorize>
+		
+		</display:column>	
+		</security:authorize>		
 	
-<%-- 	<security:authorize access="hasRole('MANAGER')">
-		<display:column>
-		<spring:url value="trip/manager_/tag/edit.do" var="editURL">
-		<spring:param name="tagId" value="${row.id}"/>
-		</spring:url>
-		<a href="${editURL}"><spring:message code="tag.edit"/></a>
-		</display:column>			
-	</security:authorize> --%>
+	
+
 	
 	<!-- Attributes -->
  
 	<spring:message code="tag.name" var="nameHeader" />
 	<display:column property="name" title="${nameHeader}" sortable="true" />
 
+ 	<security:authorize access="hasRole('MANAGER')">
+		<display:column>
+		<spring:url value="trip/manager_/tag/add.do" var="editURL">
+		<spring:param name="tagId" value="${row.id}"/>
+		</spring:url>
+		<a href="${editURL}"><spring:message code="tag.add"/></a>
+		</display:column>			
+	</security:authorize> 
 	
 </display:table>
 	

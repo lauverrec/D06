@@ -246,13 +246,13 @@
 </jstl:if>
 	<display:column property="reasonWhy" title="${reasonWhyHeader}" sortable="true" />
 	
+	
 	<security:authorize access="hasRole('MANAGER')">
 	<spring:message code="trip.publicationDate" var="publicationDate" />	
 	<spring:message code="trip.tags.name" var="Tag" />
 		<display:column title="${Tag}" sortable="true">
 			<jstl:if test="${row.manager==manager}">
-			
-				<spring:url value="trip/manager_/tag/list.do" var="tagURL">
+				<spring:url value="tag/manager_/list.do" var="tagURL">
 					<spring:param name="tripId" value="${row.id}" />
 				</spring:url>
 				<a href="${tagURL}"><spring:message code="trip.tags.name" /></a>
@@ -260,6 +260,9 @@
 			</jstl:if>
 		</display:column>		
 	</security:authorize>
+
+
+
 
 </display:table>
 
