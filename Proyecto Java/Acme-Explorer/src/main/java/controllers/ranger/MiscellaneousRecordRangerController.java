@@ -12,9 +12,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import services.CurriculaService;
 import services.MiscellaneousRecordService;
+import services.RangerService;
 import controllers.AbstractController;
+import domain.Curricula;
 import domain.MiscellaneousRecord;
+import domain.Ranger;
 
 @Controller
 @RequestMapping("/miscellaneousRecord/ranger")
@@ -24,6 +28,10 @@ public class MiscellaneousRecordRangerController extends AbstractController {
 
 	@Autowired
 	private MiscellaneousRecordService	miscellaneousRecordService;
+	@Autowired
+	private CurriculaService			curriculaService;
+	@Autowired
+	private RangerService				rangerService;
 
 
 	//Constructor--------------------------------------------------------
@@ -55,9 +63,16 @@ public class MiscellaneousRecordRangerController extends AbstractController {
 
 		ModelAndView result;
 		MiscellaneousRecord miscellaneousRecord;
+		Curricula curriculaPrincipal;
+		Ranger rangerPrincipal;
 
 		miscellaneousRecord = this.miscellaneousRecordService.findOne(miscellaneousRecordId);
 		Assert.notNull(miscellaneousRecord);
+
+		//Compruebo que la curricula a editar sea del Ranger autentificado
+		curriculaPrincipal = this.curriculaService.CurriculaWithThisMiscellaneousRecord(miscellaneousRecordId);
+		rangerPrincipal = this.rangerService.findByPrincipal();
+		Assert.isTrue(curriculaPrincipal.getRanger().equals(rangerPrincipal));
 
 		result = this.createEditModelAndView(miscellaneousRecord);
 

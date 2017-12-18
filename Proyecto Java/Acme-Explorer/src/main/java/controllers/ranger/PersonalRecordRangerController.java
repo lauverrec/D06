@@ -18,6 +18,7 @@ import services.RangerService;
 import controllers.AbstractController;
 import domain.Curricula;
 import domain.PersonalRecord;
+import domain.Ranger;
 
 @Controller
 @RequestMapping("/personalRecord/ranger")
@@ -63,11 +64,19 @@ public class PersonalRecordRangerController extends AbstractController {
 
 		ModelAndView result;
 		PersonalRecord personalRecord;
+		Ranger rangerPrincipal;
+		Curricula curriculaPrincipal;
 
 		personalRecord = this.personalRecordService.findOne(personalRecordId);
 		Assert.notNull(personalRecord);
 
+		//Compruebo que la curricula a editar sea del Ranger autentificado
+		curriculaPrincipal = this.curriculaService.CurriculaWithThisPersonalRecord(personalRecordId);
+		rangerPrincipal = this.rangerService.findByPrincipal();
+		Assert.isTrue(curriculaPrincipal.getRanger().equals(rangerPrincipal));
+
 		result = this.createEditModelAndView(personalRecord);
+		result.addObject("existCurricula", true);
 
 		return result;
 

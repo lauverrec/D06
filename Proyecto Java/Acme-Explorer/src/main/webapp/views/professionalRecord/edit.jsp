@@ -34,7 +34,7 @@
 	<form:label path="workPeriod">
 		<spring:message code="professionalRecord.workPeriod" />:
 	</form:label>
-	<form:input path="workPeriod"/>
+	<form:input path="workPeriod" placeholder=" yyyy/yyyy"/>
 	<form:errors cssClass="error" path="workPeriod" />
 	<br />
 	

@@ -12,9 +12,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import services.CurriculaService;
 import services.EducationRecordService;
+import services.RangerService;
 import controllers.AbstractController;
+import domain.Curricula;
 import domain.EducationRecord;
+import domain.Ranger;
 
 @Controller
 @RequestMapping("/educationRecord/ranger")
@@ -24,6 +28,10 @@ public class EducationRecordRangerController extends AbstractController {
 
 	@Autowired
 	private EducationRecordService	educationRecordService;
+	@Autowired
+	private CurriculaService		curriculaService;
+	@Autowired
+	private RangerService			rangerService;
 
 
 	//Constructor--------------------------------------------------------
@@ -55,9 +63,16 @@ public class EducationRecordRangerController extends AbstractController {
 
 		ModelAndView result;
 		EducationRecord educationRecord;
+		Curricula curriculaPrincipal;
+		final Ranger rangerPrincipal;
 
 		educationRecord = this.educationRecordService.findOne(educationRecordId);
 		Assert.notNull(educationRecord);
+
+		//Compruebo que la curricula a editar sea del Ranger autentificado
+		curriculaPrincipal = this.curriculaService.CurriculaWithThisEducationRecord(educationRecordId);
+		rangerPrincipal = this.rangerService.findByPrincipal();
+		Assert.isTrue(curriculaPrincipal.getRanger().equals(rangerPrincipal));
 
 		result = this.createEditModelAndView(educationRecord);
 

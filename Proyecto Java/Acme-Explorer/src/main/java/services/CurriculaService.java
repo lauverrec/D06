@@ -176,7 +176,7 @@ public class CurriculaService {
 		return this.curriculaRepository.CurriculaWithThisPersonalRecord(personalRecordId);
 	}
 
-	public Boolean curriculaContainsSpam(Actor actor) {
+	public Boolean curriculaContainsSpam(final Actor actor) {
 		Boolean result;
 		Curricula curriculaFromActor;
 		Collection<String> spamWords;
@@ -190,31 +190,31 @@ public class CurriculaService {
 		wordsPublicated.add(curriculaFromActor.getPersonalRecord().getEmail());
 		wordsPublicated.add(curriculaFromActor.getPersonalRecord().getFullName());
 
-		for (EducationRecord edcuation : curriculaFromActor.getEducationRecords()) {
+		for (final EducationRecord edcuation : curriculaFromActor.getEducationRecords()) {
 			wordsPublicated.add(edcuation.getDiplomaTitle());
 			wordsPublicated.add(edcuation.getInstitution());
 			wordsPublicated.addAll(edcuation.getComments());
 			wordsPublicated.add(edcuation.getLink());
 		}
-		for (EndorserRecord endorser : curriculaFromActor.getEndorserRecords()) {
+		for (final EndorserRecord endorser : curriculaFromActor.getEndorserRecords()) {
 			wordsPublicated.add(endorser.getEmail());
 			wordsPublicated.add(endorser.getFullName());
 			wordsPublicated.addAll(endorser.getComments());
 			wordsPublicated.add(endorser.getLinkedProfile());
 		}
-		for (MiscellaneousRecord miscellaneous : curriculaFromActor.getMiscellaneousRecords()) {
+		for (final MiscellaneousRecord miscellaneous : curriculaFromActor.getMiscellaneousRecords()) {
 			wordsPublicated.add(miscellaneous.getTitle());
 			wordsPublicated.add(miscellaneous.getLink());
 			wordsPublicated.addAll(miscellaneous.getComments());
 		}
-		for (ProfessionalRecord professional : curriculaFromActor.getProfessionalRecords()) {
+		for (final ProfessionalRecord professional : curriculaFromActor.getProfessionalRecords()) {
 			wordsPublicated.add(professional.getCompanyName());
 			wordsPublicated.add(professional.getLink());
 			wordsPublicated.add(professional.getRole());
 			wordsPublicated.addAll(professional.getComments());
 		}
-		for (String word : wordsPublicated)
-			for (String spam : spamWords)
+		for (final String word : wordsPublicated)
+			for (final String spam : spamWords)
 				if (word.indexOf(spam) > -1) {
 					result = true;
 					break;
@@ -222,5 +222,25 @@ public class CurriculaService {
 
 		return result;
 
+	}
+
+	public Curricula CurriculaWithThisMiscellaneousRecord(final int miscellaneousRecordId) {
+		Assert.isTrue(miscellaneousRecordId != 0);
+		return this.curriculaRepository.CurriculaWithThisMiscellaneousRecord(miscellaneousRecordId);
+	}
+
+	public Curricula CurriculaWithThisEndorserRecord(final int endorserRecordId) {
+		Assert.isTrue(endorserRecordId != 0);
+		return this.curriculaRepository.CurriculaWithThisEndorserRecord(endorserRecordId);
+	}
+
+	public Curricula CurriculaWithThisProfessionalRecord(final int professionalRecordId) {
+		Assert.isTrue(professionalRecordId != 0);
+		return this.curriculaRepository.CurriculaWithThisProfessionalRecord(professionalRecordId);
+	}
+
+	public Curricula CurriculaWithThisEducationRecord(final int educationRecordId) {
+		Assert.isTrue(educationRecordId != 0);
+		return this.curriculaRepository.CurriculaWithThisEducationRecord(educationRecordId);
 	}
 }

@@ -49,6 +49,42 @@
 	
 </display:table>
 
+<spring:message code="curricula.personalRecord" var="personalHeader" />
+<h2><jstl:out value="${personalHeader}"></jstl:out></h2>
+<display:table name="personalRecord" class="displaytag" id="row">
+
+	<!-- Attributes -->
+	<spring:message code="curricula.personalRecord.fullName" var="fullNameHeader" />
+	<display:column property="fullName" title="${fullNameHeader}"
+		sortable="true" />
+		
+	<spring:message code="curricula.personalRecord.photo" var="photoHeader" />
+	<display:column property="photo" title="${photoHeader}"
+		sortable="true" />
+		
+	<spring:message code="curricula.personalRecord.email" var="emailHeader" />
+	<display:column property="email" title="${emailHeader}"
+		sortable="true" />
+		
+	<spring:message code="curricula.personalRecord.phone" var="phoneHeader" />
+	<display:column property="phone" title="${phoneHeader}"
+		sortable="true" />
+	
+	<spring:message code="curricula.personalRecord.linkedProfile" var="linkedProfileHeader" />
+	<display:column property="linkedProfile" title="${linkedProfileHeader}"
+		sortable="true" />
+	
+	<security:authorize access="hasRole('RANGER')">
+		<display:column>
+			<spring:url value="personalRecord/ranger/edit.do" var="editlink">
+				<spring:param name="personalRecordId" value="${row.id}" />
+			</spring:url>
+			<a href="${editlink}"><spring:message code="curricula.edit" /></a>
+		</display:column>
+	</security:authorize>
+	
+</display:table>
+
 <spring:message code="curricula.miscellaneousRecord" var="miscellaneousHeader" />
 <h2><jstl:out value="${miscellaneousHeader}"></jstl:out></h2>
 <display:table name="miscellaneousRecord" class="displaytag" id="row">
@@ -210,41 +246,5 @@
 	<a href="${linkcreate}"><spring:message
 			code="curricula.educationRecord.create" /></a>
 </security:authorize>
-
-<spring:message code="curricula.personalRecord" var="personalHeader" />
-<h2><jstl:out value="${personalHeader}"></jstl:out></h2>
-<display:table name="personalRecord" class="displaytag" id="row">
-
-	<!-- Attributes -->
-	<spring:message code="curricula.personalRecord.fullName" var="fullNameHeader" />
-	<display:column property="fullName" title="${fullNameHeader}"
-		sortable="true" />
-		
-	<spring:message code="curricula.personalRecord.photo" var="photoHeader" />
-	<display:column property="photo" title="${photoHeader}"
-		sortable="true" />
-		
-	<spring:message code="curricula.personalRecord.email" var="emailHeader" />
-	<display:column property="email" title="${emailHeader}"
-		sortable="true" />
-		
-	<spring:message code="curricula.personalRecord.phone" var="phoneHeader" />
-	<display:column property="phone" title="${phoneHeader}"
-		sortable="true" />
-	
-	<spring:message code="curricula.personalRecord.linkedProfile" var="linkedProfileHeader" />
-	<display:column property="linkedProfile" title="${linkedProfileHeader}"
-		sortable="true" />
-	
-	<security:authorize access="hasRole('RANGER')">
-		<display:column>
-			<spring:url value="personalRecord/ranger/edit.do" var="editlink">
-				<spring:param name="personalRecordId" value="${row.id}" />
-			</spring:url>
-			<a href="${editlink}"><spring:message code="curricula.edit" /></a>
-		</display:column>
-	</security:authorize>
-	
-</display:table>
 
 </jstl:if>
