@@ -17,6 +17,7 @@ import security.UserAccount;
 import domain.ApplicationFor;
 import domain.ContactEmergency;
 import domain.Explorer;
+import domain.Finder;
 import domain.MessageFolder;
 import domain.SocialIdentity;
 import domain.Story;
@@ -46,9 +47,9 @@ public class ExplorerService {
 	@Autowired
 	private StoryService			storyService;
 
+	@Autowired
+	private FinderService			finderService;
 
-	//	@Autowired
-	//	private FinderService			finderService;
 
 	// Constructors -----------------------------------------------------------
 
@@ -127,15 +128,15 @@ public class ExplorerService {
 		}
 
 		//Si es la primera vez que creamos el explorer guardamos en la bd su finder
-		//		if (explorer.getFinder() == null) {
-		//			Finder finder;
-		//
-		//			finder = this.finderService.create();
-		//			finder = this.finderService.save(finder);
-		//			explorer.setFinder(finder);
-		//			newExplorer = this.explorerRepository.save(explorer);
-		//		} else
-		newExplorer = this.explorerRepository.save(explorer);
+		if (explorer.getFinder() == null) {
+			Finder finder;
+
+			finder = this.finderService.create();
+			finder = this.finderService.save(finder);
+			explorer.setFinder(finder);
+			newExplorer = this.explorerRepository.save(explorer);
+		} else
+			newExplorer = this.explorerRepository.save(explorer);
 
 		return newExplorer;
 	}
