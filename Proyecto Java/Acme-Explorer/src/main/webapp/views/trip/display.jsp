@@ -20,7 +20,7 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
 
-<form:form action="trip/manager_/edit.do" modelAttribute="trip">
+<form:form action="${resquestURI}" modelAttribute="trip">
 	
 	<p><spring:message code="trip.ticker" />: <jstl:out value="${trip.ticker}"></jstl:out></p>
 	<p><spring:message code="trip.title" />:  <jstl:out value="${trip.title}"></jstl:out></p>
@@ -102,13 +102,18 @@
 	</display:table>
 	
 	
-	<h2><spring:message code="sponsorship.bannerURL" /></h2>
+<h2><spring:message code="sponsorship.bannerURL" /></h2>
 <display:table name="sponsorshiprandom" id="row" class="displaytag">
 			
 		<spring:message code="sponsorship.bannerURL" var="bannerURLHeader" />
-		<display:column property="bannerURL" title="${bannerURLHeader}" sortable="false" >
-			<jstl:out value="${bannerURLHeader}"></jstl:out>
-		</display:column>
+		 <display:column >
+		 <div
+  style="position: relative; width: 500px; height: 300px; margin-left: auto; margin-right: auto;">
+  			
+		  <img src="${row.bannerURL}"width= "500" height="300">
+		  </div>
+		 </display:column>
+		
 </display:table>
 	
 	

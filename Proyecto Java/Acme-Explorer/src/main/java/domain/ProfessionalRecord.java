@@ -35,7 +35,7 @@ public class ProfessionalRecord extends DomainEntity {
 	}
 
 	@NotNull
-	@Pattern(regexp = "^(1|2){1}([0-9]){1}([0-9]{1})([0-9]{1})([/])(1|2){1}([0-9]){1}([0-9]{1})([0-9]{1})$")
+	@Pattern(regexp = "^(1|2){1}\\d{1}\\d{1}\\d{1}([/])((1|2){1}\\d{1}\\d{1}\\d{1}|-)$")
 	public String getWorkPeriod() {
 		return this.workPeriod;
 	}

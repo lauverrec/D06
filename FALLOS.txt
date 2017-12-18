@@ -67,3 +67,18 @@ SEGURIDAD POR HACER-------------------------------------------------------------
 3. Que un ranger sólo pueda editar su respectivo profesional record.
 4. Que un ranger sólo pueda editar su respectivo personal record.
 5. Que un ranger sólo pueda editar su respectivo miscellaneus record.
+
+
+
+
+Seguimiento número 3:
+
+1. En los curriculum ordernar, primero el personal...
+2. Arreglar el patrón de profesional record 
+3. poner en vez del link la foto del banner
+4. que no te guarde una trip con un publication date en pasado.(!!!)
+5. display de un nuevo trip falla (?)
+6. precios formatearlos con un par de decimales nada más
+7. quitar total price de la vista de crear un stage
+8. formulario muy sencillo solo con la credit card y con GPS
+9. 

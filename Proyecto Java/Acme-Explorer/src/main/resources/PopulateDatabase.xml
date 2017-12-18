@@ -3366,7 +3366,7 @@
 
 	<!-- SponsorShip 1 -->
 	<bean id="sponsorship1" class="domain.Sponsorship">
-		<property name="bannerURL" value="http://www.banner1.com" />
+		<property name="bannerURL" value="https://www.webtenerife.com/es/interes/empresas-servicios-turista/empresas-excursiones/publishingimages/empresas-excursiones-organizadas-2-sb.jpg" />
 		<property name="link" value="http://www.link-banner.com" />
 		<property name="creditCard">
 			<ref bean="creditCard1" />
@@ -3380,7 +3380,7 @@
 	</bean>
 	
 	<bean id="sponsorship7" class="domain.Sponsorship">
-		<property name="bannerURL" value="http://www.banner2.com" />
+		<property name="bannerURL" value="https://www.bioparcvalencia.es/wp-content/uploads/2015/09/grupo-escolar-sabana-africana-bioparc-valencia.jpg" />
 		<property name="link" value="http://www.link-banner.com" />
 		<property name="creditCard">
 			<ref bean="creditCard1" />
@@ -3395,7 +3395,7 @@
 
 	<!-- SponsorShip 2 -->
 	<bean id="sponsorship2" class="domain.Sponsorship">
-		<property name="bannerURL" value="http://www.banner3.com" />
+		<property name="bannerURL" value="https://www.france-voyage.com/visuals/pratique/hiking-with-pleasure-21-1_w1000.jpg"/>
 		<property name="link" value="http://www.banner.com" />
 		<property name="creditCard">
 			<ref bean="creditCard1" />
