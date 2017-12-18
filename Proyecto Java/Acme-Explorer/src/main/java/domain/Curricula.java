@@ -24,7 +24,7 @@ public class Curricula extends DomainEntity {
 
 	@Column(unique = true)
 	@NotNull
-	@Pattern(regexp = "^[0-9]{2}(0[1-9]{1}|1[0-2]{1})((0|1|2)[0-9]{1}|3[0-1]{1})\\-[A-Z]{4}$")
+	@Pattern(regexp = "^\\d{2}(0[1-9]{1}|1[0-2]{1})((0|1|2)\\d{1}|3[0-1]{1})\\-[A-Z]{4}$")
 	public String getTicker() {
 		return this.ticker;
 	}
