@@ -17,7 +17,8 @@ public interface TripRepository extends JpaRepository<Trip, Integer> {
 	//Devolvemos todos los viajes PARA CUALQUIERA que NO esté autenticado y
 	//que no estén cancelados y además tenga fecha de publicación.
 	//Requisito 10.2
-	@Query("select t from Trip t where t.publicationDate!=null and t.cancelled=false and t.startDate >CURRENT_TIMESTAMP")
+	//Cambio: Se ha tomado la decision que se muestren todas las Trips en los no autentificados
+	@Query("select t from Trip t ")
 	Collection<Trip> findAllTripsNoAuthenticate();
 
 	//Requisito 12.1

@@ -77,6 +77,7 @@ public class AuditorController extends AbstractController {
 		result = new ModelAndView("auditor/edit");
 		result.addObject("auditor", auditor);
 		result.addObject("message", message);
+		result.addObject("RequestURI", "auditor/edit.do");
 
 		return result;
 

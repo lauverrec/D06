@@ -105,6 +105,9 @@
 		<security:intercept-url pattern="/configurationSystem/administrator/**" access="hasRole('ADMINISTRATOR')"/>
 		<security:intercept-url pattern="/administrator/dashboard/**" access="hasRole('ADMINISTRATOR')"/>
 		<security:intercept-url pattern="/finder/explorer/**" access="hasRole('EXPLORER')"/>
+		<security:intercept-url pattern="/auditorProfile/administrator/**" access="hasRole('ADMINISTRATOR')"/>
+		<security:intercept-url pattern="/managerProfile/administrator/**" access="hasRole('ADMINISTRATOR')"/>
+		<security:intercept-url pattern="/sponsorProfile/administrator/**" access="hasRole('ADMINISTRATOR')"/>
 		
 	
 	

@@ -114,6 +114,12 @@
 								code="master.page.administrator.category.create" /></a></li>
 					<li><a href="rangerProfile/administrator/create.do"><spring:message
 								code="master.page.rangerProfile.administrator.create" /></a></li>
+					<li><a href="auditorProfile/administrator/create.do"><spring:message
+								code="master.page.auditorProfile.administrator.create" /></a></li>
+					<li><a href="managerProfile/administrator/create.do"><spring:message
+								code="master.page.managerProfile.administrator.create" /></a></li>
+					<li><a href="sponsorProfile/administrator/create.do"><spring:message
+								code="master.page.sponsorProfile.administrator.create" /></a></li>
 					<li><a href="messageFolder/administrator/list.do"><spring:message
 								code="master.page.messageFolder.list" /></a></li>
 					<li><a href="legalText/administrator/list.do"><spring:message
