@@ -44,6 +44,11 @@ SEGURIDAD------------------------------------------------------(metiendo URL a p
 1. Solo poder editar tus clases. DONE
 2. Solo crear survival Class en las trios que son tuyas. DONE
 
+
+- Contact Emergency:
+
+1. Que un explorer solo pueda editar sus datos de emergencia. DONE
+
 - ApplicationFor:
 
 1. Que un explorer solo pueda cancelar una solicutud que el haya hecho. DONE
@@ -55,7 +60,7 @@ SEGURIDAD POR HACER-------------------------------------------------------------
 1. Que un manager no pueda crear un stage en trips que no son suyas (está capado el botón solamente)
 
 
-- La parte de curricula:
+- La parte de curricula: Sólo puede editarlo el, pero debería dar fallo desde el principio( q no de opción a mirar los datos de la persona)
 
 1. Que un ranger sólo pueda editar su respectivo education record.
 2. Que un ranger sólo pueda editar su respectivo endorser record.

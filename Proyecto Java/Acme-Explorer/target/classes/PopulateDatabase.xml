@@ -3904,7 +3904,6 @@
 		</property>
 		<property name="contactsEmergency">
 			<list>
-				<ref bean="contactEmergency1"></ref>
 				<ref bean="contactEmergency2"></ref>
 			</list>
 		</property>
@@ -3983,10 +3982,6 @@
 		</property>
 		<property name="contactsEmergency">
 			<list>
-				<ref bean="contactEmergency1"></ref>
-				<ref bean="contactEmergency2"></ref>
-				<ref bean="contactEmergency3"></ref>
-				<ref bean="contactEmergency4"></ref>
 			</list>
 		</property>
 		<property name="finder" ref="finder4" />

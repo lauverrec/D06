@@ -28,6 +28,7 @@ import services.ContactEmergencyService;
 import services.ExplorerService;
 import controllers.AbstractController;
 import domain.ContactEmergency;
+import domain.Explorer;
 
 @Controller
 @RequestMapping("/contactsEmergency/explorer")
@@ -76,8 +77,11 @@ public class ContactEmergencyExplorerController extends AbstractController {
 	public ModelAndView edit(@RequestParam final int contactEmergencyId) {
 		ModelAndView result;
 		ContactEmergency contactEmergency;
+		Explorer explorer;
 
+		explorer = this.explorerService.findByPrincipal();
 		contactEmergency = this.contactEmergencyService.findOne(contactEmergencyId);
+		Assert.isTrue(explorer.getContactsEmergency().contains(contactEmergency), "Cannot commit this operation, because it's illegal");
 		Assert.notNull(contactEmergency);
 		result = this.createEditModelAndView(contactEmergency);
 		return result;
