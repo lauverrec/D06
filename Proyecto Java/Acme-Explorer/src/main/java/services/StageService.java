@@ -1,6 +1,7 @@
 
 package services;
 
+import java.text.DecimalFormat;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -101,8 +102,11 @@ public class StageService {
 
 	public void setTotalPriceStage(Stage stage) {
 		Double VAT = this.configurationSystemService.getVat();
+		Double price = stage.getPrice() * (1 + VAT);
+		DecimalFormat df = new DecimalFormat("0.00");
+		price = new Double(df.format(price));
 
-		stage.setTotalPrice(stage.getPrice() * (1 + VAT));
+		stage.setTotalPrice(price);
 	}
 
 	public Collection<Stage> stagesOfTrip(int idTrip) {
