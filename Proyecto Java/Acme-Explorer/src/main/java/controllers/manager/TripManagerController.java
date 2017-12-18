@@ -59,9 +59,14 @@ public class TripManagerController extends AbstractController {
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ModelAndView list() {
 		ModelAndView result;
+		double price;
 		Collection<Trip> trips;
-		Manager manager = this.managerService.findByPrincipal();
+		Manager manager;
+
+		manager = this.managerService.findByPrincipal();
+
 		trips = this.tripService.findAll();
+		price = this.tripService.setPriceTrip(trips);
 		Date date;
 		date = new Date();
 
@@ -69,6 +74,7 @@ public class TripManagerController extends AbstractController {
 		result.addObject("trips", trips);
 		result.addObject("manager", manager);
 		result.addObject("date", date);
+		result.addObject("price", price);
 		result.addObject("requestURI", "trip/manager_/list.do");
 
 		return result;

@@ -28,23 +28,21 @@
   <spring:message code="sponsorship.link" />:
 	<jstl:out value="${row.link}"></jstl:out>
 	<p>
-	<spring:message code="sponsorship.bannerURL" />:
+	<spring:message code="sponsorship.bannerURL.banner" />:
 		<jstl:out value="${row.bannerURL}"></jstl:out>
 	</p>
 	<spring:message code="sponsorship.creditCard" />:
 		<jstl:out value="${row.creditCard.holderName}"></jstl:out>
 	<p>
-	<%-- <spring:message code="sponsorship.trip" />:
-		<jstl:out value="${row.trip.ticker}"></jstl:out>
-	<p> --%>
+
 	
-	 <security:authorize access="hasRole('SPONSOR')">
-		<spring:url value="sponsorship/sponsor/displayTrip.do" var="displayURL">
-		<spring:param name="sponsorshipId" value="${row.id}"/>
+	 
+		<spring:url value="trip/display.do" var="displayURL">
+		<spring:param name="tripId" value="${row.trip.id}"/>
 		</spring:url>
 		<a href="${displayURL}"><spring:message code="sponsorship.trip.display"/></a>
 		
-	</security:authorize> 
+
 </display:column>
 	
 

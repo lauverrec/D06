@@ -40,13 +40,16 @@ public class TripExplorerController extends AbstractController {
 		ModelAndView result;
 		Collection<Trip> trips;
 		Explorer explorer;
+		double price;
 
 		explorer = this.explorerService.findByPrincipal();
 		trips = this.tripService.findAllTripsApplyByExplorerId(explorer.getId());
+		price = this.tripService.setPriceTrip(trips);
 
 		result = new ModelAndView("trip/list");
 		result.addObject("trips", trips);
 		result.addObject("apply", true);
+		result.addObject("price", price);
 		result.addObject("requestURI", "trip/explorer/search.do");
 
 		return result;
@@ -57,13 +60,16 @@ public class TripExplorerController extends AbstractController {
 		ModelAndView result;
 		Collection<Trip> trips;
 		Explorer explorer;
+		double price;
 
 		explorer = this.explorerService.findByPrincipal();
 		trips = this.tripService.findAllTripsNotApplyByExplorerId(explorer.getId());
+		price = this.tripService.setPriceTrip(trips);
 
 		result = new ModelAndView("trip/list");
 		result.addObject("trips", trips);
 		result.addObject("apply", false);
+		result.addObject("price", price);
 		result.addObject("requestURI", "trip/explorer/search.do");
 
 		return result;
@@ -73,11 +79,14 @@ public class TripExplorerController extends AbstractController {
 	public ModelAndView listTripForWritingStory() {
 		ModelAndView result;
 		Collection<Trip> trips;
+		double price;
 
 		trips = this.tripService.findTripsForStory();
+		price = this.tripService.setPriceTrip(trips);
 
 		result = new ModelAndView("trip/liststory");
 		result.addObject("trips", trips);
+		result.addObject("price", price);
 		result.addObject("requestURI", "trip/explorer/search.do");
 
 		return result;
