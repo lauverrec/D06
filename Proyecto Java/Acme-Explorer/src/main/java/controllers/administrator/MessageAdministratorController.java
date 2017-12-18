@@ -143,12 +143,15 @@ public class MessageAdministratorController extends AbstractController {
 	public ModelAndView deleteMessage(@RequestParam int messageId) {
 		ModelAndView result;
 		Message messageToDelete;
+		MessageFolder folderOld;
+
 		messageToDelete = this.messageService.findOne(messageId);
+		folderOld = messageToDelete.getMessageFolder();
 
 		try {
 
 			this.messageService.delete(messageToDelete);
-			result = new ModelAndView("redirect:list.do?messageFolderId=" + messageToDelete.getMessageFolder().getId());
+			result = new ModelAndView("redirect:list.do?messageFolderId=" + folderOld.getId());
 		} catch (Throwable oops) {
 			result = this.createNewModelAndView(messageToDelete, "message.commit.error");
 
