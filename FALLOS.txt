@@ -8,4 +8,5 @@
 
 5. Los fallos cuando intentas salvar un gps vacío no t lo guarda pero no se muestran los errores de fallo en plan must be blank y eso.
 
+6. El botón cancel cuando vas a crear un stage no funciona. 
 
