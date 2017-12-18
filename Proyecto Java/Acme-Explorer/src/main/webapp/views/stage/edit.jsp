@@ -75,7 +75,7 @@
 	
 	<input type="button" name="cancel"
 		value="<spring:message code="stage.cancel"/>"
-		onclick="javascript: window.location.replace('stage/manager/list.do')" />
+		onclick="javascript: window.location.replace('trip/manager_/list.do')" />
 	<br />
 	
 </form:form>
