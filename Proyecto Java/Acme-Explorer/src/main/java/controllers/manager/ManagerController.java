@@ -71,6 +71,7 @@ public class ManagerController extends AbstractController {
 		result = new ModelAndView("manager/edit");
 		result.addObject("manager", manager);
 		result.addObject("message", message);
+		result.addObject("RequestURI", "manager/edit.do");
 
 		return result;
 

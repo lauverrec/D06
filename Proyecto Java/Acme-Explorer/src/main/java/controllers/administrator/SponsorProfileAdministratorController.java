@@ -16,7 +16,7 @@ import controllers.AbstractController;
 import domain.Sponsor;
 
 @Controller
-@RequestMapping("/sponsorProfile")
+@RequestMapping("/sponsorProfile/administrator")
 public class SponsorProfileAdministratorController extends AbstractController {
 
 	// Services---------------------------------------------------------
@@ -80,7 +80,7 @@ public class SponsorProfileAdministratorController extends AbstractController {
 		result = new ModelAndView("sponsor/edit");
 		result.addObject("sponsor", sponsor);
 		result.addObject("message", message);
-		result.addObject("RequestURI", "sponsorProfile/edit.do");
+		result.addObject("RequestURI", "sponsorProfile/administrator/edit.do");
 
 		return result;
 

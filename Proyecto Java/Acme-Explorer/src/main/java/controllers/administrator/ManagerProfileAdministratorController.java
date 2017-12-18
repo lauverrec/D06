@@ -80,7 +80,7 @@ public class ManagerProfileAdministratorController extends AbstractController {
 		result = new ModelAndView("manager/edit");
 		result.addObject("manager", manager);
 		result.addObject("message", message);
-		result.addObject("RequestURI", "managerProfile/edit.do");
+		result.addObject("RequestURI", "managerProfile/administrator/edit.do");
 
 		return result;
 

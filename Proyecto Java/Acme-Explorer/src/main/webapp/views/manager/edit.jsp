@@ -19,18 +19,34 @@
 <%@taglib prefix="security"	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
-<form:form action="manager/edit.do" modelAttribute="manager">
+<form:form action="${RequestURI}" modelAttribute="manager">
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />
 	<form:hidden path="socialIdentities"/>
 	<form:hidden path="messagesFolders"/>
 	<form:hidden path="userAccount"/>
+	<form:hidden path="userAccount.authorities"/>
+	<form:hidden path="userAccount.activated"/>
 	<form:hidden path="trips"/>
 	<form:hidden path="applicationsFor"/>
 	<form:hidden path="suspicious"/>
 	
-	<security:authorize access="hasRole('MANAGER')">
+	<jstl:if test="${manager.id == 0}">		
+		<form:label path="userAccount.username">
+			<spring:message code="manager.username" />:
+		</form:label>
+		<form:input path="userAccount.username" />
+		<form:errors cssClass="error" path="userAccount.username" />
+		<br /><br />
+	
+		<form:label path="userAccount.password">
+			<spring:message code="manager.password" />:
+		</form:label>
+		<form:password path="userAccount.password" />
+		<form:errors cssClass="error" path="userAccount.password" />
+		<br /><br />
+	</jstl:if>
 	
 	<form:label path="name">
 		<spring:message code="manager.name" />:
@@ -89,7 +105,5 @@
 		value="<spring:message code="manager.cancel" />"
 		onclick="javascript: window.location.replace('welcome/index.do');" />
 	<br />
-	
-	</security:authorize>
 	
 </form:form>

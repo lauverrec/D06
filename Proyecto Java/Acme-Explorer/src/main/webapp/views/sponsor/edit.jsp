@@ -19,17 +19,33 @@
 <%@taglib prefix="security"	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
-<security:authorize access="hasRole('SPONSOR')">
-<form:form action="sponsor/edit.do" modelAttribute="sponsor">
+<form:form action="${RequestURI}" modelAttribute="sponsor">
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />
 	<form:hidden path="socialIdentities"/>
 	<form:hidden path="messagesFolders"/>
 	<form:hidden path="userAccount"/>
+	<form:hidden path="userAccount.authorities"/>
+	<form:hidden path="userAccount.activated"/>
 	<form:hidden path="suspicious"/>
 	<form:hidden path="sponsorships"/> 
 	
+	<jstl:if test="${sponsor.id == 0}">		
+		<form:label path="userAccount.username">
+			<spring:message code="sponsor.username" />:
+		</form:label>
+		<form:input path="userAccount.username" />
+		<form:errors cssClass="error" path="userAccount.username" />
+		<br /><br />
+	
+		<form:label path="userAccount.password">
+			<spring:message code="sponsor.password" />:
+		</form:label>
+		<form:password path="userAccount.password" />
+		<form:errors cssClass="error" path="userAccount.password" />
+		<br /><br />
+	</jstl:if>
 	
 	 <form:label path="name">
 		<spring:message code="sponsor.name" />:
@@ -93,4 +109,3 @@
 	
 	
 </form:form>
-</security:authorize>
