@@ -210,10 +210,12 @@
 <security:authorize access="hasRole('AUDITOR')">
 <spring:message code="note.create" var="Create" />
 	<display:column title="${Create}" sortable="true">
+	<jstl:if test="${row.cancelled==false && util.finishDateFuture(row.finishDate)==true}">
 		<spring:url value="note/auditor/create.do" var="createURL">
 			<spring:param name="tripId" value="${row.id}" />
 		</spring:url>
 		<a href="${createURL}"><spring:message code="note.create" /></a>
+	</jstl:if>
 	</display:column>
 </security:authorize>
 

@@ -2,11 +2,13 @@
 package controllers.auditor;
 
 import java.util.Collection;
+import java.util.Date;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.Assert;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -60,7 +62,13 @@ public class NoteAuditorController extends AbstractController {
 	public ModelAndView create(@RequestParam final int tripId) {
 		ModelAndView result;
 		Note note;
+		Date date;
+		Trip trip;
 
+		trip = this.tripService.findOne(tripId);
+		date = new Date();
+
+		Assert.isTrue(trip.getFinishDate().after(date) && trip.isCancelled() == false);
 		note = this.noteService.create();
 		result = this.createEditModelAndView(note);
 		result.addObject("requestURI", "note/auditor/addTrip.do?tripId=" + tripId);

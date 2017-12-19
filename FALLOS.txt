@@ -12,6 +12,8 @@
 
 7. Los comentarios de micellaneus record cuando le das a salvar no te dice el error "Must not be null" te lo coge, lo mismo pasa con los comentatios de application for, endorserrecord, profesional record y education record.
 
+8. El cancel de la vista cuando insertas la credit card y le das a save va mal, te redirige a otra
+
 
 
 SEGURIDAD------------------------------------------------------(metiendo URL a piñón)
