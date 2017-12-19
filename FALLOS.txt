@@ -6,13 +6,10 @@
 
 4. Created moment de una application (el mes que pone es erroneo, ej: 2017/51/15 12:51)
 
-5. Los fallos cuando intentas salvar un gps vacío no t lo guarda pero no se muestran los errores de fallo en plan must be blank y eso.
-
 6. El botón cancel cuando vas a crear un stage no funciona. 
 
 7. Los comentarios de micellaneus record cuando le das a salvar no te dice el error "Must not be null" te lo coge, lo mismo pasa con los comentatios de application for, endorserrecord, profesional record y education record.
 
-8. El cancel de la vista cuando insertas la credit card y le das a save va mal, te redirige a otra
 
 
 
