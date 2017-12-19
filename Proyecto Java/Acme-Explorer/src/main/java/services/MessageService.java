@@ -497,4 +497,49 @@ public class MessageService {
 		Assert.notNull(messageBdOfManager);
 	}
 
+	public void sendNotificationBroadcast(String subject, String body, String priority) {
+		Assert.notNull(priority);
+		Collection<Actor> allActors;
+		Actor sender;
+
+		sender = this.actorService.findPrincipal();
+		allActors = this.actorService.findAll();
+		allActors.remove(sender);
+
+		for (Actor recipient : allActors) {
+			Message messageToActor;
+			Date current;
+			Message messageNewInbox;
+			Message messageNewOutbox;
+			MessageFolder messageFolderInboxOfRecipient;
+			MessageFolder messageFolderOutboxOfSender;
+
+			messageToActor = new Message();
+			current = new Date(System.currentTimeMillis() - 1000);
+
+			messageToActor.setSubject(subject);
+			messageToActor.setBody(body);
+			messageToActor.setPriority(priority);
+			messageToActor.setMoment(current);
+			messageToActor.setSender(sender);
+			messageToActor.setRecipient(recipient);
+
+			messageFolderInboxOfRecipient = this.messageFolderService.returnDefaultFolder(recipient, "Notification box");
+			messageFolderOutboxOfSender = this.messageFolderService.returnDefaultFolder(sender, "Out box");
+
+			messageToActor.setMessageFolder(messageFolderInboxOfRecipient);
+			messageNewInbox = this.messageRepository.save(messageToActor);
+
+			Assert.notNull(messageNewInbox);
+			messageFolderInboxOfRecipient.getMessages().add(messageNewInbox);
+
+			messageToActor.setMessageFolder(messageFolderOutboxOfSender);
+			messageNewOutbox = this.messageRepository.save(messageToActor);
+
+			Assert.notNull(messageNewOutbox);
+			messageFolderOutboxOfSender.getMessages().add(messageNewOutbox);
+
+		}
+
+	}
 }

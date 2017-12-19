@@ -84,20 +84,6 @@ public class MessageServiceTest extends AbstractTest {
 	}
 
 	@Test
-	public void testDelete() {
-		super.authenticate("administrator1");
-		Administrator adminPrincipal;
-		Message message;
-
-		adminPrincipal = this.administratorService.findByPrincipal();
-		message = adminPrincipal.getMessagesFolders().iterator().next().getMessages().iterator().next();
-		Assert.notNull(message);
-		this.messageService.delete(message);
-
-		super.unauthenticate();
-	}
-
-	@Test
 	public void testChangeFolderMessage() {
 		this.authenticate("administrator1");
 		Message mes;
@@ -141,5 +127,19 @@ public class MessageServiceTest extends AbstractTest {
 
 		this.messageService.sendMessageToActorOfApplicationFor(applicationFor);
 		this.unauthenticate();
+	}
+
+	@Test
+	public void testSendNotificationToAllActors() {
+		this.authenticate("administrator1");
+		String subject;
+		String body;
+		String priority;
+
+		subject = "Notificacion";
+		body = "Esto es una notificacion de prueba";
+		priority = "NEUTRAL";
+		this.messageService.sendNotificationBroadcast(subject, body, priority);
+
 	}
 }
