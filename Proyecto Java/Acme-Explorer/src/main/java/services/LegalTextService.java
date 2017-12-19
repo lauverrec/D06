@@ -72,7 +72,8 @@ public class LegalTextService {
 
 		Assert.notNull(this.administratorService.findByPrincipal());
 
-		Assert.isTrue(legalText.isDraftMode() == true && legalText.getTrips().isEmpty());
+		if (legalText.isDraftMode() == true && !legalText.getTrips().isEmpty())
+			Assert.isTrue(legalText.isDraftMode() == true && legalText.getTrips().isEmpty());
 
 		LegalText result;
 
