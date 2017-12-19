@@ -88,7 +88,6 @@ public class Trip extends DomainEntity {
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern = "yyyy/MM/dd HH:mm")
-	//@Future
 	public Date getPublicationDate() {
 		return this.publicationDate;
 	}
