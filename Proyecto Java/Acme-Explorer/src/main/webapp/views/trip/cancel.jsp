@@ -34,7 +34,6 @@
 	<form:hidden path="notes"/>
 	<form:hidden path="auditRecords"/>
 	<form:hidden path="ranger"/>
-	<form:hidden path="tags"/>
 	
 
 <form:label path="title">
