@@ -2,13 +2,9 @@
 
 2. Los meses en las trips cuando se muestran siempre son 00, mirar porqué ocurre eso.
 
-3. No salen los errores cuando intentas crear una credit card a un sponsorship. 
-
 4. Created moment de una application (el mes que pone es erroneo, ej: 2017/51/15 12:51)
 
 6. El botón cancel cuando vas a crear un stage no funciona. 
-
-7. Los comentarios de micellaneus record cuando le das a salvar no te dice el error "Must not be null" te lo coge, lo mismo pasa con los comentatios de application for, endorserrecord, profesional record y education record.
 
 
 
@@ -61,11 +57,11 @@ SEGURIDAD POR HACER-------------------------------------------------------------
 
 - La parte de curricula: Sólo puede editarlo el, pero debería dar fallo desde el principio( q no de opción a mirar los datos de la persona)
 
-1. Que un ranger sólo pueda editar su respectivo education record.
-2. Que un ranger sólo pueda editar su respectivo endorser record.
-3. Que un ranger sólo pueda editar su respectivo profesional record.
-4. Que un ranger sólo pueda editar su respectivo personal record.
-5. Que un ranger sólo pueda editar su respectivo miscellaneus record.
+1. Que un ranger sólo pueda editar su respectivo education record. DONE	
+2. Que un ranger sólo pueda editar su respectivo endorser record. DONE
+3. Que un ranger sólo pueda editar su respectivo profesional record. DONE
+4. Que un ranger sólo pueda editar su respectivo personal record. DONE
+5. Que un ranger sólo pueda editar su respectivo miscellaneus record. DONE
 
 
 
