@@ -109,6 +109,7 @@ public class TripService {
 		conectado = this.managerService.findByPrincipal();
 		dateNow = new Date();
 		Assert.isTrue(trip.getStartDate().before(trip.getFinishDate()));
+		Assert.isTrue(trip.getPublicationDate().after(dateNow));
 		if (trip.getId() != 0) {
 			Assert.isTrue(trip.getPublicationDate().after(dateNow));
 			Assert.isTrue(managerT.equals(conectado));
