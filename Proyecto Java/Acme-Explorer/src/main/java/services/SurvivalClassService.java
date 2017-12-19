@@ -234,8 +234,8 @@ public class SurvivalClassService {
 		survivalClasses = this.survivalClassRepository.findSurvivalClassByManager(manager.getId());
 
 		for (SurvivalClass survival : survivalClasses) {
-			words.add(survival.getDescription());
-			words.add(survival.getTitle());
+			words.add(survival.getDescription().toLowerCase());
+			words.add(survival.getTitle().toLowerCase());
 		}
 
 		for (String word : words)

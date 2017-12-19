@@ -154,7 +154,7 @@ public class NoteService {
 		words = new ArrayList<String>();
 
 		for (Note note : notes)
-			words.add(note.getBody());
+			words.add(note.getBody().toLowerCase());
 
 		for (String word : words)
 			for (String spam : spamWords)

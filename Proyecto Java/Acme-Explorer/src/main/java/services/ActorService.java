@@ -144,15 +144,15 @@ public class ActorService {
 		words = new ArrayList<String>();
 		result = false;
 
-		words.add(actor.getAddress());
-		words.add(actor.getEmail());
-		words.add(actor.getName());
-		words.add(actor.getSurname());
+		words.add(actor.getAddress().toLowerCase());
+		words.add(actor.getEmail().toLowerCase());
+		words.add(actor.getName().toLowerCase());
+		words.add(actor.getSurname().toLowerCase());
 
 		for (SocialIdentity social : actor.getSocialIdentities()) {
-			words.add(social.getLink());
-			words.add(social.getName());
-			words.add(social.getNick());
+			words.add(social.getLink().toLowerCase());
+			words.add(social.getName().toLowerCase());
+			words.add(social.getNick().toLowerCase());
 		}
 
 		for (String word : words)

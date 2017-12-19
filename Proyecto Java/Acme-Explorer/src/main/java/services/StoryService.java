@@ -116,8 +116,8 @@ public class StoryService {
 		storysOfExplorer = this.storyRepository.storyOfExplore(explorer.getId());
 
 		for (Story story : storysOfExplorer) {
-			words.add(story.getText());
-			words.add(story.getTitle());
+			words.add(story.getText().toLowerCase());
+			words.add(story.getTitle().toLowerCase());
 
 		}
 

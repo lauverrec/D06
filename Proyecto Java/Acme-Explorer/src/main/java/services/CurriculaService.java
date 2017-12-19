@@ -187,31 +187,35 @@ public class CurriculaService {
 		spamWords = this.configurationSystemService.spamWord();
 		wordsPublicated = new ArrayList<String>();
 
-		wordsPublicated.add(curriculaFromActor.getPersonalRecord().getEmail());
-		wordsPublicated.add(curriculaFromActor.getPersonalRecord().getFullName());
+		wordsPublicated.add(curriculaFromActor.getPersonalRecord().getEmail().toLowerCase());
+		wordsPublicated.add(curriculaFromActor.getPersonalRecord().getFullName().toLowerCase());
 
 		for (final EducationRecord edcuation : curriculaFromActor.getEducationRecords()) {
-			wordsPublicated.add(edcuation.getDiplomaTitle());
-			wordsPublicated.add(edcuation.getInstitution());
-			wordsPublicated.addAll(edcuation.getComments());
-			wordsPublicated.add(edcuation.getLink());
+			wordsPublicated.add(edcuation.getDiplomaTitle().toLowerCase());
+			wordsPublicated.add(edcuation.getInstitution().toLowerCase());
+			wordsPublicated.add(edcuation.getLink().toLowerCase());
+			for (String c : edcuation.getComments())
+				wordsPublicated.add(c.toLowerCase());
 		}
 		for (final EndorserRecord endorser : curriculaFromActor.getEndorserRecords()) {
-			wordsPublicated.add(endorser.getEmail());
-			wordsPublicated.add(endorser.getFullName());
-			wordsPublicated.addAll(endorser.getComments());
-			wordsPublicated.add(endorser.getLinkedProfile());
+			wordsPublicated.add(endorser.getEmail().toLowerCase());
+			wordsPublicated.add(endorser.getFullName().toLowerCase());
+			wordsPublicated.add(endorser.getLinkedProfile().toLowerCase());
+			for (String c : endorser.getComments())
+				wordsPublicated.add(c.toLowerCase());
 		}
 		for (final MiscellaneousRecord miscellaneous : curriculaFromActor.getMiscellaneousRecords()) {
-			wordsPublicated.add(miscellaneous.getTitle());
-			wordsPublicated.add(miscellaneous.getLink());
-			wordsPublicated.addAll(miscellaneous.getComments());
+			wordsPublicated.add(miscellaneous.getTitle().toLowerCase());
+			wordsPublicated.add(miscellaneous.getLink().toLowerCase());
+			for (String c : miscellaneous.getComments())
+				wordsPublicated.add(c.toLowerCase());
 		}
 		for (final ProfessionalRecord professional : curriculaFromActor.getProfessionalRecords()) {
-			wordsPublicated.add(professional.getCompanyName());
-			wordsPublicated.add(professional.getLink());
-			wordsPublicated.add(professional.getRole());
-			wordsPublicated.addAll(professional.getComments());
+			wordsPublicated.add(professional.getCompanyName().toLowerCase());
+			wordsPublicated.add(professional.getLink().toLowerCase());
+			wordsPublicated.add(professional.getRole().toLowerCase());
+			for (String c : professional.getComments())
+				wordsPublicated.add(c.toLowerCase());
 		}
 		for (final String word : wordsPublicated)
 			for (final String spam : spamWords)

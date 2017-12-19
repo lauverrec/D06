@@ -232,9 +232,9 @@ public class ApplicationForService {
 		spamWords = this.configurationSystemService.spamWord();
 
 		for (ApplicationFor application : applicationForFromActor) {
-			words.add(application.getReasonWhy());
-			words.addAll(application.getComments());
-
+			words.add(application.getReasonWhy().toLowerCase());
+			for (String c : application.getComments())
+				words.add(c.toLowerCase());
 		}
 
 		for (String word : words)
@@ -246,7 +246,6 @@ public class ApplicationForService {
 
 		return result;
 	}
-
 	public boolean moreThanThirtyDays(Date startdate) {
 		boolean res = false;
 		Date dNow = new Date(System.currentTimeMillis());

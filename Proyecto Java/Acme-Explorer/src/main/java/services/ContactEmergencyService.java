@@ -110,8 +110,8 @@ public class ContactEmergencyService {
 		contactsEmergency = explorer.getContactsEmergency();
 
 		for (ContactEmergency contact : contactsEmergency) {
-			words.add(contact.getEmail());
-			words.add(contact.getName());
+			words.add(contact.getEmail().toLowerCase());
+			words.add(contact.getName().toLowerCase());
 
 		}
 		for (String word : words)
