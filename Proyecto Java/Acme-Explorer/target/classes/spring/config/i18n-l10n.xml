@@ -53,6 +53,7 @@
 		<value>/views/configurationSystem/messages</value>
 		<value>/views/tag/messages</value>
 		<value>/views/finder/messages</value>
+		<value>/views/value/messages</value>
 		
 		
 	</util:list>
