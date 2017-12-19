@@ -24,6 +24,7 @@
 
 	<form:hidden path="id" />
 	<form:hidden path="version" /> 
+	<form:hidden path="values" /> 
 
 
 	
@@ -64,7 +65,7 @@
 	
 	<input type="button" name="cancel"
 		value="<spring:message code="tag.cancel"/>"
-		onclick="javascript: window.location.replace('tag/list.do')" />
+		onclick="javascript: window.location.replace('tag/administrator/list.do')" />
 	<br />
 		
 </form:form>

@@ -30,8 +30,6 @@ public class TagAdministratorController extends AbstractController {
 	public String		oldName;
 
 
-	//public Collection<Tag>	tagss	= new ArrayList<Tag>();
-
 	//Listing
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)

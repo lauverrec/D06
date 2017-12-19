@@ -11,6 +11,7 @@ import org.springframework.util.Assert;
 
 import repositories.TagRepository;
 import domain.Tag;
+import domain.Value;
 
 @Service
 @Transactional
@@ -33,7 +34,11 @@ public class TagService {
 	// Simple CRUD methods-----------------------------------------------------
 	public Tag create() {
 		Tag result;
+		Collection<Value> values;
+
+		values = new ArrayList<Value>();
 		result = new Tag();
+		result.setValues(values);
 		return result;
 	}
 
