@@ -5,6 +5,7 @@ import java.util.Collection;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.validation.Valid;
@@ -34,7 +35,7 @@ public class Tag extends DomainEntity {
 
 
 	@Valid
-	@OneToMany(mappedBy = "tag")
+	@OneToMany(mappedBy = "tag", cascade = CascadeType.REMOVE)
 	public Collection<Value> getValues() {
 		return this.values;
 	}

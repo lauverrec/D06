@@ -23,8 +23,6 @@ public class TagService {
 
 
 	// Supporting services ----------------------------------------------------
-	//@Autowired
-	//private TripService		tripService;
 
 	// Constructors------------------------------------------------------------
 	public TagService() {
@@ -63,22 +61,25 @@ public class TagService {
 
 	public Tag save(final Tag tag) {
 		Assert.notNull(tag);
+		Collection<Value> values;
+		values = new ArrayList<Value>(tag.getValues());
 
+		//NO PUEDO MODIFICAR UNA TAG QUE TENGA UN TRIP ASOCIADO
+		if (tag.getId() != 0)
+			Assert.isTrue(values.size() == 0);
 		Tag result;
 		result = this.tagRepository.save(tag);
 		Assert.notNull(result);
 
 		return result;
 	}
-
 	public void delete(final Tag tag) {
 		//String name;
 		//Collection<Tag> tags;
 		//Collection<Trip> trips;
 
-		//Si esa tag no tiene ningun valor asignado en su lista de valores
-		//quiere decir que no esta asignada a ninguna trip y se puede eliminar.
-		Assert.isTrue(tag.getValues().size() == 0);
+		//PUEDO ELIMINAR LA TAG EN CUALQUIER MOMENTO
+		//Assert.isTrue(tag.getValues().size() == 0);
 
 		this.tagRepository.delete(tag);
 	}
