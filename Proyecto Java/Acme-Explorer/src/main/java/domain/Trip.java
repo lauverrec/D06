@@ -168,7 +168,7 @@ public class Trip extends DomainEntity {
 		this.stages = stages;
 	}
 
-	@OneToMany(mappedBy = "trip")
+	@OneToMany(mappedBy = "trip", cascade = CascadeType.REMOVE)
 	@Valid
 	public Collection<Value> getValues() {
 		return this.values;
