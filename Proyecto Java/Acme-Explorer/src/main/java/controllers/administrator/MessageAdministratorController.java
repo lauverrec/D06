@@ -182,7 +182,27 @@ public class MessageAdministratorController extends AbstractController {
 		else
 			try {
 				MessageFolder folderToReturn = m.getMessageFolder();
+
 				this.messageService.save(m);
+				result = new ModelAndView("redirect:list.do?messageFolderId=" + folderToReturn.getId());
+			} catch (Throwable oops) {
+
+				result = this.createNewModelAndView(m, "message.commit.error");
+
+			}
+		return result;
+	}
+
+	@RequestMapping(value = "/send", method = RequestMethod.POST, params = "broadcast")
+	public ModelAndView sendBroadcast(@ModelAttribute("m") @Valid Message m, BindingResult binding) {
+		ModelAndView result;
+		if (binding.hasErrors())
+			result = this.createNewModelAndView(m);
+		else
+			try {
+				MessageFolder folderToReturn = m.getMessageFolder();
+
+				this.messageService.sendNotificationBroadcast(m.getSubject(), m.getBody(), m.getPriority());
 				result = new ModelAndView("redirect:list.do?messageFolderId=" + folderToReturn.getId());
 			} catch (Throwable oops) {
 

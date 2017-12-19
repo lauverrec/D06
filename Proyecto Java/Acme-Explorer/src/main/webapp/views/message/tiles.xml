@@ -45,4 +45,5 @@
 		<put-attribute name="title" value="Reply message" />
 		<put-attribute name="body" value="/views/message/send.jsp" />
 	</definition>
+	
 </tiles-definitions>

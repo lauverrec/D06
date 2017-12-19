@@ -143,12 +143,15 @@ public class MessageAuditorController extends AbstractController {
 	public ModelAndView deleteMessage(@RequestParam int messageId) {
 		ModelAndView result;
 		Message messageToDelete;
+		MessageFolder folderOld;
+
 		messageToDelete = this.messageService.findOne(messageId);
+		folderOld = messageToDelete.getMessageFolder();
 
 		try {
 
 			this.messageService.delete(messageToDelete);
-			result = new ModelAndView("redirect:list.do?messageFolderId=" + messageToDelete.getMessageFolder().getId());
+			result = new ModelAndView("redirect:list.do?messageFolderId=" + folderOld.getId());
 		} catch (Throwable oops) {
 			result = this.createNewModelAndView(messageToDelete, "message.commit.error");
 
@@ -179,6 +182,7 @@ public class MessageAuditorController extends AbstractController {
 		else
 			try {
 				MessageFolder folderToReturn = m.getMessageFolder();
+
 				this.messageService.save(m);
 				result = new ModelAndView("redirect:list.do?messageFolderId=" + folderToReturn.getId());
 			} catch (Throwable oops) {
@@ -187,6 +191,27 @@ public class MessageAuditorController extends AbstractController {
 
 			}
 		return result;
+	}
+
+	@RequestMapping(value = "/reply", method = RequestMethod.GET)
+	public ModelAndView reply(@RequestParam int messageId) {
+
+		ModelAndView result;
+
+		Message message, aux;
+		aux = this.messageService.findOne(messageId);
+		message = this.messageService.create();
+		Assert.notNull(aux);
+
+		message.setRecipient(aux.getSender());
+		message.setSubject("Reply to:\"" + aux.getSubject() + "\"");
+		message.setBody("\n-----------------\nSender: " + aux.getSender().getName() + "\n Recipient: " + aux.getRecipient().getName() + "\n Moment: " + aux.getMoment() + "\n Subject: " + aux.getSubject() + "\n Body: " + aux.getBody() + "\"\"");
+
+		result = this.createReplyModelAndView(message);
+		result.addObject("requestURI", "message/auditor/send.do");
+
+		return result;
+
 	}
 
 	// Ancillary methods ------------------------------------------------------
@@ -217,6 +242,30 @@ public class MessageAuditorController extends AbstractController {
 
 		result.addObject("message", message);
 		result.addObject("priorities", priorities);
+		result.addObject("m", m);
+		return result;
+	}
+
+	protected ModelAndView createReplyModelAndView(Message m) {
+		ModelAndView result;
+		result = this.createReplyModelAndView(m, null);
+		return result;
+	}
+
+	protected ModelAndView createReplyModelAndView(Message m, String message) {
+		ModelAndView result;
+		String low = "LOW";
+		String neutral = "NEUTRAL";
+		String high = "HIGH";
+		Collection<String> priorities = new ArrayList<String>();
+		priorities.add(low);
+		priorities.add(neutral);
+		priorities.add(high);
+
+		result = new ModelAndView("message/send");
+
+		result.addObject("priorities", priorities);
+		result.addObject("message", message);
 		result.addObject("m", m);
 		return result;
 	}

@@ -19,7 +19,7 @@
 			<form:hidden path="messageFolder" />
 			<form:hidden path="moment" />
 
-			
+
 			<jstl:if test="${m.recipient == null}">
 
 				<acme:select code="message.sendTo" path="recipient"
@@ -43,12 +43,18 @@
 
 
 
-				<input type="submit" name="save"
-					value="<spring:message code="message.send.link" />"/>
+			<input type="submit" name="save"
+				value="<spring:message code="message.send.link" />" />
 
 			<input type="button" name="cancel"
 				value="<spring:message code="message.cancel.link" />"
 				onclick="javascript: location.replace('welcome/index.do')" />
+
+			<security:authorize access="hasRole('ADMINISTRATOR')">
+				<input type="submit" name="broadcast"
+					value="<spring:message code="message.send.broadcast.link" />" />
+			</security:authorize>
+
 
 		</form:form>
 	</div>

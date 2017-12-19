@@ -45,6 +45,7 @@
 		<put-attribute name="title" value="Responder mensaje" />
 		<put-attribute name="body" value="/views/message/send.jsp" />
 	</definition>
+
 	
 	
 </tiles-definitions>

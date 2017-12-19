@@ -267,6 +267,12 @@
 				code="messageFolder.create" />
 		</a>
 	</div>
+	
+	<div>
+		<a href="message/administrator/sendBroadcast.do"> <spring:message
+				code="messageFolder.create" />
+		</a>
+	</div>
 </security:authorize>
 
 <security:authorize access="hasRole('RANGER')">
