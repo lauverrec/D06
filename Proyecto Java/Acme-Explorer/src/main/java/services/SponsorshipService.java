@@ -103,31 +103,6 @@ public class SponsorshipService {
 		return result;
 	}
 
-	//	public Boolean sponsorshipContainsSpam(Sponsor sponsor) {
-	//		Boolean result = false;
-	//		Collection<Sponsorship> sponsorships;
-	//		Collection<String> words;
-	//		Collection<String> spamWords;
-	//
-	//		result = false;
-	//		sponsorships = this.sponsorshipRepository.findBySponsorId(sponsor.getId());
-	//		spamWords = this.configurationSystemService.spamWord();
-	//		words = new ArrayList<String>();
-	//
-	//		for (Sponsorship sponsorship : sponsorships) {
-	//			words.add(sponsorship.getBannerURL());
-	//			words.add(sponsorship.getLink());
-	//		}
-	//
-	//		for (String word : words)
-	//			for (String spam : spamWords)
-	//				if (word.indexOf(spam) > -1) {
-	//					result = true;
-	//					break;
-	//				}
-	//		return result;
-	//	}
-
 	public String randomSponsorship(Trip trip) {
 		List<Sponsorship> sponsorships;
 		Integer size;
