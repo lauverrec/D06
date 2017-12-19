@@ -28,7 +28,7 @@ public class TagManagerController {
 	//private TripService	tripService;
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public ModelAndView list() {
+	public ModelAndView list(@RequestParam final int tripId) {
 		ModelAndView result;
 		Collection<Tag> tags;
 
@@ -36,6 +36,7 @@ public class TagManagerController {
 
 		result = new ModelAndView("tag/list");
 		result.addObject("tags", tags);
+		result.addObject("tripId", tripId);
 		result.addObject("requestURI", "tag/manager_/list.do");
 		return result;
 	}

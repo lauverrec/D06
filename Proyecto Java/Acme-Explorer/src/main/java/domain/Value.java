@@ -5,7 +5,6 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.validation.Valid;
 
 import org.hibernate.validator.constraints.Range;
 
@@ -32,7 +31,6 @@ public class Value extends DomainEntity {
 	private Trip	trip;
 
 
-	@Valid
 	@ManyToOne(optional = true)
 	public Tag getTag() {
 		return this.tag;

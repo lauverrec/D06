@@ -26,18 +26,36 @@
 	<form:hidden path="version" /> 
 
 
-	<form:label path="trip">
-		<spring:message code="value.trip" />:
-	</form:label>
-	<form:input path="trip" readonly="true"/>
-	<form:errors cssClass="error" path="trip" />
-	<br />
+<p><spring:message code="value.trip" />: <jstl:out value="${tripTtitle}"></jstl:out></p>
+<p><spring:message code="value.tag" />: <jstl:out value="${tagName}"></jstl:out></p>
+
 	
-	<form:label path="tag">
-		<spring:message code="value.tag" />:
+	<br /> 
+	
+	<h2><spring:message code="valu.value.name" /></h2>
+	<form:label path="value">
+		<spring:message code="value.select" />:
 	</form:label>
-	<form:input path="tag" readonly="true"/>
-	<form:errors cssClass="error" path="tag" />
+	<form:select id="value" path="value" >		
+		    <option value="1">1</option>
+ 			<option value="2">2</option>
+ 			<option value="3">3</option>
+  			<option value="4">4</option>
+  			<option value="5">5</option>
+  			<option value="6">6</option>
+  			<option value="7">7</option>
+  			<option value="8">8</option>
+  			<option value="9">9</option>
+  			<option value="10">10</option>
+	</form:select>	
+	<form:errors cssClass="error" path="value" />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
 	<br />
 	
 	

@@ -10,6 +10,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import repositories.ValueRepository;
+import domain.Tag;
+import domain.Trip;
 import domain.Value;
 
 @Service
@@ -17,13 +19,16 @@ import domain.Value;
 public class ValueService {
 
 	// Managed repository -----------------------------------------------------
-
 	@Autowired
 	private ValueRepository	valueRepository;
 
+	@Autowired
+	private TagService		tagService;
+	@Autowired
+	private TripService		tripService;
+
 
 	// Constructors------------------------------------------------------------
-
 	public ValueService() {
 		super();
 	}
@@ -37,6 +42,20 @@ public class ValueService {
 		return result;
 	}
 
+	public Value create(Integer tripId, Integer tagId) {
+		Value result;
+		Tag tag;
+		Trip trip;
+
+		tag = this.tagService.findTagById(tagId);
+		trip = this.tripService.findOne(tripId);
+
+		result = new Value();
+		result.setTrip(trip);
+		result.setTag(tag);
+
+		return result;
+	}
 	public Value create(Integer value) {
 		Value result;
 		result = new Value();
@@ -63,13 +82,19 @@ public class ValueService {
 		return result;
 	}
 
+	public Value save1(final Value value, Trip trip, Tag tag) {
+		Assert.notNull(value);
+		Value result;
+		result = this.valueRepository.save(value);
+		result.setTag(tag);
+		result.setTrip(trip);
+		return result;
+	}
+
 	public Value save(final Value value) {
 		Assert.notNull(value);
-
 		Value result;
-
 		result = this.valueRepository.save(value);
-
 		return result;
 	}
 

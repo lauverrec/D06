@@ -15,6 +15,9 @@ public interface TagRepository extends JpaRepository<Tag, Integer> {
 	//@Query("select distinct(c.tags) from Trip c")
 	//Collection<Tag> findTagWithTrip();
 
+	@Query("select t from Tag t where t.id=?1")
+	Tag findTagById(int tagId);
+
 	@Query("select t from Tag t where t.name=?1")
 	Collection<Tag> findAllTagByName(String name);
 

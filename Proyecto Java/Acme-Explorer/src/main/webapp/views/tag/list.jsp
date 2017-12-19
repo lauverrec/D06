@@ -45,8 +45,9 @@
 
  	<security:authorize access="hasRole('MANAGER')">
 		<display:column>
-		<spring:url value="trip/manager_/tag/add.do" var="editURL">
+		<spring:url value="value/manager_/edit.do" var="editURL">
 		<spring:param name="tagId" value="${row.id}"/>
+		<spring:param name="tripId" value="${tripId}"/>		
 		</spring:url>
 		<a href="${editURL}"><spring:message code="tag.add"/></a>
 		</display:column>			

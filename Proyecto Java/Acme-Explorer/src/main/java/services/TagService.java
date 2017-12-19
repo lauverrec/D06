@@ -83,6 +83,13 @@ public class TagService {
 		result = new ArrayList<Tag>(this.tagRepository.findAllTagByTripId(tripId));
 		return result;
 	}
+
+	public Tag findTagById(int tagId) {
+		Tag result;
+		result = this.tagRepository.findTagById(tagId);
+		return result;
+	}
+
 	/*
 	 * public Collection<Tag> findAllTagUnique() {
 	 * Collection<Tag> result;
