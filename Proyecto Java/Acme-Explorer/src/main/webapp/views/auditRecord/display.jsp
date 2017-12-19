@@ -46,7 +46,7 @@
 
 	<p>
 		<spring:message code="auditRecord.attachments" />:
-		<jstl:out value="${attachments}"></jstl:out>
+		<jstl:out value="${row.attachments}"></jstl:out>
 	</p>
 	<p>
 		<spring:message code="auditRecord.draftMode" />:
