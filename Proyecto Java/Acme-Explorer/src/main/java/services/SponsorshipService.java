@@ -21,15 +21,12 @@ public class SponsorshipService {
 
 	// Managed repository -----------------------------------------------------
 	@Autowired
-	private SponsorshipRepository		sponsorshipRepository;
+	private SponsorshipRepository	sponsorshipRepository;
 
 	// Supporting services ----------------------------------------------------
 
 	@Autowired
-	private SponsorService				sponsorService;
-
-	@Autowired
-	private ConfigurationSystemService	configurationSystemService;
+	private SponsorService			sponsorService;
 
 
 	// Constructors-------------------------------------------------------

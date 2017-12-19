@@ -80,29 +80,6 @@ public class NoteServiceTest extends AbstractTest {
 		Assert.notNull(note);
 	}
 
-	//	@Test
-	//	public void testReplyANote() {
-	//		this.authenticate("auditor4");
-	//		Note note;
-	//		String reply;
-	//		Auditor auditor;
-	//
-	//		note = this.noteService.create();
-	//		auditor = this.auditorService.findOne(super.getEntityId("auditor1"));
-	//
-	//		note.setRemark(6);
-	//		note.setAuditor(auditor);
-	//		note.setBody("this is the body");
-	//
-	//		note = this.noteService.save(note);
-	//		this.unauthenticate();
-	//		this.authenticate("manager1");
-	//
-	//		reply = "I am the manager and I am writing this reply";
-	//		this.noteService.replyANote(note, reply);
-	//
-	//	}
-
 	@Test
 	@Rollback(false)
 	public void testReplyNote() {
