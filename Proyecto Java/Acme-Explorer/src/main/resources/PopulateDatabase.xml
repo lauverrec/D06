@@ -4750,7 +4750,7 @@
 		</property>
 	</bean>
 	
-	<!-- <bean id="value1" class = "domain.Value">
+	<bean id="value1" class = "domain.Value">
 		<property name="value" value="1"></property>
 		<property name="tag"><null/></property>
 		<property name="trip"><null/></property>
@@ -4808,7 +4808,7 @@
 		<property name="value" value="10"></property>
 		<property name="tag"><null/></property>
 		<property name="trip"><null/></property>
-	</bean> -->
+	</bean>
 
 	<!-- FINDER -->
 	
