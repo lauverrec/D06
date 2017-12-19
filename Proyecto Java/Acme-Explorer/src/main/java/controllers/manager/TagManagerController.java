@@ -31,8 +31,12 @@ public class TagManagerController {
 	public ModelAndView list(@RequestParam final int tripId) {
 		ModelAndView result;
 		Collection<Tag> tags;
+		//Collection<Tag> AllTags;
+		Collection<Tag> tagsInTrip;
 
+		tagsInTrip = new ArrayList<Tag>(this.tagService.findAllTagByTripId(tripId));
 		tags = new ArrayList<Tag>(this.tagService.findAll());
+		tags.removeAll(tagsInTrip);
 
 		result = new ModelAndView("tag/list");
 		result.addObject("tags", tags);
