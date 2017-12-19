@@ -136,18 +136,17 @@ public class ApplicationForExplorerController extends AbstractController {
 	public ModelAndView enter(@Valid ApplicationFor applicationFor, BindingResult binding) {
 		ModelAndView result;
 		if (binding.hasErrors())
-			result = this.createEditModelAndView(applicationFor);
+			result = this.createEditModelAndViewCreditCard(applicationFor, null);
 		else
 			try {
 				this.applicationForService.enter(applicationFor);
 
 				result = new ModelAndView("redirect:list.do");
 			} catch (final Throwable oops) {
-				result = this.createEditModelAndView(applicationFor, "applicationfor.commit.error");
+				result = this.createEditModelAndViewCreditCard(applicationFor, "applicationfor.commit.error");
 			}
 		return result;
 	}
-
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
 	public ModelAndView save(@Valid ApplicationFor applicationFor, BindingResult binding) {
 		ModelAndView result;
@@ -228,6 +227,16 @@ public class ApplicationForExplorerController extends AbstractController {
 		ModelAndView result;
 
 		result = new ModelAndView("applicationFor/edit");
+		result.addObject("applicationFor", applicationFor);
+		result.addObject("message", message);
+
+		return result;
+	}
+
+	protected ModelAndView createEditModelAndViewCreditCard(final ApplicationFor applicationFor, final String message) {
+		ModelAndView result;
+
+		result = new ModelAndView("applicationFor/enter");
 		result.addObject("applicationFor", applicationFor);
 		result.addObject("message", message);
 
