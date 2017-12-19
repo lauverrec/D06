@@ -2461,6 +2461,7 @@
 		<property name="values">
 			<list>
 			</list>
+			
 		</property>
 	</bean>
 
@@ -4758,6 +4759,7 @@
 	
 	<bean id="value2" class = "domain.Value">
 		<property name="value" value="2"></property>
+		
 		<property name="tag"><null/></property>
 		<property name="trip"><null/></property>
 	</bean>
