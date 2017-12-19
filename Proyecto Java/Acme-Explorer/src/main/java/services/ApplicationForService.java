@@ -119,7 +119,11 @@ public class ApplicationForService {
 			moment = new Date(System.currentTimeMillis() - 1000);
 			applicationFor.setMoment(moment);
 		}
-		result = this.applicationForRepository.save(applicationFor);
+		if (applicationFor.getCreditCard() == null)
+			result = this.applicationForRepository.save(applicationFor);
+		else
+
+			result = this.applicationForRepository.save(applicationFor);
 		//trip.getApplicationsFor().add(result);
 		if (applicationFor.getStatus().equals("PENDING") == true)
 			this.messageService.messageForNotificationToStatusPending(applicationFor);
@@ -145,7 +149,7 @@ public class ApplicationForService {
 			applicationFor.setReasonWhy("");
 		} else {
 			applicationFor.setStatus("REJECTED");
-			applicationFor.setReasonWhy("Su tarjeta está caducada");
+			applicationFor.setReasonWhy("Your credit card is expired");
 		}
 		result = this.applicationForRepository.save(applicationFor);
 		return result;

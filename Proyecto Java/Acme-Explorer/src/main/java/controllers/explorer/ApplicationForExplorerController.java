@@ -143,7 +143,7 @@ public class ApplicationForExplorerController extends AbstractController {
 
 				result = new ModelAndView("redirect:list.do");
 			} catch (final Throwable oops) {
-				result = this.createEditModelAndViewCreditCard(applicationFor, "applicationfor.commit.error");
+				result = this.createEditModelAndViewCreditCard(applicationFor, "applicationforcreditError.commit.error");
 			}
 		return result;
 	}
