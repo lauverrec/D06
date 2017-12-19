@@ -14,6 +14,7 @@ import repositories.RangerRepository;
 import security.Authority;
 import security.LoginService;
 import security.UserAccount;
+import domain.Curricula;
 import domain.MessageFolder;
 import domain.Ranger;
 import domain.SocialIdentity;
@@ -153,14 +154,19 @@ public class RangerService {
 
 	public Boolean rangerIsSpam(final Ranger ranger) {
 		Boolean result;
-
+		Collection<Curricula> curricula;
 		result = false;
 
-		//		result = this.curriculaService.curriculaContainsSpam(ranger);
-		//		if (result == true) {
-		//			ranger.setSuspicious(result);
-		//			return result;
-		//		}
+		curricula = this.curriculaService.findAll();
+
+		for (Curricula c : curricula)
+			if (c.getRanger().equals(ranger)) {
+				result = this.curriculaService.curriculaContainsSpam(ranger);
+				if (result == true) {
+					ranger.setSuspicious(result);
+					return result;
+				}
+			}
 
 		result = this.actorService.actorIsSpam(ranger);
 		if (result == true) {

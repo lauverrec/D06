@@ -21,7 +21,7 @@
 
 
 <display:table pagesize="5" class="displaytag" keepStatus="true"
-	name="suspicious" requestURI="suspicious/administrator/list.do" id="row">
+	name="suspicious" requestURI="${requestURI }" id="row">
 	
 	
 	<!-- Attributes -->
@@ -30,13 +30,25 @@
 	<display:column property="name" title="${titleHeader}" sortable="true" />
 	
 	<spring:message code="actor.ban" var="banHeader"></spring:message>
-	<display:column title="${banHeader }" sortable="true">
-	<spring:url value="suspicious/administrator/ban.do" var="banURL">
-	<spring:param name="actorId" value="${row.id}"/>
-	</spring:url>
-	<a href="${banURL}"><spring:message code="actor.ban"/></a>
-	</display:column>
+		<jstl:if test="${row.userAccount.activated==true}">
+			
+			<display:column title="${banHeader}" sortable="true">
+			<spring:url value="suspicious/administrator/ban.do" var="banURL">
+			<spring:param name="actorId" value="${row.id}"/>
+			</spring:url>
+			<a href="${banURL}"><spring:message code="actor.ban"/></a>
+			</display:column> --%>
+		</jstl:if>
 	
+	
+		<jstl:if test="${row.userAccount.activated==false}">
+			<display:column>
+				<spring:url value="suspicious/administrator/unban.do" var="unbanHeader">
+					<spring:param name="actorId" value="${row.id}" />
+				</spring:url>
+				<a href="${unbanHeader}"><spring:message code="actor.unban" /></a>
+			</display:column>
+		</jstl:if>
 
 	
 	

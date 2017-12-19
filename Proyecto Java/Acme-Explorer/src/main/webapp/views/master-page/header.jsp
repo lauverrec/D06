@@ -215,7 +215,7 @@
 						code="master.page.suspicious" /></a>
 				<ul>
 					<li class="arrow"></li>
-					<li><a href="suspicious/administrator/list.do"><spring:message code="master.page.suspicious"/></a>
+					<li><a href="suspicious/administrator/list_ban.do"><spring:message code="master.page.suspicious"/></a>
 				</ul></li>
 				
 				<li><a class="fNiv"><spring:message

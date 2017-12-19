@@ -3171,7 +3171,7 @@
 		<property name="createdMoment" value="2017/10/01 15:25" />
 		<property name="remark" value="3" />
 		<property name="auditor" ref="auditor1" />
-		<property name="body" value="Description note 1" />
+		<property name="body" value="Description note 1 viagra" />
 
 	</bean>
 
@@ -3222,7 +3222,7 @@
 	<bean id="auditrecord2" class="domain.AuditRecord">
 		<property name="realisedMoment" value="2017/10/01 15:25" />
 		<property name="title" value="auditrecord2" />
-		<property name="description" value="attachments auditrecord 2" />
+		<property name="description" value="attachments auditrecord 2 " />
 		<property name="attachments">
 			<list>
 
@@ -3246,7 +3246,7 @@
 	<bean id="auditrecord4" class="domain.AuditRecord">
 		<property name="realisedMoment" value="2017/10/01 15:25" />
 		<property name="title" value="auditrecord4" />
-		<property name="description" value="attachments auditrecord 4" />
+		<property name="description" value="attachments auditrecord 4 VIAGRA" />
 		<property name="attachments">
 			<list>
 

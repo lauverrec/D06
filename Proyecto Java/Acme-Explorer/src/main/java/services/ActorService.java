@@ -230,13 +230,25 @@ public class ActorService {
 		return actors;
 
 	}
-	public boolean ban(Actor actor) {
+	public boolean ban(UserAccount userAcount) {
 
 		boolean result;
 
-		actor.getUserAccount().setActivated(false);
+		userAcount.setActivated(false);
 
-		result = actor.getUserAccount().isActivated();
+		result = userAcount.isActivated();
+
+		return result;
+
+	}
+
+	public boolean unban(UserAccount userAccount) {
+
+		boolean result;
+
+		userAccount.setActivated(true);
+
+		result = userAccount.isActivated();
 
 		return result;
 

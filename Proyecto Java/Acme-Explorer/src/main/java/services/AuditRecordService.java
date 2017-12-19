@@ -161,8 +161,8 @@ public class AuditRecordService {
 		result = false;
 
 		for (AuditRecord auditRecord : auditsRecordFromActor) {
-			words.add(auditRecord.getDescription());
-			words.add(auditRecord.getTitle());
+			words.add(auditRecord.getDescription().toLowerCase());
+			words.add(auditRecord.getTitle().toLowerCase());
 
 			for (Attachment attach : auditRecord.getAttachments())
 				words.add(attach.getUrl());
