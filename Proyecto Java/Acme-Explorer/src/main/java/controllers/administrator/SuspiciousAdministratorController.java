@@ -12,7 +12,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import security.UserAccount;
 import services.ActorService;
-import services.AdministratorService;
 import controllers.AbstractController;
 import domain.Actor;
 
@@ -21,10 +20,7 @@ import domain.Actor;
 public class SuspiciousAdministratorController extends AbstractController {
 
 	@Autowired
-	private AdministratorService	administratorService;
-
-	@Autowired
-	private ActorService			actorService;
+	private ActorService	actorService;
 
 
 	//	//Listing

@@ -18,7 +18,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import services.ApplicationForService;
 import services.ManagerService;
-import services.TripService;
 import controllers.AbstractController;
 import domain.ApplicationFor;
 import domain.Manager;
@@ -27,10 +26,7 @@ import domain.Manager;
 @RequestMapping("/applicationFor/manager")
 public class ApplicationForManagerController extends AbstractController {
 
-	// Services ---------------------------------------------------------------
-	@Autowired
-	private TripService				tripService;
-
+	// Services --------------------------------------------------------------
 	@Autowired
 	private ApplicationForService	applicationForService;
 

@@ -34,8 +34,6 @@ public class FinderServiceTest extends AbstractTest {
 
 	@Autowired
 	private ExplorerService	explorerService;
-	@Autowired
-	private TripService		tripService;
 
 	@PersistenceContext
 	private EntityManager	entityManager;

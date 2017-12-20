@@ -36,9 +36,6 @@ public class SponsorService {
 	@Autowired
 	private ActorService			actorService;
 
-	@Autowired
-	private SponsorshipService		sponsorshipService;
-
 
 	// Constructors -----------------------------------------------------------
 	public SponsorService() {

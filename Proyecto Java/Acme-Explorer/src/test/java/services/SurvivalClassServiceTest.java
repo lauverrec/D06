@@ -27,12 +27,6 @@ public class SurvivalClassServiceTest extends AbstractTest {
 	@Autowired
 	private SurvivalClassService	survivalClassService;
 
-	@Autowired
-	private ManagerService			managerService;
-
-	@Autowired
-	private TripService				tripService;
-
 
 	// Tests ----------------------------------------------
 
