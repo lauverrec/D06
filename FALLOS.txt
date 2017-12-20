@@ -5,7 +5,7 @@
 
 5. Los attachments cuando introduces una URL que no es v‡lida no te da el mensaje de error, de invalid URL. 
 
-7. En la clase tagServiceTest hay un TODO
+7. En la clase tagServiceTest hay un TODO  DONE
 
 8. Dandole a las trips sin estar autenticado porque sale curriculum al darle al ranger y no salen los datos del ranger? si no estoy logeado para que quiero ver el curriculum del ranger
 
