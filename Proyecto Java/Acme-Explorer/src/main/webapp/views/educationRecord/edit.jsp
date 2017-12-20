@@ -34,7 +34,7 @@
 	<form:label path="studyingPeriod">
 		<spring:message code="educationRecord.studyingPeriod" />:
 	</form:label>
-	<form:input path="studyingPeriod" placeholder=" yyyy/yyyy"/>
+	<form:input path="studyingPeriod" placeholder=" yyyy/yyyy or yyyy/-"/>
 	<form:errors cssClass="error" path="studyingPeriod" />
 	<br />
 	

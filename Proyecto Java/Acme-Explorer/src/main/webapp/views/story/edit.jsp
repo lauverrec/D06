@@ -44,7 +44,7 @@
 	<form:label path="attachments">
 		<spring:message code="stories.attachments" />:
 	</form:label>
-	<form:input path="attachments" />
+	<form:input path="attachments" placeholder="http://"/>
 	<form:errors cssClass="error" path="attachments" />
 	<br />
 	

@@ -81,14 +81,14 @@
 	<form:label path="creditCard.expirationMonth">
 		<spring:message code="applicationfor.creditCard.expirationMonth" />:
 	</form:label>
-	<form:input path="creditCard.expirationMonth" />
+	<form:input path="creditCard.expirationMonth" placeholder="XX" />
 	<form:errors cssClass="error" path="creditCard.expirationMonth" />
 	<br/>
 	
 	<form:label path="creditCard.expirationYear">
 		<spring:message code="applicationfor.creditCard.expirationYear" />:
 	</form:label>
-	<form:input path="creditCard.expirationYear" />
+	<form:input path="creditCard.expirationYear" placeholder="XX"/>
 	<form:errors cssClass="error" path="creditCard.expirationYear" />
 	<br/>
 	
