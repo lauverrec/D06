@@ -71,7 +71,7 @@ SEGURIDAD POR HACER-------------------------------------------------------------
 4. Que un ranger sólo pueda editar su respectivo personal record. DONE
 5. Que un ranger sólo pueda editar su respectivo miscellaneus record. DONE
 
-- Seguridad de la parte de mensaje
+- 
 
 
 
