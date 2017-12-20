@@ -4,7 +4,9 @@
 
 4. Created moment de una application (el mes que pone es erroneo, ej: 2017/51/15 12:51)
 
-6. El botón cancel cuando vas a crear un stage no funciona. 
+5. Los attachments cuando introduces una URL que no es válida no te da el mensaje de error, de invalid URL. 
+
+6. Create auditRecor y create de note te llevan al list de trip
 
 
 
