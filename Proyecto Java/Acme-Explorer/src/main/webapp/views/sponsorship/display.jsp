@@ -31,10 +31,43 @@
 	<spring:message code="sponsorship.bannerURL.banner" />:
 		<jstl:out value="${row.bannerURL}"></jstl:out>
 	</p>
-	<spring:message code="sponsorship.creditCard" />:
+	
+	<form:label path="sponsorship.creditCard">
+		<spring:message code="sponsorship.creditCard" />:
+	</form:label>
+	<br />
+	
+	<br/> 
+	
+	<fieldset>
+	<spring:message code="sponsorship.creditCard.holderName" />:
 		<jstl:out value="${row.creditCard.holderName}"></jstl:out>
 	<p>
+	
+	<spring:message code="sponsorship.creditCard.brandName" />:
+		<jstl:out value="${row.creditCard.brandName}"></jstl:out>
+	<p>
+	
+	<spring:message code="sponsorship.creditCard.number" />:
+		<jstl:out value="${row.creditCard.number}"></jstl:out>
+	<p>
+	
+	<spring:message code="sponsorship.creditCard.expirationMonth" />:
+		<jstl:out value="${row.creditCard.expirationMonth}"></jstl:out>
+	<p>
+	
+	<spring:message code="sponsorship.creditCard.expirationYear" />:
+		<jstl:out value="${row.creditCard.expirationYear}"></jstl:out>
+	<p>
+	
+	<spring:message code="sponsorship.creditCard.cvv" />:
+		<jstl:out value="${row.creditCard.cvv}"></jstl:out>
+	<p>
+	
+	
+	</fieldset>
 
+	<br />
 	
 	 
 		<spring:url value="trip/display.do" var="displayURL">

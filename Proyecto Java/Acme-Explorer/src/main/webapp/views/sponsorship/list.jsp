@@ -26,7 +26,8 @@
 	<!-- Action links -->
 
 	<security:authorize access="hasRole('SPONSOR')">
-		<display:column>
+		<spring:message code="sponsorship.edit" var="Edit" />
+		<display:column title="${Edit}" sortable="true">
 		<spring:url value="sponsorship/sponsor/edit.do" var="editURL">
 		<spring:param name="sponsorshipId" value="${row.id}"/>
 		</spring:url>
@@ -34,15 +35,14 @@
 		</display:column>		
 	
 	
-		<display:column>
+		
+		<spring:message code="sponsorship.display" var="Display" />
+		<display:column title="${Display}" sortable="true">
 		<spring:url value="sponsorship/sponsor/display.do" var="displayURL">
 		<spring:param name="sponsorshipId" value="${row.id}"/>
 		</spring:url>
 		<a href="${displayURL}"><spring:message code="sponsorship.display"/></a>
 		</display:column>		
 	</security:authorize>
-	
-
-	<display:column property="trip.title" titleKey="sponsorship.trip" sortable="true" />	
 </display:table>
 
