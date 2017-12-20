@@ -41,7 +41,7 @@
 	<form:label path="linkedProfile">
 		<spring:message code="endorserRecord.linkedProfile" />:
 	</form:label>
-	<form:input path="linkedProfile"/>
+	<form:input path="linkedProfile" placeholder="http://"/>
 	<form:errors cssClass="error" path="linkedProfile" />
 	<br />
 	

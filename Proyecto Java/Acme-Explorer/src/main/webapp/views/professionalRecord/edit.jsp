@@ -55,7 +55,7 @@
 	<form:label path="comments">
 		<spring:message code="professionalRecord.comments" />:
 	</form:label>
-	<form:input path="comments"/>
+	<form:input path="comments" placeholder="http://"/>
 	<form:errors cssClass="error" path="comments" />
 	<br />
 	
