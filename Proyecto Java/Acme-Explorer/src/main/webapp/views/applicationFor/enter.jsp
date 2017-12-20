@@ -108,6 +108,6 @@
 	<input type="submit" name="enter" value="<spring:message code="applicationfor.save" />" />&nbsp;
 	 
 	<input type="button" name="cancel" value="<spring:message code="applicationfor.cancel" />"
-		onclick="javascript:  window.location.replace('trip/explorer/list-not-apply.do');" />
+		onclick="javascript:  window.location.replace('applicationFor/explorer/list.do');" />
 	<br />
 </form:form>
