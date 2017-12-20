@@ -20,7 +20,8 @@
 	<spring:message code="contactsEmergency.name" var="name" />
 	<display:column property="name" title="${name}" sortable="true" />
 	
-	<display:column>
+	<spring:message code="contactsEmergency.edit" var="Edit" />
+	<display:column title="${Edit}" sortable="true">
 		<spring:url value="contactsEmergency/explorer/edit.do" var="editURL">
 		<spring:param name="contactEmergencyId" value="${row.id}"/>
 		</spring:url>
