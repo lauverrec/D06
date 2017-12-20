@@ -1,12 +1,12 @@
 1. La trip 5 tiene startDate en 2019/00/21 y su finishDate es 2015/00/04. Esto hay que cambiarlo. Mirar todas las fechas de trips en el populate, para estar seguros.
 
-2. Los meses en las trips cuando se muestran siempre son 00, mirar porqué ocurre eso.
+2. Los meses en las trips cuando se muestran siempre son 00, mirar porqué ocurre eso. Esto lo hemos solucionado quitando la internacionalizaci—n porque daba fallo(de momento se queda as’)
 
-4. Created moment de una application (el mes que pone es erroneo, ej: 2017/51/15 12:51)
 
-5. Los attachments cuando introduces una URL que no es válida no te da el mensaje de error, de invalid URL. 
+5. Los attachments cuando introduces una URL que no es v‡lida no te da el mensaje de error, de invalid URL. 
 
 6. Cuando le das al save de enviar mensaje peta.
+
 
 
 
@@ -64,6 +64,8 @@ SEGURIDAD POR HACER-------------------------------------------------------------
 3. Que un ranger sólo pueda editar su respectivo profesional record. DONE
 4. Que un ranger sólo pueda editar su respectivo personal record. DONE
 5. Que un ranger sólo pueda editar su respectivo miscellaneus record. DONE
+
+- Seguridad de la parte de mensaje
 
 
 
