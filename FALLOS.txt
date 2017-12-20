@@ -9,7 +9,12 @@
 
 8. Dandole a las trips sin estar autenticado porque sale curriculum al darle al ranger y no salen los datos del ranger? si no estoy logeado para que quiero ver el curriculum del ranger
 
-9. En category sin estar registrado si le das a la categoria ground cuyo padre es safari y cuyas hijas son savana y mountain sale la trip que tiene pero no sale el boton de display y algunas cosas
+9. quitar los warning que quedan en personalrecord
+
+
+
+
+10. cuando le doy a cancel en el insert de una credit card me manda a la vista de apply trips
 
 
 SEGURIDAD------------------------------------------------------(metiendo URL a piñón)
