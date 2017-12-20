@@ -6,9 +6,13 @@
 5. Los attachments cuando introduces una URL que no es v‡lida no te da el mensaje de error, de invalid URL. 
 
 6. Cuando le das al save de enviar mensaje peta.
+CON QUE USUARIO SE HA ECHO ESTA PRUEBA??
 
+7. En la clase tagServiceTest hay un TODO
 
+8. Dandole a las trips sin estar autenticado porque sale curriculum al darle al ranger y no salen los datos del ranger? si no estoy logeado para que quiero ver el curriculum del ranger
 
+9. En category sin estar registrado si le das a la categoria ground cuyo padre es safari y cuyas hijas son savana y mountain sale la trip que tiene pero no sale el boton de display y algunas cosas
 
 
 SEGURIDAD------------------------------------------------------(metiendo URL a piñón)
