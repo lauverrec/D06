@@ -3,6 +3,7 @@ package services;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import repositories.ValueRepository;
+import domain.Manager;
 import domain.Tag;
 import domain.Trip;
 import domain.Value;
@@ -26,6 +28,8 @@ public class ValueService {
 	private TagService		tagService;
 	@Autowired
 	private TripService		tripService;
+	@Autowired
+	private ManagerService	managerService;
 
 
 	// Constructors------------------------------------------------------------
@@ -85,6 +89,15 @@ public class ValueService {
 	public Value save1(final Value value, Trip trip, Tag tag) {
 		Assert.notNull(value);
 		Value result;
+		Manager manager;
+		Date date;
+
+		date = new Date();
+		manager = this.managerService.findByPrincipal();
+		//SOLO PUEDE AÑADIR TAG A SUS TRIPS
+		Assert.isTrue(manager.getTrips().contains(trip));
+		//SOLO PUEDE AÑADIR TAG A LAS TRIPS QUE NO HAYAN SIDO PUBLICADAS
+		Assert.isTrue(trip.getPublicationDate().after(date));
 		result = this.valueRepository.save(value);
 		result.setTag(tag);
 		result.setTrip(trip);

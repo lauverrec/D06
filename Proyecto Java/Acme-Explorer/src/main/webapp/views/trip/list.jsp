@@ -253,7 +253,7 @@
 	<spring:message code="trip.publicationDate" var="publicationDate" />	
 	<spring:message code="trip.tags.name" var="Tag" />
 		<display:column title="${Tag}" sortable="true">
-			<jstl:if test="${row.manager==manager}">
+			<jstl:if test="${row.manager==manager && row.startDate>date}">
 				<spring:url value="tag/manager_/list.do" var="tagURL">
 					<spring:param name="tripId" value="${row.id}" />
 				</spring:url>

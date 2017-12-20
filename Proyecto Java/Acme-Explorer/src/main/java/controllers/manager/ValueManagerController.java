@@ -63,7 +63,7 @@ public class ValueManagerController {
 				Trip trip1 = this.trip;
 				Tag tag1 = this.tag;
 				this.valueService.save1(value, trip1, tag1);
-				result = new ModelAndView("redirect:list.do");
+				result = new ModelAndView("redirect:../../trip/manager_/list.do");
 			} catch (final Throwable oops) {
 				result = this.createEditModelAndView(value, "value.commit.error");
 			}
@@ -82,7 +82,7 @@ public class ValueManagerController {
 		ModelAndView result;
 		String tripTtitle;
 		String tagName;
-
+		Integer tripId = this.trip.getId();
 		tripTtitle = this.trip.getTitle();
 		tagName = this.tag.getName();
 
@@ -91,6 +91,7 @@ public class ValueManagerController {
 		result.addObject("message", message);
 		result.addObject("tripTtitle", tripTtitle);
 		result.addObject("tagName", tagName);
+		result.addObject("tripId", tripId);
 		result.addObject("RequestURI", "value/manager_/edit.do");
 
 		return result;

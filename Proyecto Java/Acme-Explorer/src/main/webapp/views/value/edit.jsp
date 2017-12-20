@@ -86,7 +86,7 @@
 	
 	<input type="button" name="cancel"
 		value="<spring:message code="value.cancel"/>"
-		onclick="javascript: window.location.replace('tag/list.do')" />
+		onclick="javascript: window.location.replace('trip/manager_/list.do')" />
 	<br />
 		
 </form:form>
