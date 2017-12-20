@@ -14,7 +14,7 @@
 
 
 
-10. cuando le doy a cancel en el insert de una credit card me manda a la vista de apply trips
+10. cuando le doy a cancel en el insert de una credit card me manda a la vista de apply trips DONE
 
 
 SEGURIDAD------------------------------------------------------(metiendo URL a piñón)
