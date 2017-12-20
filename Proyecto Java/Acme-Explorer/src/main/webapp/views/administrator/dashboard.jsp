@@ -22,12 +22,17 @@
 
 
 <table>
-	<caption>findAvgMinMaxStddevOfTheNumOfApplicationsPerTrip</caption>
+	<caption>
+		<h1>
+			<spring:message
+				code="dashboard.findAvgMinMaxStddevOfTheNumOfApplicationsPerTrip"/>
+		</h1>
+	</caption>
 	<tr>
-		<th>AVG</th>
-		<th>Min</th>
-		<th>Max</th>
-		<th>STDDEV</th>
+		<th><spring:message code="dashboard.AVG"/></th>
+		<th><spring:message code="dashboard.MIN"/></th>
+		<th><spring:message code="dashboard.MAX"/></th>
+		<th><spring:message code="dashboard.STDDEV"/></th>
 	</tr>
 	<tr>
 		<jstl:forEach var="medidas"
@@ -38,12 +43,17 @@
 </table>
 
 <table>
-	<caption>findAvgMinMaxStddevOfTheNumOfTripsPerManager</caption>
+	<caption>
+		<h1>
+			<spring:message
+				code="dashboard.findAvgMinMaxStddevOfTheNumOfTripsPerManager"/>
+		</h1>
+	</caption>
 	<tr>
-		<th>AVG</th>
-		<th>Min</th>
-		<th>Max</th>
-		<th>STDDEV</th>
+		<th><spring:message code="dashboard.AVG"/></th>
+		<th><spring:message code="dashboard.MIN"/></th>
+		<th><spring:message code="dashboard.MAX"/></th>
+		<th><spring:message code="dashboard.STDDEV"/></th>
 	</tr>
 	<tr>
 		<jstl:forEach var="medidas"
@@ -54,12 +64,17 @@
 </table>
 
 <table>
-	<caption>findAvgMinMaxStddevOfThePriceOfTheTrips</caption>
+	<caption>
+		<h1>
+			<spring:message
+				code="dahsboard.findAvgMinMaxStddevOfThePriceOfTheTrips"/>
+		</h1>
+	</caption>
 	<tr>
-		<th>AVG</th>
-		<th>Min</th>
-		<th>Max</th>
-		<th>STDDEV</th>
+		<th><spring:message code="dashboard.AVG"/></th>
+		<th><spring:message code="dashboard.MIN"/></th>
+		<th><spring:message code="dashboard.MAX"/></th>
+		<th><spring:message code="dashboard.STDDEV"/></th>
 	</tr>
 	<tr>
 		<jstl:forEach var="medidas"
@@ -70,12 +85,17 @@
 </table>
 
 <table>
-	<caption>findAvgMinMaxStddevOfTheNumTripsPerRanger</caption>
+	<caption>
+		<h1>
+			<spring:message
+				code="dashboard.findAvgMinMaxStddevOfTheNumTripsPerRanger"/>
+		</h1>
+	</caption>
 	<tr>
-		<th>AVG</th>
-		<th>Min</th>
-		<th>Max</th>
-		<th>STDDEV</th>
+		<th><spring:message code="dashboard.AVG"/></th>
+		<th><spring:message code="dashboard.MIN"/></th>
+		<th><spring:message code="dashboard.MAX"/></th>
+		<th><spring:message code="dashboard.STDDEV"/></th>
 	</tr>
 	<tr>
 		<jstl:forEach var="medidas"
@@ -86,15 +106,19 @@
 </table>
 
 <table>
-	<caption><spring:message code="dashboard.statistics" var="statistics"/>
-	<jstl:out value="${statistics }"></jstl:out>
+	<caption>
+		<spring:message code="dashboard.statistics" var="statistics" />
+		<h1><jstl:out value="${statistics }"></jstl:out></h1>
 	</caption>
 	<tr>
-		<th>findRatOfApplicationsPending</th>
-		<th>findRatioOfApplicationsDue</th>
-		<th>findRatOfApplicationsAccepted</th>
-		<th>findRatOfApplicationsCancelled</th>
-		<th>findRatOfTheTripsCancelledvsTripsOrganised</th>
+		<th><spring:message code="dashboard.findRatOfApplicationsPending"/></th>
+		<th><spring:message code="dashboard.findRatioOfApplicationsDue"/></th>
+		<th><spring:message
+				code="dashboard.findRatOfApplicationsAccepted"/></th>
+		<th><spring:message
+				code="dashboard.findRatOfApplicationsCancelled"/></th>
+		<th><spring:message
+				code="dashboard.findRatOfTheTripsCancelledvsTripsOrganised"/></th>
 	</tr>
 	<tr>
 		<td><jstl:out value="${findRatOfApplicationsPending }"></jstl:out>
@@ -172,21 +196,26 @@
 <display:table name="findNumOfTimesALegalTextIsReferenced" id="row"
 	class="displaytag">
 	<jstl:forEach var="medidas"
-			items="${findNumOfTimesALegalTextIsReferenced[1] }">
-			<td><jstl:out value="${medidas}"></jstl:out></td>
-		</jstl:forEach>
-	
+		items="${findNumOfTimesALegalTextIsReferenced[1] }">
+		<td><jstl:out value="${medidas}"></jstl:out></td>
+	</jstl:forEach>
+
 
 </display:table>
 
 
 <table>
-	<caption>findMinMaxAvgStddevOfTheNumOfNotesPerTrip</caption>
+	<caption>
+		<h1>
+			<spring:message
+				code="dashboard.findMinMaxAvgStddevOfTheNumOfNotesPerTrip"/>
+		</h1>
+	</caption>
 	<tr>
-		<th>Min</th>
-		<th>Max</th>
-		<th>AVG</th>
-		<th>sttdev</th>
+		<th><spring:message code="dashboard.MIN"/></th>
+		<th><spring:message code="dashboard.MAX"/></th>
+		<th><spring:message code="dashboard.AVG"/></th>
+		<th><spring:message code="dashboard.STDDEV"/></th>
 	</tr>
 	<tr>
 		<jstl:forEach var="medidas"
@@ -197,12 +226,17 @@
 </table>
 
 <table>
-	<caption>findMinMaxAvgStddevOfTheNumOfAuditRecordsPerTrip</caption>
+	<caption>
+		<h1>
+			<spring:message
+				code="dashboard.findMinMaxAvgStddevOfTheNumOfAuditRecordsPerTrip"/>
+		</h1>
+	</caption>
 	<tr>
-		<th>Min</th>
-		<th>Max</th>
-		<th>AVG</th>
-		<th>sttdev</th>
+		<th><spring:message code="dashboard.MIN"/></th>
+		<th><spring:message code="dashboard.MAX"/></th>
+		<th><spring:message code="dashboard.AVG"/></th>
+		<th><spring:message code="dashboard.STDDEV"/></th>
 	</tr>
 	<tr>
 		<jstl:forEach var="medidas"
@@ -213,13 +247,19 @@
 </table>
 
 <table>
-	<caption><spring:message code="dashboard.statistics" var="statistics"/>
-	<jstl:out value="${statistics }"></jstl:out></caption>
+	<caption>
+		<spring:message code="dashboard.statistics" var="statistics" />
+		<h1><jstl:out value="${statistics }"></jstl:out></h1>
+	</caption>
 	<tr>
-		<th>findTheRatOfRangersWhoHaveRegisteredCurricula</th>
-		<th>findTheRatOfRangersWhoseCurrIsEndorsed</th>
-		<th>findTheRatOFSuspiciousManagers</th>
-		<th>findTheRatOFSuspiciousRangers</th>
+		<th><spring:message
+				code="dashboard.findTheRatOfRangersWhoHaveRegisteredCurricula"/></th>
+		<th><spring:message
+				code="dashboard.findTheRatOfRangersWhoseCurrIsEndorsed"/></th>
+		<th><spring:message
+				code="dashboard.findTheRatOFSuspiciousManagers"/></th>
+		<th><spring:message
+				code="dashboard.findTheRatOFSuspiciousRangers"/></th>
 
 	</tr>
 	<tr>

@@ -87,8 +87,6 @@ public class MessageFolderServiceTest extends AbstractTest {
 		messageFolders = this.messageFolderService.findAllByActorAutenticate();
 		Assert.notNull(messageFolders);
 		Assert.notEmpty(messageFolders);
-		for (MessageFolder me : messageFolders)
-			System.out.println(me.getName());
 
 	}
 

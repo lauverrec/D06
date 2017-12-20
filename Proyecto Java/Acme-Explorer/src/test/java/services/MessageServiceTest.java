@@ -13,6 +13,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.util.Assert;
 
 import utilities.AbstractTest;
+import domain.Actor;
 import domain.Administrator;
 import domain.ApplicationFor;
 import domain.Message;
@@ -36,6 +37,9 @@ public class MessageServiceTest extends AbstractTest {
 
 	@Autowired
 	private ApplicationForService	applicationForService;
+
+	@Autowired
+	private ActorService			actorService;
 
 
 	@Test
@@ -87,12 +91,18 @@ public class MessageServiceTest extends AbstractTest {
 	public void testChangeFolderMessage() {
 		this.authenticate("administrator1");
 		Message mes;
+		Message messageAfterChangeFolder;
 		MessageFolder messageFolder;
 		messageFolder = this.messageFolderService.findOne(this.getEntityId("TrashBoxAdministrator1"));
 
 		mes = this.messageService.findOne(this.getEntityId("message1"));
 
 		this.messageService.ChangeMessageOfFolder(mes, messageFolder);
+
+		messageAfterChangeFolder = this.messageService.findOne(this.getEntityId("message1"));
+
+		Assert.isTrue(messageAfterChangeFolder.getMessageFolder().equals(messageFolder));
+
 	}
 
 	@Test
@@ -102,6 +112,8 @@ public class MessageServiceTest extends AbstractTest {
 		Administrator adminSend;
 		Administrator adminRecip;
 		Message message;
+		Integer numberOfMessageInSpamBeforeSave;
+		Integer numberOfMessageInSpamAfterSave;
 
 		adminSend = this.administratorService.findByPrincipal();
 		adminRecip = this.administratorService.findOne(super.getEntityId("administrator2"));
@@ -114,8 +126,11 @@ public class MessageServiceTest extends AbstractTest {
 		message.setPriority("NEUTRAL");
 		message.setSubject("hola");
 
+		numberOfMessageInSpamBeforeSave = this.messageService.messagesOfFolder(this.messageFolderService.returnDefaultFolder(adminRecip, "Spam box").getId()).size();
 		message = this.messageService.save(message);
+		numberOfMessageInSpamAfterSave = this.messageService.messagesOfFolder(this.messageFolderService.returnDefaultFolder(adminRecip, "Spam box").getId()).size();
 
+		Assert.isTrue(numberOfMessageInSpamBeforeSave < numberOfMessageInSpamAfterSave);
 		super.unauthenticate();
 	}
 
@@ -123,23 +138,87 @@ public class MessageServiceTest extends AbstractTest {
 	public void testApplicationForChanged() {
 		this.authenticate("administrator1");
 		ApplicationFor applicationFor;
+		MessageFolder messagesOfNotificationBoxBeforeSendMessage;
+		MessageFolder messagesOfNotificationBoxAfterSendMessage;
+
+		Integer beforeSend;
+		Integer afterSend;
+
 		applicationFor = this.applicationForService.findOne(this.getEntityId("applicationFor3"));
+		messagesOfNotificationBoxBeforeSendMessage = this.messageFolderService.returnDefaultFolder(applicationFor.getExplorer(), "Notification box");
+		beforeSend = this.messageService.messagesOfFolder(messagesOfNotificationBoxBeforeSendMessage.getId()).size();
 
 		this.messageService.sendMessageToActorOfApplicationFor(applicationFor);
+		messagesOfNotificationBoxAfterSendMessage = this.messageFolderService.returnDefaultFolder(applicationFor.getExplorer(), "Notification box");
+		afterSend = this.messageService.messagesOfFolder(messagesOfNotificationBoxAfterSendMessage.getId()).size();
+		Assert.isTrue(beforeSend + 1 == afterSend);
+
 		this.unauthenticate();
 	}
-
 	@Test
 	public void testSendNotificationToAllActors() {
 		this.authenticate("administrator1");
+
+		MessageFolder notificationBoxOfSomeActor;
+		Collection<Message> messageOfNotificationBoxOfSomeActor;
+		Integer contador;
+		Actor someActor;
 		String subject;
 		String body;
 		String priority;
 
-		subject = "Notificacion";
+		subject = "Notification";
 		body = "Esto es una notificacion de prueba";
 		priority = "NEUTRAL";
 		this.messageService.sendNotificationBroadcast(subject, body, priority);
+		someActor = this.actorService.findOne(this.getEntityId("explorer1"));
+		notificationBoxOfSomeActor = this.messageFolderService.returnDefaultFolder(someActor, "Notification box");
+		messageOfNotificationBoxOfSomeActor = this.messageService.messagesOfFolder(notificationBoxOfSomeActor.getId());
+
+		contador = 0;
+		for (Message m : messageOfNotificationBoxOfSomeActor)
+			if (m.getSubject().equals("Notification"))
+				contador = contador + 1;
+		Assert.isTrue(contador == 1);
+
+	}
+
+	@Test
+	public void testRecipientAllByActor() {
+		this.authenticate("administrator2");
+		Actor administrator2;
+		administrator2 = this.actorService.findPrincipal();
+
+		Collection<Message> messagesRecipientAllByActor;
+		messagesRecipientAllByActor = this.messageService.recipientAllByActor(administrator2.getId());
+		Assert.notEmpty(messagesRecipientAllByActor);
+	}
+
+	@Test
+	public void testSenderAllByActor() {
+		this.authenticate("administrator1");
+		Actor administrator1;
+		administrator1 = this.actorService.findPrincipal();
+
+		Collection<Message> messagesRecipientAllByActor;
+		messagesRecipientAllByActor = this.messageService.senderAllByActor(administrator1.getId());
+		Assert.notEmpty(messagesRecipientAllByActor);
+	}
+
+	@Test
+	public void testDeleteOfOutBoxAndDeleteOfBD() {
+		this.authenticate("administrator1");
+		Integer idMessage;
+		Message message;
+
+		message = this.messageService.findOne(this.getEntityId("message1Copy"));
+		idMessage = message.getId();
+
+		this.messageService.delete(message);
+
+		Assert.notNull(this.messageService.findOne(message.getId()));
+
+		this.messageService.delete(this.messageService.findOne(idMessage));
 
 	}
 }
