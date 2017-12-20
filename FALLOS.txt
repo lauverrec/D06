@@ -6,7 +6,7 @@
 
 5. Los attachments cuando introduces una URL que no es válida no te da el mensaje de error, de invalid URL. 
 
-6. Create auditRecor y create de note te llevan al list de trip
+6. Cuando le das al save de enviar mensaje peta.
 
 
 

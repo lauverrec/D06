@@ -41,20 +41,28 @@ public class TripService {
 	// Supporting services ----------------------------------------------------
 	@Autowired
 	private ManagerService				managerService;
+
 	@Autowired
 	private ExplorerService				explorerService;
+
 	@Autowired
 	private ConfigurationSystemService	configurationSystemService;
+
 	@Autowired
 	private StageService				stageService;
+
 	@Autowired
 	private StoryService				storyService;
+
 	@Autowired
 	private CategoryService				categoryService;
+
 	@Autowired
 	private SurvivalClassService		survivalClassService;
+
 	@Autowired
 	private LegalTextService			legalTextService;
+
 	@Autowired
 	private SponsorshipService			sponsorshipService;
 
@@ -102,18 +110,13 @@ public class TripService {
 		Assert.notNull(trip);
 		Trip result;
 		Date dateNow;
-		Manager managerT;
-		Manager conectado;
 
-		managerT = trip.getManager();
-		conectado = this.managerService.findByPrincipal();
 		dateNow = new Date();
 		Assert.isTrue(trip.getStartDate().before(trip.getFinishDate()));
 		Assert.isTrue(trip.getPublicationDate().after(dateNow));
-		if (trip.getId() != 0) {
+		if (trip.getId() != 0)
 			Assert.isTrue(trip.getPublicationDate().after(dateNow));
-			Assert.isTrue(managerT.equals(conectado));
-		}
+
 		result = this.tripRepository.save(trip);
 		return result;
 	}

@@ -3416,7 +3416,7 @@
 
 	<!-- SponsorShip 3 -->
 	<bean id="sponsorship3" class="domain.Sponsorship">
-		<property name="bannerURL" value="http://www.banner4.com" />
+		<property name="bannerURL" value="http://www.francetourisme.fr/images/visite_guidee_de_paris/pass_city_tour.jpg" />
 		<property name="link" value="http://www.banner.com" />
 		<property name="creditCard">
 			<ref bean="creditCard2" />
@@ -3431,7 +3431,7 @@
 
 	<!-- SponsorShip 4 -->
 	<bean id="sponsorship4" class="domain.Sponsorship">
-		<property name="bannerURL" value="http://www.banner5.com" />
+		<property name="bannerURL" value="http://www.portaldeexcursiones.com/fotos-excursiones/50845_amsterdam1.jpg" />
 		<property name="link" value="http://www.example.com" />
 		<property name="creditCard">
 			<ref bean="creditCard2" />
@@ -3445,7 +3445,7 @@
 	</bean>
 	
 	<bean id="sponsorship8" class="domain.Sponsorship">
-		<property name="bannerURL" value="http://www.banner6.com" />
+		<property name="bannerURL" value="https://cache-graphicslib.viator.com/graphicslib/thumbs674x446/6331/SITours/excursi-n-de-un-d-a-en-ferry-a-las-bahamas-desde-miami-in-miami-157631.jpg" />
 		<property name="link" value="http://www.example.com" />
 		<property name="creditCard">
 			<ref bean="creditCard2" />
