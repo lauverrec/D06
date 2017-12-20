@@ -162,7 +162,7 @@
 
 		<display:column>
 			<a href="message/auditor/changefolder.do?messageId=${row.id}"><spring:message
-					code="messagechangefolder.link" /></a>
+					code="message.changefolder.link" /></a>
 		</display:column>
 
 
