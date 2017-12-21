@@ -21,6 +21,7 @@ public class Sponsorship extends DomainEntity {
 
 
 	@URL
+	@NotNull
 	public String getBannerURL() {
 		return this.bannerURL;
 	}

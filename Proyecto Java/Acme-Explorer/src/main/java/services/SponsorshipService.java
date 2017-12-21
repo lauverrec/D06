@@ -66,6 +66,7 @@ public class SponsorshipService {
 	public Sponsorship save(Sponsorship sponsorship) {
 		Assert.notNull(sponsorship);
 		Sponsorship result;
+		Assert.isTrue(sponsorship.getBannerURL() != ("") && sponsorship.getLink() != (""));
 		result = this.sponsorshipRepository.save(sponsorship);
 		Assert.notNull(result);
 		return result;

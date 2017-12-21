@@ -3465,9 +3465,7 @@
 
 
 	<bean id="sponsorship5" class="domain.Sponsorship">
-		<property name="bannerURL">
-			<null />
-		</property>
+		<property name="bannerURL" value="https://cache-graphicslib.viator.com/graphicslib/thumbs674x446/6331/SITours/excursi-n-de-un-d-a-en-ferry-a-las-bahamas-desde-miami-in-miami-157631.jpg" />
 		<property name="link" value="http://www.example.com" />
 		<property name="creditCard">
 			<ref bean="creditCard2" />
