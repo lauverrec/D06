@@ -42,6 +42,7 @@ public class CreditCard {
 	}
 
 	@CreditCardNumber
+	@NotBlank
 	public String getNumber() {
 		return this.number;
 	}
