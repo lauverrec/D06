@@ -85,71 +85,35 @@
 	
 </display:table>
 
-<spring:message code="curricula.miscellaneousRecord" var="miscellaneousHeader" />
-<h2><jstl:out value="${miscellaneousHeader}"></jstl:out></h2>
-<display:table name="miscellaneousRecord" class="displaytag" id="row">
+<spring:message code="curricula.educationRecord" var="educationHeader" />
+<h2><jstl:out value="${educationHeader}"></jstl:out></h2>
+<display:table name="educationRecord" class="displaytag" id="row">
 
 	<!-- Attributes -->
-	<spring:message code="curricula.miscellaneousRecord.title" var="titleHeader" />
-	<display:column property="title" title="${titleHeader}"
+	<spring:message code="curricula.educationRecord.diplomaTitle" var="diplomaTitleHeader" />
+	<display:column property="diplomaTitle" title="${diplomaTitleHeader}"
 		sortable="true" />
-	
-	<spring:message code="curricula.miscellaneousRecord.link" var="linkHeader" />
+		
+	<spring:message code="curricula.educationRecord.studyingPeriod" var="studyingPeriodHeader" />
+	<display:column property="studyingPeriod" title="${studyingPeriodHeader}"
+		sortable="true" />
+		
+	<spring:message code="curricula.educationRecord.institution" var="institutionHeader" />
+	<display:column property="institution" title="${institutionHeader}"
+		sortable="true" />
+		
+	<spring:message code="curricula.educationRecord.link" var="linkHeader" />
 	<display:column property="link" title="${linkHeader}"
 		sortable="true" />
-		
-	<spring:message code="curricula.miscellaneousRecord.comments" var="commentsHeader" />
-	<display:column property="comments" title="${commentsHeader}"
-		sortable="true" />
-		
-	<security:authorize access="hasRole('RANGER')">
-		<display:column>
-			<spring:url value="miscellaneousRecord/ranger/edit.do" var="editlink">
-				<spring:param name="miscellaneousRecordId" value="${row.id}" />
-			</spring:url>
-			<a href="${editlink}"><spring:message code="curricula.edit" /></a>
-		</display:column>
-	</security:authorize>
 	
-	
-	
-</display:table>
-
-<security:authorize access="hasRole('RANGER')">
-	<spring:url value="miscellaneousRecord/ranger/create.do" var="linkcreate" />
-	<a href="${linkcreate}"><spring:message
-			code="curricula.miscellaneousRecord.create" /></a>
-</security:authorize>
-
-<spring:message code="curricula.endorserRecord" var="endorserHeader" />
-<h2><jstl:out value="${endorserHeader}"></jstl:out></h2>
-<display:table name="endorserRecord" class="displaytag" id="row">
-
-	<!-- Attributes -->
-	<spring:message code="curricula.endorserRecord.fullName" var="fullNameHeader" />
-	<display:column property="fullName" title="${fullNameHeader}"
-		sortable="true" />
-		
-	<spring:message code="curricula.endorserRecord.email" var="emailHeader" />
-	<display:column property="email" title="${emailHeader}"
-		sortable="true" />
-		
-	<spring:message code="curricula.endorserRecord.linkedProfile" var="linkedProfileHeader" />
-	<display:column property="linkedProfile" title="${linkedProfileHeader}"
-		sortable="true" />
-		
-	<spring:message code="curricula.endorserRecord.comments" var="commentsHeader" />
+	<spring:message code="curricula.educationRecord.comments" var="commentsHeader" />
 	<display:column property="comments" title="${commentsHeader}"
 		sortable="true" />
 	
-	<spring:message code="curricula.endorserRecord.phone" var="phoneHeader" />
-	<display:column property="phone" title="${phoneHeader}"
-		sortable="true" />
-		
 	<security:authorize access="hasRole('RANGER')">
 		<display:column>
-			<spring:url value="endorserRecord/ranger/edit.do" var="editlink">
-				<spring:param name="endorserRecordId" value="${row.id}" />
+			<spring:url value="educationRecord/ranger/edit.do" var="editlink">
+				<spring:param name="educationRecordId" value="${row.id}" />
 			</spring:url>
 			<a href="${editlink}"><spring:message code="curricula.edit" /></a>
 		</display:column>
@@ -158,9 +122,9 @@
 </display:table>
 
 <security:authorize access="hasRole('RANGER')">
-	<spring:url value="endorserRecord/ranger/create.do" var="linkcreate" />
+	<spring:url value="educationRecord/ranger/create.do" var="linkcreate" />
 	<a href="${linkcreate}"><spring:message
-			code="curricula.endorserRecord.create" /></a>
+			code="curricula.educationRecord.create" /></a>
 </security:authorize>
 
 <spring:message code="curricula.professionalRecord" var="professionalHeader" />
@@ -205,35 +169,35 @@
 			code="curricula.professionalRecord.create" /></a>
 </security:authorize>
 
-<spring:message code="curricula.educationRecord" var="educationHeader" />
-<h2><jstl:out value="${educationHeader}"></jstl:out></h2>
-<display:table name="educationRecord" class="displaytag" id="row">
+<spring:message code="curricula.endorserRecord" var="endorserHeader" />
+<h2><jstl:out value="${endorserHeader}"></jstl:out></h2>
+<display:table name="endorserRecord" class="displaytag" id="row">
 
 	<!-- Attributes -->
-	<spring:message code="curricula.educationRecord.diplomaTitle" var="diplomaTitleHeader" />
-	<display:column property="diplomaTitle" title="${diplomaTitleHeader}"
+	<spring:message code="curricula.endorserRecord.fullName" var="fullNameHeader" />
+	<display:column property="fullName" title="${fullNameHeader}"
 		sortable="true" />
 		
-	<spring:message code="curricula.educationRecord.studyingPeriod" var="studyingPeriodHeader" />
-	<display:column property="studyingPeriod" title="${studyingPeriodHeader}"
+	<spring:message code="curricula.endorserRecord.email" var="emailHeader" />
+	<display:column property="email" title="${emailHeader}"
 		sortable="true" />
 		
-	<spring:message code="curricula.educationRecord.institution" var="institutionHeader" />
-	<display:column property="institution" title="${institutionHeader}"
+	<spring:message code="curricula.endorserRecord.linkedProfile" var="linkedProfileHeader" />
+	<display:column property="linkedProfile" title="${linkedProfileHeader}"
 		sortable="true" />
 		
-	<spring:message code="curricula.educationRecord.link" var="linkHeader" />
-	<display:column property="link" title="${linkHeader}"
-		sortable="true" />
-	
-	<spring:message code="curricula.educationRecord.comments" var="commentsHeader" />
+	<spring:message code="curricula.endorserRecord.comments" var="commentsHeader" />
 	<display:column property="comments" title="${commentsHeader}"
 		sortable="true" />
 	
+	<spring:message code="curricula.endorserRecord.phone" var="phoneHeader" />
+	<display:column property="phone" title="${phoneHeader}"
+		sortable="true" />
+		
 	<security:authorize access="hasRole('RANGER')">
 		<display:column>
-			<spring:url value="educationRecord/ranger/edit.do" var="editlink">
-				<spring:param name="educationRecordId" value="${row.id}" />
+			<spring:url value="endorserRecord/ranger/edit.do" var="editlink">
+				<spring:param name="endorserRecordId" value="${row.id}" />
 			</spring:url>
 			<a href="${editlink}"><spring:message code="curricula.edit" /></a>
 		</display:column>
@@ -242,9 +206,50 @@
 </display:table>
 
 <security:authorize access="hasRole('RANGER')">
-	<spring:url value="educationRecord/ranger/create.do" var="linkcreate" />
+	<spring:url value="endorserRecord/ranger/create.do" var="linkcreate" />
 	<a href="${linkcreate}"><spring:message
-			code="curricula.educationRecord.create" /></a>
+			code="curricula.endorserRecord.create" /></a>
 </security:authorize>
+
+
+<spring:message code="curricula.miscellaneousRecord" var="miscellaneousHeader" />
+<h2><jstl:out value="${miscellaneousHeader}"></jstl:out></h2>
+<display:table name="miscellaneousRecord" class="displaytag" id="row">
+
+	<!-- Attributes -->
+	<spring:message code="curricula.miscellaneousRecord.title" var="titleHeader" />
+	<display:column property="title" title="${titleHeader}"
+		sortable="true" />
+	
+	<spring:message code="curricula.miscellaneousRecord.link" var="linkHeader" />
+	<display:column property="link" title="${linkHeader}"
+		sortable="true" />
+		
+	<spring:message code="curricula.miscellaneousRecord.comments" var="commentsHeader" />
+	<display:column property="comments" title="${commentsHeader}"
+		sortable="true" />
+		
+	<security:authorize access="hasRole('RANGER')">
+		<display:column>
+			<spring:url value="miscellaneousRecord/ranger/edit.do" var="editlink">
+				<spring:param name="miscellaneousRecordId" value="${row.id}" />
+			</spring:url>
+			<a href="${editlink}"><spring:message code="curricula.edit" /></a>
+		</display:column>
+	</security:authorize>
+	
+	
+	
+</display:table>
+
+<security:authorize access="hasRole('RANGER')">
+	<spring:url value="miscellaneousRecord/ranger/create.do" var="linkcreate" />
+	<a href="${linkcreate}"><spring:message
+			code="curricula.miscellaneousRecord.create" /></a>
+</security:authorize>
+
+
+
+
 
 </jstl:if>
