@@ -22,11 +22,11 @@ public interface TripRepository extends JpaRepository<Trip, Integer> {
 	Collection<Trip> findAllTripsNoAuthenticate();
 
 	//Requisito 12.1
-	@Query("select t from Trip t where t.publicationDate=null")
+	@Query("select t from Trip t where t.publicationDate>CURRENT_TIMESTAMP")
 	Collection<Trip> findAllTripsNotPublished();
 
 	//Requisito 12.3
-	@Query(" select t from Trip t where t.publicationDate!=null and t.startDate>CURRENT_TIMESTAMP")
+	@Query("select t from Trip t where t.publicationDate>CURRENT_TIMESTAMP and t.startDate>CURRENT_TIMESTAMP")
 	Collection<Trip> findAllTripsPublishedNotStarted();
 
 	//Requisito 13.4
