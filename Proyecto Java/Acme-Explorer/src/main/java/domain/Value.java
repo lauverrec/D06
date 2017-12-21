@@ -31,7 +31,7 @@ public class Value extends DomainEntity {
 	private Trip	trip;
 
 
-	@ManyToOne(optional = false)
+	@ManyToOne(optional = true)
 	public Tag getTag() {
 		return this.tag;
 	}
@@ -40,7 +40,7 @@ public class Value extends DomainEntity {
 		this.tag = tag;
 	}
 
-	@ManyToOne(optional = false)
+	@ManyToOne(optional = true)
 	public Trip getTrip() {
 		return this.trip;
 	}
