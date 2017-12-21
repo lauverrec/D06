@@ -46,7 +46,7 @@ public class Category extends DomainEntity {
 
 	@NotNull
 	@Valid
-	@OneToMany(mappedBy = "fatherCategory", cascade = CascadeType.REMOVE)
+	@OneToMany(mappedBy = "fatherCategory")
 	public Collection<Category> getSubCategories() {
 		return this.subCategories;
 	}
