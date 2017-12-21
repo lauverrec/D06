@@ -28,24 +28,30 @@
 				<br />
 
 			</jstl:if>
-
+			<form:label path="priority">
+				<spring:message code="message.priority" />:
+			</form:label>
 			<form:select path="priority">
 				<form:options items="${priorities}" />
 			</form:select>
 
-
+			<br />
+			<br />	
+					
 			<jstl:if test="${m.recipient != null}">
 				<form:hidden path="recipient" />
 			</jstl:if>
 			<acme:textarea code="message.subject" path="subject" />
-
+			<br />	
+			
 			<acme:textarea code="message.body" path="body" />
-
+			<br />  
+			
 
 
 			<input type="submit" name="save"
 				value="<spring:message code="message.send.link" />" />
-
+			
 			<input type="button" name="cancel"
 				value="<spring:message code="message.cancel.link" />"
 				onclick="javascript: location.replace('welcome/index.do')" />
@@ -55,7 +61,7 @@
 					value="<spring:message code="message.send.broadcast.link" />" />
 			</security:authorize>
 
-
+<br />  
 		</form:form>
 	</div>
 </div>

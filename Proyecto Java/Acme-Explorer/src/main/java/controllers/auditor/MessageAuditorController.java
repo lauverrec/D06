@@ -58,6 +58,7 @@ public class MessageAuditorController extends AbstractController {
 
 		result = new ModelAndView("message/list");
 		result.addObject("messages", msgs);
+		result.addObject("requestURI", "message/auditor/list.do");
 
 		return result;
 

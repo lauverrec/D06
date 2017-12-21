@@ -58,6 +58,7 @@ public class MessageSponsorController extends AbstractController {
 
 		result = new ModelAndView("message/list");
 		result.addObject("messages", msgs);
+		result.addObject("requestURI", "message/sponsor/list.do");
 
 		return result;
 

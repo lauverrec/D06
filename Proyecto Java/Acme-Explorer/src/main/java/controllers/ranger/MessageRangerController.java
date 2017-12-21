@@ -58,6 +58,7 @@ public class MessageRangerController extends AbstractController {
 
 		result = new ModelAndView("message/list");
 		result.addObject("messages", msgs);
+		result.addObject("requestURI", "message/ranger/list.do");
 
 		return result;
 

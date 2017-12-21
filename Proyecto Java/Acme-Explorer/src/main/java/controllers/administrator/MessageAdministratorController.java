@@ -53,11 +53,14 @@ public class MessageAdministratorController extends AbstractController {
 
 		ModelAndView result;
 		Collection<Message> msgs;
+		Integer messageFolderId1 = messageFolderId;
 
 		msgs = this.messageService.messagesOfFolder(messageFolderId);
 
 		result = new ModelAndView("message/list");
 		result.addObject("messages", msgs);
+		result.addObject("messageFolderId1", messageFolderId1);
+		result.addObject("requestURI", "message/administrator/list.do");
 
 		return result;
 

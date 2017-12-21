@@ -58,6 +58,7 @@ public class MessageExplorerController extends AbstractController {
 
 		result = new ModelAndView("message/list");
 		result.addObject("messages", msgs);
+		result.addObject("requestURI", "message/explorer/list.do");
 
 		return result;
 
