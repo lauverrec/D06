@@ -85,21 +85,25 @@
 	
 	
 	
-	<script type="text/javascript">
+		<script type="text/javascript">
 		function valida(phone) {
 			var m = document.getElementById("phone").value;
 			var expreg = /^(\+\d{1,3})?\s?(\(\d{3}\))?\s?\d{4,100}$/;
-			
-			if(!expreg.test(m)){
-				alert("Are you sure you want to save this phone?");
-			}
-				
-		}
 
+			if (!expreg.test(m)) {
+				var confirmar = confirm("Are you sure you want to save this phone?");
+				if (confirmar) {
+					return true;
+				} else {
+					return false;
+				}
+			}
+
+		}
 	</script>
 	
 	<input type="submit" name="save"
-		value="<spring:message code="manager.save" />" onclick="valida();"/>&nbsp; 
+		value="<spring:message code="manager.save" />" onclick="return valida();"/>&nbsp; 
 
 	<input type="button" name="cancel"
 		value="<spring:message code="manager.cancel" />"
