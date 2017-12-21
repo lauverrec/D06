@@ -3353,14 +3353,34 @@
 
 
 	<bean id="legalText4" class="domain.LegalText">
-		<property name="title" value="title 4" />
-		<property name="body" value="body 4" />
+		<property name="title" value="title english" />
+		<property name="body" value=" LEGAL TEXT
+		2. Acceptance of these Conditions
+		The fact that you access this website implies that 
+		you know, understand and accept the Terms of Use in the version existing 
+		at the time of access." />
 		<property name="lawsNumber" value="4"></property>
 		<property name="moment" value="2017/11/23 23:59"></property>
 		<property name="draftMode" value="false"></property>
 		<property name="trips">
 			<list>
 				<ref bean="trip4"></ref>
+			</list>
+		</property>
+	</bean>
+	
+		<bean id="legalText5" class="domain.LegalText">
+		<property name="title" value="title español" />
+		<property name="body" value="AVISO LEGAL
+		2. Aceptación de estas Condiciones
+		El hecho de que acceda a este sitio Web implica que conoce, entiende y acepta las Condiciones de 
+		en la versión existente en el momento del acceso." />
+		<property name="lawsNumber" value="4"></property>
+		<property name="moment" value="2017/11/23 23:59"></property>
+		<property name="draftMode" value="false"></property>
+		<property name="trips">
+			<list>
+				<ref bean="trip5"></ref>
 			</list>
 		</property>
 	</bean>
