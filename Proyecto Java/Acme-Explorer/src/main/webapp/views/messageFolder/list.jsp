@@ -26,7 +26,9 @@
 
 	<!-- Botones para sponsor -->
 	<security:authorize access="hasRole('SPONSOR')">
-		<display:column>
+		<spring:message code="messageFolder.display" var="displayHeader" />
+		<display:column title="${displayHeader}" sortable="true">
+
 			<spring:url value="messageFolder/sponsor/display.do"
 				var="displaySponsorURL">
 				<spring:param name="messageFolderId" value="${row.id}" />
@@ -36,8 +38,10 @@
 					code="messageFolder.display" /></a>
 		</display:column>
 
-		<jstl:if test="${row.modifiable==true }">
-			<display:column>
+		<spring:message code="messageFolder.edit" var="editHeader" />
+		<display:column title="${editHeader}" sortable="true">
+			<jstl:if test="${row.modifiable==true }">
+
 
 				<spring:url value="messageFolder/sponsor/edit.do"
 					var="editSponsorURL">
@@ -45,11 +49,12 @@
 				</spring:url>
 				<a href="${editSponsorURL }"><spring:message
 						code="messageFolder.edit" /></a>
+			</jstl:if>
+		</display:column>
 
-			</display:column>
-		</jstl:if>
 
-		<display:column>
+		<spring:message code="messageFolder.displayMessages" var="displayMessagesHeader" />
+		<display:column title="${displayMessagesHeader}" sortable="true">
 			<spring:url value="message/sponsor/list.do"
 				var="listMessagesSponsorRL">
 				<spring:param name="messageFolderId" value="${row.id }"></spring:param>
@@ -62,7 +67,9 @@
 
 	<!-- Botones para administrator -->
 	<security:authorize access="hasRole('ADMINISTRATOR')">
-		<display:column>
+		<spring:message code="messageFolder.display" var="displayHeader" />
+		<display:column title="${displayHeader}" sortable="true">
+
 			<spring:url value="messageFolder/administrator/display.do"
 				var="displayAdministratorURL">
 				<spring:param name="messageFolderId" value="${row.id}" />
@@ -73,7 +80,8 @@
 		</display:column>
 
 
-		<display:column>
+		<spring:message code="messageFolder.edit" var="editHeader" />
+		<display:column title="${editHeader}" sortable="true">
 			<jstl:if test="${row.modifiable==true }">
 
 
@@ -89,7 +97,8 @@
 
 
 
-		<display:column>
+	<spring:message code="messageFolder.displayMessages" var="displayMessagesHeader" />
+		<display:column title="${displayMessagesHeader}" sortable="true">
 			<spring:url value="message/administrator/list.do"
 				var="listMessagesURL">
 				<spring:param name="messageFolderId" value="${row.id }"></spring:param>
@@ -102,7 +111,8 @@
 
 	<!-- Botones para ranger -->
 	<security:authorize access="hasRole('RANGER')">
-		<display:column>
+		<spring:message code="messageFolder.display" var="displayHeader" />
+		<display:column title="${displayHeader}" sortable="true">
 			<spring:url value="messageFolder/ranger/display.do"
 				var="displayRangerURL">
 				<spring:param name="messageFolderId" value="${row.id}" />
@@ -112,19 +122,23 @@
 					code="messageFolder.display" /></a>
 		</display:column>
 
-		<jstl:if test="${row.modifiable==true }">
-			<display:column>
+
+		<spring:message code="messageFolder.edit" var="editHeader" />
+		<display:column title="${editHeader}" sortable="true">
+			<jstl:if test="${row.modifiable==true }">
+
 
 				<spring:url value="messageFolder/ranger/edit.do" var="editRangerURL">
 					<spring:param name="messageFolderId" value="${row.id }"></spring:param>
 				</spring:url>
 				<a href="${editRangerURL }"><spring:message
 						code="messageFolder.edit" /></a>
+			</jstl:if>
+		</display:column>
 
-			</display:column>
-		</jstl:if>
 
-		<display:column>
+		<spring:message code="messageFolder.displayMessages" var="displayMessagesHeader" />
+		<display:column title="${displayMessagesHeader}" sortable="true">
 			<spring:url value="message/ranger/list.do"
 				var="listMessagesRangerURL">
 				<spring:param name="messageFolderId" value="${row.id }"></spring:param>
@@ -138,7 +152,8 @@
 
 	<!-- Botones para explorer -->
 	<security:authorize access="hasRole('EXPLORER')">
-		<display:column>
+		<spring:message code="messageFolder.display" var="displayHeader" />
+		<display:column title="${displayHeader}" sortable="true">
 			<spring:url value="messageFolder/explorer/display.do"
 				var="displayExplorerURL">
 				<spring:param name="messageFolderId" value="${row.id}" />
@@ -148,8 +163,10 @@
 					code="messageFolder.display" /></a>
 		</display:column>
 
-		<jstl:if test="${row.modifiable==true }">
-			<display:column>
+		<spring:message code="messageFolder.edit" var="editHeader" />
+		<display:column title="${editHeader}" sortable="true">
+			<jstl:if test="${row.modifiable==true }">
+
 
 				<spring:url value="messageFolder/explorer/edit.do"
 					var="editExplorerURL">
@@ -157,11 +174,12 @@
 				</spring:url>
 				<a href="${editExplorerURL }"><spring:message
 						code="messageFolder.edit" /></a>
+			</jstl:if>
+		</display:column>
 
-			</display:column>
-		</jstl:if>
 
-		<display:column>
+		<spring:message code="messageFolder.displayMessages" var="displayMessagesHeader" />
+		<display:column title="${displayMessagesHeader}" sortable="true">
 			<spring:url value="message/explorer/list.do"
 				var="listMessagesExplorerURL">
 				<spring:param name="messageFolderId" value="${row.id }"></spring:param>
@@ -174,7 +192,8 @@
 
 	<!-- Botones para manager -->
 	<security:authorize access="hasRole('MANAGER')">
-		<display:column>
+		<spring:message code="messageFolder.display" var="displayHeader" />
+		<display:column title="${displayHeader}" sortable="true">
 			<spring:url value="messageFolder/manager/display.do"
 				var="displayManagerURL">
 				<spring:param name="messageFolderId" value="${row.id}" />
@@ -184,8 +203,10 @@
 					code="messageFolder.display" /></a>
 		</display:column>
 
-		<jstl:if test="${row.modifiable==true }">
-			<display:column>
+		<spring:message code="messageFolder.edit" var="editHeader" />
+		<display:column title="${editHeader}" sortable="true">
+			<jstl:if test="${row.modifiable==true }">
+
 
 				<spring:url value="messageFolder/manager/edit.do"
 					var="editManagerURL">
@@ -193,11 +214,12 @@
 				</spring:url>
 				<a href="${editManagerURL }"><spring:message
 						code="messageFolder.edit" /></a>
+			</jstl:if>
+		</display:column>
 
-			</display:column>
-		</jstl:if>
 
-		<display:column>
+		<spring:message code="messageFolder.displayMessages" var="displayMessagesHeader" />
+		<display:column title="${displayMessagesHeader}" sortable="true">
 			<spring:url value="message/manager/list.do"
 				var="listMessagesManagerURL">
 				<spring:param name="messageFolderId" value="${row.id }"></spring:param>
@@ -210,7 +232,8 @@
 
 	<!-- Botones para auditor -->
 	<security:authorize access="hasRole('AUDITOR')">
-		<display:column>
+		<spring:message code="messageFolder.display" var="displayHeader" />
+		<display:column title="${displayHeader}" sortable="true">
 			<spring:url value="messageFolder/auditor/display.do"
 				var="displayAuditorURL">
 				<spring:param name="messageFolderId" value="${row.id}" />
@@ -220,8 +243,10 @@
 					code="messageFolder.display" /></a>
 		</display:column>
 
-		<jstl:if test="${row.modifiable==true }">
-			<display:column>
+		<spring:message code="messageFolder.edit" var="editHeader" />
+		<display:column title="${editHeader}" sortable="true">
+			<jstl:if test="${row.modifiable==true }">
+
 
 				<spring:url value="messageFolder/auditor/edit.do"
 					var="editAuditorURL">
@@ -229,11 +254,12 @@
 				</spring:url>
 				<a href="${editAuditorURL }"><spring:message
 						code="messageFolder.edit" /></a>
+			</jstl:if>
+		</display:column>
 
-			</display:column>
-		</jstl:if>
 
-		<display:column>
+		<spring:message code="messageFolder.displayMessages" var="displayMessagesHeader" />
+		<display:column title="${displayMessagesHeader}" sortable="true">
 			<spring:url value="message/auditor/list.do"
 				var="listMessagesAuditorURL">
 				<spring:param name="messageFolderId" value="${row.id }"></spring:param>
@@ -267,7 +293,7 @@
 				code="messageFolder.create" />
 		</a>
 	</div>
-	
+
 </security:authorize>
 
 <security:authorize access="hasRole('RANGER')">
@@ -275,6 +301,7 @@
 		<a href="messageFolder/ranger/create.do"> <spring:message
 				code="messageFolder.create" />
 		</a>
+
 	</div>
 </security:authorize>
 
