@@ -341,7 +341,7 @@ public class MessageService {
 
 		messageBdOfExplorer = this.messageRepository.save(messageForExplorer);
 
-		messageForExplorer.setSender(administratorSender);
+		messageForManager.setSender(administratorSender);
 		messageForManager.setSubject("Status changed");
 		messageForManager.setBody("The status for application for " + applicationFor.getId() + " is change to accepted status");
 		messageForManager.setPriority("HIGH");
@@ -392,7 +392,7 @@ public class MessageService {
 
 		messageBdOfExplorer = this.messageRepository.save(messageForExplorer);
 
-		messageForExplorer.setSender(administratorSender);
+		messageForManager.setSender(administratorSender);
 		messageForManager.setSubject("Status changed");
 		messageForManager.setBody("The status for application for " + applicationFor.getId() + " is change to rejected status");
 		messageForManager.setPriority("HIGH");
@@ -443,7 +443,7 @@ public class MessageService {
 
 		messageBdOfExplorer = this.messageRepository.save(messageForExplorer);
 
-		messageForExplorer.setSender(administratorSender);
+		messageForManager.setSender(administratorSender);
 		messageForManager.setSubject("Status changed");
 		messageForManager.setBody("The status for application for " + applicationFor.getId() + " is change to due status");
 		messageForManager.setPriority("HIGH");
@@ -494,7 +494,7 @@ public class MessageService {
 
 		messageBdOfExplorer = this.messageRepository.save(messageForExplorer);
 
-		messageForExplorer.setSender(administratorSender);
+		messageForManager.setSender(administratorSender);
 		messageForManager.setSubject("Status changed");
 		messageForManager.setBody("The status for application for " + applicationFor.getId() + " is change to cancelled status");
 		messageForManager.setPriority("HIGH");
