@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import services.ManagerService;
 import services.StageService;
 import services.TripService;
 import controllers.AbstractController;
+import domain.Manager;
 import domain.Stage;
 import domain.Trip;
 
@@ -31,6 +33,9 @@ public class StageManagerController extends AbstractController {
 
 	@Autowired
 	private TripService		tripService;
+
+	@Autowired
+	private ManagerService	mangerService;
 
 
 	//Listing--------------------------
@@ -67,17 +72,21 @@ public class StageManagerController extends AbstractController {
 		ModelAndView result;
 		Stage stage;
 		Trip trip;
+		Manager managerPrincipal;
+		Manager managerStage;
 
 		trip = this.tripService.findOne(tripId);
-
 		stage = this.stageService.create();
 		stage.setTrip(trip);
+		managerPrincipal = this.mangerService.findByPrincipal();
+		managerStage = trip.getManager();
+
+		Assert.isTrue(managerPrincipal.equals(managerStage), "Cannot commit this operation because it's ilegal");
 
 		result = this.createEditModelAndView(stage);
 
 		return result;
 	}
-
 	//Saving---------------------
 
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
@@ -92,7 +101,7 @@ public class StageManagerController extends AbstractController {
 
 				result = new ModelAndView("redirect:list.do?tripId=" + stage.getTrip().getId());
 			} catch (Throwable oops) {
-				result = this.createEditModelAndView(stage, "stage.commit.error1");
+				result = this.createEditModelAndView(stage, "stage.commit.error");
 			}
 
 		return result;

@@ -98,16 +98,15 @@ public class LegalTextServiceTest extends AbstractTest {
 
 		LegalText resultSaved;
 		LegalText result;
-		Trip trip;
 
 		this.authenticate("administrator1");
 
 		result = this.legalTextService.create();
-		trip = this.tripService.findOne(super.getEntityId("trip2"));
+
 		result.setTitle("title test");
 		result.setBody("body test");
 		result.setLawsNumber(4);
-		result.getTrips().add(trip);
+		result.setDraftMode(true);
 		this.administradorService.checkPrincipal();
 		Assert.notNull(result);
 
@@ -121,18 +120,30 @@ public class LegalTextServiceTest extends AbstractTest {
 
 	}
 
-	//	@Test
-	//	public void testFindOneToEdit() {
-	//
-	//		this.authenticate("administrator1");
-	//
-	//		LegalText result;
-	//		result = this.legalTextService.findOneToEdit(super.getEntityId("legalText5"));
-	//
-	//		result.setLawsNumber(8);
-	//
-	//		Assert.notNull(result);
-	//
-	//	}
+	@Test
+	public void testFindOneToEdit() {
 
+		LegalText resultSaved;
+		LegalText result;
+
+		this.authenticate("administrator1");
+
+		result = this.legalTextService.create();
+
+		result.setTitle("title test");
+		result.setBody("body test");
+		result.setLawsNumber(4);
+		result.setDraftMode(true);
+		this.administradorService.checkPrincipal();
+		Assert.notNull(result);
+
+		resultSaved = this.legalTextService.save(result);
+
+		Assert.notNull(resultSaved);
+
+		this.legalTextService.findOneToEdit(resultSaved.getId());
+
+		Assert.notNull(result);
+
+	}
 }
