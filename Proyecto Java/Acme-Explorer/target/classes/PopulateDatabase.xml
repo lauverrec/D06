@@ -4773,12 +4773,14 @@
 		</property>
 	</bean>
 	
-	<!-- <bean id="value1" class = "domain.Value">
+
+	 <bean id="value1" class = "domain.Value">
 		<property name="value" value="1"></property>
-		<property name="tag"><null/></property>
-		<property name="trip"><null/></property>
+		<property name="tag" ref="tag1"></property>
+		<property name="trip" ref="trip1"></property>
 	</bean>
 	
+	<!--
 	<bean id="value2" class = "domain.Value">
 		<property name="value" value="2"></property>
 		<property name="tag"><null/></property>
