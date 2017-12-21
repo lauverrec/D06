@@ -29,24 +29,6 @@
 	<input type="text" name="keyword"/> <br />
 	<br>
 	
-	<security:authorize access="hasRole('EXPLORER')">
-	<label><spring:message code="trip.search.lowPrice"/></label>
-	<input type="text" name="lowPrice"/> <br />
-	<br>
-	
-	<label><spring:message code="trip.search.highPrice"/></label>
-	<input type="text" name="highPrice"/> <br />
-	<br>
-	
-	<label><spring:message code="trip.search.initialDate"/></label>
-	<input type="text" name="initialDate"/> <br />
-	<br>
-	
-	<label><spring:message code="trip.search.finalDate"/></label>
-	<input type="text" name="finalDate"/> <br />
-	<br>
-	</security:authorize>
-	
 	<input type="submit" value="<spring:message code="trip.search" />" /> 	 
 	
 </form:form>
