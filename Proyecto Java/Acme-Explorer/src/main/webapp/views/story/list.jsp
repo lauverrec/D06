@@ -33,8 +33,8 @@
 	<spring:message code="stories.trip" var="trip" />
 	<display:column property="trip.ticker" title="${trip}" sortable="true" />
 	
-	
-			<display:column>
+	<spring:message code="story.edit" var="edit"></spring:message>
+			<display:column title="${edit}" sortable="true">
 				<spring:url value="story/explorer/edit.do" var="editURL">
 					<spring:param name="storyId" value="${row.id }" />
 				</spring:url>
