@@ -67,10 +67,15 @@ public class ContactEmergencyService {
 
 	public ContactEmergency save(final ContactEmergency contactEmergency) {
 		Assert.notNull(contactEmergency);
-
 		ContactEmergency result;
 		Explorer explorer;
+		String phone;
+		int leng;
 		explorer = this.explorerService.findByPrincipal();
+		phone = contactEmergency.getPhone().trim();
+		leng = contactEmergency.getPhone().trim().length();
+		if (contactEmergency.getEmail().equals("") && (leng == 0) && phone.equals(""))
+			Assert.isTrue(4 == 3, "introduce at least one parameter, email or phone");
 		result = this.contactEmergencyRepository.save(contactEmergency);
 		this.contactnotexisting(explorer, result);
 
