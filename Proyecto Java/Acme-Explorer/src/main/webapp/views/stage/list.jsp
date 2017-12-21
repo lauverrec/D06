@@ -44,15 +44,16 @@
 	<spring:message code="stage.description" var="description" />
 	<display:column property="description" title="${description}" sortable="true" />
 
-	<spring:message code="stage.format.price" var="patternPrice "/>
+	<spring:message code="stage.format.price" var="patternPrice"/>
 	<spring:message code="stage.price" var="priceHeader" />
-	<display:column property="price" title="${priceHeader}" sortable="true" format="${patternPrice }"/>
+	<display:column property="price" title="${priceHeader}" sortable="true" format="${patternPrice}"/>
 	
 	<spring:message code="stage.number" var="number" />
 	<display:column property="number" title="${number}" sortable="true" />
 	
+	<spring:message code="stage.format.price" var="patternPrice"/>
 	<spring:message code="stage.totalPrice" var="totalPrice" />
-	<display:column property="totalPrice" title="${totalPrice}" sortable="true" />
+	<display:column property="totalPrice" title="${totalPrice}" sortable="true" format="${patternPrice}"/>
 
 
 </display:table>
