@@ -25,8 +25,9 @@
 	<!-- Action links -->
 
 	<security:authorize access="hasRole('ADMINISTRATOR')">
-		<display:column>
 		
+		<spring:message code="category.edit" var="edit"></spring:message>
+		<display:column title="${edit}" sortable="true">
 		<spring:url value="tag/administrator/edit.do" var="editURL">
 		<spring:param name="tagId" value="${row.id}"/>
 		</spring:url>
