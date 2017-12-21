@@ -47,7 +47,7 @@ public class StageServiceTest extends AbstractTest {
 		Stage stage;
 		double price = 20.0;
 		Manager m;
-		m = this.managerService.findOne(13272);
+		m = this.managerService.findOne(super.getEntityId("manager1"));
 
 		this.authenticate(m.getUserAccount().getUsername());
 
