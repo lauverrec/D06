@@ -58,6 +58,7 @@ public class Note extends DomainEntity {
 		this.remark = remark;
 	}
 
+	@NotNull
 	public String getReply() {
 		return this.reply;
 	}

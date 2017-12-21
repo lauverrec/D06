@@ -49,6 +49,7 @@
 		<spring:message code="note.reply" />
 	</form:label>
 	<form:input path="reply" />
+	<form:errors cssClass="error" path="reply" />
 	<br />
 	
 	<br />

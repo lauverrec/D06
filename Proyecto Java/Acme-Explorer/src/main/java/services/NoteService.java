@@ -77,11 +77,14 @@ public class NoteService {
 		Note result;
 
 		Date createdMoment;
+		String reply;
 
 		createdMoment = new Date(System.currentTimeMillis() - 1000);
+		reply = ("");
 
 		result = this.noteRepository.save(note);
 		result.setCreatedMoment(createdMoment);
+		result.setReply(reply);
 
 		Assert.notNull(result);
 
@@ -95,6 +98,7 @@ public class NoteService {
 		Date replyMoment;
 
 		replyMoment = new Date(System.currentTimeMillis() - 1000);
+		Assert.isTrue(note.getReply() != "");
 		result = this.noteRepository.save(note);
 
 		result.setReplyMoment(replyMoment);
