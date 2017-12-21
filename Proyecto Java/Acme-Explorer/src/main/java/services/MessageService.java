@@ -13,7 +13,6 @@ import org.springframework.util.Assert;
 
 import repositories.MessageRepository;
 import domain.Actor;
-import domain.Administrator;
 import domain.ApplicationFor;
 import domain.Explorer;
 import domain.Manager;
@@ -38,9 +37,6 @@ public class MessageService {
 
 	@Autowired
 	private ConfigurationSystemService	configurationSystemService;
-
-	@Autowired
-	private AdministratorService		administratorService;
 
 
 	// Constructors -----------------------------------------------------------
@@ -262,7 +258,6 @@ public class MessageService {
 		Message messageForManager;
 		Message messageBdOfExplorer;
 		Message messageBdOfManager;
-		Administrator administratorSender;
 
 		Explorer explorerOfApplicationFor;
 		Manager managerOfApplicationFor;
@@ -277,9 +272,8 @@ public class MessageService {
 		notificationBoxOfManager = this.messageFolderService.returnDefaultFolder(managerOfApplicationFor, "Notification box");
 		messageForExplorer = new Message();
 		messageForManager = new Message();
-		administratorSender = this.administratorService.findAll().iterator().next();
 
-		messageForExplorer.setSender(administratorSender);
+		messageForExplorer.setSender(this.actorService.findPrincipal());
 		messageForExplorer.setSubject("Status changed");
 		messageForExplorer.setBody("The status for application for " + applicationFor.getId() + " is change to pending status");
 		messageForExplorer.setPriority("HIGH");
@@ -291,7 +285,7 @@ public class MessageService {
 
 		messageBdOfExplorer = this.messageRepository.save(messageForExplorer);
 
-		messageForManager.setSender(administratorSender);
+		messageForManager.setSender(this.actorService.findPrincipal());
 		messageForManager.setSubject("Status changed");
 		messageForManager.setBody("The status for application for " + applicationFor.getId() + " is change to pending status");
 		messageForManager.setPriority("HIGH");
@@ -306,13 +300,13 @@ public class MessageService {
 		Assert.notNull(messageBdOfExplorer);
 		Assert.notNull(messageBdOfManager);
 	}
+
 	public void messageForNotificationToStatusAccepted(ApplicationFor applicationFor) {
 
 		Message messageForExplorer;
 		Message messageForManager;
 		Message messageBdOfExplorer;
 		Message messageBdOfManager;
-		Administrator administratorSender;
 
 		Explorer explorerOfApplicationFor;
 		Manager managerOfApplicationFor;
@@ -327,9 +321,8 @@ public class MessageService {
 		notificationBoxOfManager = this.messageFolderService.returnDefaultFolder(managerOfApplicationFor, "Notification box");
 		messageForExplorer = new Message();
 		messageForManager = new Message();
-		administratorSender = this.administratorService.findAll().iterator().next();
 
-		messageForExplorer.setSender(administratorSender);
+		messageForExplorer.setSender(this.actorService.findPrincipal());
 		messageForExplorer.setSubject("Status changed");
 		messageForExplorer.setBody("The status for application for " + applicationFor.getId() + " is change to accepted status");
 		messageForExplorer.setPriority("HIGH");
@@ -341,7 +334,7 @@ public class MessageService {
 
 		messageBdOfExplorer = this.messageRepository.save(messageForExplorer);
 
-		messageForExplorer.setSender(administratorSender);
+		messageForManager.setSender(this.actorService.findPrincipal());
 		messageForManager.setSubject("Status changed");
 		messageForManager.setBody("The status for application for " + applicationFor.getId() + " is change to accepted status");
 		messageForManager.setPriority("HIGH");
@@ -363,7 +356,6 @@ public class MessageService {
 		Message messageForManager;
 		Message messageBdOfExplorer;
 		Message messageBdOfManager;
-		Administrator administratorSender;
 
 		Explorer explorerOfApplicationFor;
 		Manager managerOfApplicationFor;
@@ -378,9 +370,8 @@ public class MessageService {
 		notificationBoxOfManager = this.messageFolderService.returnDefaultFolder(managerOfApplicationFor, "Notification box");
 		messageForExplorer = new Message();
 		messageForManager = new Message();
-		administratorSender = this.administratorService.findAll().iterator().next();
 
-		messageForExplorer.setSender(administratorSender);
+		messageForExplorer.setSender(this.actorService.findPrincipal());
 		messageForExplorer.setSubject("Status changed");
 		messageForExplorer.setBody("The status for application for " + applicationFor.getId() + " is change to rejected status");
 		messageForExplorer.setPriority("HIGH");
@@ -392,7 +383,7 @@ public class MessageService {
 
 		messageBdOfExplorer = this.messageRepository.save(messageForExplorer);
 
-		messageForExplorer.setSender(administratorSender);
+		messageForManager.setSender(this.actorService.findPrincipal());
 		messageForManager.setSubject("Status changed");
 		messageForManager.setBody("The status for application for " + applicationFor.getId() + " is change to rejected status");
 		messageForManager.setPriority("HIGH");
@@ -414,7 +405,6 @@ public class MessageService {
 		Message messageForManager;
 		Message messageBdOfExplorer;
 		Message messageBdOfManager;
-		Administrator administratorSender;
 
 		Explorer explorerOfApplicationFor;
 		Manager managerOfApplicationFor;
@@ -429,9 +419,8 @@ public class MessageService {
 		notificationBoxOfManager = this.messageFolderService.returnDefaultFolder(managerOfApplicationFor, "Notification box");
 		messageForExplorer = new Message();
 		messageForManager = new Message();
-		administratorSender = this.administratorService.findAll().iterator().next();
 
-		messageForExplorer.setSender(administratorSender);
+		messageForExplorer.setSender(this.actorService.findPrincipal());
 		messageForExplorer.setSubject("Status changed");
 		messageForExplorer.setBody("The status for application for " + applicationFor.getId() + " is change to due status");
 		messageForExplorer.setPriority("HIGH");
@@ -443,7 +432,7 @@ public class MessageService {
 
 		messageBdOfExplorer = this.messageRepository.save(messageForExplorer);
 
-		messageForExplorer.setSender(administratorSender);
+		messageForManager.setSender(this.actorService.findPrincipal());
 		messageForManager.setSubject("Status changed");
 		messageForManager.setBody("The status for application for " + applicationFor.getId() + " is change to due status");
 		messageForManager.setPriority("HIGH");
@@ -465,7 +454,6 @@ public class MessageService {
 		Message messageForManager;
 		Message messageBdOfExplorer;
 		Message messageBdOfManager;
-		Administrator administratorSender;
 
 		Explorer explorerOfApplicationFor;
 		Manager managerOfApplicationFor;
@@ -480,9 +468,8 @@ public class MessageService {
 		notificationBoxOfManager = this.messageFolderService.returnDefaultFolder(managerOfApplicationFor, "Notification box");
 		messageForExplorer = new Message();
 		messageForManager = new Message();
-		administratorSender = this.administratorService.findAll().iterator().next();
 
-		messageForExplorer.setSender(administratorSender);
+		messageForExplorer.setSender(this.actorService.findPrincipal());
 		messageForExplorer.setSubject("Status changed");
 		messageForExplorer.setBody("The status for application for " + applicationFor.getId() + " is change to cancelled status");
 		messageForExplorer.setPriority("HIGH");
@@ -494,7 +481,7 @@ public class MessageService {
 
 		messageBdOfExplorer = this.messageRepository.save(messageForExplorer);
 
-		messageForExplorer.setSender(administratorSender);
+		messageForManager.setSender(this.actorService.findPrincipal());
 		messageForManager.setSubject("Status changed");
 		messageForManager.setBody("The status for application for " + applicationFor.getId() + " is change to cancelled status");
 		messageForManager.setPriority("HIGH");
