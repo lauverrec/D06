@@ -13,6 +13,7 @@ import org.springframework.util.Assert;
 
 import utilities.AbstractTest;
 import domain.ContactEmergency;
+import domain.Explorer;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {
@@ -26,8 +27,10 @@ public class ContactEmergencyServiceTest extends AbstractTest {
 	@Autowired
 	private ContactEmergencyService	contactEmergencyService;
 
-
 	// Supporting services ----------------------------------------------------
+	@Autowired
+	private ExplorerService			explorerService;
+
 
 	@Test
 	public void testCreate() {
@@ -38,11 +41,15 @@ public class ContactEmergencyServiceTest extends AbstractTest {
 
 	@Test
 	public void testSave() {
+		Explorer explorer;
+		explorer = this.explorerService.findOne(13277);
+		this.authenticate(explorer.getUserAccount().getUsername());
 		ContactEmergency contactEmergency;
 		contactEmergency = this.contactEmergencyService.create();
 
 		contactEmergency.setName("name contactEmergency test");
 		contactEmergency.setEmail("emailTest@email.com");
+		contactEmergency.setPhone("");
 
 		contactEmergency = this.contactEmergencyService.save(contactEmergency);
 		Assert.notNull(contactEmergency.getId());
