@@ -25,7 +25,8 @@
 	<!-- Action links -->
 
 	<security:authorize access="hasRole('ADMINISTRATOR')">
-		<display:column>
+		<spring:message code="category.edit" var="edit"></spring:message>
+		<display:column title="${edit}" sortable="true">
 		<spring:url value="category/administrator/edit.do" var="editURL">
 		<spring:param name="categoryId" value="${row.id}"/>
 		</spring:url>
@@ -36,11 +37,11 @@
 	<!-- Attributes -->
 	
 	<spring:message code="category.father.name" var="fatherHeader" />
-	<display:column property="fatherCategory.name" title="${fatherHeader}" sortable="false" />
+	<display:column property="fatherCategory.name" title="${fatherHeader}" sortable="true" />
 
 	
 	<spring:message code="category.name" var="nameHeader" />
-	<display:column property="name" title="${nameHeader}" sortable="false" />
+	<display:column property="name" title="${nameHeader}" sortable="true" />
 	
 	
 	
@@ -52,11 +53,10 @@
 		</jstl:forEach>	
 	</display:column>
 	
-	
-	
+
 	
 		<spring:message code="category.trips" var="nameHeader" />
-		<display:column property="name" title="${nameHeader}" sortable="false" >
+		<display:column property="name" title="${nameHeader}" sortable="true" >
 		<spring:url value="trip/category/list.do" var="tripListURL">
 		 <spring:param name="categoryId" value="${row.id }"/>
 		 </spring:url>
