@@ -49,7 +49,8 @@
 
 	<!-- En caso de que se acceda al listado de survivalClass con manager se mostrara un boton de editar ademas del display -->
 	<security:authorize access="hasRole('MANAGER')">
-		<display:column>
+		<spring:message code="survivalClass.edit" var="edit"></spring:message>
+		<display:column title="${edit}" sortable="true">
 			<spring:url value="survivalClass/manager/edit.do" var="editURL">
 				<spring:param name="survivalClassId" value="${row.id}" />
 			</spring:url>
@@ -78,7 +79,8 @@
 
 
 	<!-- El boton de display estara siempre presente en todos los usuarios que puedan acceder al listado de survival Class -->
-	<display:column>
+	<spring:message code="survivalClass.display" var="display"></spring:message>
+	<display:column title="${display}" sortable="true">
 		<spring:url value="survivalClass/manager/display.do" var="displayURL">
 			<spring:param name="survivalClassId" value="${row.id}" />
 		</spring:url>
