@@ -36,14 +36,16 @@
 	´
 	
 	<security:authorize access = "hasRole('MANAGER')">
-	<display:column>
-	
+	<spring:message code="note.reply" var="Reply" />
+	<display:column title="${Reply}" sortable="true">
+		<jstl:if test="${row.replyMoment==null}">
 		<spring:url value="note/manager/reply.do" var="replyURL">
 			<spring:param name="noteId" value="${row.id}" />
 		</spring:url>
 		<a href="${replyURL}"><spring:message code="note.reply" /></a>
-	
+		</jstl:if>
 	</display:column>
+	
 	</security:authorize>
 	
 	

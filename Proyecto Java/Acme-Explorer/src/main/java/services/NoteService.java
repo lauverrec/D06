@@ -96,17 +96,19 @@ public class NoteService {
 		Note result;
 
 		Date replyMoment;
-
+		String reply;
+		int leng = note.getReply().trim().length();
+		reply = note.getReply().trim();
 		replyMoment = new Date(System.currentTimeMillis() - 1000);
-		Assert.isTrue(note.getReply() != "");
-		result = this.noteRepository.save(note);
 
+		if (reply.equals("") && (leng == 0))
+			Assert.isTrue(4 == 3, "reply cannot be blank");
+
+		result = this.noteRepository.save(note);
 		result.setReplyMoment(replyMoment);
 		Assert.notNull(result);
-
 		return result;
 	}
-
 	// Other business methods------------------------------------------------------
 
 	//Yo le paso una nota instrumentada y le hago un set reply y un setreplymoment
