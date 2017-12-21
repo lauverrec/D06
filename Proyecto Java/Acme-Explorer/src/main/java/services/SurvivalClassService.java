@@ -72,7 +72,7 @@ public class SurvivalClassService {
 
 		location.setLatitude(37.35);
 		location.setLongitude(-5.98);
-		location.setName("por defecto");
+		location.setName("by default");
 		result = new SurvivalClass();
 		result.setManager(managerPrincipal);
 		result.setExplorers(explorers);
