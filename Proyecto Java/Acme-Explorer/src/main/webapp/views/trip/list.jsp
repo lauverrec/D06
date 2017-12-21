@@ -161,12 +161,14 @@
 	
 	<security:authorize access= "hasRole('MANAGER')">
 	<spring:message code="trip.stage" var="Stages" />
+	<jstl:if test="${row.manager==manager && row.cancelled==false && util.finishDateFuture(row.finishDate)==true}">
 	<display:column title="${Stages}" sortable="true">
 		<spring:url value="stage/manager/list.do" var="stageURL">
 			<spring:param name="tripId" value="${row.id }" />
 		</spring:url>
 			<a href="${stageURL}"><spring:message code="trip.stage" /></a>
 	</display:column>
+	</jstl:if>
 	</security:authorize>
 		<security:authorize access="hasRole('MANAGER')">
 	<spring:message code="trip.publicationDate" var="publicationDate" />	

@@ -109,7 +109,7 @@ public class AuditRecordAuditorController extends AbstractController {
 		Trip trip;
 
 		if (bindingResult.hasErrors())
-			result = this.createEditModelAndView(auditRecord);
+			result = this.createEditModelAndView(auditRecord, "auditRecordError.commit.error");
 		else
 			try {
 				auditRecord = this.auditRecordService.save(auditRecord);
