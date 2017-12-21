@@ -65,11 +65,12 @@ public class StageService {
 		trip = this.tripService.findOne(trip.getId());
 
 		result = this.stageRepository.save(stage);
+		if (!trip.getStages().contains(result))
+			trip.getStages().add(result);
+
 		//Si se añade stage (objeto no instrumentado) en vez de result (objeto instrumentado) daria un error de transient
 		//Se añade el result al Trip manualmente porque es unidireccional la relacion
-
-		if (result.getId() == 0)
-			trip.getStages().add(result);
+		//
 
 		return result;
 	}

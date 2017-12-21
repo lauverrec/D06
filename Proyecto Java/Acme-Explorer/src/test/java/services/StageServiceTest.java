@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import utilities.AbstractTest;
+import domain.Manager;
 import domain.Stage;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -28,6 +29,8 @@ public class StageServiceTest extends AbstractTest {
 	// Supporting services ----------------------------------------------------
 	@Autowired
 	private TripService		tripService;
+	@Autowired
+	private ManagerService	managerService;
 
 
 	@Test
@@ -42,10 +45,16 @@ public class StageServiceTest extends AbstractTest {
 	@Test
 	public void testSave() {
 		Stage stage;
+		double price = 20.0;
+		Manager m;
+		m = this.managerService.findOne(13272);
+
+		this.authenticate(m.getUserAccount().getUsername());
 
 		stage = this.stageService.create();
 		stage.setTitle("title test");
 		stage.setDescription("description test");
+		stage.setPrice(price);
 		stage.setTrip(this.tripService.findOne(super.getEntityId("trip1")));
 		stage = this.stageService.save(stage);
 		Assert.isTrue(stage.getId() != 0);
