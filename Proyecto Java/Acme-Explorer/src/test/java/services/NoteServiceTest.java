@@ -62,7 +62,7 @@ public class NoteServiceTest extends AbstractTest {
 
 		body = "note's test body";
 
-		note.setRemark(5);
+		note.setRemark("remark");
 		note.setBody(body);
 
 		auditor = this.auditorService.findByPrincipal();
