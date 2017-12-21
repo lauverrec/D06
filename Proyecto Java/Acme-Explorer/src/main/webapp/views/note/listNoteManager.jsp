@@ -26,7 +26,8 @@
 	
 	
 	<security:authorize access = "hasRole('MANAGER')">
-	<display:column>
+	<spring:message code="note.display" var="display"/>
+	<display:column title="${display}" sortable="true">
 		<spring:url value="note/manager/display.do" var="editURL">
 			<spring:param name="noteId" value="${row.id}" />
 		</spring:url>
