@@ -26,7 +26,8 @@
 
 	<!-- Botones para sponsor -->
 	<security:authorize access="hasRole('SPONSOR')">
-		<display:column>
+		<spring:message code="message.display" var="displayMessageHeader" />
+		<display:column title="${displayMessageHeader}" sortable="true">
 			<spring:url value="message/sponsor/display.do"
 				var="displaySponsorURL">
 				<spring:param name="messageId" value="${row.id}" />
@@ -36,12 +37,15 @@
 					code="message.display" /></a>
 		</display:column>
 
-		<display:column>
+		<spring:message code="message.changefolder.link"
+			var="changefolderMessageHeader" />
+		<display:column title="${changefolderMessageHeader}" sortable="true">
 			<a href="message/sponsor/changefolder.do?messageId=${row.id}"><spring:message
 					code="message.changefolder.link" /></a>
 		</display:column>
 
-		<display:column>
+		<spring:message code="message.delete.link" var="deleteMessageHeader" />
+		<display:column title="${deleteMessageHeader}" sortable="true">
 			<a href="message/sponsor/delete.do?messageId=${row.id}"><spring:message
 					code="message.delete.link" /></a>
 		</display:column>
@@ -52,7 +56,8 @@
 
 	<!-- Botones para administrator -->
 	<security:authorize access="hasRole('ADMINISTRATOR')">
-		<display:column>
+		<spring:message code="message.display" var="displayMessageHeader" />
+		<display:column title="${displayMessageHeader}" sortable="true">
 			<spring:url value="message/administrator/display.do"
 				var="displayAdministratorURL">
 				<spring:param name="messageId" value="${row.id}" />
@@ -61,11 +66,16 @@
 			<a href="${displayAdministratorURL}"><spring:message
 					code="message.display" /></a>
 		</display:column>
-		<display:column>
+
+		<spring:message code="message.changefolder.link"
+			var="changefolderMessageHeader" />
+		<display:column title="${changefolderMessageHeader}" sortable="true">
 			<a href="message/administrator/changefolder.do?messageId=${row.id}"><spring:message
 					code="message.changefolder.link" /></a>
 		</display:column>
-		<display:column>
+
+		<spring:message code="message.delete.link" var="deleteMessageHeader" />
+		<display:column title="${deleteMessageHeader}" sortable="true">
 			<a href="message/administrator/delete.do?messageId=${row.id}"><spring:message
 					code="message.delete.link" /></a>
 		</display:column>
@@ -75,7 +85,8 @@
 
 	<!-- Botones para ranger -->
 	<security:authorize access="hasRole('RANGER')">
-		<display:column>
+		<spring:message code="message.display" var="displayMessageHeader" />
+		<display:column title="${displayMessageHeader}" sortable="true">
 			<spring:url value="message/ranger/display.do" var="displayRangerURL">
 				<spring:param name="messageId" value="${row.id}" />
 			</spring:url>
@@ -84,12 +95,15 @@
 					code="message.display" /></a>
 		</display:column>
 
-		<display:column>
+		<spring:message code="message.changefolder.link"
+			var="changefolderMessageHeader" />
+		<display:column title="${changefolderMessageHeader}" sortable="true">
 			<a href="message/ranger/changefolder.do?messageId=${row.id}"><spring:message
 					code="message.changefolder.link" /></a>
 		</display:column>
 
-		<display:column>
+		<spring:message code="message.delete.link" var="deleteMessageHeader" />
+		<display:column title="${deleteMessageHeader}" sortable="true">
 			<a href="message/ranger/delete.do?messageId=${row.id}"><spring:message
 					code="message.delete.link" /></a>
 		</display:column>
@@ -99,7 +113,8 @@
 
 	<!-- Botones para explorer -->
 	<security:authorize access="hasRole('EXPLORER')">
-		<display:column>
+		<spring:message code="message.display" var="displayMessageHeader" />
+		<display:column title="${displayMessageHeader}" sortable="true">
 			<spring:url value="message/explorer/display.do"
 				var="displayExplorerURL">
 				<spring:param name="messageId" value="${row.id}" />
@@ -109,12 +124,15 @@
 					code="message.display" /></a>
 		</display:column>
 
-		<display:column>
+		<spring:message code="message.changefolder.link"
+			var="changefolderMessageHeader" />
+		<display:column title="${changefolderMessageHeader}" sortable="true">
 			<a href="message/explorer/changefolder.do?messageId=${row.id}"><spring:message
 					code="message.changefolder.link" /></a>
 		</display:column>
 
-		<display:column>
+		<spring:message code="message.delete.link" var="deleteMessageHeader" />
+		<display:column title="${deleteMessageHeader}" sortable="true">
 			<a href="message/explorer/delete.do?messageId=${row.id}"><spring:message
 					code="message.delete.link" /></a>
 		</display:column>
@@ -125,7 +143,8 @@
 
 	<!-- Botones para manager -->
 	<security:authorize access="hasRole('MANAGER')">
-		<display:column>
+		<spring:message code="message.display" var="displayMessageHeader" />
+		<display:column title="${displayMessageHeader}" sortable="true">
 			<spring:url value="message/manager/display.do"
 				var="displayManagerURL">
 				<spring:param name="messageId" value="${row.id}" />
@@ -135,12 +154,15 @@
 					code="message.display" /></a>
 		</display:column>
 
-		<display:column>
+		<spring:message code="message.changefolder.link"
+			var="changefolderMessageHeader" />
+		<display:column title="${changefolderMessageHeader}" sortable="true">
 			<a href="message/manager/changefolder.do?messageId=${row.id}"><spring:message
 					code="message.changefolder.link" /></a>
 		</display:column>
 
-		<display:column>
+		<spring:message code="message.delete.link" var="deleteMessageHeader" />
+		<display:column title="${deleteMessageHeader}" sortable="true">
 			<a href="message/manager/delete.do?messageId=${row.id}"><spring:message
 					code="message.delete.link" /></a>
 		</display:column>
@@ -150,7 +172,8 @@
 
 	<!-- Botones para auditor -->
 	<security:authorize access="hasRole('AUDITOR')">
-		<display:column>
+		<spring:message code="message.display" var="displayMessageHeader" />
+		<display:column title="${displayMessageHeader}" sortable="true">
 			<spring:url value="message/auditor/display.do"
 				var="displayAuditorURL">
 				<spring:param name="messageId" value="${row.id}" />
@@ -160,13 +183,16 @@
 					code="message.display" /></a>
 		</display:column>
 
-		<display:column>
+		<spring:message code="message.changefolder.link"
+			var="changefolderMessageHeader" />
+		<display:column title="${changefolderMessageHeader}" sortable="true">
 			<a href="message/auditor/changefolder.do?messageId=${row.id}"><spring:message
 					code="message.changefolder.link" /></a>
 		</display:column>
 
 
-		<display:column>
+		<spring:message code="message.delete.link" var="deleteMessageHeader" />
+		<display:column title="${deleteMessageHeader}" sortable="true">
 			<a href="message/auditor/delete.do?messageId=${row.id}"><spring:message
 					code="message.delete.link" /></a>
 		</display:column>

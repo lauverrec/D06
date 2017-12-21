@@ -56,7 +56,7 @@
 		<spring:message code="messageFolder.displayMessages" var="displayMessagesHeader" />
 		<display:column title="${displayMessagesHeader}" sortable="true">
 			<spring:url value="message/sponsor/list.do"
-				var="listMessagesSponsorRL">
+				var="listMessagesSponsorURL">
 				<spring:param name="messageFolderId" value="${row.id }"></spring:param>
 			</spring:url>
 			<a href="${listMessagesSponsorURL }"><spring:message
@@ -100,10 +100,10 @@
 	<spring:message code="messageFolder.displayMessages" var="displayMessagesHeader" />
 		<display:column title="${displayMessagesHeader}" sortable="true">
 			<spring:url value="message/administrator/list.do"
-				var="listMessagesURL">
+				var="listMessagesAdministratorURL">
 				<spring:param name="messageFolderId" value="${row.id }"></spring:param>
 			</spring:url>
-			<a href="${listMessagesURL }"><spring:message
+			<a href="${listMessagesAdministratorURL }"><spring:message
 					code="messageFolder.displayMessages" /></a>
 		</display:column>
 	</security:authorize>
