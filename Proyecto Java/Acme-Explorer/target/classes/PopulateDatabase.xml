@@ -3169,7 +3169,7 @@
 
 	<bean id="note1" class="domain.Note">
 		<property name="createdMoment" value="2017/10/01 15:25" />
-		<property name="remark" value="3" />
+		<property name="remark" value="remark1" />
 		<property name="auditor" ref="auditor1" />
 		<property name="body" value="Description note 1 viagra" />
 		<property name="reply" value="reply note 1" />
@@ -3178,7 +3178,7 @@
 
 	<bean id="note2" class="domain.Note">
 		<property name="createdMoment" value="2017/10/01 15:25" />
-		<property name="remark" value="3" />
+		<property name="remark" value="remark2" />
 		<property name="auditor" ref="auditor1" />
 		<property name="body" value="Description note 2" />
 		<property name="reply" value="reply note 2" />
@@ -3187,7 +3187,7 @@
 
 	<bean id="note3" class="domain.Note">
 		<property name="createdMoment" value="2017/10/01 15:25" />
-		<property name="remark" value="3" />
+		<property name="remark" value="remark3" />
 		<property name="auditor" ref="auditor2" />
 		<property name="body" value="Description note 3" />
 		<property name="reply" value="reply note 3" />
@@ -3195,7 +3195,7 @@
 
 	<bean id="note4" class="domain.Note">
 		<property name="createdMoment" value="2017/10/01 15:25" />
-		<property name="remark" value="3" />
+		<property name="remark" value="remark4" />
 		<property name="auditor" ref="auditor2" />
 		<property name="body" value="Description note 4" />
 		<property name="reply" value="Description note 4" />
@@ -3203,7 +3203,7 @@
 
 	<bean id="note5" class="domain.Note">
 		<property name="createdMoment" value="2017/10/01 15:25" />
-		<property name="remark" value="2" />
+		<property name="remark" value="remark5" />
 		<property name="auditor" ref="auditor3" />
 		<property name="body" value="Description note 5" />
 		<property name="reply" value="Description note 4" />

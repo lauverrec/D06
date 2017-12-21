@@ -23,7 +23,7 @@ public class Note extends DomainEntity {
 	//----------------------------Atributes----------------------------------------
 
 	private Date	createdMoment;
-	private int		remark;
+	private String	remark;
 	private String	reply;
 	private Date	replyMoment;
 	private String	body;
@@ -50,11 +50,12 @@ public class Note extends DomainEntity {
 		this.createdMoment = createdMoment;
 	}
 
-	public int getRemark() {
+	@NotBlank
+	public String getRemark() {
 		return this.remark;
 	}
 
-	public void setRemark(final int remark) {
+	public void setRemark(final String remark) {
 		this.remark = remark;
 	}
 
