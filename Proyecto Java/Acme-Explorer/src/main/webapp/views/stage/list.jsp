@@ -23,6 +23,20 @@
 <display:table name="stages" id="row" requestURI="${requestURI}" pagesize="5" class="displaytag" keepStatus="true">
 
 
+<security:authorize access="hasRole('MANAGER')">
+	
+	<spring:message code="stage.edit" var="Edit" />
+		<display:column title="${Edit}" sortable="true">
+			
+				<spring:url value="stage/manager/edit.do" var="editURL">
+					<spring:param name="stageId" value="${row.id}" />
+				</spring:url>
+				<a href="${editURL}"><spring:message code="stage.edit" /></a>
+		
+		</display:column>		
+	</security:authorize>
+
+
 	<!-- Attributes -->
 	<spring:message code="stage.title" var="titleHeader" />
 	<display:column property="title" title="${titleHeader}" sortable="true" />

@@ -67,7 +67,9 @@ public class StageService {
 		result = this.stageRepository.save(stage);
 		//Si se añade stage (objeto no instrumentado) en vez de result (objeto instrumentado) daria un error de transient
 		//Se añade el result al Trip manualmente porque es unidireccional la relacion
-		trip.getStages().add(result);
+
+		if (result.getId() == 0)
+			trip.getStages().add(result);
 
 		return result;
 	}
@@ -80,7 +82,6 @@ public class StageService {
 
 		//La quito de Trip porque es unidireccional y no se actualiza ambas partes al eliminar el stage de la BD
 		trip = stage.getTrip();
-		Assert.isTrue(trip.getStages().contains(stage));
 		trip.getStages().remove(stage);
 
 		this.stageRepository.delete(stage);

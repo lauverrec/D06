@@ -71,6 +71,11 @@
 	<input type="submit" name="save"
 		value="<spring:message code="stage.save"/>" 
 		/>&nbsp;
+	<jstl:if test="${stage.id !=0}">
+		<input type="submit" name="delete"
+		value="<spring:message code="stage.delete"/>" 
+		/>&nbsp;
+	</jstl:if>
 		
 	
 	<input type="button" name="cancel"
