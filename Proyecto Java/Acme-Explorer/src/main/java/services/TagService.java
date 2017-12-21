@@ -96,19 +96,4 @@ public class TagService {
 		return result;
 	}
 
-	/*
-	 * public Collection<Tag> findAllTagUnique() {
-	 * Collection<Tag> result;
-	 * result = new ArrayList<>(this.tagRepository.findAllTagUnique());
-	 * return result;
-	 * }
-	 */
-
-	/*
-	 * public Collection<Tag> findAllTagByName(String name) {
-	 * Collection<Tag> result;
-	 * result = new ArrayList<>(this.tagRepository.findAllTagByName(name));
-	 * return result;
-	 * }
-	 */
 }

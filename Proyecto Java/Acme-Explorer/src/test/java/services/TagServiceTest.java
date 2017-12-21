@@ -1,6 +1,7 @@
 
 package services;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.junit.Test;
@@ -13,6 +14,7 @@ import org.springframework.util.Assert;
 
 import utilities.AbstractTest;
 import domain.Tag;
+import domain.Trip;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {
@@ -25,6 +27,8 @@ public class TagServiceTest extends AbstractTest {
 
 	@Autowired
 	private TagService	tagService;
+	@Autowired
+	private TripService	tripService;
 
 
 	// Supporting services ----------------------------------------------------
@@ -81,4 +85,27 @@ public class TagServiceTest extends AbstractTest {
 		tags = this.tagService.findAll();
 		Assert.notNull(tags);
 	}
+
+	@Test
+	public void testFindTagById() {
+		Tag result;
+		Tag tag;
+
+		tag = this.tagService.findOne(super.getEntityId("tag1"));
+
+		result = this.tagService.findTagById(tag.getId());
+		Assert.notNull(result);
+	}
+
+	@Test
+	public void findAllTagByTripId() {
+		Collection<Tag> result;
+		Trip trip;
+
+		trip = this.tripService.findOne(super.getEntityId("trip1"));
+		result = new ArrayList<Tag>(this.tagService.findAllTagByTripId(trip.getId()));
+
+		Assert.notNull(result);
+	}
+
 }
