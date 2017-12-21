@@ -25,7 +25,7 @@ public class TripAdministradorController extends AbstractController {
 	//Listing------------------------
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public ModelAndView list(@RequestParam int categoryId) {
+	public ModelAndView list(@RequestParam final int categoryId) {
 
 		ModelAndView result;
 		Collection<Trip> trips;
@@ -37,7 +37,8 @@ public class TripAdministradorController extends AbstractController {
 		result = new ModelAndView("trip/list");
 		result.addObject("trips", trips);
 		result.addObject("price", price);
-		result.addObject("requestURI", "trip/list.do");
+		result.addObject("requestURISearch", "trip/search.do");
+		result.addObject("requestURI", "trip/administrator/list.do");
 
 		return result;
 

@@ -102,7 +102,8 @@ public class FinderExplorerController {
 		result.addObject("trips", trips);
 		result.addObject("finder", finder);
 		result.addObject("price", price);
-		result.addObject("requestURI", "finder/explorer/search.do");
+		result.addObject("requestURI", "finder/explorer/list.do");
+		result.addObject("requestURISearch", "finder/explorer/search.do");
 
 		return result;
 	}

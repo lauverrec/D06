@@ -23,7 +23,7 @@
 
 <!-- Listing trips -->
 
-<form:form action="${requestURI}" modelAttribute="finder" >
+<form:form action="${requestURISearch}" modelAttribute="finder" >
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />
@@ -73,7 +73,7 @@
 </form:form> 
 
 <display:table pagesize="5" class="displaytag" keepStatus="true"
-	name="trips" id="row">
+	name="trips" requestURI="${requestURI}" id="row">
 
  <!-- Display -->
 	<spring:message code="trip.display" var="Display" />

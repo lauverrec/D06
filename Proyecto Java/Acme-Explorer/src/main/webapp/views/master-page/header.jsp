@@ -112,7 +112,6 @@
 				<ul>
 					<li class="arrow"></li>
 					<li><a href="explorer/edit.do"><spring:message code="master.page.explorer.edit" /></a></li>
-					<li><a href="finder/explorer/list.do"><spring:message code="master.page.message.finder" /></a></li>
 				</ul></li>
 				
 				<li><a class="fNiv"><spring:message
@@ -129,6 +128,7 @@
 					<li class="arrow"></li>
 					<li><a href="applicationFor/explorer/list.do"><spring:message code="master.page.explorer.list.applicationFor" /></a></li>
 					<li><a href="trip/explorer/list-not-apply.do"><spring:message code="master.page.explorer.list.not.apply.trips" /></a></li>
+					<li><a href="finder/explorer/list.do"><spring:message code="master.page.message.finder" /></a></li>
 				</ul></li>
 				
 				<li><a class="fNiv"><spring:message

@@ -50,7 +50,8 @@ public class TripExplorerController extends AbstractController {
 		result.addObject("trips", trips);
 		result.addObject("apply", true);
 		result.addObject("price", price);
-		result.addObject("requestURI", "trip/explorer/search.do");
+		result.addObject("requestURISearch", "trip/explorer/search.do");
+		result.addObject("requestURI", "trip/explorer/list-apply.do");
 
 		return result;
 	}
@@ -70,7 +71,8 @@ public class TripExplorerController extends AbstractController {
 		result.addObject("trips", trips);
 		result.addObject("apply", false);
 		result.addObject("price", price);
-		result.addObject("requestURI", "trip/explorer/search.do");
+		result.addObject("requestURISearch", "trip/explorer/search.do");
+		result.addObject("requestURI", "trip/explorer/list-not-apply.do");
 
 		return result;
 	}
@@ -87,7 +89,8 @@ public class TripExplorerController extends AbstractController {
 		result = new ModelAndView("trip/liststory");
 		result.addObject("trips", trips);
 		result.addObject("price", price);
-		result.addObject("requestURI", "trip/explorer/search.do");
+		result.addObject("requestURISearch", "trip/explorer/search.do");
+		result.addObject("requestURI", "trip/explorer/listTrip.do");
 
 		return result;
 	}

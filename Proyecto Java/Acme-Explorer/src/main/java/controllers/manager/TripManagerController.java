@@ -76,6 +76,7 @@ public class TripManagerController extends AbstractController {
 		result.addObject("date", date);
 		result.addObject("price", price);
 		result.addObject("requestURI", "trip/manager_/list.do");
+		result.addObject("requestURISearch", "trip/search.do");
 
 		return result;
 	}
@@ -142,14 +143,14 @@ public class TripManagerController extends AbstractController {
 	//Display
 
 	// Ancillary methods ------------------------------------------------------
-	protected ModelAndView createEditModelAndView(Trip trip) {
+	protected ModelAndView createEditModelAndView(final Trip trip) {
 		ModelAndView result;
 
 		result = this.createEditModelAndView(trip, null);
 		return result;
 	}
 
-	private ModelAndView createEditModelAndView(Trip trip, String message) {
+	private ModelAndView createEditModelAndView(final Trip trip, final String message) {
 		ModelAndView result;
 		Collection<Ranger> rangers;
 		//Collection<LegalText> legalTexts;
@@ -184,7 +185,7 @@ public class TripManagerController extends AbstractController {
 	}
 
 	@RequestMapping(value = "/cancelTrip", method = RequestMethod.POST, params = "save")
-	public ModelAndView cancel(@Valid Trip trip, BindingResult binding) {
+	public ModelAndView cancel(@Valid final Trip trip, final BindingResult binding) {
 		ModelAndView result;
 
 		if (binding.hasErrors())
@@ -220,7 +221,7 @@ public class TripManagerController extends AbstractController {
 	//Tags
 
 	@RequestMapping(value = "/tag/list", method = RequestMethod.GET)
-	public ModelAndView listTag(@RequestParam int tripId) {
+	public ModelAndView listTag(@RequestParam final int tripId) {
 
 		ModelAndView result;
 		//Trip trip;
@@ -240,7 +241,7 @@ public class TripManagerController extends AbstractController {
 	//Editing-----------------
 
 	@RequestMapping(value = "/tag/edit", method = RequestMethod.GET)
-	public ModelAndView editTag(@RequestParam int tagId) {
+	public ModelAndView editTag(@RequestParam final int tagId) {
 
 		ModelAndView result;
 		Tag tag;
@@ -258,7 +259,7 @@ public class TripManagerController extends AbstractController {
 	}
 	//auxiliary------------------
 
-	protected ModelAndView createEditModelAndView(Tag tag) {
+	protected ModelAndView createEditModelAndView(final Tag tag) {
 
 		Assert.notNull(tag);
 		ModelAndView result;
@@ -266,7 +267,7 @@ public class TripManagerController extends AbstractController {
 		return result;
 	}
 
-	protected ModelAndView createEditModelAndView(Tag tag, String messageCode) {
+	protected ModelAndView createEditModelAndView(final Tag tag, final String messageCode) {
 		assert tag != null;
 
 		ModelAndView result;

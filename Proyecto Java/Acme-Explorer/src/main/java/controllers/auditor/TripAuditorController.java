@@ -36,6 +36,7 @@ public class TripAuditorController extends AbstractController {
 		result.addObject("trips", trips);
 		result.addObject("price", price);
 		result.addObject("requestURI", "trip/auditor/list.do");
+		result.addObject("requestURISearch", "trip/search.do");
 
 		return result;
 	}

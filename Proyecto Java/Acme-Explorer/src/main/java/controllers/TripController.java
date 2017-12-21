@@ -58,7 +58,9 @@ public class TripController extends AbstractController {
 
 		result.addObject("trips", trips);
 		result.addObject("price", price);
+		result.addObject("requestURISearch", "trip/search.do");
 		result.addObject("requestURI", "trip/search.do");
+		result.addObject("showSearch", true);
 
 		return result;
 	}
@@ -76,7 +78,9 @@ public class TripController extends AbstractController {
 		result = new ModelAndView("trip/list");
 		result.addObject("trips", trips);
 		result.addObject("price", price);
-		result.addObject("requestURI", "trip/search.do");
+		result.addObject("requestURISearch", "trip/search.do");
+		result.addObject("requestURI", "trip/list.do");
+		result.addObject("showSearch", true);
 
 		return result;
 	}
@@ -91,7 +95,8 @@ public class TripController extends AbstractController {
 
 		result = new ModelAndView("trip/list");
 		result.addObject("trips", trips);
-		result.addObject("requestURI", "trip/search.do");
+		result.addObject("requestURISearch", "trip/search.do");
+		result.addObject("requestURI", "trip/list.do");
 
 		return result;
 	}

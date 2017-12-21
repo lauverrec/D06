@@ -22,8 +22,8 @@
 <jsp:useBean id="util" class="utilities.Methodutilities" scope="page" />
 
 <!-- Listing trips -->
-
-<form:form action="${requestURI}" method="get">
+<jstl:if test="${showSearch}">
+<form:form action="${requestURISearch}" method="get">
 
 	<label><spring:message code="trip.search.keyword"/></label>
 	<input type="text" name="keyword"/> <br />
@@ -32,6 +32,7 @@
 	<input type="submit" value="<spring:message code="trip.search" />" /> 	 
 	
 </form:form>
+</jstl:if>
 
 
 	<%-- <spring:url value="applicationFor/manager/edit.do" var="editlink">
