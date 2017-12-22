@@ -193,6 +193,7 @@ public class TripManagerController extends AbstractController {
 			result = this.createEditModelAndView(trip);
 		else
 			try {
+
 				Assert.isTrue(!trip.getReasonWhy().trim().isEmpty());
 				this.tripService.cancel(trip);
 				this.tripService.save(trip);
