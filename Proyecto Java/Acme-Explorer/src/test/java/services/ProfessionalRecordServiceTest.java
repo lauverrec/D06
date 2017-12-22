@@ -43,6 +43,7 @@ public class ProfessionalRecordServiceTest extends AbstractTest {
 	@Test
 	public void testSave() {
 		ProfessionalRecord professionalRecord;
+		this.authenticate("ranger1");
 		professionalRecord = this.professionalRecordService.create();
 
 		professionalRecord.setCompanyName("company Name 10");
@@ -52,19 +53,19 @@ public class ProfessionalRecordServiceTest extends AbstractTest {
 
 		ProfessionalRecord newProfessionalRecord = this.professionalRecordService.save(professionalRecord);
 		Assert.notNull(newProfessionalRecord);
+		this.authenticate(null);
 	}
 
 	@Test
 	public void testFindOne() {
-
-		ProfessionalRecord professionalRecord = this.professionalRecordService.findOne(super.getEntityId("professionalRecord1"));
+		ProfessionalRecord professionalRecord;
+		professionalRecord = this.professionalRecordService.findOne(super.getEntityId("professionalRecord1"));
 		Assert.notNull(professionalRecord);
-
 	}
 
 	@Test
 	public void testDelete() {
-
+		this.authenticate("ranger1");
 		ProfessionalRecord professionalRecord;
 		professionalRecord = this.professionalRecordService.create();
 
@@ -75,6 +76,7 @@ public class ProfessionalRecordServiceTest extends AbstractTest {
 
 		ProfessionalRecord newProfessionalRecord = this.professionalRecordService.save(professionalRecord);
 		this.professionalRecordService.delete(newProfessionalRecord);
+		this.authenticate(null);
 	}
 
 	@Test
