@@ -34,7 +34,7 @@
 	<form:label path="bannerURL">
 		<spring:message code="sponsorship.bannerURL" />:
 	</form:label>
-	<form:input path="bannerURL" />
+	<form:input path="bannerURL" placeholder="http://"/>
 	<form:errors cssClass="error" path="bannerURL" />
 	<br />
 	
@@ -43,7 +43,7 @@
 	<form:label path="link">
 		<spring:message code="sponsorship.link" />:
 	</form:label>
-	<form:input path="link" />
+	<form:input path="link" placeholder="http://"/>
 	<form:errors cssClass="error" path="link" />
 	<br />
 	<br/> 
@@ -72,7 +72,7 @@
 	<form:label path="creditCard.number">
 		<spring:message code="sponsorship.creditCard.number" />:
 	</form:label>
-	<form:input path="creditCard.number" />
+	<form:input path="creditCard.number" placeholder="XXXXXXXXXXXXXXXX"/>
 	<form:errors cssClass="error" path="creditCard.number" />
 	<br/>
 	

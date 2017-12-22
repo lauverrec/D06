@@ -74,7 +74,7 @@
 	<form:label path="creditCard.number">
 		<spring:message code="applicationfor.creditCard.number" />:
 	</form:label>
-	<form:input path="creditCard.number" />
+	<form:input path="creditCard.number" placeholder="XXXXXXXXXXXXXXXX"/>
 	<form:errors cssClass="error" path="creditCard.number" />
 	<br/>
 	
