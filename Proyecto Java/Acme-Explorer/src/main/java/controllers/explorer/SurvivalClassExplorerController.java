@@ -96,4 +96,20 @@ public class SurvivalClassExplorerController {
 		return result;
 
 	}
+
+	// Display ----------------------------------------------------------------
+
+	@RequestMapping(value = "/display", method = RequestMethod.GET)
+	public ModelAndView display(@RequestParam final int survivalClassId) {
+		ModelAndView result;
+		SurvivalClass survivalClass;
+
+		survivalClass = this.survivalClassService.findOne(survivalClassId);
+		result = new ModelAndView("survivalClass/display");
+		result.addObject("requestURI", "survivalClass/explorer/display.do");
+		result.addObject("survivalClass", survivalClass);
+
+		return result;
+	}
+
 }

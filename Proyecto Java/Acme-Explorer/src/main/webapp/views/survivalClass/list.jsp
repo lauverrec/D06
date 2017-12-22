@@ -80,6 +80,7 @@
 
 
 	<!-- El boton de display estara siempre presente en todos los usuarios que puedan acceder al listado de survival Class -->
+	<security:authorize access="hasRole('MANAGER')">
 	<spring:message code="survivalClass.display" var="display"></spring:message>
 	<display:column title="${display}" sortable="true">
 		<spring:url value="survivalClass/manager/display.do" var="displayURL">
@@ -88,6 +89,18 @@
 		<a href="${displayURL}"><spring:message
 				code="survivalClass.display" /></a>
 	</display:column>
+	</security:authorize>
+	
+	<security:authorize access="hasRole('EXPLORER')">
+	<spring:message code="survivalClass.display" var="display"></spring:message>
+	<display:column title="${display}" sortable="true">
+		<spring:url value="survivalClass/explorer/display.do" var="displayURL">
+			<spring:param name="survivalClassId" value="${row.id}" />
+		</spring:url>
+		<a href="${displayURL}"><spring:message
+				code="survivalClass.display" /></a>
+	</display:column>
+	</security:authorize>
 
 
 	<!-- Attributes -->
