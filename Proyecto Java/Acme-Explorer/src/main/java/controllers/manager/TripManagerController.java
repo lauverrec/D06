@@ -177,6 +177,7 @@ public class TripManagerController extends AbstractController {
 
 		manager = this.managerService.findByPrincipal();
 		trip = this.tripService.findOne(tripId);
+
 		Assert.isTrue(trip.getManager().equals(manager), "Cannot commit this operation, because it's illegal");
 		result = this.createCancelModelAndView(trip);
 		result.addObject("trip", trip);
@@ -192,6 +193,8 @@ public class TripManagerController extends AbstractController {
 			result = this.createEditModelAndView(trip);
 		else
 			try {
+
+				Assert.isTrue(!trip.getReasonWhy().trim().isEmpty());
 				this.tripService.cancel(trip);
 				this.tripService.save(trip);
 				result = new ModelAndView("redirect:list.do");

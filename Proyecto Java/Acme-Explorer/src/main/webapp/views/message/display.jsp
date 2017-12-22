@@ -157,7 +157,7 @@
 
 	<div>
 		<spring:url value="message/auditor/reply.do"
-			var="replyAuditorrURL">
+			var="replyAuditorURL">
 			<spring:param name="messageId" value="${row.id}" />
 		</spring:url>
 		<spring:message code="message.reply.link" var="replyLink"></spring:message>
