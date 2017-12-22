@@ -48,14 +48,14 @@
 	<form:label path="link">
 		<spring:message code="professionalRecord.link" />:
 	</form:label>
-	<form:input path="link"/>
+	<form:input path="link" placeholder="http://"/>
 	<form:errors cssClass="error" path="link" />
 	<br />
 	
 	<form:label path="comments">
 		<spring:message code="professionalRecord.comments" />:
 	</form:label>
-	<form:input path="comments" placeholder="http://"/>
+	<form:input path="comments" />
 	<form:errors cssClass="error" path="comments" />
 	<br />
 	
