@@ -79,7 +79,7 @@
 				</security:authorize>
 				<!-- Enlace para auditor -->
 				<security:authorize access="hasRole('AUDITOR')">
-					<spring:url value="message/administrator/display.do"
+					<spring:url value="message/auditor/display.do"
 						var="displayMessageURL">
 
 						<spring:param name="messageId" value="${messag.id}" />
@@ -87,7 +87,7 @@
 				</security:authorize>
 				<!-- Enlace para explorer -->
 				<security:authorize access="hasRole('EXPLORER')">
-					<spring:url value="message/administrator/display.do"
+					<spring:url value="message/explorer/display.do"
 						var="displayMessageURL">
 
 						<spring:param name="messageId" value="${messag.id}" />

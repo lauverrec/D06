@@ -208,6 +208,9 @@
 
 	<spring:message code="message.subject" var="subjectHeader" />
 	<display:column property="subject" title="${subjectHeader}" />
+	
+	<spring:message code="message.sender" var="senderHeader" />
+	<display:column property="sender.name" title="${senderHeader}" />
 
 
 </display:table>
