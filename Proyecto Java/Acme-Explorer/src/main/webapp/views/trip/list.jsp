@@ -74,31 +74,20 @@
 	</security:authorize>
 	
 <!-- Apply Para un Explorer-->
-	<security:authorize access="hasRole('EXPLORER')">
-	
-		<jstl:if test="${apply}">
-			<display:column>
-				<spring:url value="applicationFor/explorer/cancel.do" var="applyURL">
-					<spring:param name="tripId" value="${row.id }" />
-				</spring:url>
-				<a href="${cancelURL}"><spring:message code="trip.cancel" /></a>
-			</display:column>
-		</jstl:if> 
-		
-		<jstl:if test="${!apply}">
-			<display:column>
-				<spring:url value="applicationFor/explorer/edit.do" var="applyURL">
-					<spring:param name="tripId" value="${row.id }" />
-				</spring:url>
+	<security:authorize access="hasRole('EXPLORER')">			
+		<spring:message code="trip.apply1" var="apply1" />
+		<display:column title="${apply1}" sortable="true">
+			<spring:url value="applicationFor/explorer/edit.do" var="applyURL">
+				<spring:param name="tripId" value="${row.id }" />
+			</spring:url>
 				<a href="${applyURL}"><spring:message code="trip.apply" /></a>
-			</display:column>
-		</jstl:if> 
-		
+		</display:column>		
 	</security:authorize>
 	
 <!-- survivalClass  Para un Explorer-->
 	<security:authorize access="hasRole('EXPLORER')">
-	<display:column>
+	<spring:message code="trip.classes" var="classes" />
+	<display:column title="${classes}" sortable="true">
 		<spring:url value="survivalClass/explorer/list-enrol.do" var="displayURL">
 			<spring:param name="tripId" value="${row.id}" />
 		</spring:url>

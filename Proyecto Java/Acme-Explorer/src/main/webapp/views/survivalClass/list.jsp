@@ -34,7 +34,8 @@
 			<spring:url value="survivalClass/explorer/list-not-enrol.do" var="enrolURL">
 				<spring:param name="tripId" value="${tripId}" />
 			</spring:url>
-			<a href="${enrolURL}"><spring:message code="survivalClass.showNotEnrol" /></a>			
+			<a href="${enrolURL}"><spring:message code="survivalClass.showNotEnrol" /></a><br />
+			<br />			
 		</jstl:otherwise>
 	</jstl:choose>		
 </security:authorize>
