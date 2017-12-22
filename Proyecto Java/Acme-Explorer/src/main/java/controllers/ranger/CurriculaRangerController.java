@@ -57,6 +57,7 @@ public class CurriculaRangerController extends AbstractController {
 			result.addObject("professionalRecord", curricula.getProfessionalRecords());
 			result.addObject("educationRecord", curricula.getEducationRecords());
 			result.addObject("personalRecord", curricula.getPersonalRecord());
+			result.addObject("showLink", true);
 		}
 
 		return result;

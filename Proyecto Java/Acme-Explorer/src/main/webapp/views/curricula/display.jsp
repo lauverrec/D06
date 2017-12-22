@@ -74,6 +74,7 @@
 	<display:column property="linkedProfile" title="${linkedProfileHeader}"
 		sortable="true" />
 	
+	<jstl:if test="${showLink}">
 	<security:authorize access="hasRole('RANGER')">
 		<spring:message code="curricula.edit" var="editPersonal" />
 		<display:column title="${editPersonal}">
@@ -83,6 +84,7 @@
 			<a href="${editlink}"><spring:message code="curricula.edit" /></a>
 		</display:column>
 	</security:authorize>
+	</jstl:if>
 	
 </display:table>
 
@@ -111,6 +113,7 @@
 	<display:column property="comments" title="${commentsHeader}"
 		sortable="true" />
 	
+	<jstl:if test="${showLink}">
 	<security:authorize access="hasRole('RANGER')">
 		<spring:message code="curricula.edit" var="editEducation" />
 		<display:column title="${editEducation}">
@@ -120,14 +123,17 @@
 			<a href="${editlink}"><spring:message code="curricula.edit" /></a>
 		</display:column>
 	</security:authorize>
+	</jstl:if>
 	
 </display:table>
 
+<jstl:if test="${showLink}">
 <security:authorize access="hasRole('RANGER')">
 	<spring:url value="educationRecord/ranger/create.do" var="linkcreate" />
 	<a href="${linkcreate}"><spring:message
 			code="curricula.educationRecord.create" /></a>
 </security:authorize>
+</jstl:if>
 
 <spring:message code="curricula.professionalRecord" var="professionalHeader" />
 <h2><jstl:out value="${professionalHeader}"></jstl:out></h2>
@@ -153,7 +159,8 @@
 	<spring:message code="curricula.professionalRecord.comments" var="commentsHeader" />
 	<display:column property="comments" title="${commentsHeader}"
 		sortable="true" />
-		
+	
+	<jstl:if test="${showLink}">
 	<security:authorize access="hasRole('RANGER')">
 		<spring:message code="curricula.edit" var="editProfessional" />
 		<display:column title="${editProfessional}">
@@ -163,14 +170,17 @@
 			<a href="${editlink}"><spring:message code="curricula.edit" /></a>
 		</display:column>
 	</security:authorize>
+	</jstl:if>
 	
 </display:table>
 
+<jstl:if test="${showLink}">
 <security:authorize access="hasRole('RANGER')">
 	<spring:url value="professionalRecord/ranger/create.do" var="linkcreate" />
 	<a href="${linkcreate}"><spring:message
 			code="curricula.professionalRecord.create" /></a>
 </security:authorize>
+</jstl:if>
 
 <spring:message code="curricula.endorserRecord" var="endorserHeader" />
 <h2><jstl:out value="${endorserHeader}"></jstl:out></h2>
@@ -196,7 +206,8 @@
 	<spring:message code="curricula.endorserRecord.phone" var="phoneHeader" />
 	<display:column property="phone" title="${phoneHeader}"
 		sortable="true" />
-		
+	
+	<jstl:if test="${showLink}">	
 	<security:authorize access="hasRole('RANGER')">
 		<spring:message code="curricula.edit" var="editEndorser" />
 		<display:column title="${editEndorser}">
@@ -206,14 +217,17 @@
 			<a href="${editlink}"><spring:message code="curricula.edit" /></a>
 		</display:column>
 	</security:authorize>
+	</jstl:if>
 	
 </display:table>
 
+<jstl:if test="${showLink}">
 <security:authorize access="hasRole('RANGER')">
 	<spring:url value="endorserRecord/ranger/create.do" var="linkcreate" />
 	<a href="${linkcreate}"><spring:message
 			code="curricula.endorserRecord.create" /></a>
 </security:authorize>
+</jstl:if>
 
 
 <spring:message code="curricula.miscellaneousRecord" var="miscellaneousHeader" />
@@ -233,6 +247,7 @@
 	<display:column property="comments" title="${commentsHeader}"
 		sortable="true" />
 		
+	<jstl:if test="${showLink}">
 	<security:authorize access="hasRole('RANGER')">
 		<spring:message code="curricula.edit" var="editMiscellaneous" />
 		<display:column title="${editMiscellaneous}">
@@ -242,19 +257,15 @@
 			<a href="${editlink}"><spring:message code="curricula.edit" /></a>
 		</display:column>
 	</security:authorize>
-	
-	
+	</jstl:if>
 	
 </display:table>
 
+<jstl:if test="${showLink}">
 <security:authorize access="hasRole('RANGER')">
 	<spring:url value="miscellaneousRecord/ranger/create.do" var="linkcreate" />
 	<a href="${linkcreate}"><spring:message
 			code="curricula.miscellaneousRecord.create" /></a>
 </security:authorize>
-
-
-
-
-
+</jstl:if>
 </jstl:if>
