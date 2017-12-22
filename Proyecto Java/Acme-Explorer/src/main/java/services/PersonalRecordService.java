@@ -64,11 +64,6 @@ public class PersonalRecordService {
 		PersonalRecord result;
 
 		result = this.personalRecordRepository.save(personalRecord);
-		//Se comenta el siguiente codigo porque en PersonalRecordRangerController es donde le asigno a la curricula el personalRecord
-		//		rangerPrincipal = this.rangerService.findByPrincipal();
-		//		curriculaPrincipal = this.curriculaService.findCurriculaFromRanger(rangerPrincipal.getId());
-		//		if (!curriculaPrincipal.getPersonalRecord().equals(personalRecord))
-		//			curriculaPrincipal.setPersonalRecord(personalRecord);
 
 		Assert.notNull(result);
 

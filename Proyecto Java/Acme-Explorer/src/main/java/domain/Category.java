@@ -17,9 +17,6 @@ import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Access(AccessType.PROPERTY)
-//@Table(uniqueConstraints = {
-//	@UniqueConstraint(columnNames = "name"), @UniqueConstraint(columnNames = "fatherCategory_id")
-//})
 public class Category extends DomainEntity {
 
 	// Attributes -------------------------------------------------------------

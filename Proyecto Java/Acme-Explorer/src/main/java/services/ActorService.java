@@ -164,14 +164,6 @@ public class ActorService {
 		return result;
 	}
 
-	//	public Collection<Actor> isSuspicious() {
-	//		Collection<Actor> result;
-	//		this.suspicious();
-	//		result = this.actorRepository.isSuspicious();
-	//
-	//		return result;
-	//	}
-
 	public Collection<Actor> suspicious() {
 
 		Collection<Explorer> explorers;

@@ -34,9 +34,6 @@ public class TripController extends AbstractController {
 	private TagService			tagService;
 
 
-	//@Autowired
-	//private ExplorerService	explorerService;
-
 	// Constructors -----------------------------------------------------------
 	public TripController() {
 

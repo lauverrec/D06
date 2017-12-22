@@ -40,9 +40,6 @@ public class ValueManagerController {
 		ModelAndView result;
 		Value value = new Value();
 
-		//AQUI ESTA EL FALLO CREO
-		//value = this.valueService.create(tripId, tagId);
-
 		value = this.valueService.create();
 
 		this.tag = this.tagService.findOne(tagId);
@@ -61,6 +58,7 @@ public class ValueManagerController {
 		else
 			try {
 				Trip trip1 = this.trip;
+				Assert.isTrue(trip1.getReasonWhy().trim().isEmpty());
 				Tag tag1 = this.tag;
 				this.valueService.save1(value, trip1, tag1);
 				result = new ModelAndView("redirect:../../trip/manager_/list.do");

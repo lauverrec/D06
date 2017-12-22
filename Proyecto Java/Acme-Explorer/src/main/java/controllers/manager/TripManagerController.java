@@ -116,6 +116,8 @@ public class TripManagerController extends AbstractController {
 			result = this.createEditModelAndView(trip, "trip.save.commit.error");
 		else
 			try {
+				if (trip.getId() != 0)
+					Assert.isTrue(trip.getReasonWhy().trim().isEmpty());
 				this.tripService.save(trip);
 				result = new ModelAndView("redirect:list.do");
 			} catch (final Throwable oops) {
@@ -153,8 +155,6 @@ public class TripManagerController extends AbstractController {
 	private ModelAndView createEditModelAndView(final Trip trip, final String message) {
 		ModelAndView result;
 		Collection<Ranger> rangers;
-		//Collection<LegalText> legalTexts;
-		//legalTexts = this.legalTextService.findAll();
 		rangers = this.rangerService.findAll();
 		Collection<Tag> tags;
 		tags = new ArrayList<Tag>(this.tagService.findAll());
@@ -163,7 +163,6 @@ public class TripManagerController extends AbstractController {
 		result.addObject("tags", tags);
 		result.addObject("message", message);
 		result.addObject("rangers", rangers);
-		//result.addObject("legalTexts", legalTexts);
 		return result;
 	}
 

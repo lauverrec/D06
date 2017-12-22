@@ -73,7 +73,7 @@ public class TripService {
 	}
 
 	// Simple CRUD methods-----------------------------------------------------
-	//***** TEST HECHO *******
+
 	public Trip create(final Manager manager) {
 
 		Collection<ApplicationFor> applicationsFor;
@@ -105,7 +105,6 @@ public class TripService {
 		return trip;
 	}
 
-	//***** TEST HECHO *******
 	public Trip save(final Trip trip) {
 		Assert.notNull(trip);
 		Trip result;
@@ -121,7 +120,6 @@ public class TripService {
 		return result;
 	}
 
-	//***** TEST HECHO *******
 	public Collection<Trip> findAll() {
 		Collection<Trip> result;
 		result = new ArrayList<Trip>(this.tripRepository.findAll());
@@ -129,7 +127,6 @@ public class TripService {
 		return result;
 	}
 
-	//***** TEST HECHO *******
 	public Trip findOne(final int tripId) {
 		Trip result;
 		Assert.isTrue(tripId != 0);
@@ -137,7 +134,6 @@ public class TripService {
 		return result;
 	}
 
-	//***** TEST HECHO *******
 	public void delete(final Trip trip) {
 		Collection<Story> stories;
 		Collection<Category> categories;
@@ -193,7 +189,7 @@ public class TripService {
 
 	}
 	//	// Other business methods -------------------------------------------------
-	//	//***** TEST HECHO *******
+
 	//	//Para quien no esté autenticado devolvemos todos los trips con restricciones
 	public Collection<Trip> findAllTripsNoAuthenticate() {
 		Collection<Trip> res;
@@ -202,7 +198,6 @@ public class TripService {
 		return res;
 	}
 
-	//	//***** TEST HECHO *******
 	//	//Requisito 12.3
 	public Collection<Trip> findAllTripsPublishedNotStarted() {
 		Collection<Trip> trips;
@@ -211,7 +206,6 @@ public class TripService {
 		return trips;
 	}
 
-	//	//***** TEST HECHO *******
 	//	//Para sacar los trips con estado ACCEPTED para que un explorer pueda cancelarlo
 	public Collection<Trip> findTripsWhitStatusAcceptedNotStarted() {
 		Collection<Trip> trips;
@@ -292,7 +286,7 @@ public class TripService {
 	}
 
 	//	//Todos los Trips que apply un explorer
-	//	//***** TEST HECHO *******
+
 	public Collection<Trip> findAllTripsApplyByExplorerId(final int explorerId) {
 		Collection<Trip> trips;
 		trips = new ArrayList<>(this.tripRepository.findAllTripsApplyByExplorerId(explorerId));
@@ -326,7 +320,7 @@ public class TripService {
 
 	}
 	//Trips auditados por el auditorId
-	//***** TEST HECHO *******
+
 	public Collection<Trip> findByAuditorId(final int auditorId) {
 		Collection<Trip> trips;
 		trips = new ArrayList<Trip>(this.tripRepository.findByAuditorId(auditorId));
@@ -349,21 +343,6 @@ public class TripService {
 		return res;
 	}
 
-	/*
-	 * public Collection<Trip> findAllTripsByTagId(final int tagId) {
-	 * Collection<Trip> res;
-	 * res = this.tripRepository.findAllTripsByTagId(tagId);
-	 * //El resultado SI puede ser null puesto que puede no haber ninguna Trip con ese tag
-	 * return res;
-	 * }
-	 * 
-	 * public Collection<Trip> findAllTripsByTagName(String name) {
-	 * Collection<Trip> res;
-	 * res = this.tripRepository.findAllTripsByTagName(name);
-	 * return res;
-	 * }
-	 */
-
 	public Collection<Trip> findAllTripsByKeyWord(final String keyWord) {
 		final Collection<Trip> res;
 		final Page<Trip> resPage;
@@ -376,18 +355,6 @@ public class TripService {
 		res = resPage.getContent();
 		return res;
 	}
-
-	//	public void setPriceOfTrip(Trip trip) {
-	//		Collection<Stage> stagesOfTrip;
-	//		Double priceOfTrip;
-	//
-	//		priceOfTrip = 0.0;
-	//		stagesOfTrip = this.findOne(trip.getId()).getStages();
-	//
-	//		for (Stage s : stagesOfTrip)
-	//			priceOfTrip = priceOfTrip + s.getTotalPrice();
-	//		trip.setPrice(priceOfTrip);
-	//	}
 
 	public Double findPrice(final int tripId) {
 		Double price;

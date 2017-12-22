@@ -87,10 +87,6 @@ public class ContactEmergencyService {
 		Assert.notNull(contactEmergency);
 		Assert.isTrue(contactEmergency.getId() != 0);
 		Assert.isTrue(this.contactEmergencyRepository.exists(contactEmergency.getId()));
-		//De esta manera falla:
-		//Collection<ContactEmergency> contactsEmergency;
-		//contactsEmergency = this.findContactsEmergencyByContactEmergencyId(contactEmergency.getId());
-		//contactsEmergency.removeAll(contactsEmergency);
 		explorersWithThisContact = this.explorerService.findExplorersByContactEmergencyId(contactEmergency.getId());
 		for (final Explorer e : explorersWithThisContact)
 			e.getContactsEmergency().remove(contactEmergency);
