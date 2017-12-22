@@ -56,6 +56,7 @@ public class MessageFolderService {
 
 		result = this.messageFolderRepository.findOne(mFid);
 		Assert.notNull(result);
+		Assert.isTrue(this.actorService.findPrincipal().getMessagesFolders().contains(result));
 		return result;
 
 	}
@@ -74,10 +75,13 @@ public class MessageFolderService {
 
 		Assert.notNull(messageFolder);
 		Assert.notNull(actor);
+		if (messageFolder.getId() != 0)
+			Assert.isTrue(this.actorService.findPrincipal().getMessagesFolders().contains(messageFolder));
 
 		res = this.messageFolderRepository.save(messageFolder);
 		if (messageFolder.getId() == 0)
 			actor.getMessagesFolders().add(res);
+
 		Assert.notNull(res);
 		return res;
 
