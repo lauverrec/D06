@@ -84,8 +84,6 @@ public class ApplicationForService {
 		result.setExplorer(explorerPrincipal);
 		result.setTrip(trip);
 		result.setCreditCard(creditCard);
-		//trip.setApplicationsFor(applicationsFor);
-		//trip.getApplicationsFor().add(result);
 
 		return result;
 	}
@@ -124,7 +122,6 @@ public class ApplicationForService {
 		else
 
 			result = this.applicationForRepository.save(applicationFor);
-		//trip.getApplicationsFor().add(result);
 		if (applicationFor.getStatus().equals("PENDING") == true)
 			this.messageService.messageForNotificationToStatusPending(applicationFor);
 		else if (applicationFor.getStatus().equals("REJECTED") == true)

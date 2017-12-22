@@ -44,33 +44,4 @@ public class Tag extends DomainEntity {
 		this.values = values;
 	}
 
-	/*
-	 * private Collection<Value> values;
-	 * private Collection<Trip> trips;
-	 * 
-	 * 
-	 * @Valid
-	 * 
-	 * @ManyToMany
-	 * public Collection<Value> getValues() {
-	 * return this.values;
-	 * }
-	 * 
-	 * public void setValues(Collection<Value> values) {
-	 * this.values = values;
-	 * }
-	 * 
-	 * 
-	 * @Valid
-	 * 
-	 * @ManyToMany(mappedBy = "tags")
-	 * public Collection<Trip> getTrips() {
-	 * return this.trips;
-	 * }
-	 * 
-	 * public void setTrips(Collection<Trip> trips) {
-	 * this.trips = trips;
-	 * }
-	 */
-
 }

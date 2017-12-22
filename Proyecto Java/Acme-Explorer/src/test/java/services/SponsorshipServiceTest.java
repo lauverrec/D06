@@ -90,8 +90,6 @@ public class SponsorshipServiceTest extends AbstractTest {
 
 		sponsor = this.sponsorService.findByPrincipal();
 		Assert.notNull(sponsor);
-		//Assert.isTrue(sponsor.getSponsorships().contains(sponsorship));
-		//Assert.isTrue(trip1.getSponsorships().contains(sponsorship));
 
 		super.unauthenticate();
 	}

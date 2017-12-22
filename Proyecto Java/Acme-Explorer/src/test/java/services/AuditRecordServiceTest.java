@@ -76,8 +76,6 @@ public class AuditRecordServiceTest extends AbstractTest {
 		auditRecord = this.auditRecordService.save(auditRecord);
 		auditor = this.auditorService.findByPrincipal();
 		Assert.notNull(auditor);
-		//Assert.isTrue(trip1.getAuditRecords().contains(auditRecord));
-		//Assert.isTrue(auditor.getAuditRecords().contains(auditRecord));
 
 		super.unauthenticate();
 	}

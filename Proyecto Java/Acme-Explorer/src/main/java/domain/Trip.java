@@ -138,7 +138,6 @@ public class Trip extends DomainEntity {
 	// Relationships ----------------------------------------------------------
 	private Manager						manager;
 	private Collection<Stage>			stages;
-	//private Collection<Tag>			tags;
 	private Collection<Value>			values;
 	private Collection<ApplicationFor>	applicationsFor;
 	private Collection<Note>			notes;
