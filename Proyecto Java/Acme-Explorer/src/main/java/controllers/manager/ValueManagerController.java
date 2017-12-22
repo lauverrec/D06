@@ -61,6 +61,7 @@ public class ValueManagerController {
 		else
 			try {
 				Trip trip1 = this.trip;
+				Assert.isTrue(trip1.getReasonWhy().trim().isEmpty());
 				Tag tag1 = this.tag;
 				this.valueService.save1(value, trip1, tag1);
 				result = new ModelAndView("redirect:../../trip/manager_/list.do");

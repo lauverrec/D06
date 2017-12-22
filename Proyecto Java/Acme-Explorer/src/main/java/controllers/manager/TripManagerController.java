@@ -116,6 +116,8 @@ public class TripManagerController extends AbstractController {
 			result = this.createEditModelAndView(trip, "trip.save.commit.error");
 		else
 			try {
+				if (trip.getId() != 0)
+					Assert.isTrue(trip.getReasonWhy().trim().isEmpty());
 				this.tripService.save(trip);
 				result = new ModelAndView("redirect:list.do");
 			} catch (final Throwable oops) {
