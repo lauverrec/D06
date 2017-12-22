@@ -23,23 +23,6 @@ public class SuspiciousAdministratorController extends AbstractController {
 	private ActorService	actorService;
 
 
-	//	//Listing
-	//
-	//	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	//	public ModelAndView list() {
-	//
-	//		ModelAndView result;
-	//		Collection<Actor> suspicious;
-	//
-	//		suspicious = this.actorService.suspicious();
-	//
-	//		result = new ModelAndView("administrator/suspicious");
-	//		result.addObject("suspicious", suspicious);
-	//
-	//		return result;
-	//
-	//	}
-
 	// Listing ----------------------------------------------------------------
 
 	@RequestMapping("/list_ban")
@@ -110,43 +93,5 @@ public class SuspiciousAdministratorController extends AbstractController {
 
 		return result;
 	}
-
-	//	@RequestMapping(value = "/ban", method = RequestMethod.GET)
-	//	public ModelAndView ban(@RequestParam final int actorId) {
-	//		ModelAndView result;
-	//		Actor actor;
-	//		actor = this.actorService.findOne(actorId);
-	//		this.actorService.ban(actor);
-	//		result = new ModelAndView("administrator/suspicious");
-	//
-	//		return result;
-	//	}
-	//
-	//	@RequestMapping(value = "/unban", method = RequestMethod.GET)
-	//	public ModelAndView unban(@RequestParam final int actorId) {
-	//		ModelAndView result;
-	//		Actor actor;
-	//		actor = this.actorService.findOne(actorId);
-	//		this.actorService.unban(actor);
-	//		result = new ModelAndView("administrator/suspicious");
-	//
-	//		return result;
-	//	}
-	//
-	//	protected ModelAndView createBanModelAndView(final Actor ban) {
-	//		ModelAndView result;
-	//
-	//		result = this.createBanModelAndView(ban, null);
-	//		return result;
-	//	}
-	//
-	//	protected ModelAndView createBanModelAndView(final Actor actor, final String message) {
-	//		ModelAndView result;
-	//
-	//		result = new ModelAndView("administrator/suspicious");
-	//		result.addObject("message", message);
-	//
-	//		return result;
-	//	}
 
 }
