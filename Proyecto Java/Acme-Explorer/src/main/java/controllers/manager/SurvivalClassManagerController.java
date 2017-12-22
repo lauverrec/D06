@@ -123,7 +123,7 @@ public class SurvivalClassManagerController extends AbstractController {
 		ModelAndView result;
 
 		if (bindingResult.hasErrors())
-			result = this.createEditModelAndView(survivalClass);
+			result = this.createEditModelAndView(survivalClass, "survivalClass.save.commit.error");
 		else
 			try {
 				this.survivalClassService.save(survivalClass);

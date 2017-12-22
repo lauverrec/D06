@@ -113,7 +113,7 @@ public class TripManagerController extends AbstractController {
 	public ModelAndView save(@Valid final Trip trip, final BindingResult binding) {
 		ModelAndView result;
 		if (binding.hasErrors())
-			result = this.createEditModelAndView(trip);
+			result = this.createEditModelAndView(trip, "trip.save.commit.error");
 		else
 			try {
 				this.tripService.save(trip);

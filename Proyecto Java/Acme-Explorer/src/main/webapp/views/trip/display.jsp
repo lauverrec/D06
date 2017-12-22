@@ -48,7 +48,7 @@
 	
 	<h2><spring:message code="trip.stages.name.table" /></h2>	
 	<display:table name="stages" id="row" class="displaytag">
-		<spring:message code="trip.stages.title" var="titleHeader" />
+		<spring:message code="trip.stages.title" />
 		<display:column property="title" title="${titleHeader}" sortable="false" >
 			<jstl:out value="${row.title}"></jstl:out>
 		</display:column>

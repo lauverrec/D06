@@ -307,6 +307,7 @@
 				<ul>
 					<li class="arrow"></li>
 					<li><a href="survivalClass/manager/list.do"><spring:message code="master.page.survivalClass.manager" /></a></li>
+					<li><a href="trip/manager_/list.do"><spring:message code="master.page.manager.createClass.trips" /></a></li>
 				</ul></li> 
 				
 				<li><a class="fNiv"><spring:message
