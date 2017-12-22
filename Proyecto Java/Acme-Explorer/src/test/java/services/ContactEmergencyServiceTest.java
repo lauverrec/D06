@@ -42,7 +42,7 @@ public class ContactEmergencyServiceTest extends AbstractTest {
 	@Test
 	public void testSave() {
 		Explorer explorer;
-		explorer = this.explorerService.findOne(13277);
+		explorer = this.explorerService.findOne(super.getEntityId("explorer1"));
 		this.authenticate(explorer.getUserAccount().getUsername());
 		ContactEmergency contactEmergency;
 		contactEmergency = this.contactEmergencyService.create();
