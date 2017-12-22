@@ -56,11 +56,14 @@
 	<form:errors cssClass="error" path="name" />
 	<br />
 	
+	<br />
+	
 	<form:label path="surname">
 		<spring:message code="explorer.surname" />:
 	</form:label>
 	<form:input path="surname" />
 	<form:errors cssClass="error" path="surname" />
+	<br />
 	<br />
 	
 	<form:label path="email">
@@ -69,6 +72,7 @@
 	<form:input path="email" />
 	<form:errors cssClass="error" path="email" />
 	<br />
+	<br />
 	
 	<form:label path="address">
 		<spring:message code="explorer.address" />:
@@ -76,12 +80,14 @@
 	<form:input path="address" />
 	<form:errors cssClass="error" path="address" />
 	<br />
+	<br />
 	
 	<form:label path="phone">
 		<spring:message code="explorer.phone" />:
 	</form:label>
 	<form:input path="phone" />
 	<form:errors cssClass="error" path="phone" />
+	<br />
 	<br />
 	
 		<script type="text/javascript">
@@ -100,6 +106,7 @@
 
 		}
 	</script>
+	<br />
 	
 	
 	<input type="submit" name="save"
