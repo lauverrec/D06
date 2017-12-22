@@ -41,7 +41,7 @@ public class EducationRecordServiceTest extends AbstractTest {
 
 	@Test
 	public void testSave() {
-
+		this.authenticate("ranger1");
 		EducationRecord educationRecord;
 		educationRecord = this.educationRecordService.create();
 
@@ -52,12 +52,12 @@ public class EducationRecordServiceTest extends AbstractTest {
 
 		EducationRecord newEducationRecord = this.educationRecordService.save(educationRecord);
 		Assert.notNull(newEducationRecord);
-
+		this.authenticate(null);
 	}
 
 	@Test
 	public void testDelete() {
-
+		this.authenticate("ranger1");
 		EducationRecord educationRecord;
 		educationRecord = this.educationRecordService.create();
 
@@ -70,7 +70,7 @@ public class EducationRecordServiceTest extends AbstractTest {
 		Assert.notNull(newEducationRecord);
 
 		this.educationRecordService.delete(newEducationRecord);
-
+		this.authenticate(null);
 	}
 
 	@Test
