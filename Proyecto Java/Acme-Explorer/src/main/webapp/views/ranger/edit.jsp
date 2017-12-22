@@ -57,12 +57,14 @@
 	<form:input path="name" />
 	<form:errors cssClass="error" path="name" />
 	<br />
-
+	<br />
+	
 	<form:label path="surname">
 		<spring:message code="ranger.surname" />:
 	</form:label>
 	<form:input path="surname" />
 	<form:errors cssClass="error" path="surname" />
+	<br />
 	<br />
 
 	<form:label path="email">
@@ -71,6 +73,7 @@
 	<form:input path="email" />
 	<form:errors cssClass="error" path="email" />
 	<br />
+	<br />
 
 	<form:label path="address">
 		<spring:message code="ranger.address" />:
@@ -78,12 +81,14 @@
 	<form:input path="address" />
 	<form:errors cssClass="error" path="address" />
 	<br />
+	<br />
 
 	<form:label path="phone">
 		<spring:message code="ranger.phone" />:
 	</form:label>
 	<form:input path="phone" />
 	<form:errors cssClass="error" path="phone" />
+	<br />
 	<br />
 
 
@@ -105,6 +110,7 @@
 		}
 	</script>
 
+	<br />
 	<input type="submit" name="save"
 		value="<spring:message code="ranger.save" />"
 		onclick="return valida();" />&nbsp; 
