@@ -149,7 +149,7 @@ public class ApplicationForService {
 			applicationFor.setReasonWhy("");
 		} else {
 			applicationFor.setStatus("REJECTED");
-			applicationFor.setReasonWhy("Your credit card is expired");
+			applicationFor.setReasonWhy("Error");
 		}
 		result = this.applicationForRepository.save(applicationFor);
 		return result;
