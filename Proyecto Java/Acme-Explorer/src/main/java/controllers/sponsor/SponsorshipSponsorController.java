@@ -104,7 +104,7 @@ public class SponsorshipSponsorController extends AbstractController {
 		ModelAndView result;
 
 		if (bindingResult.hasErrors())
-			result = this.createEditModelAndView(sponsorship);
+			result = this.createEditModelAndView(sponsorship, "sponsorship.save.commit.error");
 		else
 			try {
 				this.sponsorshipService.save(sponsorship);

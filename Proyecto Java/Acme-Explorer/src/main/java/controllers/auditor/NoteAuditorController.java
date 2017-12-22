@@ -82,7 +82,7 @@ public class NoteAuditorController extends AbstractController {
 		Trip trip;
 
 		if (bindingResult.hasErrors())
-			result = this.createEditModelAndView(note);
+			result = this.createEditModelAndView(note, "note.save.commit.error");
 		else
 			try {
 				note = this.noteService.save(note);
