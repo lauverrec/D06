@@ -204,10 +204,10 @@ public class TripServiceTest extends AbstractTest {
 
 	@Test
 	public void testFindOneToEdit() {
-		this.authenticate("manager1");
+		this.authenticate("manager5");
 		Trip trip;
 		Trip tripEdit;
-		trip = this.tripService.findOne(super.getEntityId("trip1"));
+		trip = this.tripService.findOne(super.getEntityId("trip5"));
 		trip.setDescription("Nueva descripción");
 		tripEdit = this.tripService.findOneToEdit(trip.getId());
 		Assert.notNull(tripEdit);
