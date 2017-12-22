@@ -41,6 +41,7 @@ public class EndorserRecordServiceTest extends AbstractTest {
 
 	@Test
 	public void testSave() {
+		this.authenticate("ranger1");
 		EndorserRecord endorserRecord = this.endorserRecordService.create();
 
 		endorserRecord.setFullName("Endorser Record 11");
@@ -50,10 +51,11 @@ public class EndorserRecordServiceTest extends AbstractTest {
 
 		EndorserRecord newEndorserRecord = this.endorserRecordService.save(endorserRecord);
 		Assert.notNull(newEndorserRecord);
-
+		this.authenticate(null);
 	}
 	@Test
 	public void testDelete() {
+		this.authenticate("ranger1");
 		EndorserRecord endorserRecord = this.endorserRecordService.create();
 
 		endorserRecord.setFullName("Endorser Record 11");
@@ -65,6 +67,7 @@ public class EndorserRecordServiceTest extends AbstractTest {
 		Assert.notNull(newEndorserRecord);
 
 		this.endorserRecordService.delete(newEndorserRecord);
+		this.authenticate(null);
 	}
 
 	@Test
