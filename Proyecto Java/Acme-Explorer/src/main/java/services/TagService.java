@@ -74,12 +74,6 @@ public class TagService {
 		return result;
 	}
 	public void delete(final Tag tag) {
-		//String name;
-		//Collection<Tag> tags;
-		//Collection<Trip> trips;
-
-		//PUEDO ELIMINAR LA TAG EN CUALQUIER MOMENTO
-		//Assert.isTrue(tag.getValues().size() == 0);
 
 		this.tagRepository.delete(tag);
 	}

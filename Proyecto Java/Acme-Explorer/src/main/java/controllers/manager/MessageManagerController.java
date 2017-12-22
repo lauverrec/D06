@@ -47,7 +47,7 @@ public class MessageManagerController extends AbstractController {
 	}
 
 	// Listing methods -----------------------------------------------------------
-	//Funciona bien
+
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ModelAndView list(@RequestParam int messageFolderId) {
 
@@ -65,7 +65,7 @@ public class MessageManagerController extends AbstractController {
 	}
 
 	//Display
-	//Funciona bien 
+
 	@RequestMapping(value = "/display", method = RequestMethod.GET)
 	public ModelAndView display(@RequestParam int messageId) {
 
@@ -84,7 +84,7 @@ public class MessageManagerController extends AbstractController {
 	// Creation and edition methods ------------------------------------
 
 	//Change Folder------------------------------------------------------------------
-	//Funciona bien
+
 	@RequestMapping(value = "/changefolder", method = RequestMethod.GET)
 	public ModelAndView edit(@RequestParam int messageId) {
 
@@ -106,7 +106,6 @@ public class MessageManagerController extends AbstractController {
 
 	}
 
-	//Funciona bien
 	@RequestMapping(value = "/changefolder", method = RequestMethod.POST, params = "save")
 	public ModelAndView edit(@Valid Message m, BindingResult binding, @RequestParam int messageId) {
 		ModelAndView result;
@@ -139,7 +138,6 @@ public class MessageManagerController extends AbstractController {
 		return result;
 	}
 
-	//Funciona flama
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
 	public ModelAndView deleteMessage(@RequestParam int messageId) {
 		ModelAndView result;

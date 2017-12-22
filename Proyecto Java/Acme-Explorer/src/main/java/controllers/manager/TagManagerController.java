@@ -24,14 +24,10 @@ public class TagManagerController {
 	private TagService	tagService;
 
 
-	//@Autowired
-	//private TripService	tripService;
-
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ModelAndView list(@RequestParam final int tripId) {
 		ModelAndView result;
 		Collection<Tag> tags;
-		//Collection<Tag> AllTags;
 		Collection<Tag> tagsInTrip;
 
 		tagsInTrip = new ArrayList<Tag>(this.tagService.findAllTagByTripId(tripId));
