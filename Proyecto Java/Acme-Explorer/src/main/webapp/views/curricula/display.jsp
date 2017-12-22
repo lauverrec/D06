@@ -75,7 +75,8 @@
 		sortable="true" />
 	
 	<security:authorize access="hasRole('RANGER')">
-		<display:column>
+		<spring:message code="curricula.edit" var="editPersonal" />
+		<display:column title="${editPersonal}">
 			<spring:url value="personalRecord/ranger/edit.do" var="editlink">
 				<spring:param name="personalRecordId" value="${row.id}" />
 			</spring:url>
@@ -111,7 +112,8 @@
 		sortable="true" />
 	
 	<security:authorize access="hasRole('RANGER')">
-		<display:column>
+		<spring:message code="curricula.edit" var="editEducation" />
+		<display:column title="${editEducation}">
 			<spring:url value="educationRecord/ranger/edit.do" var="editlink">
 				<spring:param name="educationRecordId" value="${row.id}" />
 			</spring:url>
@@ -153,7 +155,8 @@
 		sortable="true" />
 		
 	<security:authorize access="hasRole('RANGER')">
-		<display:column>
+		<spring:message code="curricula.edit" var="editProfessional" />
+		<display:column title="${editProfessional}">
 			<spring:url value="professionalRecord/ranger/edit.do" var="editlink">
 				<spring:param name="professionalRecordId" value="${row.id}" />
 			</spring:url>
@@ -195,7 +198,8 @@
 		sortable="true" />
 		
 	<security:authorize access="hasRole('RANGER')">
-		<display:column>
+		<spring:message code="curricula.edit" var="editEndorser" />
+		<display:column title="${editEndorser}">
 			<spring:url value="endorserRecord/ranger/edit.do" var="editlink">
 				<spring:param name="endorserRecordId" value="${row.id}" />
 			</spring:url>
@@ -230,7 +234,8 @@
 		sortable="true" />
 		
 	<security:authorize access="hasRole('RANGER')">
-		<display:column>
+		<spring:message code="curricula.edit" var="editMiscellaneous" />
+		<display:column title="${editMiscellaneous}">
 			<spring:url value="miscellaneousRecord/ranger/edit.do" var="editlink">
 				<spring:param name="miscellaneousRecordId" value="${row.id}" />
 			</spring:url>
