@@ -1,6 +1,9 @@
 
 package services;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import javax.transaction.Transactional;
 
 import org.junit.Test;
@@ -69,6 +72,44 @@ public class ValueServiceTest extends AbstractTest {
 
 		value = this.valueService.findOne(super.getEntityId("value1"));
 		Assert.notNull(value);
+	}
+
+	@Test
+	public void testDelete() {
+		Value value;
+		value = this.valueService.findOne(super.getEntityId("value1"));
+		this.valueService.delete(value);
+	}
+
+	@Test
+	public void testSave() {
+		Value value;
+		value = this.valueService.create();
+		Assert.notNull(value);
+	}
+
+	@Test
+	public void testSave1() {
+		this.authenticate("manager5");
+		Trip trip5;
+		Tag tag;
+		Value value;
+		Value value1;
+
+		value = new Value();
+		value.setValue(7);
+		tag = this.tagService.findOne(this.getEntityId("tag1"));
+		trip5 = this.tripService.findOne(this.getEntityId("trip5"));
+
+		value1 = this.valueService.save1(value, trip5, tag);
+		Assert.notNull(value1);
+	}
+
+	@Test
+	public void testDefaultValues() {
+		Collection<Value> values;
+		values = new ArrayList<Value>();
+		Assert.notNull(values);
 	}
 
 }
