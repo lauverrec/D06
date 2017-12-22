@@ -56,13 +56,12 @@
 		<jstl:out value="${row.location.latitude }"></jstl:out>
 	</p>
 
-<security:authorize access="hasRole('MANAGER')">
-		<spring:url value="survivalClass/manager/displayTrip.do" var="displayURL">
-		<spring:param name="survivalClassId" value="${row.id}"/>
+	<spring:url value="trip/display.do" var="displayURL">
+		<spring:param name="tripId" value="${row.trip.id}"/>
 		</spring:url>
 		<a href="${displayURL}"><spring:message code="survivalClass.trip.display"/></a>
 		
-	</security:authorize> 
+
 	</display:column>
 
 
