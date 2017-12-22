@@ -68,7 +68,6 @@ public class NoteServiceTest extends AbstractTest {
 		Assert.notNull(auditor);
 		note = this.noteService.save(note);
 
-		//	Assert.isTrue(auditor.getNotes().contains(note));
 		super.unauthenticate();
 	}
 
