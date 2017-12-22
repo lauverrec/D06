@@ -30,8 +30,9 @@
 	<spring:message code="trip.description" var="description" />
 	<display:column property="description" title="${description}" sortable="true" />
 	
+	<spring:message code="story.format.price" var="patternPrice"/>
 	<spring:message code="trip.price" var="price" />
-	<display:column property="price" title="${price}" sortable="true" />
+	<display:column property="price" title="${price}" sortable="true" format="${patternPrice}"/>
 	
 	<security:authorize access="hasRole('EXPLORER')">
 			<display:column>
