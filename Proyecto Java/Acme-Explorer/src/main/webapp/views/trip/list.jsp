@@ -62,7 +62,7 @@
 	<spring:message code="trip.publicationDate" var="publicationDate" />	
 	<spring:message code="trip.edit" var="Edit" />
 		<display:column title="${Edit}" sortable="true">
-			<jstl:if test="${row.publicationDate>date  && row.manager==manager}">
+			<jstl:if test="${row.publicationDate>date  && row.manager==manager && row.reasonWhy==null}">
 			
 				<spring:url value="trip/manager_/edit.do" var="editURL">
 					<spring:param name="tripId" value="${row.id}" />
@@ -229,7 +229,7 @@
 	<spring:message code="trip.publicationDate" var="publicationDate" />	
 	<spring:message code="trip.tags.name" var="Tag" />
 		<display:column title="${Tag}" sortable="true">
-			<jstl:if test="${row.manager==manager && row.startDate>date}">
+			<jstl:if test="${row.manager==manager && row.startDate>date && row.reasonWhy==null}">
 				<spring:url value="tag/manager_/list.do" var="tagURL">
 					<spring:param name="tripId" value="${row.id}" />
 				</spring:url>
