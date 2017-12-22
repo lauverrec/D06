@@ -48,7 +48,7 @@
 	<br />
 	
 
-	
+	<br/>
 	
 	<!-- botones -->
 	<input type="submit" name="save"

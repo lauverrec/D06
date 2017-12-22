@@ -3173,6 +3173,7 @@
 		<property name="auditor" ref="auditor1" />
 		<property name="body" value="Description note 1 viagra" />
 		<property name="reply" value="reply note 1" />
+		<property name="replyMoment" value="2017/10/02 15:25" />
 
 	</bean>
 
@@ -3182,6 +3183,7 @@
 		<property name="auditor" ref="auditor1" />
 		<property name="body" value="Description note 2" />
 		<property name="reply" value="reply note 2" />
+		<property name="replyMoment" value="2017/10/02 15:25" />
 
 	</bean>
 
@@ -3191,6 +3193,7 @@
 		<property name="auditor" ref="auditor2" />
 		<property name="body" value="Description note 3" />
 		<property name="reply" value="reply note 3" />
+		<property name="replyMoment" value="2017/10/02 15:25" />
 	</bean>
 
 	<bean id="note4" class="domain.Note">
@@ -3199,6 +3202,7 @@
 		<property name="auditor" ref="auditor2" />
 		<property name="body" value="Description note 4" />
 		<property name="reply" value="Description note 4" />
+		<property name="replyMoment" value="2017/10/02 15:25" />
 	</bean>
 
 	<bean id="note5" class="domain.Note">
@@ -3207,6 +3211,7 @@
 		<property name="auditor" ref="auditor3" />
 		<property name="body" value="Description note 5" />
 		<property name="reply" value="Description note 4" />
+		<property name="replyMoment" value="2017/10/02 15:25" />
 	</bean>
 
 	<!-- AuditRecord -->
