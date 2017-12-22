@@ -155,8 +155,6 @@ public class TripManagerController extends AbstractController {
 	private ModelAndView createEditModelAndView(final Trip trip, final String message) {
 		ModelAndView result;
 		Collection<Ranger> rangers;
-		//Collection<LegalText> legalTexts;
-		//legalTexts = this.legalTextService.findAll();
 		rangers = this.rangerService.findAll();
 		Collection<Tag> tags;
 		tags = new ArrayList<Tag>(this.tagService.findAll());
@@ -165,7 +163,6 @@ public class TripManagerController extends AbstractController {
 		result.addObject("tags", tags);
 		result.addObject("message", message);
 		result.addObject("rangers", rangers);
-		//result.addObject("legalTexts", legalTexts);
 		return result;
 	}
 

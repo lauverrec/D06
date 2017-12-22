@@ -40,9 +40,6 @@ public class ValueManagerController {
 		ModelAndView result;
 		Value value = new Value();
 
-		//AQUI ESTA EL FALLO CREO
-		//value = this.valueService.create(tripId, tagId);
-
 		value = this.valueService.create();
 
 		this.tag = this.tagService.findOne(tagId);
