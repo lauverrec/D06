@@ -49,21 +49,19 @@
 	<display:column title =" ${subCategories}" sortable="true">
 		<jstl:forEach var="subCategories" items="${row.subCategories}">
 			<jstl:out value="${subCategories.name}"></jstl:out><br/>
-		
 		</jstl:forEach>	
 	</display:column>
 	
-
+	<spring:message code="category.trips" var="nameHeader" />
 	
-		<spring:message code="category.trips" var="nameHeader" />
-		<display:column property="name" title="${nameHeader}" sortable="true" >
+		<display:column  title="${nameHeader}" sortable="true" >
 		<spring:url value="trip/category/list.do" var="tripListURL">
-		 <spring:param name="categoryId" value="${row.id }"/>
+		 <spring:param name="categoryId" value="${row.id}"/>
 		 </spring:url>
 		 <a href="${tripListURL}"><spring:message code="category.trips"/></a>
 		 </display:column>
 		
-	
+
 	
 	
 
