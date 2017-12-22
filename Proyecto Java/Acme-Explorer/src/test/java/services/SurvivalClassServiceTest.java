@@ -13,7 +13,11 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.util.Assert;
 
 import utilities.AbstractTest;
+import domain.Explorer;
+import domain.GPS;
+import domain.Manager;
 import domain.SurvivalClass;
+import domain.Trip;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {
@@ -26,19 +30,26 @@ public class SurvivalClassServiceTest extends AbstractTest {
 
 	@Autowired
 	private SurvivalClassService	survivalClassService;
+	@Autowired
+	private TripService				tripService;
+	@Autowired
+	private ManagerService			managerService;
 
 
 	// Tests ----------------------------------------------
 
-	//	@Test
-	//	public void testCreate() {
-	//		this.authenticate("manager1");
-	//		SurvivalClass result;
-	//
-	//		result = this.survivalClassService.create();
-	//
-	//		Assert.notNull(result);
-	//	}
+	@Test
+	public void testCreate() {
+		this.authenticate("manager1");
+		Trip trip;
+
+		trip = this.tripService.findOne(this.getEntityId("trip5"));
+		SurvivalClass result;
+
+		result = this.survivalClassService.create(trip);
+
+		Assert.notNull(result);
+	}
 
 	@Test
 	public void testFindAll() {
@@ -69,55 +80,53 @@ public class SurvivalClassServiceTest extends AbstractTest {
 
 	}
 
-	//	@Test
-	//	public void testSave() {
-	//
-	//		this.authenticate("manager1");
-	//
-	//		SurvivalClass result;
-	//		Manager manager;
-	//		Trip trip;
-	//		GPS location;
-	//		SurvivalClass resultSaved;
-	//
-	//		result = this.survivalClassService.create();
-	//
-	//		manager = this.managerService.findByPrincipal();
-	//		trip = this.tripService.findOne(super.getEntityId("trip1"));
-	//
-	//		location = new GPS();
-	//		location.setLatitude(22.4);
-	//		location.setLongitude(45.7);
-	//		location.setName("coordinate test");
-	//
-	//		result.setTitle("title 1");
-	//		result.setDescription("description 1");
-	//		result.setLocation(location);
-	//		result.setManager(manager);
-	//		result.setTrip(trip);
-	//
-	//		resultSaved = this.survivalClassService.save(result);
-	//
-	//		Assert.notNull(resultSaved);
-	//
-	//	}
+	@Test
+	public void testSave() {
 
-	//	@Test
-	//	public void testDelete() {
-	//
-	//		this.authenticate("manager1");
-	//
-	//		SurvivalClass result;
-	//		Collection<Explorer> explorers;
-	//
-	//		result = this.survivalClassService.findOne(super.getEntityId("survivalClass1"));
-	//		explorers = result.getExplorers();
-	//
-	//		explorers.removeAll(explorers);
-	//
-	//		this.survivalClassService.delete(result);
-	//
-	//		Assert.isTrue(!this.survivalClassService.findAll().contains(result));
-	//
-	//	}
+		this.authenticate("manager1");
+		Trip trip;
+		SurvivalClass result;
+		Manager manager;
+		GPS location;
+		SurvivalClass resultSaved;
+
+		manager = this.managerService.findByPrincipal();
+		trip = this.tripService.findOne(super.getEntityId("trip1"));
+		result = this.survivalClassService.create(trip);
+
+		location = new GPS();
+		location.setLatitude(22.4);
+		location.setLongitude(45.7);
+		location.setName("coordinate test");
+
+		result.setTitle("title 1");
+		result.setDescription("description 1");
+		result.setLocation(location);
+		result.setManager(manager);
+		result.setTrip(trip);
+
+		resultSaved = this.survivalClassService.save(result);
+
+		Assert.notNull(resultSaved);
+
+	}
+
+	@Test
+	public void testDelete() {
+
+		this.authenticate("manager1");
+
+		SurvivalClass result;
+		Collection<Explorer> explorers;
+
+		result = this.survivalClassService.findOne(super.getEntityId("survivalClass1"));
+		explorers = result.getExplorers();
+
+		explorers.removeAll(explorers);
+
+		this.survivalClassService.delete(result);
+
+		Assert.isTrue(!this.survivalClassService.findAll().contains(result));
+
+	}
 }
