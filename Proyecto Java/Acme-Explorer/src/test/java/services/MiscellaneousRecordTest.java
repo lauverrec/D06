@@ -64,7 +64,7 @@ public class MiscellaneousRecordTest extends AbstractTest {
 
 	@Test
 	public void testSave() {
-
+		this.authenticate("ranger1");
 		MiscellaneousRecord miscellaneousRecord;
 		MiscellaneousRecord miscellaneousRecordSaved;
 
@@ -76,6 +76,7 @@ public class MiscellaneousRecordTest extends AbstractTest {
 		miscellaneousRecordSaved = this.miscellaneousRecordService.save(miscellaneousRecord);
 
 		Assert.notNull(miscellaneousRecordSaved);
+		this.authenticate("ranger1");
 
 	}
 
@@ -107,7 +108,7 @@ public class MiscellaneousRecordTest extends AbstractTest {
 
 	@Test
 	public void testDelete() {
-
+		this.authenticate("ranger1");
 		Curricula curricula;
 		MiscellaneousRecord miscellaneousRecord;
 
@@ -121,6 +122,6 @@ public class MiscellaneousRecordTest extends AbstractTest {
 		this.miscellaneousRecordService.delete(miscellaneousRecord);
 
 		Assert.isNull(this.miscellaneousRecordService.findOne(miscellaneousRecord.getId()));
-
+		this.authenticate(null);
 	}
 }
