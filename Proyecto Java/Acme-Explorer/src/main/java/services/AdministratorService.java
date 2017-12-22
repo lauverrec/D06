@@ -84,14 +84,18 @@ public class AdministratorService {
 	}
 
 	public Administrator save(final Administrator administrator) {
+
 		Assert.notNull(administrator);
 		final Administrator result;
 		final Md5PasswordEncoder encoder;
 		final String passwordHash;
 
-		encoder = new Md5PasswordEncoder();
-		passwordHash = encoder.encodePassword(administrator.getUserAccount().getPassword(), null);
-		administrator.getUserAccount().setPassword(passwordHash);
+		if (administrator.getId() == 0) {
+			final String password = administrator.getUserAccount().getPassword();
+			encoder = new Md5PasswordEncoder();
+			passwordHash = encoder.encodePassword(password, null);
+			administrator.getUserAccount().setPassword(passwordHash);
+		}
 		result = this.administratorRepository.save(administrator);
 
 		Assert.notNull(result);

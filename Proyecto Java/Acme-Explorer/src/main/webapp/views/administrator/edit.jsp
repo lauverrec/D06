@@ -28,11 +28,30 @@
 	<form:hidden path="version" />
 	<form:hidden path="socialIdentities"/>
 	<form:hidden path="messagesFolders"/>
-	<form:hidden path="suspicious"/>
 	<form:hidden path="userAccount"/>
+	<form:hidden path="userAccount.authorities"/>
+	<form:hidden path="userAccount.activated"/>
+	<form:hidden path="suspicious"/>
+
 
 	
 	<security:authorize access="hasRole('ADMINISTRATOR')">
+	
+	<jstl:if test="${administrator.id == 0}">		
+		<form:label path="userAccount.username">
+			<spring:message code="administrator.username" />:
+		</form:label>
+		<form:input path="userAccount.username" />
+		<form:errors cssClass="error" path="userAccount.username" />
+		<br /><br />
+	
+		<form:label path="userAccount.password">
+			<spring:message code="administrator.password" />:
+		</form:label>
+		<form:password path="userAccount.password" />
+		<form:errors cssClass="error" path="userAccount.password" />
+		<br /><br />
+	</jstl:if>
 	
 	<form:label path="name">
 		<spring:message code="administrator.name" />:

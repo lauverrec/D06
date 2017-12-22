@@ -31,6 +31,19 @@ public class AdministratorController extends AbstractController {
 		super();
 	}
 
+	//Create------------------------------------------------------------
+
+	@RequestMapping(value = "/create", method = RequestMethod.GET)
+	public ModelAndView create() {
+		ModelAndView result;
+		Administrator administrator;
+
+		administrator = this.administratorService.create();
+		Assert.notNull(administrator);
+		result = this.createEditModelAndView(administrator);
+		return result;
+	}
+
 	//Edition------------------------------------------------------------
 
 	@RequestMapping(value = "/edit", method = RequestMethod.GET)
