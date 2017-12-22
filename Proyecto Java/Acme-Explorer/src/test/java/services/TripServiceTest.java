@@ -13,9 +13,13 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import utilities.AbstractTest;
+import domain.ApplicationFor;
+import domain.AuditRecord;
 import domain.Auditor;
+import domain.Category;
 import domain.Explorer;
 import domain.Manager;
+import domain.Note;
 import domain.Trip;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -27,18 +31,26 @@ public class TripServiceTest extends AbstractTest {
 
 	//Service under test----------------------------------------------------------
 	@Autowired
-	private TripService		tripService;
+	private TripService				tripService;
 
 	//	// Supporting services ----------------------------------------------------
 
 	@Autowired
-	private ManagerService	managerService;
+	private ManagerService			managerService;
 
 	@Autowired
-	private ExplorerService	explorerService;
+	private ExplorerService			explorerService;
 
 	@Autowired
-	private AuditorService	auditorService;
+	private AuditorService			auditorService;
+	@Autowired
+	private NoteService				noteService;
+	@Autowired
+	private ApplicationForService	applicationForService;
+	@Autowired
+	private CategoryService			categoryService;
+	@Autowired
+	private AuditRecordService		auditRecordService;
 
 
 	@Test
@@ -224,5 +236,91 @@ public class TripServiceTest extends AbstractTest {
 		price = this.tripService.setPrice(trip.getStages());
 
 		Assert.isTrue(price > 0.0);
+	}
+
+	@Test
+	public void testCancel() {
+		Trip trip;
+		this.authenticate("manager1");
+
+		trip = this.tripService.findOne(super.getEntityId("trip2"));
+		trip.setCancelled(true);
+		trip.setReasonWhy("porque si");
+		this.tripService.cancel(trip);
+		Assert.notNull(trip);
+	}
+
+	@Test
+	public void testfindTripsByNote() {
+
+		Trip trip;
+		Note note;
+
+		note = this.noteService.findOne(super.getEntityId("note1"));
+		trip = this.tripService.findTripsByNote(note);
+
+		Assert.notNull(trip);
+
+	}
+
+	@Test
+	public void testFindAllTripsNotApplyByExplorerId() {
+		Collection<Trip> trips;
+		Explorer explorer;
+
+		explorer = this.explorerService.findOne(super.getEntityId("explorer1"));
+		trips = this.tripService.findAllTripsNotApplyByExplorerId(explorer.getId());
+
+		Assert.notNull(trips);
+
+	}
+
+	@Test
+	public void testFindAllTripsByApplicationForId() {
+		Collection<Trip> trips;
+		ApplicationFor apply;
+		apply = this.applicationForService.findOne(super.getEntityId("applicationFor1"));
+		trips = new ArrayList<Trip>(this.tripService.findAllTripsByApplicationForId(apply.getId()));
+		Assert.notNull(trips);
+	}
+
+	@Test
+	public void testSetPriceOfAllTrips() {
+		Collection<Trip> result;
+		result = new ArrayList<Trip>(this.tripService.findAll());
+		this.tripService.setPriceOfAllTrips();
+		Assert.notNull(result);
+	}
+
+	@Test
+	public void testFindByCategory() {
+		Collection<Trip> result;
+		Category category;
+
+		category = this.categoryService.findOne(super.getEntityId("lake"));
+		result = new ArrayList<Trip>(this.tripService.findByCategory(category.getId()));
+		Assert.notNull(result);
+	}
+
+	@Test
+	public void testTripsForStory() {
+
+		this.authenticate("explorer1");
+		Collection<Trip> trips;
+
+		trips = this.tripService.findTripsForStory();
+
+		Assert.notNull(trips);
+		Assert.notEmpty(trips);
+	}
+
+	@Test
+	public void testFindAuditRecord() {
+		AuditRecord audit;
+		Trip trip;
+
+		audit = this.auditRecordService.findOne(super.getEntityId("auditrecord2"));
+		trip = this.tripService.findAuditRecord(audit);
+		Assert.notNull(trip);
 	}
 }
