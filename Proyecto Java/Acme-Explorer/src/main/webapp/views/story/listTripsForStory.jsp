@@ -34,14 +34,16 @@
 	<spring:message code="trip.price" var="price" />
 	<display:column property="price" title="${price}" sortable="true" format="${patternPrice}"/>
 	
-	<security:authorize access="hasRole('EXPLORER')">
-			<display:column>
+	
+
+</display:table>
+
+<security:authorize access="hasRole('EXPLORER')">
+			
 				<spring:url value="story/explorer/create.do" var="editURL">
 					<spring:param name="tripId" value="${row.id }" />
 				</spring:url>
 				<a href="${editURL}"><spring:message code="story.create" /></a>
-			</display:column>
+			
 		
 	</security:authorize>
-
-</display:table>
