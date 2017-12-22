@@ -9,9 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import repositories.PersonalRecordRepository;
-import domain.Curricula;
 import domain.PersonalRecord;
-import domain.Ranger;
 
 @Service
 @Transactional
@@ -22,14 +20,8 @@ public class PersonalRecordService {
 	@Autowired
 	private PersonalRecordRepository	personalRecordRepository;
 
+
 	// Supporting services ----------------------------------------------------
-
-	@Autowired
-	private RangerService				rangerService;
-
-	@Autowired
-	private CurriculaService			curriculaService;
-
 
 	// Constructors-------------------------------------------------------
 
@@ -70,8 +62,6 @@ public class PersonalRecordService {
 		Assert.notNull(personalRecord);
 
 		PersonalRecord result;
-		final Ranger rangerPrincipal;
-		final Curricula curriculaPrincipal;
 
 		result = this.personalRecordRepository.save(personalRecord);
 		//Se comenta el siguiente codigo porque en PersonalRecordRangerController es donde le asigno a la curricula el personalRecord

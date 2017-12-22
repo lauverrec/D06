@@ -146,10 +146,17 @@ public class AdministratorServiceTest extends AbstractTest {
 	}
 
 	@Test
-	public void testFindNumOfTimesALegalTextIsReferenced() {
-		Collection<Integer> res;
-		res = this.administratorService.findNumOfTimesALegalTextIsReferenced();
-		Assert.notNull(res);
+	public void tesTitlesOfLegalText() {
+		Collection<String> result;
+		result = this.administratorService.titlesOfLegalText();
+		Assert.notNull(result);
+	}
+
+	@Test
+	public void testFindNumberOfReferencesOfLegalText() {
+		Collection<Integer> result;
+		result = this.administratorService.findNumOfReferencesOfLegalText();
+		Assert.notNull(result);
 	}
 
 	@Test

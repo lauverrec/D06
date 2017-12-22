@@ -198,15 +198,31 @@
 
 
 
-<display:table name="findNumOfTimesALegalTextIsReferenced" id="row"
-	class="displaytag">
-	<jstl:forEach var="medidas"
-		items="${findNumOfTimesALegalTextIsReferenced[1] }">
-		<td><jstl:out value="${medidas}"></jstl:out></td>
-	</jstl:forEach>
+<table>
 
+	<caption class="caption">
+		<spring:message code="dashboard.findNumOfTimesALegalTextIsReferenced" />
+	</caption>
+	
+	<tr>
+		<jstl:forEach var="medidas" items="${titlesOfLegalText }">
+		
+			<td><jstl:out value="${ medidas}"></jstl:out></td>
+			
+			
+		</jstl:forEach>
+		</tr>
+	
+	
+	<tr>
+		<jstl:forEach var="medidas" items="${findNumOfReferencesOfLegalText }">
+		
+			<td><jstl:out value="${ medidas}"></jstl:out></td>
+				
+		</jstl:forEach>
+		</tr>
 
-</display:table>
+</table>
 
 
 <table>

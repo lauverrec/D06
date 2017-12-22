@@ -40,7 +40,8 @@ public class AdministratorDashboardController extends AbstractController {
 		Double findRatOfApplicationsCancelled;
 		Double findRatOfTheTripsCancelledvsTripsOrganised;
 		Collection<Trip> findTrips10porcentMoreApplicationsThanAvg;
-		Collection<Integer> findNumOfTimesALegalTextIsReferenced;
+		Collection<String> titlesOfLegalText;
+		Collection<Integer> findNumOfReferencesOfLegalText;
 		Double findMinMaxAvgStddevOfTheNumOfNotesPerTrip[];
 		Double findMinMaxAvgStddevOfTheNumOfAuditRecordsPerTrip[];
 		Double findTheRatOfTripsWihoutAnAuditRecord;
@@ -59,7 +60,8 @@ public class AdministratorDashboardController extends AbstractController {
 		findRatOfApplicationsCancelled = this.administratorService.findRatOfApplicationsCancelled();
 		findRatOfTheTripsCancelledvsTripsOrganised = this.administratorService.findRatOfTheTripsCancelledvsTripsOrganised();
 		findTrips10porcentMoreApplicationsThanAvg = this.administratorService.findTrips10porcentMoreApplicationsThanAvg();
-		findNumOfTimesALegalTextIsReferenced = this.administratorService.findNumOfTimesALegalTextIsReferenced();
+		titlesOfLegalText = this.administratorService.titlesOfLegalText();
+		findNumOfReferencesOfLegalText = this.administratorService.findNumOfReferencesOfLegalText();
 		findMinMaxAvgStddevOfTheNumOfNotesPerTrip = this.administratorService.findMinMaxAvgStddevOfTheNumOfNotesPerTrip();
 		findMinMaxAvgStddevOfTheNumOfAuditRecordsPerTrip = this.administratorService.findMinMaxAvgStddevOfTheNumOfAuditRecordsPerTrip();
 		findTheRatOfTripsWihoutAnAuditRecord = this.administratorService.findTheRatOfTripsWihoutAnAuditRecord();
@@ -78,7 +80,8 @@ public class AdministratorDashboardController extends AbstractController {
 		result.addObject("findRatOfApplicationsCancelled", findRatOfApplicationsCancelled);
 		result.addObject("findRatOfTheTripsCancelledvsTripsOrganised", findRatOfTheTripsCancelledvsTripsOrganised);
 		result.addObject("findTrips10porcentMoreApplicationsThanAvg", findTrips10porcentMoreApplicationsThanAvg);
-		result.addObject("findNumOfTimesALegalTextIsReferenced", findNumOfTimesALegalTextIsReferenced);
+		result.addObject("titlesOfLegalText", titlesOfLegalText);
+		result.addObject("findNumOfReferencesOfLegalText", findNumOfReferencesOfLegalText);
 		result.addObject("findMinMaxAvgStddevOfTheNumOfNotesPerTrip", findMinMaxAvgStddevOfTheNumOfNotesPerTrip);
 		result.addObject("findMinMaxAvgStddevOfTheNumOfAuditRecordsPerTrip", findMinMaxAvgStddevOfTheNumOfAuditRecordsPerTrip);
 		result.addObject("findTheRatOfTripsWihoutAnAuditRecord", findTheRatOfTripsWihoutAnAuditRecord);

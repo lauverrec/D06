@@ -194,9 +194,15 @@ public class AdministratorService {
 		return result;
 	}
 
-	public Collection<Integer> findNumOfTimesALegalTextIsReferenced() {
+	public Collection<String> titlesOfLegalText() {
+		Collection<String> result;
+		result = this.administratorRepository.titlesOfLegalText();
+		return result;
+	}
+
+	public Collection<Integer> findNumOfReferencesOfLegalText() {
 		Collection<Integer> result;
-		result = this.administratorRepository.findNumOfTimesALegalTextIsReferenced();
+		result = this.administratorRepository.findNumOfReferencesOfLegalText();
 		return result;
 	}
 

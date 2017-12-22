@@ -46,8 +46,14 @@ public interface AdministratorRepository extends JpaRepository<Administrator, In
 	@Query("select t from Trip t where t.applicationsFor.size > 1.1*(select avg(t.applicationsFor.size) from Trip t) order by t.applicationsFor.size")
 	Collection<Trip> findTrips10porcentMoreApplicationsThanAvg();
 
-	@Query("select t.title, t.trips.size from LegalText t")
-	Collection<Integer> findNumOfTimesALegalTextIsReferenced();
+	@Query("select t.title from LegalText t")
+	Collection<String> titlesOfLegalText();
+
+	@Query("select t.trips.size from LegalText t")
+	Collection<Integer> findNumOfReferencesOfLegalText();
+
+	//La query que se pide sobre el numero de referencias de cada legal text en las trips
+	// se ha dividido en dos querys, estas son las dos de arriba
 
 	@Query("select min(t.notes.size), max(t.notes.size), avg(t.notes.size), stddev(t.notes.size) from Trip t")
 	Double[] findMinMaxAvgStddevOfTheNumOfNotesPerTrip();
